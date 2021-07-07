@@ -158,3 +158,84 @@ module "kafka" {
   disk_size_gb = "50"
   
 }
+
+module "ifix-es-data-v1" {
+
+  source = "../modules/storage/aws"
+  storage_count = 3
+  environment = "${var.cluster_name}"
+  disk_prefix = "ifix-es-data-v1"
+  availability_zones = "${var.availability_zones}"
+  storage_sku = "gp2"
+  disk_size_gb = "25"
+  
+}
+
+module "ifix-zookeeper" {
+
+  source = "../modules/storage/aws"
+  storage_count = 3
+  environment = "${var.cluster_name}"
+  disk_prefix = "ifix-zookeeper"
+  availability_zones = "${var.availability_zones}"
+  storage_sku = "gp2"
+  disk_size_gb = "2"
+  
+}
+
+module "ifix-kafka" {
+
+  source = "../modules/storage/aws"
+  storage_count = 3
+  environment = "${var.cluster_name}"
+  disk_prefix = "ifix-kafka"
+  availability_zones = "${var.availability_zones}"
+  storage_sku = "gp2"
+  disk_size_gb = "50"
+  
+}
+
+module "ifix-es-master" {
+
+  source = "../modules/storage/aws"
+  storage_count = 3
+  environment = "${var.cluster_name}"
+  disk_prefix = "ifix-es-master"
+  availability_zones = "${var.availability_zones}"
+  storage_sku = "gp2"
+  disk_size_gb = "2"
+  
+}
+
+resource "aws_docdb_subnet_group" "docdb_subnet_group" {
+  name       = "docdb_subnet_group-${var.cluster_name}"
+  subnet_ids = "${module.network.private_subnets}"
+}
+
+resource "aws_docdb_cluster_instance" "service" {
+  count              = 1
+  identifier         = "${var.doc_db_name}-${count.index}"
+  cluster_identifier = "${aws_docdb_cluster.service.id}"
+  instance_class     = "db.t3.medium"
+}
+
+resource "aws_docdb_cluster" "service" {
+  skip_final_snapshot     = true
+  db_subnet_group_name    = "${aws_docdb_subnet_group.docdb_subnet_group.name}"
+  cluster_identifier      = "${var.doc_db_name}"
+  engine                  = "docdb"
+  master_username         = "ifix_admin"
+  master_password         = "${var.docdb_password}"
+  db_cluster_parameter_group_name = "${aws_docdb_cluster_parameter_group.service.name}"
+  vpc_security_group_ids = ["${module.network.rds_db_sg_id}"]
+}
+
+resource "aws_docdb_cluster_parameter_group" "service" {
+  family = "docdb4.0"
+  name = "${var.doc_db_name}"
+
+  parameter {
+    name  = "tls"
+    value = "disabled"
+  }
+}

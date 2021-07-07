@@ -4,7 +4,7 @@ apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   name: {{ template "common.name" . }}
-  namespace: {{ .Values.namespace }} 
+  namespace: {{ .Values.global.namespace }} 
   labels:
 {{- include "common.labels" . | nindent 4 }}  
 spec:
@@ -27,5 +27,5 @@ spec:
 {{- include "common.labels" . | nindent 6 }}  
   namespaceSelector:
     matchNames:
-      - {{ .Values.namespace | quote }}
+      - {{ .Values.global.namespace | quote }}
 {{- end }}

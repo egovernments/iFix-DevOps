@@ -21,7 +21,7 @@ spec:
     - ReadWriteOnce
  persistentVolumeReclaimPolicy: Retain
  claimRef:
-    namespace: {{ $.Values.namespace }}  
+    namespace: {{ $.Values.global.namespace }}  
     name: "zookeeper-data-{{ template "name" $ }}-{{ $idx }}"
 {{- if $.Values.persistence.aws }}
  awsElasticBlockStore:

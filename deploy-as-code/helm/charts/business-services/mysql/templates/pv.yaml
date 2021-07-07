@@ -17,7 +17,7 @@ spec:
     - {{ .Values.persistence.accessMode | quote }}
   persistentVolumeReclaimPolicy: Recycle
   claimRef:
-    namespace: {{ .Values.namespace }}
+    namespace: {{ .Values.global.namespace }}
     name: {{ .Chart.Name }}-volume
   {{- if .Values.persistence.aws }}
   awsElasticBlockStore:

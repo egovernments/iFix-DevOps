@@ -6,7 +6,7 @@ metadata:
 {{- else }}
   name: {{ template "name" . }}
 {{- end }}
-  namespace: {{ .Values.namespace }}
+  namespace: {{ .Values.global.namespace }}
   labels:
     app: "{{ template "name" . }}"
 {{- if .Values.service.labels }}

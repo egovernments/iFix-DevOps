@@ -6,13 +6,13 @@ metadata:
   labels:
     app: {{ template "nginx-ingress.name" . }}
   name: {{ template "nginx-ingress.controller.fullname" . }}
-  namespace: {{ .Values.namespace }}
+  namespace: {{ .Values.global.namespace }}
 data:
 {{- if .Values.controller.addHeaders }}
-  add-headers: {{ .Values.namespace }}/custom-headers
+  add-headers: {{ .Values.global.namespace }}/custom-headers
 {{- end }}
 {{- if or .Values.controller.proxySetHeaders .Values.controller.headers }}
-  proxy-set-headers: {{ .Values.namespace }}/custom-proxy-headers
+  proxy-set-headers: {{ .Values.global.namespace }}/custom-proxy-headers
 {{- end }}
 {{- if .Values.controller.config }}                                   
   {{- tpl .Values.controller.config . | nindent 2 }}

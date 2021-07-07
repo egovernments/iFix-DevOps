@@ -1,7 +1,6 @@
 # Common Labels
 labels:
   app: "kibana-infra-v1"
-namespace: es-cluster-infra  
 
 # Ingress Configs
 ingress:

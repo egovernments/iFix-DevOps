@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: DaemonSet
 metadata:
   name: {{ template "name" . }}
-  namespace: {{ .Values.namespace | quote }}
+  namespace: {{ .Values.global.namespace | quote }}
   labels:
     app: {{ template "name" . }}
 spec:

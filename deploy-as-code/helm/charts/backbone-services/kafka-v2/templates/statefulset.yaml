@@ -2,7 +2,7 @@ apiVersion: {{ template "statefulset.apiVersion" . }}
 kind: StatefulSet
 metadata:
   name: {{ template "name" . }}
-  namespace: {{ .Values.namespace }}
+  namespace: {{ .Values.global.namespace }}
   labels:
     app: {{ template "name" . }}
 spec:

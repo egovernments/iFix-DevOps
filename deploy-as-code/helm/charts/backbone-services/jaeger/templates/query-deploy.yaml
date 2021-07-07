@@ -3,7 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ template "name" . }}-query
-  namespace: {{ .Values.namespace }}
+  namespace: {{ .Values.global.namespace }}
   labels:
     app: {{ template "name" . }}
     app.kubernetes.io/component: query

@@ -49,6 +49,22 @@ output "kafka_vol_ids" {
   value = "${module.kafka.volume_ids}"
 }
 
+output "ifix_es_master_volume_ids" {
+  value = "${module.ifix-es-master.volume_ids}"
+}
+
+output "ifix_es_data_volume_ids" {
+  value = "${module.ifix-es-data-v1.volume_ids}"
+}
+
+output "ifix_zookeeper_volume_ids" {
+  value = "${module.ifix-zookeeper.volume_ids}"
+}
+
+output "ifix_kafka_vol_ids" {
+  value = "${module.ifix-kafka.volume_ids}"
+}
+
 output "deployer_secret_key_cmd" {
   value = "${map(module.iam_user_deployer.iam_access_key_id, module.iam_user_deployer.keybase_secret_key_decrypt_command)}"
 }

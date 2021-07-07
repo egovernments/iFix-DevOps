@@ -3,7 +3,7 @@ apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
   name: {{ template "name" . }}-spark
-  namespace: {{ .Values.namespace }}
+  namespace: {{ .Values.global.namespace }}
   labels:
     app: {{ template "name" . }}
     app.kubernetes.io/component: spark

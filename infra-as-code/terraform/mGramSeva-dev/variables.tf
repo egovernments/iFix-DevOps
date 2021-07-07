@@ -42,4 +42,11 @@ variable "iam_keybase_user" {
  default = "keybase:egovterraform"
 }
 
+variable "doc_db_name" {
+ default = "ifix-db"
+}
+
+variable "docdb_password" {
+}
+
 

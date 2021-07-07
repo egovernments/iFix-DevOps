@@ -9,7 +9,7 @@ metadata:
     app: {{ .Chart.Name }}
     group: gateway
   name: {{ .Chart.Name }}
-  namespace: {{ .Values.namespace }}
+  namespace: {{ .Values.global.namespace }}
 rules:
 - apiGroups:
   - ""

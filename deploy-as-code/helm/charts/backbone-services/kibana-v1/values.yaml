@@ -1,7 +1,6 @@
 # Common Labels
 labels:
   app: "kibana-v1"
-namespace: es-cluster  
 
 # Ingress Configs
 ingress:

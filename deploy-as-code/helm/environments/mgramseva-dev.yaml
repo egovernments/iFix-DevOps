@@ -7,22 +7,15 @@ cluster-configs:
     create: false
     values:
       [
-        backbone,
+        mgramseva,
         cert-manager,
-        egov,
-        es-cluster,
-        kafka-cluster,
-        logging,
-        monitoring,
-        playground,
-        zookeeper-cluster,
       ]
 
   rbac:
     - role: user
-      namespaces: [egov]
+      namespaces: [mgramseva]
     - role: admin
-      namespaces: [playground]
+      namespaces: [mgramseva]
 
   root-ingress:
     cert-issuer: letsencrypt-prod
@@ -344,7 +337,7 @@ dashboard-ingest:
 nginx-ingress:
   replicas: 1
   default-backend-service: "egov/nginx"
-  namespace: egov
+  namespace: mgramseva
   cert-issuer: "letsencrypt-prod"
   ssl-protocols: "TLSv1.2 TLSv1.3"
   ssl-ciphers: "EECDH+CHACHA20:EECDH+AES"
@@ -365,7 +358,7 @@ cert-manager:
   email: "devops-team@egov.org.in"
   images:
     - "quay.io/jetstack/cert-manager-controller:v0.10.1"
-  namespace: egov
+  namespace: mgramseva
 
 egov-custom-consumer:
   erp-host: "https://citya.digit.org/"
@@ -678,7 +671,7 @@ elasticsearch-master-v1:
       memory: "896Mi"
 
 es-curator-infra:
-  namespace: es-cluster
+  namespace: mgramseva
   schedule: "45 18 * * *"
   images:
     - bobrik/curator:5.6.0
@@ -770,6 +763,11 @@ grafana:
       enabled: true
       repo: "git@github.com:egovernments/configs"
       branch: "mgram-dev"
+
+prometheus-operator:
+  namespace: mgramseva
+kube-state-metrics:
+  namespace: mgramseva
       
   minio:
   mode: distributed

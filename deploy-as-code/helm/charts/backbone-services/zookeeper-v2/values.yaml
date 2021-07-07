@@ -6,7 +6,6 @@
 ## Zookeeper
 ## ------------------------------------------------------
 name: zookeeper-v2
-namespace: zookeeper-cluster
 ## Number of zookeeper servers, should be odd number
 replicas: 3
 

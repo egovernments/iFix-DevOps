@@ -1,6 +1,5 @@
 
 name: elasticsearch-data-v1
-namespace: es-cluster
 replicas: 3
 
 image:

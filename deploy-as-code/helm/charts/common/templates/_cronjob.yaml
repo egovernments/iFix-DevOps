@@ -7,7 +7,7 @@ apiVersion: batch/v2alpha1
 kind: CronJob
 metadata:
   name: {{ template "common.name" . }}
-  namespace: {{ .Values.namespace }}
+  namespace: {{ .Values.global.namespace }}
   labels:
 {{- include "common.labels" . | nindent 4 }} 
 spec:

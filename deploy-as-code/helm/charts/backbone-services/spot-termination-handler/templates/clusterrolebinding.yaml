@@ -12,5 +12,5 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: {{ template "name" . }}
-  namespace: {{ .Values.namespace | quote }}
+  namespace: {{ .Values.global.namespace | quote }}
 {{- end}}

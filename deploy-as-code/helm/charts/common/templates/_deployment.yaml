@@ -7,7 +7,7 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: {{ template "common.name" . }}
-  namespace: {{ .Values.namespace }}
+  namespace: {{ .Values.global.namespace }}
   labels:
 {{- include "common.labels" . | nindent 4 }}   
 spec:

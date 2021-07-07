@@ -1,6 +1,5 @@
 
 name: kafka-v2-infra
-namespace: kafka-cluster
 replicas: 3
 zookeeperHosts: "zookeeper-v2.zookeeper-cluster:2181/kafka-v2-infra"
 

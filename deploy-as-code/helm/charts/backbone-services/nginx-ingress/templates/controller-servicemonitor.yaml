@@ -4,7 +4,7 @@ apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   name: {{ template "nginx-ingress.controller.fullname" . }}
-  namespace: {{ .Values.namespace }}
+  namespace: {{ .Values.global.namespace }}
   labels:
     app: {{ template "nginx-ingress.name" . }}
     {{- if .Values.controller.metrics.serviceMonitor.additionalLabels }}
@@ -23,7 +23,7 @@ spec:
   {{ else }}
   namespaceSelector:
     matchNames:
-      - {{ .Values.namespace }}
+      - {{ .Values.global.namespace }}
   {{- end }}
   selector:
     matchLabels:

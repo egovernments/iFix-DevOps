@@ -15,7 +15,7 @@ metadata:
 {{- end }}
     app: {{ template "nginx-ingress.name" . }}
   name: {{ template "nginx-ingress.controller.fullname" . }}-metrics
-  namespace: {{ .Values.namespace }}
+  namespace: {{ .Values.global.namespace }}
 spec:
 {{- if not .Values.controller.metrics.service.omitClusterIP }}
   {{- with .Values.controller.metrics.service.clusterIP }}

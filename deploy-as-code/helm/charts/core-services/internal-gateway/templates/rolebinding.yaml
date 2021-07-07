@@ -9,7 +9,7 @@ metadata:
     app: {{ .Chart.Name }}
     group: gateway
   name: {{ .Chart.Name }}
-  namespace: {{ .Values.namespace }}
+  namespace: {{ .Values.global.namespace }}
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
@@ -17,5 +17,5 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: {{ .Values.serviceAccount }}
-  namespace: {{ .Values.namespace }}   
+  namespace: {{ .Values.global.namespace }}   
 {{- end -}}  

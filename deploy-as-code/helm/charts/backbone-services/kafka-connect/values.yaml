@@ -1,6 +1,5 @@
 # Common Labels
 name: kafka-connect
-namespace: kafka-cluster    
 labels:
   app: "kafka-connect"
   group: "infra"

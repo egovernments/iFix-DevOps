@@ -3,7 +3,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: {{ template "name" . }}-sampling-strategies
-  namespace: {{ .Values.namespace }}
+  namespace: {{ .Values.global.namespace }}
   labels:
     app: {{ template "name" . }}
     app.kubernetes.io/component: collector
