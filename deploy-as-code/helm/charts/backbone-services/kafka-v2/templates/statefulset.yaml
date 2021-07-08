@@ -42,6 +42,21 @@ spec:
                     values:
                     - {{ template "name" . }}
               topologyKey: "kubernetes.io/hostname"
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+           nodeSelectorTerms:
+            - matchExpressions:
+              - key: Environment
+                operator: In
+                values:
+                - ifix-ng     
+      tolerations:
+      - key: "dedicated"
+        operator: "Equal"
+        value: "ifix-ng"
+        effect: "NoSchedule"
+      nodeSelector:
+        Environment: ifix-ng
       containers:
       {{- if .Values.prometheus.jmx.enabled }}
       - name: prometheus-jmx-exporter
@@ -134,12 +149,12 @@ spec:
             exec:
              command: ["sh", "-ce", "kill -s TERM 1; while $(kill -0 1 2>/dev/null); do sleep 1; done"]  
         volumeMounts:
-        - name: kafka-data
+        - name: kafka-data-ifix
           mountPath: /opt/kafka-data
     {{- if or .Values.prometheus.jmx.enabled (not .Values.persistence.enabled) }}          
       volumes:
       {{ if not .Values.persistence.enabled }}
-      - name: kafka-data
+      - name: kafka-data-ifix
         emptyDir: {}
       {{- end }}     
       {{ if .Values.prometheus.jmx.enabled }} 
@@ -151,7 +166,7 @@ spec:
 {{- if .Values.persistence.enabled }}          
   volumeClaimTemplates:
   - metadata:
-      name: kafka-data
+      name: kafka-data-ifix
     spec:
       accessModes:
         - ReadWriteOnce

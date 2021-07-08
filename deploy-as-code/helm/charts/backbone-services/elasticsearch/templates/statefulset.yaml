@@ -23,7 +23,7 @@ spec:
   {{- if .Values.persistence.enabled }}
   volumeClaimTemplates:
   - metadata:
-      name: es-storage
+      name: es-storage-ifix
     {{- with .Values.persistence.annotations  }}
       annotations:
 {{ toYaml . | indent 8 }}
@@ -51,6 +51,22 @@ spec:
       {{- if .Values.schedulerName }}
       schedulerName: "{{ .Values.schedulerName }}"
       {{- end }}
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+           nodeSelectorTerms:
+            - matchExpressions:
+              - key: Environment
+                operator: In
+                values:
+                - ifix-ng     
+      tolerations:
+      - key: "dedicated"
+        operator: "Equal"
+        value: "ifix-ng"
+        effect: "NoSchedule"
+      nodeSelector:
+        Environment: ifix-ng
       securityContext:
 {{ toYaml .Values.podSecurityContext | indent 8 }}
         {{- if .Values.fsGroup }}
@@ -294,7 +310,7 @@ spec:
 {{- end }}
         volumeMounts:
           {{- if .Values.persistence.enabled }}
-          - name: "es-storage"
+          - name: "es-storage-ifix"
             mountPath: /usr/share/elasticsearch/data
           {{- end }}
 {{ if .Values.keystore }}

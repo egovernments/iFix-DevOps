@@ -1,7 +1,7 @@
 
 name: kafka-v2-infra
 replicas: 3
-zookeeperHosts: "zookeeper-v2.zookeeper-cluster:2181/kafka-v2-infra"
+zookeeperHosts: "zookeeper-v2.ifix:2181/kafka-v2-infra"
 
 image:
   pullPolicy: IfNotPresent  
