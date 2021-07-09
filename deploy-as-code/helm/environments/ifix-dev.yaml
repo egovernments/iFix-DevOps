@@ -1,5 +1,5 @@
 global:
-  domain: dev.ifix.org.in
+  domain: ifix-dev.ifix.org.in
   tracing-enabled: true
   namespace: ifix
 
@@ -33,8 +33,8 @@ cluster-configs:
         pg-db-url: "jdbc:postgresql://postgres.ifix:5432/ifix_dev_db"
         bpa-db-url: "jdbc:postgresql://postgres.ifix:5432/ifix_dev_db"
         erp-db-url: "jdbc:postgresql://postgres.ifix:5432/ifix_dev_db"
-        domain: "dev.ifix.org.in"
-        egov-services-fqdn-name: "https://dev.ifix.org.in/"
+        domain: "ifix-dev.ifix.org.in"
+        egov-services-fqdn-name: "https://ifix-dev.ifix.org.in/"
         egov-state-level-tenant-id: "pg"
         es-host: "elasticsearch-data-v1.ifix"
         es-indexer-host: "http://elasticsearch-client-v1.ifix:9200/"
@@ -485,7 +485,7 @@ egov-workflow-v2:
 egov-hrms:
   java-args: -Dspring.profiles.active=monitoring
   heap: "-Xmx192m -Xms192m"
-  employee-applink: "https://https://mgramseva-dev.egov.org.in/employee/user/login"
+  employee-applink: "https://https://ifix-dev.ifix.org.in/employee/user/login"
 
 egov-apportion-service:
   memory_limits: 512Mi
