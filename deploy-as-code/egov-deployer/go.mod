@@ -1,4 +1,4 @@
-module github.com/egovernments/DIGIT-DevOps/deploy-as-code/egov-deployer
+module github.com/egovernments/iFix-DevOps/deploy-as-code/egov-deployer
 
 go 1.13
 
@@ -10,4 +10,4 @@ require (
 	gopkg.in/yaml.v2 v2.2.4
 )
 
-replace github.com/egovernments/DIGIT-DevOps/deploy-as-code/egov-deployer => ../egov-deployer
+replace github.com/egovernments/iFix-DevOps/deploy-as-code/egov-deployer => ../egov-deployer
