@@ -27,7 +27,7 @@ cluster-configs:
       data:
         db-host: "ifix-db.cluster-cqqfmghbjssw.ap-south-1.docdb.amazonaws.com"
         db-name: "ifix"
-        db-url: "jdbc:mongodb://ifix_admin:Ifix_12345@ifix-db.cluster-cqqfmghbjssw.ap-south-1.docdb.amazonaws.com:27017"
+        db-url: "jdbc:mongodb://ifix-db.cluster-cqqfmghbjssw.ap-south-1.docdb.amazonaws.com:27017"
         pg-db-host: "postgres.ifix"
         pg-db-name: "ifix_dev_db"
         pg-db-url: "jdbc:postgresql://postgres.ifix:5432/ifix_dev_db"
