@@ -10,8 +10,8 @@ httpPort: 5432
 
 resources: |
   requests:
-    cpu: 100m
-    memory: 256Mi
+    cpu: 500m
+    memory: 1Gi
 
 tracing-enabled: false
 
@@ -42,9 +42,9 @@ persistence:
 
 extraVolumeMounts: |
   - mountPath: /var/lib/postgresql/data
-    name: postgres-data
+    name: postgres-data-ifix
     subPath: html
 extraVolumes: |
-  - name: postgres-data
+  - name: postgres-data-ifix
     persistentVolumeClaim:
-      claimName: postgres-data
+      claimName: postgres-data-ifix

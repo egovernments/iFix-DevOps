@@ -25,11 +25,11 @@ cluster-configs:
   configmaps:
     egov-config:
       data:
-        db-host: "ifix-db.cluster-cqqfmghbjssw.ap-south-1.docdb.amazonaws.com"
-        db-name: "ifix-db"
-        db-url: "jdbc:mongodb://ifix_admin:Ifix_12345@ifix-db.cluster-cqqfmghbjssw.ap-south-1.docdb.amazonaws.com:27017/ifix-db"
-        bpa-db-url: "jdbc:mongodb://ifix_admin:Ifix_12345@ifix-db.cluster-cqqfmghbjssw.ap-south-1.docdb.amazonaws.com:27017/ifix-db"
-        erp-db-url: "jdbc:mongodb://ifix_admin:Ifix_12345@ifix-db.cluster-cqqfmghbjssw.ap-south-1.docdb.amazonaws.com:27017/ifix-db"
+        db-host: "postgres.ifix"
+        db-name: "ifix_dev_db"
+        db-url: "jdbc:postgresql://postgres.ifix:5432/ifix_dev_db"
+        bpa-db-url: "jdbc:postgresql://postgres.ifix:5432/ifix_dev_db"
+        erp-db-url: "jdbc:postgresql://postgres.ifix:5432/ifix_dev_db"
         domain: "dev.ifix.org.in"
         egov-services-fqdn-name: "https://dev.ifix.org.in/"
         egov-state-level-tenant-id: "pg"
@@ -370,7 +370,7 @@ egf-masters:
   memory_limits: 512Mi
 
 egf-master:
-  db-url: "jdbc:postgresql://postgres.egov:5432/ifix_dev_db"
+  db-url: "jdbc:postgresql://postgres.ifix:5432/ifix-db"
   memory_limits: 512Mi
   heap: "-Xmx256m -Xms256m"
 
@@ -769,8 +769,15 @@ prometheus-operator:
   namespace: ifix
 kube-state-metrics:
   namespace: ifix
+
+postgres:
+  postgresDatabase: ifix_dev_db
+  persistence:
+    enabled: true
+    aws:
+      volumeId: "vol-086b6d3ad33c7a57b"
       
-  minio:
+minio:
   mode: distributed
   disableWebUI: false
   persistence:
