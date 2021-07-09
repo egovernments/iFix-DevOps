@@ -1,9 +1,9 @@
 # Common Labels
 labels:
-  app: "zuul"
+  app: "zuul-ifix"
   group: "gateway"
 
-serviceAccount: zuul
+serviceAccount: zuul-ifix
 namespace: egov  
 
 # Init Containers Configs
@@ -15,7 +15,7 @@ initContainers:
       - name: "OUTPUT_FILE_PATH"
         value: "/etc/zuul/routes.properties" 
       - name: "NAMESPACE"
-        value: "egov"         
+        value: "{{ .Values.global.namespace }}"        
       volumeMounts:
       - name: zuul-routes
         mountPath: /etc/zuul
