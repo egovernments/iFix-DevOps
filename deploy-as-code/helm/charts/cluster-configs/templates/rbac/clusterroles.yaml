@@ -24,10 +24,10 @@ metadata:
   name: digit-admin
 rules:
 - apiGroups: ["apps", "extensions"]  
-  resources: ["deployments"] 
+  resources: ["deployments", "ingresses"] 
   verbs: ["patch", "create", "delete", "get", "list", "update"]
 - apiGroups: [""]
-  resources: ["configmaps", "secrets"]
+  resources: ["services", "endpoints", "pods", "configmaps", "secrets"]
   verbs: ["get", "watch", "create", "delete", "update", "list", "patch"]    
 - apiGroups: [""]
   resources: ["pods/portforward" , "pods/proxy", "pods/exec"] 
