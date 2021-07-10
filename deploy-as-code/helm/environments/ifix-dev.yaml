@@ -25,9 +25,9 @@ cluster-configs:
   configmaps:
     egov-config:
       data:
-        db-host: "ifix-db.cluster-cqqfmghbjssw.ap-south-1.docdb.amazonaws.com"
-        db-name: "ifix"
-        db-url: "jdbc:mongodb://ifix-db.cluster-cqqfmghbjssw.ap-south-1.docdb.amazonaws.com:27017"
+        mongo-db-host: "ifix-db.cluster-cqqfmghbjssw.ap-south-1.docdb.amazonaws.com"
+        mongo-db-name: "ifix"
+        mongo-db-url: "mongodb://ifix-db.cluster-cqqfmghbjssw.ap-south-1.docdb.amazonaws.com:27017"
         pg-db-host: "postgres.ifix"
         pg-db-name: "ifix_dev_db"
         pg-db-url: "jdbc:postgresql://postgres.ifix:5432/ifix_dev_db"
