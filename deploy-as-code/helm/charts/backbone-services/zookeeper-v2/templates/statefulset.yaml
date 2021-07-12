@@ -48,14 +48,14 @@ spec:
               - key: Environment
                 operator: In
                 values:
-                - ifix-ng     
+                - {{ .Values.global.nodepool.selector }}     
       tolerations:
       - key: "dedicated"
         operator: "Equal"
-        value: "ifix-ng"
+        value: "{{ .Values.global.nodepool.toleration }}"
         effect: "NoSchedule"
       nodeSelector:
-        Environment: ifix-ng
+        Environment: {{ .Values.global.nodepool.selector }}
       containers:
       {{- if .Values.prometheus.jmx.enabled }}
       - name: prometheus-jmx-exporter

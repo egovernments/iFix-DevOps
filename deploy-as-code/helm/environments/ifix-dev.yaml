@@ -2,6 +2,9 @@ global:
   domain: ifix-dev.ifix.org.in
   tracing-enabled: true
   namespace: ifix
+  nodepool:
+    selector: ifix-ng
+    toleration: ifix-ng
 
 cluster-configs:
   namespaces:
