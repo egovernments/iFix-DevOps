@@ -59,14 +59,14 @@ spec:
               - key: Environment
                 operator: In
                 values:
-                - ifix-ng     
+                - {{ .Values.global.nodepool.selector }}     
       tolerations:
       - key: "dedicated"
         operator: "Equal"
-        value: "ifix-ng"
+        value: "{{ .Values.global.nodepool.toleration }}"
         effect: "NoSchedule"
       nodeSelector:
-        Environment: ifix-ng
+        Environment: {{ .Values.global.nodepool.selector }}
       securityContext:
 {{ toYaml .Values.podSecurityContext | indent 8 }}
         {{- if .Values.fsGroup }}
