@@ -584,6 +584,8 @@ redis:
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 kafka-v2:
+  image:
+    tag: "5.4.1"
   persistence:
     enabled: true
     aws:
@@ -607,6 +609,8 @@ kafka-v2:
 
 # zookeeper-v2 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 zookeeper-v2:
+  image:
+    tag: "5.4.1"
   persistence:
     enabled: true
     aws:
@@ -632,6 +636,9 @@ zookeeper-v2:
       memory: 384Mi
 
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+kafka-connect:
+  image:
+    tag: "5.4.1"  
 
 # es-v1-cluster >>>>>>>>>>>>>>>>>>>>>>>>>>>>
 elasticsearch-data-v1:
@@ -771,7 +778,7 @@ grafana:
       repo: "git@github.com:egovernments/configs"
       branch: "mgram-dev"
       
-  minio:
+minio:
   mode: distributed
   disableWebUI: false
   persistence:
