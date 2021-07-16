@@ -8,7 +8,7 @@ global:
 
 cluster-configs:
   namespaces:
-    create: true
+    create: false
     values:
       [ 
         ifix, 
@@ -40,7 +40,7 @@ cluster-configs:
         egov-services-fqdn-name: "https://ifix-dev.ifix.org.in/"
         egov-state-level-tenant-id: "pg"
         es-host: "elasticsearch-data-v1.ifix"
-        es-indexer-host: "http://elasticsearch-client-v1.ifix:9200/"
+        es-indexer-host: "http://elasticsearch-data-v1.ifix:9200/"
         flyway-locations: "filesystem:/flyway/sql,filesystem:/flyway/seed,filesystem:/flyway/qa"
         kafka-brokers: "kafka-v2.ifix:9092"
         kafka-infra-brokers: "kafka-v2.ifix:9092"
