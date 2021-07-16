@@ -218,20 +218,20 @@ egov-mdms-service:
   mdms-path: "/work-dir/egov-mdms-data/data"
   initContainers:
     gitSync:
-      repo: "git@github.com:egovernments/egov-mdms-data"
-      branch: "mgram-dev"
-  mdms-folder: "egov-mdms-data"
+      repo: "git@github.com:egovernments/mdms-mgramseva"
+      branch: "DEV"
+  mdms-folder: "mdms-mgramseva"
   java-args: -Dspring.profiles.active=monitoring
-  masters-config-url: "file:///work-dir/egov-mdms-data/master-config.json"
+  masters-config-url: "file:///work-dir/mdms-mgramseva/master-config.json"
 
 egov-indexer:
   heap: "-Xmx512m -Xms512m"
   memory_limits: "768Mi"
   initContainers:
     gitSync:
-      repo: "git@github.com:egovernments/configs"
-      branch: "mgram-dev"
-  egov-indexer-yaml-repo-path: "file:///work-dir/configs/egov-indexer/billingservices-indexer.yml,file:///work-dir/configs/egov-indexer/collection-indexer.yml,file:///work-dir/configs/egov-indexer/egov-telemetry-indexer.yml,file:///work-dir/configs/egov-indexer/egov-uploader-indexer.yml,file:///work-dir/configs/egov-indexer/error-queue.yml,file:///work-dir/configs/egov-indexer/finance-rolloutadotpion-indexer.yml,file:///work-dir/configs/egov-indexer/payment-indexer.yml,file:///work-dir/configs/egov-indexer/rainmaker-pgr-indexer.yml,file:///work-dir/configs/egov-indexer/rainmaker-pt-indexer.yml,file:///work-dir/configs/egov-indexer/rainmaker-tl-indexer.yml,file:///work-dir/configs/egov-indexer/chatbot-telemetry.yaml,file:///work-dir/configs/egov-indexer/water-service.yml,file:///work-dir/configs/egov-indexer/water-services-meter.yml,file:///work-dir/configs/egov-indexer/sewerage-service.yml,file:///work-dir/configs/egov-indexer/property-services.yml"
+      repo: "git@github.com:egovernments/config-mgramseva"
+      branch: "DEV"
+  egov-indexer-yaml-repo-path: "file:///work-dir/config-mgramseva/egov-indexer/billingservices-indexer.yml,file:///work-dir/config-mgramseva/egov-indexer/collection-indexer.yml,file:///work-dir/config-mgramseva/egov-indexer/egov-telemetry-indexer.yml,file:///work-dir/config-mgramseva/egov-indexer/egov-uploader-indexer.yml,file:///work-dir/config-mgramseva/egov-indexer/error-queue.yml,file:///work-dir/config-mgramseva/egov-indexer/finance-rolloutadotpion-indexer.yml,file:///work-dir/config-mgramseva/egov-indexer/payment-indexer.yml,file:///work-dir/config-mgramseva/egov-indexer/rainmaker-pgr-indexer.yml,file:///work-dir/config-mgramseva/egov-indexer/rainmaker-pt-indexer.yml,file:///work-dir/config-mgramseva/egov-indexer/rainmaker-tl-indexer.yml,file:///work-dir/config-mgramseva/egov-indexer/chatbot-telemetry.yaml,file:///work-dir/config-mgramseva/egov-indexer/water-service.yml,file:///work-dir/config-mgramseva/egov-indexer/water-services-meter.yml,file:///work-dir/config-mgramseva/egov-indexer/sewerage-service.yml,file:///work-dir/config-mgramseva/egov-indexer/property-services.yml"
 
 
 egov-pg-service:
@@ -241,55 +241,36 @@ egov-persister:
   replicas: 1
   images:
     - egovio/egov-persister
-  persist-yml-path: "file:///work-dir/configs/egov-persister/pt-mutation-calculator-persister.yml,file:///work-dir/configs/egov-persister/apportion-persister.yml,file:///work-dir/configs/egov-persister/billing-services-persist.yml,file:///work-dir/configs/egov-persister/egf-bill.yaml,file:///work-dir/configs/egov-persister/egov-user-event-persister.yml,file:///work-dir/configs/egov-persister/egov-workflow-v2-persister.yml,file:///work-dir/configs/egov-persister/firenoc_persiter.yaml,file:///work-dir/configs/egov-persister/hrms-employee-persister.yml,file:///work-dir/configs/egov-persister/pdf-generator.yml,file:///work-dir/configs/egov-persister/pg-service-persister.yml,file:///work-dir/configs/egov-persister/pgr.v3.yml,file:///work-dir/configs/egov-persister/property-services.yml,file:///work-dir/configs/egov-persister/pt-calculator-v2-persister.yml,file:///work-dir/configs/egov-persister/pt-drafts.yml,file:///work-dir/configs/egov-persister/pt-persist.yml,file:///work-dir/configs/egov-persister/tl-billing-slab-persister.yml,file:///work-dir/configs/egov-persister/tl-calculation-persister.yml,file:///work-dir/configs/egov-persister/uploader-persister.yml,file:///work-dir/configs/egov-persister/collection-migration-persister.yml,file:///work-dir/configs/egov-persister/property-services-registry.yml,file:///work-dir/configs/egov-persister/tradelicense.yml,file:///work-dir/configs/egov-persister/sewerage-persist.yml,file:///work-dir/configs/egov-persister/water-persist.yml,file:///work-dir/configs/egov-persister/water-meter.yml,file:///work-dir/configs/egov-persister/bpa-persister.yml,file:///work-dir/configs/egov-persister/assessment-persister.yml,file:///work-dir/configs/egov-persister/chatbot.yml,file:///work-dir/configs/egov-persister/land-persister.yml,file:///work-dir/configs/egov-persister/noc-persister.yml,file:///work-dir/configs/egov-persister/pgr-services-persister.yml"
+  persist-yml-path: "file:///work-dir/config-mgramseva/egov-persister/pt-mutation-calculator-persister.yml,file:///work-dir/config-mgramseva/egov-persister/apportion-persister.yml,file:///work-dir/config-mgramseva/egov-persister/billing-services-persist.yml,file:///work-dir/config-mgramseva/egov-persister/egf-bill.yaml,file:///work-dir/config-mgramseva/egov-persister/egov-user-event-persister.yml,file:///work-dir/config-mgramseva/egov-persister/egov-workflow-v2-persister.yml,file:///work-dir/config-mgramseva/egov-persister/firenoc_persiter.yaml,file:///work-dir/config-mgramseva/egov-persister/hrms-employee-persister.yml,file:///work-dir/config-mgramseva/egov-persister/pdf-generator.yml,file:///work-dir/config-mgramseva/egov-persister/pg-service-persister.yml,file:///work-dir/config-mgramseva/egov-persister/pgr.v3.yml,file:///work-dir/config-mgramseva/egov-persister/property-services.yml,file:///work-dir/config-mgramseva/egov-persister/pt-calculator-v2-persister.yml,file:///work-dir/config-mgramseva/egov-persister/pt-drafts.yml,file:///work-dir/config-mgramseva/egov-persister/pt-persist.yml,file:///work-dir/config-mgramseva/egov-persister/tl-billing-slab-persister.yml,file:///work-dir/config-mgramseva/egov-persister/tl-calculation-persister.yml,file:///work-dir/config-mgramseva/egov-persister/uploader-persister.yml,file:///work-dir/config-mgramseva/egov-persister/collection-migration-persister.yml,file:///work-dir/config-mgramseva/egov-persister/property-services-registry.yml,file:///work-dir/config-mgramseva/egov-persister/tradelicense.yml,file:///work-dir/config-mgramseva/egov-persister/sewerage-persist.yml,file:///work-dir/config-mgramseva/egov-persister/water-persist.yml,file:///work-dir/config-mgramseva/egov-persister/water-meter.yml,file:///work-dir/config-mgramseva/egov-persister/bpa-persister.yml,file:///work-dir/config-mgramseva/egov-persister/assessment-persister.yml,file:///work-dir/config-mgramseva/egov-persister/chatbot.yml,file:///work-dir/config-mgramseva/egov-persister/land-persist"
   initContainers:
     gitSync:
-      repo: "git@github.com:egovernments/configs"
-      branch: "mgram-dev"
+      repo: "git@github.com:egovernments/config-mgramseva"
+      branch: "DEV"
 
-bpa-services:
-  replicas: 1
-  images:
-    - egovio/bpa-services
-  db_migration_image: egovio/bpa-services-db
-  heap: "-Xmx192m -Xms192m"
-  memory_limits: 384Mi
-  java-args: -Dspring.profiles.active=monitoring
-  java-debug: true
-  tracing-enabled: "true"
-  egov.idgen.bpa.applicationNum.format: PG-BP-[cy:yyyy-MM-dd]-[SEQ_EG_BP_APN]
 
-bpa-calculator:
-  replicas: 1
-  images:
-    - egovio/bpa-calculator
-  heap: "-Xmx192m -Xms192m"
-  memory_limits: 384Mi
-  java-args: -Dspring.profiles.active=monitoring
-  java-debug: true
-  tracing-enabled: "true"
+
 
 egov-data-uploader:
   heap: "-Xmx192m -Xms192m"
   initContainers:
     gitSync:
-      repo: "git@github.com:egovernments/configs"
-      branch: "mgram-dev"
+      repo: "git@github.com:egovernments/config-mgramseva"
+      branch: "DEV"
 
 pdf-service:
   initContainers:
     gitSync:
-      repo: "git@github.com:egovernments/configs"
-      branch: "mgram-dev"
-  data-config-urls: "file:///work-dir/configs/pdf-service/data-config/tradelicense-receipt.json,file:///work-dir/configs/pdf-service/data-config/property-receipt.json,file:///work-dir/configs/pdf-service/data-config/property-bill.json,file:///work-dir/configs/pdf-service/data-config/tradelicense-bill.json,file:///work-dir/configs/pdf-service/data-config/firenoc-receipt.json,file:///work-dir/configs/pdf-service/data-config/pt-receipt.json,file:///work-dir/configs/pdf-service/data-config/tl-receipt.json,file:///work-dir/configs/pdf-service/data-config/consolidatedbill.json,file:///work-dir/configs/pdf-service/data-config/consolidatedreceipt.json,file:///work-dir/configs/pdf-service/data-config/tlapplication.json,file:///work-dir/configs/pdf-service/data-config/tlcertificate.json,file:///work-dir/configs/pdf-service/data-config/ws-consolidatedacknowlegment.json,file:///work-dir/configs/pdf-service/data-config/ws-consolidatedsewerageconnection.json,file:///work-dir/configs/pdf-service/data-config/buildingpermit.json,file:///work-dir/configs/pdf-service/data-config/ptmutationcertificate.json,file:///work-dir/configs/pdf-service/data-config/tlrenewalcertificate.json,file:///work-dir/configs/pdf-service/data-config/bpa-revocation.json,file:///work-dir/configs/pdf-service/data-config/buildingpermit-low.json,file:///work-dir/configs/pdf-service/data-config/misc-receipt.json,file:///work-dir/configs/pdf-service/data-config/ws-applicationwater.json,file:///work-dir/configs/pdf-service/data-config/ws-sanctionletter.json,file:///work-dir/configs/pdf-service/data-config/ws-estimationnotice.json,file:///work-dir/configs/pdf-service/data-config/ws-applicationsewerage.json,file:///work-dir/configs/pdf-service/data-config/ws-bill.json,file:///work-dir/configs/pdf-service/data-config/ws-onetime-receipt.json,file:///work-dir/configs/pdf-service/data-config/occupancy-certificate.json"
-  format-config-urls: "file:///work-dir/configs/pdf-service/format-config/tradelicense-receipt.json,file:///work-dir/configs/pdf-service/format-config/property-receipt.json,file:///work-dir/configs/pdf-service/format-config/property-bill.json,file:///work-dir/configs/pdf-service/format-config/tradelicense-bill.json,file:///work-dir/configs/pdf-service/format-config/firenoc-receipt.json,file:///work-dir/configs/pdf-service/format-config/pt-receipt.json,file:///work-dir/configs/pdf-service/format-config/tl-receipt.json,file:///work-dir/configs/pdf-service/format-config/consolidatedbill.json,file:///work-dir/configs/pdf-service/format-config/consolidatedreceipt.json,file:///work-dir/configs/pdf-service/format-config/tlapplication.json,file:///work-dir/configs/pdf-service/format-config/tlcertificate.json,file:///work-dir/configs/pdf-service/format-config/ws-consolidatedacknowlegment.json,file:///work-dir/configs/pdf-service/format-config/ws-consolidatedsewerageconnection.json,file:///work-dir/configs/pdf-service/format-config/buildingpermit.json,file:///work-dir/configs/pdf-service/format-config/ptmutationcertificate.json,file:///work-dir/configs/pdf-service/format-config/tlrenewalcertificate.json,file:///work-dir/configs/pdf-service/format-config/bpa-revocation.json,file:///work-dir/configs/pdf-service/format-config/buildingpermit-low.json,file:///work-dir/configs/pdf-service/format-config/misc-receipt.json,file:///work-dir/configs/pdf-service/format-config/ws-applicationwater.json,file:///work-dir/configs/pdf-service/format-config/ws-sanctionletter.json,file:///work-dir/configs/pdf-service/format-config/ws-estimationnotice.json,file:///work-dir/configs/pdf-service/format-config/ws-applicationsewerage.json,file:///work-dir/configs/pdf-service/format-config/ws-bill.json,file:///work-dir/configs/pdf-service/format-config/ws-onetime-receipt.json,file:///work-dir/configs/pdf-service/format-config/occupancy-certificate.json"
+      repo: "git@github.com:egovernments/config-mgramseva"
+      branch: "DEV"
+  data-config-urls: "file:///work-dir/config-mgramseva/pdf-service/data-config/tradelicense-receipt.json,file:///work-dir/config-mgramseva/pdf-service/data-config/property-receipt.json,file:///work-dir/config-mgramseva/pdf-service/data-config/property-bill.json,file:///work-dir/config-mgramseva/pdf-service/data-config/tradelicense-bill.json,file:///work-dir/config-mgramseva/pdf-service/data-config/firenoc-receipt.json,file:///work-dir/config-mgramseva/pdf-service/data-config/pt-receipt.json,file:///work-dir/config-mgramseva/pdf-service/data-config/tl-receipt.json,file:///work-dir/config-mgramseva/pdf-service/data-config/consolidatedbill.json,file:///work-dir/config-mgramseva/pdf-service/data-config/consolidatedreceipt.json,file:///work-dir/config-mgramseva/pdf-service/data-config/tlapplication.json,file:///work-dir/config-mgramseva/pdf-service/data-config/tlcertificate.json,file:///work-dir/config-mgramseva/pdf-service/data-config/ws-consolidatedacknowlegment.json,file:///work-dir/config-mgramseva/pdf-service/data-config/ws-consolidatedsewerageconnection.json,file:///work-dir/config-mgramseva/pdf-service/data-config/buildingpermit.json,file:///work-dir/config-mgramseva/pdf-service/data-config/ptmutationcertificate.json,file:///work-dir/config-mgramseva/pdf-service/data-config/tlrenewalcertificate.json,file:///work-dir/config-mgramseva/pdf-service/data-config/bpa-revocation.json,file:///work-dir/config-mgramseva/pdf-service/data-config/buildingpermit-low.json,file:///work-dir/config-mgramseva/pdf-service/data-config/misc-receipt.json,file:///work-dir/config-mgramseva/pdf-service/data-config/ws-applicationwater.json,file:///work-dir/config-mgramseva/pdf-service/data-config/ws-sanctionletter.json,file:///work-dir/config-mgramseva/pdf-service/data-config/ws-estimationnotice.json,file:///work-dir/config-mgramseva/pdf-service/data-config/ws-applicationsewerage.json,file:///work-dir/config-mgramseva/pdf-service/data-config/ws-bill.json,file:///work-dir/config-mgramseva/pdf-service/data-config/ws-onetime-receipt.json,file:///work-dir/config-mgramseva/pdf-service/data-config/occupancy-certificate.json"
+  format-config-urls: "file:///work-dir/config-mgramseva/pdf-service/format-config/tradelicense-receipt.json,file:///work-dir/config-mgramseva/pdf-service/format-config/property-receipt.json,file:///work-dir/config-mgramseva/pdf-service/format-config/property-bill.json,file:///work-dir/config-mgramseva/pdf-service/format-config/tradelicense-bill.json,file:///work-dir/config-mgramseva/pdf-service/format-config/firenoc-receipt.json,file:///work-dir/config-mgramseva/pdf-service/format-config/pt-receipt.json,file:///work-dir/config-mgramseva/pdf-service/format-config/tl-receipt.json,file:///work-dir/config-mgramseva/pdf-service/format-config/consolidatedbill.json,file:///work-dir/config-mgramseva/pdf-service/format-config/consolidatedreceipt.json,file:///work-dir/config-mgramseva/pdf-service/format-config/tlapplication.json,file:///work-dir/config-mgramseva/pdf-service/format-config/tlcertificate.json,file:///work-dir/config-mgramseva/pdf-service/format-config/ws-consolidatedacknowlegment.json,file:///work-dir/config-mgramseva/pdf-service/format-config/ws-consolidatedsewerageconnection.json,file:///work-dir/config-mgramseva/pdf-service/format-config/buildingpermit.json,file:///work-dir/config-mgramseva/pdf-service/format-config/ptmutationcertificate.json,file:///work-dir/config-mgramseva/pdf-service/format-config/tlrenewalcertificate.json,file:///work-dir/config-mgramseva/pdf-service/format-config/bpa-revocation.json,file:///work-dir/config-mgramseva/pdf-service/format-config/buildingpermit-low.json,file:///work-dir/config-mgramseva/pdf-service/format-config/misc-receipt.json,file:///work-dir/config-mgramseva/pdf-service/format-config/ws-applicationwater.json,file:///work-dir/config-mgramseva/pdf-service/format-config/ws-sanctionletter.json,file:///work-dir/config-mgramseva/pdf-service/format-config/ws-estimationnotice.json,file:///work-dir/config-mgramseva/pdf-service/format-config/ws-applicationsewerage.json,file:///work-dir/config-mgramseva/pdf-service/format-config/ws-bill.json,file:///work-dir/config-mgramseva/pdf-service/format-config/ws-onetime-receipt.json,file:///work-dir/config-mgramseva/pdf-service/format-config/occupancy-certificate.json"
 
 egov-searcher:
-  search-yaml-path: "file:///work-dir/configs/egov-searcher/rainmaker-pgr-v2.yml,file:///work-dir/configs/egov-searcher/weekly-impact-emailer-searcher.yml,file:///work-dir/configs/egov-searcher/PTDemandBasedSearcher.yml,file:///work-dir/configs/egov-searcher/bill-genie.yml,file:///work-dir/configs/egov-searcher/rainmaker-tl.yml,file:///work-dir/configs/egov-searcher/localitySearcher.yml,file:///work-dir/configs/egov-searcher/propertyopensearch.yml"
+  search-yaml-path: "file:///work-dir/config-mgramseva/egov-searcher/rainmaker-pgr-v2.yml,file:///work-dir/config-mgramseva/egov-searcher/weekly-impact-emailer-searcher.yml,file:///work-dir/config-mgramseva/egov-searcher/PTDemandBasedSearcher.yml,file:///work-dir/config-mgramseva/egov-searcher/bill-genie.yml,file:///work-dir/config-mgramseva/egov-searcher/rainmaker-tl.yml,file:///work-dir/config-mgramseva/egov-searcher/localitySearcher.yml,file:///work-dir/config-mgramseva/egov-searcher/propertyopensearch.yml"
   initContainers:
     gitSync:
-      repo: "git@github.com:egovernments/configs"
-      branch: "mgram-dev"
+      repo: "git@github.com:egovernments/config-mgramseva"
+      branch: "DEV"
 
 
 # web >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -325,21 +306,21 @@ digit-ui:
       ';"
 
 dashboard-analytics:
-  config-schema-paths: "file:///work-dir/configs/egov-dss-dashboards/dashboard-analytics/*.json"  
+  config-schema-paths: "file:///work-dir/config-mgramseva/egov-dss-dashboards/dashboard-analytics/*.json"  
   initContainers:
     gitSync:
-      repo: "git@github.com:egovernments/configs"
-      branch: "mgram-dev"
+      repo: "git@github.com:egovernments/config-mgramseva"
+      branch: "DEV"
 
 dashboard-ingest:
   topic-incoming-collection: "dss-collection-update"
   es-index-name: "dss-collection_v2"
   es-push-direct: "false"
-  config-schema-paths: "file:///work-dir/configs/egov-dss-dashboards/dashboard-ingest/*.json"
+  config-schema-paths: "file:///work-dir/config-mgramseva/egov-dss-dashboards/dashboard-ingest/*.json"
   initContainers:
     gitSync:
-      repo: "git@github.com:egovernments/configs"
-      branch: "mgram-dev"
+      repo: "git@github.com:egovernments/config-mgramseva"
+      branch: "DEV"
 
 nginx-ingress:
   replicas: 1
@@ -441,8 +422,8 @@ report:
   tracing-enabled: "true"
   initContainers:
     gitSync:
-      repo: "git@github.com:egovernments/configs"
-      branch: "mgram-dev"
+      repo: "git@github.com:egovernments/config-mgramseva"
+      branch: "DEV"
   report-locationsfile-path: "file:///work-dir/configs/reports/reportFileLocationsv1.txt"
   spring-datasource-tomcat-max-active: 5
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -471,13 +452,7 @@ pgr-services:
 pt-calculator-v2:
   logging-level: "DEBUG"
 
-tl-services:
-  heap: "-Xmx128m -Xms64m"
-  memory_limits: 384Mi
-  java-args: -Dspring.profiles.active=monitoring
-  tl-application-num-format: "PG-TL-[cy:yyyy-MM-dd]-[SEQ_EG_TL_APL]"
-  tl-license-num-format: "PG-TL-[cy:yyyy-MM-dd]-[SEQ_EG_PT_LN]"
-  tl-payment-topic-name: "egov.collection.payment-create"
+
 
 egov-workflow-v2:
   logging-level: "DEBUG"
@@ -775,8 +750,8 @@ grafana:
   initContainers:
     gitSync:
       enabled: true
-      repo: "git@github.com:egovernments/configs"
-      branch: "mgram-dev"
+      repo: "git@github.com:egovernments/config-mgramseva"
+      branch: "DEV"
       
 minio:
   mode: distributed
