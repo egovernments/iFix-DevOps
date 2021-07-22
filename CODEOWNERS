@@ -2,5 +2,5 @@
 *.yaml @micro-service-devops
 
 ##Internal Env####
-deploy-as-code/helm/environments/mgramseva-dev*.yaml @GhanshyamRawat-eGov @eGovMan
+deploy-as-code/helm/environments/mgramseva-dev*.yaml @GhanshyamRawat-eGov @eGovMan @sathishp-eGov
 
