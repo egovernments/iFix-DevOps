@@ -173,6 +173,12 @@ egov-filestore:
 egov-location:
   memory_limits: 512Mi
 
+vendor:
+  dso.role: CITIZEN
+  dso.driver: FSM_DRIVER
+  dso.role.name: Vendor role Citizen
+  dso.driver.role.name: Vendor Driver Role Citizen
+
 egov-notification-sms:
   sms-provider-url: "http://api.smscountry.com/SMSCwebservice_bulk.aspx"
   sms.provider.url: "http://api.smscountry.com/SMSCwebservice_bulk.aspx"
