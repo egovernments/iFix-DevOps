@@ -175,7 +175,7 @@ egov-location:
 
 vendor:
   dso.role: CITIZEN
-  dso.driver: FSM_DRIVER
+  dso.driver: CTIZEN
   dso.role.name: Vendor role Citizen
   dso.driver.role.name: Vendor Driver Role Citizen
 
