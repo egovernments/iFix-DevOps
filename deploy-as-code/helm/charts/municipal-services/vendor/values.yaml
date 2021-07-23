@@ -59,6 +59,14 @@ env: |
         key: egov-hrms
   - name: SPRING_KAFKA_CONSUMER_GROUP_ID
     value: egov-vendor-services
+  - name: VENDOR_ROLE
+    value: CITIZEN
+  - name: VENDOR_DRIVER
+    value: CITIZEN
+  - name: VENDOR_ROLE_NAME
+    value: Vendor role Citizen
+  - name: VENDOR_DRIVER_ROLE_NAME
+    value: Vendor Driver role Citizen  
   - name: PERSISTER_SAVE_VENDOR_TOPIC
     value: save-vendor-application
   - name: PERSISTER_UPDATE_VENDOR_TOPIC
