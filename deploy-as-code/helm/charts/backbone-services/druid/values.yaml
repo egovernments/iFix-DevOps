@@ -132,7 +132,7 @@ coordinator:
 overlord:
   ## If true, the separate overlord will be installed
   ##
-  enabled: false
+  enabled: true
   name: overlord
   replicaCount: 1
   port: 8081
