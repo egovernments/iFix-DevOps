@@ -36,7 +36,7 @@ cluster-configs:
 
   secrets:
     db: 
-      namespace: [ ifix ]
+      namespace: [ ifix , olap ]
       name: db
 
     egov-notification-sms:
