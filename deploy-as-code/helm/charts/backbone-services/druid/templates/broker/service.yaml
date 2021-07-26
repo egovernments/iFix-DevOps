@@ -1,0 +1,22 @@
+{{- if .Values.broker.enabled -}}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "druid.broker.fullname" . }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: {{ include "druid.name" . }}
+    chart: {{ include "druid.chart" . }}
+    component: {{ .Values.broker.name }}
+    heritage: {{ .Release.Service }}
+spec:
+  type: {{ .Values.broker.serviceType }}
+  ports:
+    - port: {{ .Values.broker.port }}
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app: {{ include "druid.name" . }}
+    component: {{ .Values.broker.name }}
+{{- end }}
