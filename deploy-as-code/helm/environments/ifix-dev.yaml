@@ -151,6 +151,12 @@ cluster-configs:
 billing-service:
   memory_limits: 512Mi
 
+druid:
+  domain: druid.ifix.org.in
+
+metabase:
+  domain: metabase.ifix.org.in
+
 # core >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 egov-common-workflows:

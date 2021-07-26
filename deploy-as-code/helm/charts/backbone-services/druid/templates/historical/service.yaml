@@ -1,0 +1,22 @@
+{{- if .Values.historical.enabled -}}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "druid.historical.fullname" . }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: {{ include "druid.name" . }}
+    chart: {{ include "druid.chart" . }}
+    component: {{ .Values.historical.name }}
+    heritage: {{ .Release.Service }}
+spec:
+  type: {{ .Values.historical.serviceType }}
+  ports:
+    - port: {{ .Values.historical.port }}
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app: {{ include "druid.name" . }}
+    component: {{ .Values.historical.name }}
+{{- end }}

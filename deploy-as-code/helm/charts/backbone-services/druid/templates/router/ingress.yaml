@@ -1,0 +1,31 @@
+{{- if .Values.router.ingress.enabled -}}
+{{- $fullName := include "druid.router.fullname" . -}}
+{{- $ingressPath := .Values.router.ingress.path -}}
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: {{ $fullName }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: {{ include "druid.name" . }}
+    chart: {{ include "druid.chart" . }}
+    component: {{ .Values.router.name }}
+    heritage: {{ .Release.Service }}
+{{- with .Values.router.ingress.annotations }}
+  annotations:
+{{ toYaml . | indent 4 }}
+{{- end }}
+spec:
+  tls:
+  - hosts:
+    - {{ .Values.druid.domain }}
+    secretName: {{ .Values.druid.domain }}-tls-certs
+  rules:
+    - host: {{ .Values.druid.domain }}
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: {{ $fullName }}
+              servicePort: http
+{{- end }}
