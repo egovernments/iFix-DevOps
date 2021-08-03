@@ -148,6 +148,10 @@ cluster-configs:
         egov-url-shortening: "http://egov-url-shortening:8080/"
         minio-url: "https://minio-staging.digit.org/"
 
+
+ifix-master-data-service:
+  server-context-path: "/ifix-master-data"
+
 billing-service:
   memory_limits: 512Mi
 

@@ -1,0 +1,34 @@
+# Common Labels
+labels:
+  app: "fiscal-event-service"
+  group: "ifix"
+
+namespace: ifix
+
+# Ingress Configs
+ingress:
+  enabled: true
+  zuul: false
+  context: "ifix-master-data"
+
+# Container Configs
+image:
+  repository: "ifix-master-data-service"
+replicas: "1"
+healthChecks:
+  enabled: true
+  livenessProbePath: "/access/health"
+  readinessProbePath: "/access/health"
+appType: "java-spring"
+tracing-enabled: true
+heap: "-Xmx192m -Xms192m"
+java-args: ""
+
+server-context-path: "/ifix-master-data"
+
+# Additional Container Envs
+env: |  
+  - name: SERVER_SERVLET_CONTEXT_PATH
+    value: {{ index .Values "server-context-path" | quote }}
+  - name: SERVER_PORT
+    value: "8080"
