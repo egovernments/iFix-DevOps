@@ -614,6 +614,10 @@ kafka-v2:
   offsetsReplicationFactor: "3"
 
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+kafka-connect:
+ image:
+   repository: kafka-connect-mongo
+   tag: 1.5.1
 
 # zookeeper-v2 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 zookeeper-v2:
