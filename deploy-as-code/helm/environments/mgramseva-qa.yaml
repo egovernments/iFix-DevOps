@@ -27,15 +27,15 @@ cluster-configs:
     egov-config:
       namespace: [mgramseva]
       data:
-        db-host: "postgres.egov"
-        db-name: "ifix_dev_db"
-        db-url: "jdbc:postgresql://postgres.egov:5432/ifix_dev_db"
-        bpa-db-url: "jdbc:postgresql://postgres.egov:5432/ifix_bpa_dev_db"
-        erp-db-url: "jdbc:postgresql://postgres.egov:5432/ifix_erp_dev_db"
-        domain: "mgramseva-dev.egov.org.in"
+        db-host: "postgres.mgramseva"
+        db-name: "mgramseva_qa_db"
+        db-url: "jdbc:postgresql://postgres.mgramseva:5432/mgramseva_qa_db"
+        bpa-db-url: "jdbc:postgresql://postgres.mgramseva:5432/ifix_bpa_dev_db"
+        erp-db-url: "jdbc:postgresql://postgres.mgramseva:5432/ifix_erp_dev_db"
+        domain: "mgramseva-qa.egov.org.in"
         egov-services-fqdn-name: "https://mgramseva-qa.egov.org.in/"
         egov-state-level-tenant-id: "pb"
-        es-host: "elasticsearch-data-v1.es-cluster"
+        es-host: "elasticsearch-data-v1.mgramseva"
         es-indexer-host: "http://elasticsearch-data-v1.mgramseva:9200/"
         flyway-locations: "filesystem:/flyway/sql,filesystem:/flyway/seed,filesystem:/flyway/qa"
         kafka-brokers: "kafka-v2.mgramseva:9092"
@@ -823,4 +823,12 @@ mysql:
   persistence:
     enabled: true
     aws:
-      volumeId: "vol-021faf5aa60819691"      
+      volumeId: "vol-021faf5aa60819691"  
+
+postgres:
+  postgresDatabase: mgramseva_qa_db
+  persistence:
+    enabled: true
+    aws:
+      volumeId: "vol-09a175c4a5fde7a8b"
+
