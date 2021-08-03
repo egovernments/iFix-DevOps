@@ -15,7 +15,11 @@ initContainers:
       - name: "OUTPUT_FILE_PATH"
         value: "/etc/zuul/routes.properties" 
       - name: "NAMESPACE"
-        value: "egov"         
+      {{- if .Values.global.namespace }}
+        value: {{ .Values.global.namespace | quote}} 
+      {{- else }}   
+        value: {{ .Values.namespace |  quote }}
+      {{- end }}
       volumeMounts:
       - name: zuul-routes
         mountPath: /etc/zuul

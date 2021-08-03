@@ -1,13 +1,13 @@
 cluster-configs:
   db:
-    namespace: egov
+    namespace: mgramseva
     name: db-service
     port: 5432
     targetPort: 5432
 
   root-ingress:
     name: root-ingress
-    namespace: egov
+    namespace: mgramseva
     cert-issuer: "letsencrypt-staging"
     appRoot: citizen
     serviceName: citizen
@@ -36,23 +36,23 @@ cluster-configs:
 
   secrets:
     db: 
-      namespace: [ egov ]
+      namespace: [ mgramseva ]
       name: db
 
     egov-notification-sms:
-      namespace: egov
+      namespace: mgramseva
       name: egov-notification-sms
 
     egov-filestore: 
-      namespace: egov
+      namespace: mgramseva
       name: egov-filestore     
       
     egov-location: 
-      namespace: egov
+      namespace: mgramseva
       name: egov-location
 
     egov-pg-service: 
-      namespace: egov
+      namespace: mgramseva
       name: egov-pg-service                 
 
     pgadmin: 
@@ -60,63 +60,63 @@ cluster-configs:
       name: pgadmin       
 
     egov-enc-service: 
-      namespace: egov
+      namespace: mgramseva
       name: egov-enc-service       
 
     egov-notification-mail: 
-      namespace: egov
+      namespace: mgramseva
       name: egov-notification-mail
 
     home-isolation-notification-mail: 
-      namespace: egov
+      namespace: mgramseva
       name: home-isolation-notification-mail      
 
     git-sync: 
-      namespace: [ egov ]
+      namespace: [ mgramseva ]
       name: git-creds
 
     kibana: 
-      namespace: egov
+      namespace: mgramseva
       name: kibana-creds                       
 
     kibana-infra: 
-      namespace: egov
+      namespace: mgramseva
       name: kibana-infra-creds     
 
     pgadmin: 
-      namespace: playground
+      namespace: mgramseva
       name: pgadmin
 
     egov-si-microservice:
-      namespace: egov
+      namespace: mgramseva
       name: egov-si-microservice
 
     egov-edcr-notification:
-      namespace: egov
+      namespace: mgramseva
       name: egov-edcr-notification 
 
     egov-edcr-bank-gateway:
-      namespace: egov
+      namespace: mgramseva
       name: egov-edcr-bank-gateway
 
     chatbot:
-      namespace: egov
+      namespace: mgramseva
       name: chatbot
     
     covid-chatbot:
-      namespace: egov
+      namespace: mgramseva
       name: covid-chatbot
 
     egov-user-chatbot:
-      namespace: egov
+      namespace: mgramseva
       name: egov-user-chatbot
 
     oauth2-proxy:
-      namespace: egov
+      namespace: mgramseva
       name: oauth2-proxy   
 
     case-management:
-      namespace: egov
+      namespace: mgramseva
       name: case-management   
   
     minio:
@@ -124,7 +124,7 @@ cluster-configs:
       name: minio
 
     alertmanager:
-      namespace: monitoring
+      namespace: mgramseva
       name: alertmanager-main      
 
     jenkins:
@@ -132,13 +132,13 @@ cluster-configs:
       name: jenkins 
     
     mysql:
-      namespace: egov
+      namespace: mgramseva
       name: mysql
     
     wordpress:
-      namespace: egov
+      namespace: mgramseva
       name: wordpress
 
     postgres:
-      namespace: jenkins
+      namespace: mgramseva
       name: postgres

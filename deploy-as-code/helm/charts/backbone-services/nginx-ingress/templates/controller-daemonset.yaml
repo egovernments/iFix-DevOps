@@ -8,7 +8,11 @@ metadata:
   labels:
     app: {{ template "nginx-ingress.name" . }}
   name: {{ template "nginx-ingress.controller.fullname" . }}
-  namespace: {{ .Values.namespace }}  
+  {{- if .Values.global.namespace }}
+  namespace: {{ .Values.global.namespace }} 
+  {{- else }}   
+  namespace: {{ .Values.namespace }}
+  {{- end }}
   annotations:
 {{ toYaml .Values.controller.deploymentAnnotations | indent 4}}
 spec:
