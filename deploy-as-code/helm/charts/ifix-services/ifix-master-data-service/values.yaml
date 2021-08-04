@@ -15,10 +15,7 @@ ingress:
 image:
   repository: "ifix-master-data-service"
 replicas: "1"
-healthChecks:
-  enabled: true
-  livenessProbePath: "/access/health"
-  readinessProbePath: "/access/health"
+
 appType: "java-spring"
 tracing-enabled: true
 heap: "-Xmx192m -Xms192m"
