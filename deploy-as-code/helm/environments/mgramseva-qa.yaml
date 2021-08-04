@@ -79,6 +79,7 @@ cluster-configs:
     - role: admin
       namespaces: [mgramseva]
   root-ingress:
+    namespace: mgramseva
     cert-issuer: letsencrypt-prod
     serviceName: digit-ui
     appRoot: digit-ui 
