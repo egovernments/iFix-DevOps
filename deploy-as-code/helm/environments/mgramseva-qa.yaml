@@ -8,17 +8,76 @@ global:
     toleration: mgramseva-qa-ng
 
 cluster-configs:
+  namespace: mgramseva
   namespaces:
-    create: true
+    create: false
     values:
-      [ mgramseva , cert-manager ]
-
+      [ mgramseva , cert-manager ]  
+  db:
+    namespace: mgramseva
+  root-ingress:
+    namespace: mgramseva
+  nginx-errors:
+    namespace: mgramseva
+  secrets:
+    db: 
+      namespace: [ mgramseva ]
+    egov-notification-sms:
+      namespace: mgramseva
+      name: egov-notification-sms
+    egov-filestore: 
+      namespace: mgramseva     
+    egov-location: 
+      namespace: mgramseva
+    egov-pg-service: 
+      namespace: mgramseva                
+    pgadmin: 
+      namespace: mgramseva       
+    egov-enc-service: 
+      namespace: mgramseva
+    egov-notification-mail: 
+      namespace: mgramseva
+    home-isolation-notification-mail: 
+      namespace: mgramseva
+    git-sync: 
+      namespace: [ mgramseva ]
+    kibana: 
+      namespace: mgramseva                      
+    kibana-infra: 
+      namespace: mgramseva    
+    pgadmin: 
+      namespace: mgramseva
+    egov-si-microservice:
+      namespace: mgramseva
+    egov-edcr-notification:
+      namespace: mgramseva
+    egov-edcr-bank-gateway:
+      namespace: mgramseva
+    chatbot:
+      namespace: mgramseva
+    covid-chatbot:
+      namespace: mgramseva
+    egov-user-chatbot:
+      namespace: mgramseva
+    oauth2-proxy:
+      namespace: mgramseva 
+    case-management:
+      namespace: mgramseva 
+    minio:
+      namespace: mgramseva
+    alertmanager:
+      namespace: mgramseva
+    mysql:
+      namespace: mgramseva
+    wordpress:
+      namespace: mgramseva
+    postgres:
+      namespace: mgramseva
   rbac:
     - role: user
       namespaces: [mgramseva]
     - role: admin
       namespaces: [mgramseva]
-
   root-ingress:
     cert-issuer: letsencrypt-prod
     serviceName: digit-ui
