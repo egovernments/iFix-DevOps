@@ -82,6 +82,7 @@ cluster-configs:
     cert-issuer: letsencrypt-prod
     serviceName: digit-ui
     appRoot: digit-ui 
+    
   configmaps:
     egov-config:
       namespace: [mgramseva]
@@ -425,7 +426,7 @@ egf-masters:
   memory_limits: 512Mi
 
 egf-master:
-  db-url: "jdbc:postgresql://postgres.egov:5432/ifix_dev_db"
+  db-url: "jdbc:postgresql://postgres.mgramseva:5432/mgramseva_qa_db"
   memory_limits: 512Mi
   heap: "-Xmx256m -Xms256m"
 
