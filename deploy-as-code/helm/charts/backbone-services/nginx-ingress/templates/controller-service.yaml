@@ -15,7 +15,11 @@ metadata:
 {{- end }}
     app: {{ template "nginx-ingress.name" . }}
   name: {{ template "nginx-ingress.controller.fullname" . }}
+{{- if .Values.global.namespace }}
+  namespace: {{ .Values.global.namespace }} 
+{{- else }}   
   namespace: {{ .Values.namespace }}
+{{- end }}  
 spec:
 {{- if not .Values.controller.service.omitClusterIP }}
   {{ with .Values.controller.service.clusterIP }}clusterIP: {{ . }}{{ end }}

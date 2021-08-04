@@ -6,7 +6,11 @@ metadata:
   labels:
     app: {{ template "nginx-ingress.name" . }}
   name: {{ template "nginx-ingress.controller.fullname" . }}
+  {{- if .Values.global.namespace }}
+  namespace: {{ .Values.global.namespace }} 
+  {{- else }}   
   namespace: {{ .Values.namespace }}
+  {{- end }}
 data:
 {{- if .Values.controller.addHeaders }}
   add-headers: {{ .Values.namespace }}/custom-headers
