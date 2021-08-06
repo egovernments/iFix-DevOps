@@ -287,7 +287,7 @@ egov-mdms-service:
   initContainers:
     gitSync:
       repo: "git@github.com:egovernments/mdms-mgramseva"
-      branch: "DEV"
+      branch: "QA"
   mdms-folder: "mdms-mgramseva"
   java-args: -Dspring.profiles.active=monitoring
   masters-config-url: "file:///work-dir/mdms-mgramseva/master-config.json"
@@ -298,7 +298,7 @@ egov-indexer:
   initContainers:
     gitSync:
       repo: "git@github.com:egovernments/config-mgramseva"
-      branch: "DEV"
+      branch: "QA"
   egov-indexer-yaml-repo-path: "file:///work-dir/config-mgramseva/egov-indexer/billingservices-indexer.yml,file:///work-dir/config-mgramseva/egov-indexer/collection-indexer.yml,file:///work-dir/config-mgramseva/egov-indexer/egov-telemetry-indexer.yml,file:///work-dir/config-mgramseva/egov-indexer/egov-uploader-indexer.yml,file:///work-dir/config-mgramseva/egov-indexer/error-queue.yml,file:///work-dir/config-mgramseva/egov-indexer/finance-rolloutadotpion-indexer.yml,file:///work-dir/config-mgramseva/egov-indexer/payment-indexer.yml,file:///work-dir/config-mgramseva/egov-indexer/rainmaker-pgr-indexer.yml,file:///work-dir/config-mgramseva/egov-indexer/rainmaker-pt-indexer.yml,file:///work-dir/config-mgramseva/egov-indexer/rainmaker-tl-indexer.yml,file:///work-dir/config-mgramseva/egov-indexer/chatbot-telemetry.yaml,file:///work-dir/config-mgramseva/egov-indexer/water-service.yml,file:///work-dir/config-mgramseva/egov-indexer/water-services-meter.yml,file:///work-dir/config-mgramseva/egov-indexer/sewerage-service.yml,file:///work-dir/config-mgramseva/egov-indexer/property-services.yml,file:///work-dir/config-mgramseva/egov-indexer/egov-vendor.yaml"
 
 
@@ -313,7 +313,7 @@ egov-persister:
   initContainers:
     gitSync:
       repo: "git@github.com:egovernments/config-mgramseva"
-      branch: "DEV"
+      branch: "QA"
 
 
 echallan-services:
@@ -325,13 +325,13 @@ egov-data-uploader:
   initContainers:
     gitSync:
       repo: "git@github.com:egovernments/config-mgramseva"
-      branch: "DEV"
+      branch: "QA"
 
 pdf-service:
   initContainers:
     gitSync:
       repo: "git@github.com:egovernments/config-mgramseva"
-      branch: "DEV"
+      branch: "QA"
   data-config-urls: "file:///work-dir/config-mgramseva/pdf-service/data-config/tradelicense-receipt.json,file:///work-dir/config-mgramseva/pdf-service/data-config/property-receipt.json,file:///work-dir/config-mgramseva/pdf-service/data-config/property-bill.json,file:///work-dir/config-mgramseva/pdf-service/data-config/tradelicense-bill.json,file:///work-dir/config-mgramseva/pdf-service/data-config/firenoc-receipt.json,file:///work-dir/config-mgramseva/pdf-service/data-config/pt-receipt.json,file:///work-dir/config-mgramseva/pdf-service/data-config/tl-receipt.json,file:///work-dir/config-mgramseva/pdf-service/data-config/consolidatedbill.json,file:///work-dir/config-mgramseva/pdf-service/data-config/consolidatedreceipt.json,file:///work-dir/config-mgramseva/pdf-service/data-config/tlapplication.json,file:///work-dir/config-mgramseva/pdf-service/data-config/tlcertificate.json,file:///work-dir/config-mgramseva/pdf-service/data-config/ws-consolidatedacknowlegment.json,file:///work-dir/config-mgramseva/pdf-service/data-config/ws-consolidatedsewerageconnection.json,file:///work-dir/config-mgramseva/pdf-service/data-config/buildingpermit.json,file:///work-dir/config-mgramseva/pdf-service/data-config/ptmutationcertificate.json,file:///work-dir/config-mgramseva/pdf-service/data-config/tlrenewalcertificate.json,file:///work-dir/config-mgramseva/pdf-service/data-config/bpa-revocation.json,file:///work-dir/config-mgramseva/pdf-service/data-config/buildingpermit-low.json,file:///work-dir/config-mgramseva/pdf-service/data-config/misc-receipt.json,file:///work-dir/config-mgramseva/pdf-service/data-config/ws-applicationwater.json,file:///work-dir/config-mgramseva/pdf-service/data-config/ws-sanctionletter.json,file:///work-dir/config-mgramseva/pdf-service/data-config/ws-estimationnotice.json,file:///work-dir/config-mgramseva/pdf-service/data-config/ws-applicationsewerage.json,file:///work-dir/config-mgramseva/pdf-service/data-config/ws-bill.json,file:///work-dir/config-mgramseva/pdf-service/data-config/ws-onetime-receipt.json,file:///work-dir/config-mgramseva/pdf-service/data-config/occupancy-certificate.json"
   format-config-urls: "file:///work-dir/config-mgramseva/pdf-service/format-config/tradelicense-receipt.json,file:///work-dir/config-mgramseva/pdf-service/format-config/property-receipt.json,file:///work-dir/config-mgramseva/pdf-service/format-config/property-bill.json,file:///work-dir/config-mgramseva/pdf-service/format-config/tradelicense-bill.json,file:///work-dir/config-mgramseva/pdf-service/format-config/firenoc-receipt.json,file:///work-dir/config-mgramseva/pdf-service/format-config/pt-receipt.json,file:///work-dir/config-mgramseva/pdf-service/format-config/tl-receipt.json,file:///work-dir/config-mgramseva/pdf-service/format-config/consolidatedbill.json,file:///work-dir/config-mgramseva/pdf-service/format-config/consolidatedreceipt.json,file:///work-dir/config-mgramseva/pdf-service/format-config/tlapplication.json,file:///work-dir/config-mgramseva/pdf-service/format-config/tlcertificate.json,file:///work-dir/config-mgramseva/pdf-service/format-config/ws-consolidatedacknowlegment.json,file:///work-dir/config-mgramseva/pdf-service/format-config/ws-consolidatedsewerageconnection.json,file:///work-dir/config-mgramseva/pdf-service/format-config/buildingpermit.json,file:///work-dir/config-mgramseva/pdf-service/format-config/ptmutationcertificate.json,file:///work-dir/config-mgramseva/pdf-service/format-config/tlrenewalcertificate.json,file:///work-dir/config-mgramseva/pdf-service/format-config/bpa-revocation.json,file:///work-dir/config-mgramseva/pdf-service/format-config/buildingpermit-low.json,file:///work-dir/config-mgramseva/pdf-service/format-config/misc-receipt.json,file:///work-dir/config-mgramseva/pdf-service/format-config/ws-applicationwater.json,file:///work-dir/config-mgramseva/pdf-service/format-config/ws-sanctionletter.json,file:///work-dir/config-mgramseva/pdf-service/format-config/ws-estimationnotice.json,file:///work-dir/config-mgramseva/pdf-service/format-config/ws-applicationsewerage.json,file:///work-dir/config-mgramseva/pdf-service/format-config/ws-bill.json,file:///work-dir/config-mgramseva/pdf-service/format-config/ws-onetime-receipt.json,file:///work-dir/config-mgramseva/pdf-service/format-config/occupancy-certificate.json"
 
@@ -340,7 +340,7 @@ egov-searcher:
   initContainers:
     gitSync:
       repo: "git@github.com:egovernments/config-mgramseva"
-      branch: "DEV"
+      branch: "QA"
 
 
 # web >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -380,7 +380,7 @@ dashboard-analytics:
   initContainers:
     gitSync:
       repo: "git@github.com:egovernments/config-mgramseva"
-      branch: "DEV"
+      branch: "QA"
 
 dashboard-ingest:
   topic-incoming-collection: "dss-collection-update"
@@ -390,7 +390,7 @@ dashboard-ingest:
   initContainers:
     gitSync:
       repo: "git@github.com:egovernments/config-mgramseva"
-      branch: "DEV"
+      branch: "QA"
 
 nginx-ingress:
   replicas: 1
@@ -493,7 +493,7 @@ report:
   initContainers:
     gitSync:
       repo: "git@github.com:egovernments/config-mgramseva"
-      branch: "DEV"
+      branch: "QA"
   report-locationsfile-path: "file:///work-dir/configs/reports/reportFileLocationsv1.txt"
   spring-datasource-tomcat-max-active: 5
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -827,7 +827,7 @@ grafana:
     gitSync:
       enabled: true
       repo: "git@github.com:egovernments/config-mgramseva"
-      branch: "DEV"
+      branch: "QA"
       
 minio:
   mode: distributed
