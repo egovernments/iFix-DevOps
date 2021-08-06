@@ -31,9 +31,9 @@ cluster-configs:
         mongo-db-host: "ifix-db.cluster-cqqfmghbjssw.ap-south-1.docdb.amazonaws.com"
         mongo-db-name: "ifix_dev_db"
         mongo-db-url: "mongodb://ifix-db.cluster-cqqfmghbjssw.ap-south-1.docdb.amazonaws.com:27017"
-        pg-db-host: "postgres.ifix"
-        pg-db-name: "ifix_dev_db"
-        pg-db-url: "jdbc:postgresql://postgres.ifix:5432/ifix_dev_db"
+        db-host: "postgres.ifix"
+        db-name: "ifix_dev_db"
+        db-url: "jdbc:postgresql://postgres.ifix:5432/ifix_dev_db"
         bpa-db-url: "jdbc:postgresql://postgres.ifix:5432/ifix_dev_db"
         erp-db-url: "jdbc:postgresql://postgres.ifix:5432/ifix_dev_db"
         domain: "ifix-dev.ifix.org.in"
@@ -147,6 +147,10 @@ cluster-configs:
         land-services: "http://land-services.ifix:8080/"
         egov-url-shortening: "http://egov-url-shortening:8080/"
         minio-url: "https://minio-staging.digit.org/"
+
+
+ifix-master-data-service:
+  server-context-path: "/ifix-master-data"
 
 billing-service:
   memory_limits: 512Mi
@@ -610,6 +614,10 @@ kafka-v2:
   offsetsReplicationFactor: "3"
 
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+kafka-connect:
+ image:
+   repository: kafka-connect-mongo
+   tag: 1.5.1
 
 # zookeeper-v2 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 zookeeper-v2:
