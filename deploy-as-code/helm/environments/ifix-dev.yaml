@@ -30,7 +30,7 @@ cluster-configs:
       data:
         mongo-db-host: "ifix-db.cluster-cqqfmghbjssw.ap-south-1.docdb.amazonaws.com"
         mongo-db-name: "ifix_dev_db"
-        mongo-db-url: "mongodb://ifix-db.cluster-cqqfmghbjssw.ap-south-1.docdb.amazonaws.com:27017?retryWrites=false"
+        mongo-db-url: "mongodb://ifix-db.cluster-cqqfmghbjssw.ap-south-1.docdb.amazonaws.com:27017/?retryWrites=false"
         db-host: "postgres.ifix"
         db-name: "ifix_dev_db"
         db-url: "jdbc:postgresql://postgres.ifix:5432/ifix_dev_db"
