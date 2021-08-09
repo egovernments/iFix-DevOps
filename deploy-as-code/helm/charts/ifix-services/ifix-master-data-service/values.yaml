@@ -33,9 +33,7 @@ env: |
     valueFrom:
       configMapKeyRef:
         name: egov-config
-        key: mongo-db-host
-  - name: SPRING_DATA_MONGODB_PORT
-    value: "27017"
+        key: mongo-db-url
   - name: SPRING_DATA_MONGODB_DATABASE
     valueFrom:
       configMapKeyRef:
