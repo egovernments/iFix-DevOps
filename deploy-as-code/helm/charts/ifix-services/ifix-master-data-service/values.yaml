@@ -41,3 +41,13 @@ env: |
       configMapKeyRef:
         name: egov-config
         key: mongo-db-name 
+  - name: SPRING_DATA_MONGODB_USERNAME
+    valueFrom:
+      secretKeyRef:
+        name: db
+        key: username
+  - name: SPRING_DATA_MONGODB_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: db
+        key: password
