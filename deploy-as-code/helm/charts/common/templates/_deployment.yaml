@@ -7,7 +7,11 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: {{ template "common.name" . }}
+{{- if .Values.global.namespace }}
+  namespace: {{ .Values.global.namespace }} 
+{{- else }}   
   namespace: {{ .Values.namespace }}
+{{- end }} 
   labels:
 {{- include "common.labels" . | nindent 4 }}   
 spec:
@@ -63,7 +67,24 @@ spec:
               labelSelector:
                 matchLabels:
                 {{- include "common.labels" . | nindent 18 }}     
-    {{- end }}  
+    {{- end }}
+       {{- if .Values.global.nodepool.nodeAffinity }}       
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+           nodeSelectorTerms:
+            - matchExpressions:
+              - key: Environment
+                operator: In
+                values:
+                - {{ .Values.global.nodepool.selector }}     
+      tolerations:
+      - key: "dedicated"
+        operator: "Equal"
+        value: "{{ .Values.global.nodepool.toleration }}"
+        effect: "NoSchedule"
+      nodeSelector:
+        Environment: {{ .Values.global.nodepool.selector }}    
+      {{- end }}
     {{- if .Values.serviceAccount }}
       serviceAccountName: {{ .Values.serviceAccount }}    
     {{- end }}     

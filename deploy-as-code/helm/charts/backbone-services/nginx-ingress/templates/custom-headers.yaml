@@ -11,4 +11,8 @@ data:
 kind: ConfigMap
 metadata:
   name: custom-headers
+{{- if .Values.global.namespace }}
+  namespace: {{ .Values.global.namespace }} 
+{{- else }}   
   namespace: {{ .Values.namespace }}
+{{- end }}  

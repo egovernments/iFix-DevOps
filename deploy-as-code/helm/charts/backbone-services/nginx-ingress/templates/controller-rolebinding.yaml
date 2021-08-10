@@ -6,7 +6,11 @@ metadata:
   labels:
     app: {{ template "nginx-ingress.name" . }}
   name: {{ template "nginx-ingress.fullname" . }}
-  namespace: {{ .Values.namespace }}  
+{{- if .Values.global.namespace }}
+  namespace: {{ .Values.global.namespace }} 
+{{- else }}   
+  namespace: {{ .Values.namespace }}
+{{- end }}   
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
@@ -14,5 +18,9 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: {{ template "nginx-ingress.serviceAccountName" . }}
+    {{- if .Values.global.namespace }}
+    namespace: {{ .Values.global.namespace }} 
+    {{- else }}   
     namespace: {{ .Values.namespace }}
+    {{- end }} 
 {{- end -}}

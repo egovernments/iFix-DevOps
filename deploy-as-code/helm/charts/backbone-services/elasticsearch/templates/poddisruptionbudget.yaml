@@ -3,7 +3,12 @@ apiVersion: policy/v1beta1
 kind: PodDisruptionBudget
 metadata:
   name: "{{ template "name" . }}-pdb"
+{{- if .Values.global.namespace }}
+  namespace: {{ .Values.global.namespace }} 
+{{- else }}   
   namespace: {{ .Values.namespace }}
+{{- end }} 
+
 spec:
   maxUnavailable: {{ .Values.maxUnavailable }}
   selector:

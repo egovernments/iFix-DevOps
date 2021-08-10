@@ -18,7 +18,10 @@ initContainers:
       repository: "egf-master-db"
     env: |
         - name: "DB_URL"
-          value: {{ index .Values "db-url" | quote }}  
+          valueFrom: 
+            configMapKeyRef: 
+                name: egov-config
+                key: db-url 
         - name: "SCHEMA_TABLE"
           value: {{ .Values.initContainers.dbMigration.schemaTable | quote }}              
         - name: "FLYWAY_USER"
