@@ -75,7 +75,7 @@ func main() {
 		contextset := setClusterContext()
 		if contextset {
 			// Get the versions from the chart and display it to user to select
-			files, err := ioutil.ReadDir("../helm/digit-release-versions/")
+			files, err := ioutil.ReadDir("../helm/ifix-release-versions/")
 			if err != nil {
 				log.Fatal(err)
 			}
@@ -86,7 +86,7 @@ func main() {
 			var version string = ""
 			version, _ = sel(versionfiles, "Which DIGIT Version You would like to install, Select below")
 			if version != "" {
-				argFile := "../helm/digit-release-versions/dependancy_chart-" + version + ".yaml"
+				argFile := "../helm/ifix-release-versions/dependancy_chart-" + version + ".yaml"
 
 				// Decode the yaml file and assigning the values to a map
 				chartFile, err := ioutil.ReadFile(argFile)
