@@ -7,7 +7,7 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: {{ template "common.name" . }}
-  namespace: {{ .Values.global.namespace }}
+  namespace: {{ .Values.namespace }}
   labels:
 {{- include "common.labels" . | nindent 4 }}   
 spec:
@@ -62,23 +62,8 @@ spec:
               topologyKey: "failure-domain.beta.kubernetes.io/zone"
               labelSelector:
                 matchLabels:
-                {{- include "common.labels" . | nindent 18 }}
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-           nodeSelectorTerms:
-            - matchExpressions:
-              - key: Environment
-                operator: In
-                values:
-                - {{ .Values.global.nodepool.selector }}     
-    {{- end }}
-      tolerations:
-      - key: "dedicated"
-        operator: "Equal"
-        value: "{{ .Values.global.nodepool.toleration }}"
-        effect: "NoSchedule"
-      nodeSelector:
-        Environment: {{ .Values.global.nodepool.selector }}  
+                {{- include "common.labels" . | nindent 18 }}     
+    {{- end }}  
     {{- if .Values.serviceAccount }}
       serviceAccountName: {{ .Values.serviceAccount }}    
     {{- end }}     

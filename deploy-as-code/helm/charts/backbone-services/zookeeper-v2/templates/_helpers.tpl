@@ -8,7 +8,7 @@
 {{- end }}
 
 {{- define "zookeeper.serverlist" -}}
-{{- $namespace := .Values.global.namespace }}
+{{- $namespace := .Values.namespace }}
 {{- $name := .Values.name -}}
 {{- $serverPort := .Values.serverPort -}}
 {{- $leaderElectionPort := .Values.leaderElectionPort -}}

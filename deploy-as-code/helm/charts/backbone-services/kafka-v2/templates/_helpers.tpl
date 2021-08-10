@@ -3,7 +3,7 @@
 {{- $baseValues := .Values | deepCopy -}}
 {{- $values := dict "Values" (mustMergeOverwrite $baseValues $envOverrides) -}}
 {{- with mustMergeOverwrite . $values -}}
-{{- $namespace := .Values.global.namespace }}
+{{- $namespace := .Values.namespace }}
 {{- $name := .Values.name -}}
 {{- $serverPort := .Values.serverPort -}}
 {{- $leaderElectionPort := .Values.leaderElectionPort -}}

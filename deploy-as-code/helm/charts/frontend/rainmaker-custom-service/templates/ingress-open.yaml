@@ -2,7 +2,7 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: rainmaker-custom-service-open
-  namespace: {{ .Values.global.namespace }}
+  namespace: {{ .Values.namespace }}
 spec:
   rules:
   - host: {{ .Values.global.domain }}

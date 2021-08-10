@@ -21,7 +21,7 @@ spec:
     - ReadWriteOnce
  persistentVolumeReclaimPolicy: Retain
  claimRef:
-    namespace: {{ $.Values.global.namespace }}  
+    namespace: {{ $.Values.namespace }}  
     name: filestore-data-egov-filestore
 {{- if $.Values.persistence.aws }}
  awsElasticBlockStore:

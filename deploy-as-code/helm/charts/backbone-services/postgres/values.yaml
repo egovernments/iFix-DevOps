@@ -1,6 +1,7 @@
 labels:
   app: "postgres"
   group: "db"
+namespace: egov
 
 image:
   repository: "docker.io/postgres"
@@ -10,8 +11,8 @@ httpPort: 5432
 
 resources: |
   requests:
-    cpu: 500m
-    memory: 1Gi
+    cpu: 100m
+    memory: 256Mi
 
 tracing-enabled: false
 
@@ -22,29 +23,19 @@ env: |
         name: db
         key: password
   - name:  POSTGRES_USER
-    valueFrom: 
-      secretKeyRef: 
+    valueFrom:
+      secretKeyRef:
         name: db
         key: username
   - name: POSTGRES_DB
     value: {{ default "" .Values.postgresDatabase | quote }}
-
-postgresDatabase: ifix_dev_db
-
-persistence:
-  enabled: true
-  aws:
-    volumeId: "vol-0220f0d34ed269ca5"
-  storageClassName: default
-  accessMode: ReadWriteOnce
-  dataDirSize: 20Gi 
-  volumeMode: Filesystem
-
 extraVolumeMounts: |
-  - mountPath: /var/lib/postgresql/data
-    name: postgres-data-ifix
-    subPath: html
+  - name: postgres-volume
+    mountPath: /var/lib/postgresql/data
 extraVolumes: |
-  - name: postgres-data-ifix
+  - name: postgres-volume
     persistentVolumeClaim:
-      claimName: postgres-data-ifix
+      claimName: pvc-postgres
+
+
+postgresDatabase: egov_ms      

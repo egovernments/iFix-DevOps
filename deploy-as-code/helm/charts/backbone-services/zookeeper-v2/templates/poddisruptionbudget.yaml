@@ -3,7 +3,7 @@ apiVersion: policy/v1beta1
 kind: PodDisruptionBudget
 metadata:
   name: "{{ template "name" . }}-pdb"
-  namespace: {{ .Values.global.namespace }}  
+  namespace: {{ .Values.namespace }}  
   labels:
     app: {{ template "name" . }}
 spec:

@@ -1,5 +1,6 @@
 # Common Labels
 name: kafka-connect-infra
+namespace: kafka-cluster    
 labels:
   group: "infra"
 

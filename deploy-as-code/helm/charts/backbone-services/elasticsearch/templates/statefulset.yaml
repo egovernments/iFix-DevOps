@@ -3,7 +3,7 @@ apiVersion: {{ template "elasticsearch.statefulset.apiVersion" . }}
 kind: StatefulSet
 metadata:
   name: {{ template "name" . }}
-  namespace: {{ .Values.global.namespace }}
+  namespace: {{ .Values.namespace }}
   labels:
     app: "{{ template "name" . }}"
     {{- range $key, $value := .Values.labels }}
@@ -23,7 +23,7 @@ spec:
   {{- if .Values.persistence.enabled }}
   volumeClaimTemplates:
   - metadata:
-      name: es-storage-ifix
+      name: es-storage
     {{- with .Values.persistence.annotations  }}
       annotations:
 {{ toYaml . | indent 8 }}
@@ -51,22 +51,6 @@ spec:
       {{- if .Values.schedulerName }}
       schedulerName: "{{ .Values.schedulerName }}"
       {{- end }}
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-           nodeSelectorTerms:
-            - matchExpressions:
-              - key: Environment
-                operator: In
-                values:
-                - {{ .Values.global.nodepool.selector }}     
-      tolerations:
-      - key: "dedicated"
-        operator: "Equal"
-        value: "{{ .Values.global.nodepool.toleration }}"
-        effect: "NoSchedule"
-      nodeSelector:
-        Environment: {{ .Values.global.nodepool.selector }}
       securityContext:
 {{ toYaml .Values.podSecurityContext | indent 8 }}
         {{- if .Values.fsGroup }}
@@ -310,7 +294,7 @@ spec:
 {{- end }}
         volumeMounts:
           {{- if .Values.persistence.enabled }}
-          - name: "es-storage-ifix"
+          - name: "es-storage"
             mountPath: /usr/share/elasticsearch/data
           {{- end }}
 {{ if .Values.keystore }}

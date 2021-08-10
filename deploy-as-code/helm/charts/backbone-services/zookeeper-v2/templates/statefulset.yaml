@@ -2,7 +2,7 @@ apiVersion: {{ template "statefulset.apiVersion" . }}
 kind: StatefulSet
 metadata:
   name: {{ template "name" . }}
-  namespace: {{ .Values.global.namespace }}
+  namespace: {{ .Values.namespace }}
   labels:
     app: {{ template "name" . }}
 spec:
@@ -41,21 +41,6 @@ spec:
                     values:
                     - {{ template "name" . }}
               topologyKey: "kubernetes.io/hostname"
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-           nodeSelectorTerms:
-            - matchExpressions:
-              - key: Environment
-                operator: In
-                values:
-                - {{ .Values.global.nodepool.selector }}     
-      tolerations:
-      - key: "dedicated"
-        operator: "Equal"
-        value: "{{ .Values.global.nodepool.toleration }}"
-        effect: "NoSchedule"
-      nodeSelector:
-        Environment: {{ .Values.global.nodepool.selector }}
       containers:
       {{- if .Values.prometheus.jmx.enabled }}
       - name: prometheus-jmx-exporter
@@ -138,20 +123,28 @@ spec:
         resources:
 {{ toYaml .Values.resources | indent 10 }}        
         volumeMounts:
-        - name: zookeeper-data-ifix
+        - name: zookeeper-data
           mountPath: /var/lib/zookeeper/
-      {{- if .Values.prometheus.jmx.enabled }}          
+    {{- if or .Values.prometheus.jmx.enabled (not .Values.persistence.enabled) }}           
       volumes:
+      {{ if not .Values.persistence.enabled }}
+      - name: zookeeper-data
+        emptyDir: {}
+      {{- end }}
+      {{ if .Values.prometheus.jmx.enabled }}       
       - name: jmx-config
         configMap:
           name: {{ template "name" . }}-jmx-configmap
-      {{- end }}          
+      {{- end }} 
+    {{- end }} 
+{{- if .Values.persistence.enabled }}                
   volumeClaimTemplates:
   - metadata:
-      name: zookeeper-data-ifix
+      name: zookeeper-data
     spec:
       accessModes:
         - ReadWriteOnce
       resources:
         requests:
           storage: {{ .Values.persistence.dataDirSize | quote }}       
+{{- end }}          

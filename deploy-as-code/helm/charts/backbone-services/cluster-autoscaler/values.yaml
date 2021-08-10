@@ -1,3 +1,4 @@
+namespace: backbone
 labels:
   app: "cluster-autoscaler"
   
@@ -182,6 +183,7 @@ serviceMonitor:
   enabled: false
   interval: "10s"
    # Namespace Prometheus is installed in
+  namespace: monitoring
    ## Defaults to whats used if you follow CoreOS [Prometheus Install Instructions](https://github.com/helm/charts/tree/master/stable/prometheus-operator#tldr)
    ## [Prometheus Selector Label](https://github.com/helm/charts/tree/master/stable/prometheus-operator#prometheus-operator-1)
    ## [Kube Prometheus Selector Label](https://github.com/helm/charts/tree/master/stable/prometheus-operator#exporters)

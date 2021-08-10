@@ -6,7 +6,7 @@ metadata:
   labels:
     app: {{ template "nginx-ingress.name" . }}
   name: {{ template "nginx-ingress.fullname" . }}
-  namespace: {{ .Values.global.namespace }}    
+  namespace: {{ .Values.namespace }}    
 rules:
   - apiGroups:
       - ""

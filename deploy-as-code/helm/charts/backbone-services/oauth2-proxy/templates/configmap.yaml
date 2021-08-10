@@ -4,6 +4,6 @@ metadata:
   labels:
     app: {{ template "common.name" . }}
   name: {{ template "common.name" . }}
-  namespace: {{ .Values.global.namespace }}  
+  namespace: {{ .Values.namespace }}  
 data:
   oauth2_proxy.cfg: {{ .Values.config.configFile | quote }}

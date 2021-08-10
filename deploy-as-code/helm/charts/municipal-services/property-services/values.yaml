@@ -147,8 +147,3 @@ env: |
   - name: TRACER_OPENTRACING_ENABLED
     value: "true" 
   {{- end }}
-  - name: ELASTICSEARCH_HOST
-    valueFrom:
-      configMapKeyRef:
-        name: egov-config
-        key: es-indexer-host  

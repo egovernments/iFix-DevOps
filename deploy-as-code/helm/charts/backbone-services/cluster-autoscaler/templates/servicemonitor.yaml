@@ -6,9 +6,6 @@ metadata:
   {{- if .Values.serviceMonitor.namespace }}
   namespace: {{ .Values.serviceMonitor.namespace }}
   {{- end }}
-  {{- else }}
-  namespace: {{ .Values.global.namespace }}
-  {{- end }}
   labels:
     {{- range $key, $value := .Values.serviceMonitor.selector }}
       {{ $key }}: {{ $value | quote }}
@@ -23,5 +20,5 @@ spec:
     path: {{ .Values.serviceMonitor.path }}
   namespaceSelector:
     matchNames:
-      - {{.Values.global.namespace}}
+      - {{.Values.namespace}}
 {{ end }} 

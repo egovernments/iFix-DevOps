@@ -3,7 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ template "name" . }}-collector
-  namespace: {{ .Values.global.namespace }}
+  namespace: {{ .Values.namespace }}
   labels:
     app: {{ template "name" . }}
     app.kubernetes.io/component: collector

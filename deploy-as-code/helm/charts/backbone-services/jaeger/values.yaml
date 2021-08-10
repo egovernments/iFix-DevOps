@@ -2,6 +2,8 @@
 # This is a YAML-formatted file.
 # Jaeger values are grouped by component. Cassandra values override subchart values
 
+namespace: monitoring
+
 labels:
   app: jaeger
   collector:

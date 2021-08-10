@@ -3,7 +3,7 @@ apiVersion: "v1"
 kind: PersistentVolumeClaim
 metadata:
   name: {{ .Chart.Name }}-volume
-  namespace: {{ .Values.global.namespace }}
+  namespace: {{ .Values.namespace }}
   labels:
     app: {{ .Chart.Name }}
     group: {{ .Values.labels.group  }}
