@@ -11,7 +11,7 @@
 ## Bitnami Zookeeper image version
 ## ref: https://hub.docker.com/r/bitnami/zookeeper/tags/
 name: zookeeper
-namespace: zookeeper-cluster
+namespace: mgramseva
 ## Number of zookeeper servers, should be odd number
 replicas: 1
 imagePullPolicy: IfNotPresent

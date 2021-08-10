@@ -12,9 +12,9 @@
 ## ref: https://hub.docker.com/r/bitnami/kafka/tags/
 ##
 name: kafka
-namespace: kafka-cluster
+namespace: magramseva
 replicas: 1
-zookeeperHosts: "zookeeper.zookeeper-cluster:2181/kafka"
+zookeeperHosts: "zookeeper.mgramseva:2181/kafka"
 
 image:
   pullPolicy: IfNotPresent  

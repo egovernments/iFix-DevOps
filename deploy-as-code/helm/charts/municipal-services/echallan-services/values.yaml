@@ -93,6 +93,28 @@ env: |
       configMapKeyRef:
         name: egov-service-host
         key: egov-workflow-v2
+  - name: EGOV_COLLECTION_SERVICE_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: collection-services
+  - name: EGOV_COLLECTION_SERVICE_CREATE_ENDPOINT
+    value: "/collection-services/payments/_create"
+  - name: EGOV_COLLECTION_SERVICE_SEARCH
+    value: "/collection-services/payments/_search"
+  - name: EGOV_COLLECTION_SERVICE_UPDATE
+    value: "/collection-services/payments/_workflow"
+  - name: EGOV_BILLING_SERICE_SEARCH_PATH
+    value: "/billing-service/bill/v2/_search"
+  - name: EGOV_VENDOR_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: vendor
+  - name: EGOV_VENDOR_CONTEXT_PATH
+    value: "/vendor/v1"   
+  - name: EGOV_VENDOR_SEARCH_PATH
+    value: "/_search"     
   - name: WORKFLOW_TRANSITION_PATH
     value: "egov-workflow-v2/egov-wf/process/_transition"
   - name: EGOV_MSG_PAY_LINK

@@ -20,7 +20,7 @@ initContainers:
 # Container Configs
 image:
   repository: "egov-user"
-replicas: "1"
+replicas: "2"
 healthChecks:
   enabled: true
   livenessProbePath: "/user/health"
@@ -85,10 +85,7 @@ env: |
         name: egov-service-host
         key: egov-enc-service
   - name: EGOV_STATE_LEVEL_TENANT_ID
-    valueFrom:
-      configMapKeyRef:
-        name: egov-config
-        key: egov-state-level-tenant-id
+    value: {{ index .Values "egov-state-level-tenant-id" | quote }}
   - name: DECRYPTION_ABAC_ENABLED
     value: {{ index .Values "decryption-abac-enabled" | quote }}
   - name: KAFKA_TOPIC_AUDIT

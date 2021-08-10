@@ -7,8 +7,6 @@ labels:
 ingress:
   enabled: true
   context: "citizen"
-  tls:
-    enabled: false
 
 # Init Containers Configs
 initContainers: {}

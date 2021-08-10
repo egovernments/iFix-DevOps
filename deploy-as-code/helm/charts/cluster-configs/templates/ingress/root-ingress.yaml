@@ -6,14 +6,20 @@ metadata:
   {{- if ne .appRoot ""}}
     nginx.ingress.kubernetes.io/app-root: /{{ .appRoot }}
   {{- end }}    
+    certmanager.k8s.io/cluster-issuer: {{ index . "cert-issuer" }}
   name: {{ .name }}
   namespace: {{ .namespace }}
 spec:
   rules:
-  - http:
+  - host: {{ $.Values.global.domain }}
+    http:
       paths:
       - backend:
           serviceName: {{ .serviceName }}
           servicePort: {{ .servicePort }}
-        path: /        
+        path: /
+  tls:
+  - hosts:
+    - {{ $.Values.global.domain }}
+    secretName: {{ $.Values.global.domain }}-tls-certs         
 {{- end -}}

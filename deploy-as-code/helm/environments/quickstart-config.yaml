@@ -90,8 +90,8 @@ cluster-configs:
         es-host: "elasticsearch-data-v1.mgramseva"
         es-indexer-host: "http://elasticsearch-data-v1.mgramseva:9200/"
         flyway-locations: "filesystem:/flyway/sql,filesystem:/flyway/seed,filesystem:/flyway/qa"
-        kafka-brokers: "kafka-v2.mgramseva:9092"
-        kafka-infra-brokers: "kafka-v2.mgramseva:9092"
+        kafka-brokers: "kafka.mgramseva:9092"
+        kafka-infra-brokers: "kafka.mgramseva:9092"
         logging-level-jdbc: "debug"
         mobile-validation-workaround: "true"
         s3-assets-bucket: "ifix-qa-assets"  ## Add s3-assets-bucket name 
@@ -118,8 +118,8 @@ cluster-configs:
         collection-search-indexer: "http://collection-search-indexer.mgramseva:8080/"
         citizen-indexer: "http://citizen-indexer.mgramseva:8080/"
         citizen-services: "http://citizen-services.mgramseva:8080/"
-        dashboard-analytics: http://dashboard-analytics.mgramseva:8080/
-        dashboard-ingest: http://dashboard-ingest.mgramseva:8080/
+        dashboard-analytics: "http://dashboard-analytics.mgramseva:8080/"
+        dashboard-ingest: "http://dashboard-ingest.mgramseva:8080/"
         demand-services: "http://demand-services.mgramseva:8080/"
         data-sync-employee: "http://data-sync-employee.mgramseva:8080/"
         egov-common-masters: "http://egov-common-masters.mgramseva:8080/"
