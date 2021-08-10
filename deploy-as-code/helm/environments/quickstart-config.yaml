@@ -1,5 +1,8 @@
 global:
   domain: quickstart.local.digit ## Add your Domain Name
+  namespace: mgramseva
+  nodepool:
+    nodeAffinity: false
   
 
 cluster-configs:
