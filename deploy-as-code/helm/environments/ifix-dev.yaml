@@ -147,7 +147,7 @@ cluster-configs:
         land-services: "http://land-services.ifix:8080/"
         egov-url-shortening: "http://egov-url-shortening:8080/"
         minio-url: "https://minio-staging.digit.org/"
-
+        ifix-master-data-service: "http://ifix-master-data-service:8080/"
 
 ifix-master-data-service:
   server-context-path: "/ifix-master-data"
