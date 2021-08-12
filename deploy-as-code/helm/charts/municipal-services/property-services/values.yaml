@@ -85,7 +85,7 @@ env: |
   - name: SPRING_KAFKA_CONSUMER_GROUP_ID
     value: egov-property-services
   - name: IS_WORKFLOW_ENABLED
-        value: {{ index .Values "is-workflow-enabled" | quote }}
+    value: {{ index .Values "is-workflow-enabled" | quote }}
   - name: PERSISTER_SAVE_PROPERTY_TOPIC
     value: save-property-registry
   - name: PERSISTER_UPDATE_PROPERTY_TOPIC
