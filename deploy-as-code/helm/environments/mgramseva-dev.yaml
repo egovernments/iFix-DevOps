@@ -175,6 +175,9 @@ egov-filestore:
 egov-location:
   memory_limits: 512Mi
 
+property-services:
+  is.workflow.enabled: "false"
+  
 vendor:
   vendor.role: CITIZEN
   vendor.driver: CITIZEN
