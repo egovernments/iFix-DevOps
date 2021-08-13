@@ -48,10 +48,12 @@ env: |
         name: db
         key: password
   - name: KEYCLOAK_USER
-    secretKeyRef:
+    valueFrom:
+      secretKeyRef:
         name: db
         key: keycloak-username
   - name: KEYCLOAK_PASSWORD
-    secretKeyRef:
+    valueFrom:
+      secretKeyRef:
         name: db
         key: keycloak-password
