@@ -33,6 +33,7 @@ cluster-configs:
         mongo-db-url: "mongodb://ifix-db.cluster-cqqfmghbjssw.ap-south-1.docdb.amazonaws.com:27017/?retryWrites=false"
         db-host: "postgres.ifix"
         db-name: "ifix_qa_db"
+        keycloak-db-name: "keycloak_qa_db"
         db-url: "jdbc:postgresql://postgres.ifix:5432/ifix_qa_db"
         bpa-db-url: "jdbc:postgresql://postgres.ifix:5432/ifix_qa_db"
         erp-db-url: "jdbc:postgresql://postgres.ifix:5432/ifix_qa_db"
