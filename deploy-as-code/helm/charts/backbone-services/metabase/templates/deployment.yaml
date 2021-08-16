@@ -59,6 +59,9 @@ spec:
           {{- if .Values.database.encryptionKey }}
           - name: MB_ENCRYPTION_SECRET_KEY
             valueFrom:
+              secretKeyRef:
+                name: {{ template "name" . }}-database
+                key: encryptionKey
           {{- end }}
           {{- if ne (.Values.database.type | lower) "h2" }}
             {{- if or .Values.database.existingSecretConnectionURIKey .Values.database.connectionURI }}
