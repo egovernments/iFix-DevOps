@@ -59,9 +59,6 @@ spec:
           {{- if .Values.database.encryptionKey }}
           - name: MB_ENCRYPTION_SECRET_KEY
             valueFrom:
-              secretKeyRef:
-                name: {{ template "name" . }}-database
-                key: encryptionKey
           {{- end }}
           {{- if ne (.Values.database.type | lower) "h2" }}
             {{- if or .Values.database.existingSecretConnectionURIKey .Values.database.connectionURI }}
@@ -138,11 +135,13 @@ spec:
             initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds }}
             timeoutSeconds: {{ .Values.readinessProbe.timeoutSeconds }}
             periodSeconds: {{ .Values.readinessProbe.periodSeconds }}
-          {{- if .Values.log4jProperties }}
           volumeMounts:
+          {{- if .Values.log4jProperties }}  
             - name: config
-              mountPath: /tmp/conf/
+              mountPath: /tmp/conf/                 
           {{- end}}
+            - name: plugins
+              mountPath: plugins
           resources:
 {{ toYaml .Values.resources | indent 12 }}
     {{- with .Values.nodeSelector }}
@@ -158,6 +157,11 @@ spec:
 {{ toYaml . | indent 8 }}
     {{- end }}
       volumes:
+       {{- if .Values.persistence.enabled }} 
+        - name: plugins
+          persistentVolumeClaim:
+            claimName: {{ .Chart.Name }}
+        {{- end }}
         {{- if .Values.log4jProperties}}
         - name: config
           configMap:
@@ -165,4 +169,5 @@ spec:
             items:
             - key: log4j.properties
               path: log4j.properties
-        {{- end }}
+        {{- end }} 
+  

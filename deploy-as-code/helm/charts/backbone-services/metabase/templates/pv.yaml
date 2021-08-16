@@ -1,0 +1,22 @@
+{{- if .Values.persistence.enabled }}  
+apiVersion: v1
+kind: "PersistentVolume"
+metadata:
+  name: {{ .Chart.Name }}
+  labels:
+    app: {{ .Chart.Name }}
+spec:
+  capacity:
+    storage: {{ .Values.persistence.dataDirSize | quote }} 
+  accessModes:
+    - {{ .Values.persistence.accessMode | quote }}
+  persistentVolumeReclaimPolicy: Recycle
+  claimRef:
+    namespace: {{ .Values.namespace }}
+    name: {{ .Chart.Name }}
+  {{- if .Values.persistence.aws }}
+  awsElasticBlockStore:
+    volumeID: {{ index $.Values "persistence" "aws" "volumeId" }}
+    fsType: ext4
+  {{- end }}
+{{- end }}   

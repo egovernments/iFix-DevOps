@@ -64,7 +64,7 @@ password:
 timeZone: UTC
 emojiLogging: true
 # javaOpts:
-# pluginsDirectory:
+pluginsDirectory: plugins
 # siteUrl:
 
 session: {}
@@ -144,3 +144,11 @@ tolerations: []
 ## ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity
 ##
 affinity: {}
+
+persistence:
+  enabled: true
+  accessMode: ReadWriteOnce
+  dataDirSize: "1Gi"
+  aws:
+    volumeId: "vol-03b3a6f239e763ecb"
+    
