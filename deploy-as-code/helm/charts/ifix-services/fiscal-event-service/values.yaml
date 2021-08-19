@@ -9,7 +9,7 @@ namespace: ifix
 ingress:
   enabled: true
   zuul: false
-  context: ""
+  context: "fiscal-event-service"
 
 # Container Configs
 image:
