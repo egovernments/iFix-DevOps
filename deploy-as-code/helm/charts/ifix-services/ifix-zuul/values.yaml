@@ -84,3 +84,7 @@ env: |
       configMapKeyRef:
         name: egov-service-host
         key: keycloak
+  - name: KEYCLOAK_CONTEXT_PATH
+    value: "auth"
+  - name: KEYCLOAK_REALM
+    value: "ifix"
