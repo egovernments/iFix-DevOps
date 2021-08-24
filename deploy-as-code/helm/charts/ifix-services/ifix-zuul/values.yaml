@@ -79,3 +79,8 @@ env: |
     value: {{ index .Values "java-args" | quote }}
   - name: ZUUL_ROUTES_FILEPATH
     value: "file:/etc/zuul/routes.properties"   
+  - name: KEYCLOAK_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: keycloak
