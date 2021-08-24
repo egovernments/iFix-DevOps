@@ -62,10 +62,11 @@ cluster-configs:
 
     egov-service-host:
       data:
-        ifix-master-data-service: "http://ifix-master-data-service:8080/"
-        fiscal-event-service: "http://fiscal-event-service:8080/"
-        ifix-zuul: "http://ifix-zuul:8080"
-        ifix-department-entity-service: "http://ifix-department-entity-service:8080/"
+        ifix-master-data-service: "http://ifix-master-data-service.ifix:8080/"
+        fiscal-event-service: "http://fiscal-event-service.ifix:8080/"
+        ifix-zuul: "http://ifix-zuul.ifix:8080/"
+        ifix-department-entity-service: "http://ifix-department-entity-service.ifix:8080/"
+        keycloak: "http://keycloak.ifix:8080/"
 
 ifix-master-data-service:
   server-context-path: "/ifix-master-data"
