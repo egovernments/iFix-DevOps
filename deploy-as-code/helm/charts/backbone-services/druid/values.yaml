@@ -285,7 +285,7 @@ middleManager:
     #      - chart-example.local
 
   persistence:
-    enabled: false
+    enabled: true
     accessMode: ReadWriteOnce
     size: "4Gi"
     # storageClass: "ssd"

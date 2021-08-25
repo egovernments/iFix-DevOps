@@ -29,7 +29,7 @@ spec:
       paths:
       - backend:
 {{- if .Values.ingress.zuul }}          
-          serviceName: zuul-ifix
+          serviceName: ifix-zuul
           servicePort: 8080
 {{ else }}
           serviceName: {{ .Values.ingress.serviceName | default (include "common.name" .) }}
