@@ -13,7 +13,7 @@ ingress:
 
 # Container Configs
 image:
-  repository: "ifix-master-data-service"
+  repository: "ifix-department-entity-service"
 replicas: "1"
 
 appType: "java-spring"
