@@ -44,3 +44,13 @@ env: |
       configMapKeyRef:
         name: egov-service-host
         key: ifix-master-data-service
+  - name: IFIX_MASTER_EXPENDITURE_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: ifix-master-data-service
+  - name: IFIX_DEPARTMENT_ENTITY_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: ifix-department-entity-service      
