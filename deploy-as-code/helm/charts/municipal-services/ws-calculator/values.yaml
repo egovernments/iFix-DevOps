@@ -72,6 +72,11 @@ env: |
       configMapKeyRef:
         name: egov-service-host
         key: ws-services
+  - name: WORKFLOW_WORKDIR_PATH
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: egov-workflow-v2
   {{- if index .Values "global" "tracer-errors-provideexceptionindetails" }}
   - name: TRACER_ERRORS_PROVIDEEXCEPTIONINDETAILS
     valueFrom:
