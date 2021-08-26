@@ -212,6 +212,9 @@ cluster-configs:
 
 billing-service:
   memory_limits: 512Mi
+  
+ws-services:
+  is-external-workflow-enabled: "true"
 
 # core >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
