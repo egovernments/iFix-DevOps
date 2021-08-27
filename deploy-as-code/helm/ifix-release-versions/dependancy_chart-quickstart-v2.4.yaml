@@ -29,14 +29,14 @@ modules:
     - name: "frontend"             
       dependencies:
         - "domain-services"
-      services:
-        - citizen:citizen-v1.5.0-c1825dd69-291 
-    - name: "olap"             
+    - name: "olap" 
+      dependencies:
+        - "domain-services"            
       services:
         - druid:0.21.1
         - metabase:v0.40.2      
     - name: m_iFix             #iFix
       dependencies:
-        - "frontend"
-        - "olap"
+        - "olap" 
+
  

@@ -31,7 +31,7 @@ cluster-configs:
         es-host: "elasticsearch-data-v1.ifix"
         es-indexer-host: "http://elasticsearch-data-v1.ifix:9200/"
         flyway-locations: "filesystem:/flyway/sql,filesystem:/flyway/seed,filesystem:/flyway/qa"
-        kafka-brokers: "kafka-v2.ifix:9092"
+        kafka-brokers: "kafka.ifix:9092"
         kafka-infra-brokers: "kafka.ifix:9092"
         logging-level-jdbc: "debug"
         mobile-validation-workaround: "true"
@@ -75,3 +75,6 @@ kafka-connect:
  image:
    repository: kafka-connect-mongo
    tag: 1.5.1
+
+postgres:
+  postgresDatabase: ifix_dev_db   

@@ -143,8 +143,6 @@ spec:
             - name: config
               mountPath: /tmp/conf/                 
           {{- end}}
-            - name: plugins
-              mountPath: plugins
           resources:
 {{ toYaml .Values.resources | indent 12 }}
     {{- with .Values.nodeSelector }}
@@ -160,11 +158,6 @@ spec:
 {{ toYaml . | indent 8 }}
     {{- end }}
       volumes:
-       {{- if .Values.persistence.enabled }} 
-        - name: plugins
-          persistentVolumeClaim:
-            claimName: {{ .Chart.Name }}
-        {{- end }}
         {{- if .Values.log4jProperties}}
         - name: config
           configMap:

@@ -64,7 +64,7 @@ password:
 timeZone: UTC
 emojiLogging: true
 # javaOpts:
-pluginsDirectory: plugins
+#pluginsDirectory: plugins
 # siteUrl:
 
 session: {}
@@ -92,7 +92,7 @@ service:
     # Used to add custom annotations to the Service.
     # service.beta.kubernetes.io/aws-load-balancer-internal: "0.0.0.0/0"
 ingress:
-  enabled: true
+  enabled: false
   servicePort: 80
   # Used to create Ingress record (should used with service.type: ClusterIP).
   hosts:
