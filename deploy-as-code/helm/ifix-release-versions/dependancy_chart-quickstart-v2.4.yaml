@@ -29,9 +29,12 @@ modules:
     - name: "frontend"             
       dependencies:
         - "domain-services"
+      services: 
+        - egovio/digit-ui:v1.2.0-4016cc5-315
     - name: "olap" 
       dependencies:
-        - "domain-services"            
+        - "domain-services"
+        - "frontend"            
       services:
         - druid:0.21.1
         - metabase:v0.40.2      
