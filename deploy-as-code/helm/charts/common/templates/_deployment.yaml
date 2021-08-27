@@ -63,6 +63,8 @@ spec:
               labelSelector:
                 matchLabels:
                 {{- include "common.labels" . | nindent 18 }}
+    {{- end }}            
+      {{- if .Values.global.nodepool.nodeAffinity }}        
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
            nodeSelectorTerms:
@@ -71,7 +73,6 @@ spec:
                 operator: In
                 values:
                 - {{ .Values.global.nodepool.selector }}     
-    {{- end }}
       tolerations:
       - key: "dedicated"
         operator: "Equal"
@@ -79,6 +80,7 @@ spec:
         effect: "NoSchedule"
       nodeSelector:
         Environment: {{ .Values.global.nodepool.selector }}  
+      {{- end }}  
     {{- if .Values.serviceAccount }}
       serviceAccountName: {{ .Values.serviceAccount }}    
     {{- end }}     
