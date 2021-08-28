@@ -155,7 +155,6 @@ cluster-configs:
         echallan-services: http://echallan-services.egov:8080/
         keycloak: "https://ifix-dev.ifix.org.in/"
         fiscal-event-service: "https://ifix-dev.ifix.org.in/"
-				
 
 billing-service:
   memory_limits: 512Mi
