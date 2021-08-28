@@ -153,8 +153,8 @@ cluster-configs:
         vehicle: "http://vehicle.egov:8080"
         echallan-calculator: http://echallan-calculator.egov:8080/
         echallan-services: http://echallan-services.egov:8080/
-				keycloak: "https://ifix-dev.ifix.org.in/"
-				fiscal-event-service: "https://ifix-dev.ifix.org.in/"
+        keycloak: "https://ifix-dev.ifix.org.in/"
+        fiscal-event-service: "https://ifix-dev.ifix.org.in/"
 				
 
 billing-service:
