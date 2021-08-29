@@ -127,7 +127,7 @@ func main() {
 						imglistsize := len(imglist)
 						for i, service := range imglist {
 							argStr = argStr + service
-							if !(element.Next() == nil && i == imglistsize-1) {
+							if !((element.Next() == nil || m[element.Next().Value.(string)] == nil) && i == imglistsize-1) {
 								argStr = argStr + ","
 							}
 
