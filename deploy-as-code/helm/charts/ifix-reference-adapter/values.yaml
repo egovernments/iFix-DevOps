@@ -50,6 +50,8 @@ env: |
   {{- end }}
   - name: SPRING_KAFKA_CONSUMER_GROUP_ID
     value: ifix-adaptor-mapper
+  - name: KAFKA_TOPICS_IFIX_ADAPTOR_MAPPER
+    value: ifix-adaptor-mapper
   - name: SECURITY_BASIC_ENABLED
     value: "false"
   - name: MANAGEMENT_SECURITY_ENABLED
