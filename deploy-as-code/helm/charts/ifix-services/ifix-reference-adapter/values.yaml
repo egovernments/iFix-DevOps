@@ -11,7 +11,9 @@ ingress:
 
 # Init Containers Configs
 initContainers:
-
+  dbMigration:
+    enabled: false
+    
 # Container Configs
 image:
   repository: "ifix-reference-adapter"
