@@ -143,8 +143,10 @@ spec:
             - name: config
               mountPath: /tmp/conf/                 
           {{- end}}
+          {{- if .Values.persistence.enabled }} 
             - name: plugins
               mountPath: plugins
+           {{- end}}
           resources:
 {{ toYaml .Values.resources | indent 12 }}
     {{- with .Values.nodeSelector }}

@@ -64,7 +64,7 @@ password:
 timeZone: UTC
 emojiLogging: true
 # javaOpts:
-pluginsDirectory: plugins
+# pluginsDirectory: plugins
 # siteUrl:
 
 session: {}
@@ -146,7 +146,7 @@ tolerations: []
 affinity: {}
 
 persistence:
-  enabled: true
+  enabled: false
   accessMode: ReadWriteOnce
   dataDirSize: "1Gi"
   aws:

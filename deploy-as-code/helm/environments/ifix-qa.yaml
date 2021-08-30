@@ -12,7 +12,8 @@ cluster-configs:
     values:
       [ 
         ifix, 
-        cert-manager
+        cert-manager,
+        olap
       ]
 
   rbac:
@@ -82,10 +83,10 @@ ifix-zuul:
   egov-mixed-mode-endpoints-whitelist: ""
 
 druid:
-  domain: druid.ifix.org.in
+  domain: druid-qa.ifix.org.in
 
 metabase:
-  domain: metabase.ifix.org.in
+  domain: metabase-qa.ifix.org.in
 
 # core >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
