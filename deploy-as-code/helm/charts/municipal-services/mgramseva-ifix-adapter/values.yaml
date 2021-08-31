@@ -1,23 +1,23 @@
 # Common Labels
 labels:
-  app: "mgramseva-ifix-adaptor"
+  app: "mgramseva-ifix-adapter"
   group: "rainmaker"
 
 # Ingress Configs
 ingress:
   enabled: true
   zuul: true
-  context: "mgramseva-ifix-adaptor"
+  context: "mgramseva-ifix-adapter"
 
 
 # Container Configs
 image:
-  repository: "mgramseva-ifix-adaptor"
+  repository: "mgramseva-ifix-adapter"
 replicas: "1"
 healthChecks:
   enabled: true
-  livenessProbePath: "/mgramseva-ifix-adaptor/health"
-  readinessProbePath: "/mgramseva-ifix-adaptor/health"
+  livenessProbePath: "/mgramseva-ifix-adapter/health"
+  readinessProbePath: "/mgramseva-ifix-adapter/health"
 appType: "java-spring"
 tracing-enabled: true
 heap: "-Xmx256m -Xms256m"
