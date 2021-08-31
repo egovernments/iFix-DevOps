@@ -92,7 +92,7 @@ metabase:
 nginx-ingress:
   replicas: 1
   default-backend-service: "egov/nginx"
-  namespace: ifix
+  namespace: egov
   cert-issuer: "letsencrypt-prod"
   ssl-protocols: "TLSv1.2 TLSv1.3"
   ssl-ciphers: "EECDH+CHACHA20:EECDH+AES"
