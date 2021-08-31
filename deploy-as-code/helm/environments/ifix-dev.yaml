@@ -89,16 +89,36 @@ metabase:
 
 # core >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-# docs >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-redoc:
+nginx-ingress:
   replicas: 1
+  default-backend-service: "egov/nginx"
+  namespace: ifix
+  cert-issuer: "letsencrypt-prod"
+  ssl-protocols: "TLSv1.2 TLSv1.3"
+  ssl-ciphers: "EECDH+CHACHA20:EECDH+AES"
+  ssl-ecdh-curve: "X25519:prime256v1:secp521r1:secp384r1"
+  controller:
+    image:
+      repository: egovio/nginx-ingress-controller
+      tag: "0.26.1"     
+    metrics:
+      enabled: true
+      serviceMonitor:
+        enabled: true
+    service:
+      annotations: 
+        service.beta.kubernetes.io/aws-load-balancer-type: nlb           
+        enabled: true 
+      prometheusRule:
+        enabled: true      
+
+cert-manager:
+  email: "devops-team@egov.org.in"
   images:
-    - egovio/redoc:v1.0.5
-  service_type: LoadBalancer
-# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    - "quay.io/jetstack/cert-manager-controller:v0.10.1"
+  namespace: ifix
 
 # gateway >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
 zuul:
   replicas: 2
   custom-filter-property: "false"
