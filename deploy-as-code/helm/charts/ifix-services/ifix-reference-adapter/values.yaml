@@ -7,7 +7,7 @@ labels:
 ingress:
   enabled: false
   zuul: false
-  context: "ifix-adapter"
+  context: "ifix-reference-adapter"
 
 # Init Containers Configs
 initContainers:
@@ -19,9 +19,9 @@ image:
   repository: "ifix-reference-adapter"
 replicas: "1"
 healthChecks:
-  enabled: false
-  livenessProbePath: "/ifix-adapter/health"
-  readinessProbePath: "/ifix-adapter/health"
+  enabled: true
+  livenessProbePath: "/ifix-reference-adapter/health"
+  readinessProbePath: "/ifix-reference-adapter/health"
 appType: "java-spring"
 tracing-enabled: true
 heap: "-Xmx192m -Xms192m"
@@ -39,6 +39,10 @@ env: |
       configMapKeyRef:
         name: egov-service-host
         key: fiscal-event-service
+  - name: SPRING_REDIS_HOST
+    value: redis.backbone
+  - name: SPRING_REDIS_PORT
+    value: "6379"
   - name: SERVER_PORT
     value: "8080"
   - name: PROXY_ADDRESS_FORWARDING
@@ -57,7 +61,10 @@ env: |
   - name: KEYCLOAK_CREDENTIALS_CLIENTID
     value: mgramseva
   - name: KEYCLOAK_CREDENTIALS_CLIENTSECRET
-    value: d95bbcdd-a80f-4030-b706-c0adc6723e72
+    valueFrom:
+      secretKeyRef:
+        name: keycloak
+        key: keycloak-clientsecret
   - name: KEYCLOAK_CREDENTIALS_GRANTTYPE
     value: client_credentials
   - name: SECURITY_BASIC_ENABLED
