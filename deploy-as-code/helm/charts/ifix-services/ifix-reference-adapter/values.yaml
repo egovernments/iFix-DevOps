@@ -19,7 +19,7 @@ image:
   repository: "ifix-reference-adapter"
 replicas: "1"
 healthChecks:
-  enabled: true
+  enabled: false
   livenessProbePath: "/ifix-reference-adapter/health"
   readinessProbePath: "/ifix-reference-adapter/health"
 appType: "java-spring"
