@@ -90,7 +90,7 @@ env: |
   - name: EGOV_MGRAMSEVA_APPL_DOMAIN
     valueFrom:
       configMapKeyRef:
-        name: egov-service-host
+        name: egov-config
         key: egov-services-fqdn-name
   - name: EGOV_MGRAMSEVA_UI_PATH
     value: mgramseva/login
