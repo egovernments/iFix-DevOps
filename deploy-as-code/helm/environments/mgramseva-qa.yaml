@@ -209,15 +209,17 @@ cluster-configs:
         vehicle: "http://vehicle.mgramseva:8080"
         echallan-calculator: http://echallan-calculator.mgramseva:8080/
         echallan-services: http://echallan-services.mgramseva:8080/
-        keycloak: "https://ifix-dev.ifix.org.in/"
-        fiscal-event-service: "https://ifix-dev.ifix.org.in/"
-        ifix-reference-adapter: "http://ifix-reference-adapter.egov:8080/"
+        keycloak: "https://ifix-qa.ifix.org.in/"
+        fiscal-event-service: "https://ifix-qa.ifix.org.in/"
+        ifix-reference-adapter: "http://ifix-reference-adapter.mgramseva:8080/"
 
 billing-service:
   memory_limits: 512Mi
   
 ws-services:
   is-external-workflow-enabled: "true"
+ifix-reference-adapter:
+  keycloak-credentials-clientid: "mgramseva-qa"
 
 # core >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
