@@ -5,7 +5,7 @@ labels:
 
 # Ingress Configs
 ingress:
-  enabled: false
+  enabled: true
   zuul: false
   context: "ifix-reference-adapter"
 
