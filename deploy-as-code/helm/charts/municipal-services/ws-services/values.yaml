@@ -87,6 +87,13 @@ env: |
       configMapKeyRef:
         name: egov-service-host
         key: pdf-service
+  - name: EGOV_MGRAMSEVA_APPL_DOMAIN
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: egov-services-fqdn-name
+  - name: EGOV_MGRAMSEVA_UI_PATH
+    value: mgramseva/login
   - name: WORKFLOW_CONTEXT_PATH
     valueFrom:
       configMapKeyRef:
