@@ -361,6 +361,9 @@ nginx-ingress:
       serviceMonitor:
         enabled: true
     service:
+      annotations:
+        service.beta.kubernetes.io/aws-load-balancer-type: nlb           
+        enabled: true 
       prometheusRule:
         enabled: true      
 
