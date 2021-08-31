@@ -59,6 +59,10 @@ cluster-configs:
         tracer-errors-provideexceptionindetails: "true"
         timezone: "Asia/Kolkata"
         es-infra-host: elasticsearch-data-v1.ifix
+        aggregator-topic-name: "druidTopic"
+        aggregator-time-string: "00:00"
+        aggregator-druid-instance: "https://druid.ifix.org.in/"
+        aggregator-datasource-name: "fiscal-event"
 
     egov-service-host:
       data:
