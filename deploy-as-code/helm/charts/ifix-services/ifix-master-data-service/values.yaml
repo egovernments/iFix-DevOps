@@ -53,4 +53,9 @@ env: |
     valueFrom:
       configMapKeyRef:
         name: egov-service-host
-        key: ifix-department-entity-service      
+        key: ifix-department-entity-service
+  - name: IFIX_MASTER_DEPARTMENT_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: ifix-master-data-service           
