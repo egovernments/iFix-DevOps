@@ -73,6 +73,8 @@ cluster-configs:
       namespace: mgramseva
     postgres:
       namespace: mgramseva
+    keycloak:
+      namespace: mgramseva
   rbac:
     - role: user
       namespaces: [mgramseva]
