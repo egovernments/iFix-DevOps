@@ -3,19 +3,18 @@ labels:
   app: "aggregator"
   group: "ifix"
 
+cron:
+  schedule: "0 0 * * *"  
 # Container Configs
 image:
   repository: "aggregator"
-replicas: "1"
-appType: "java-spring"
-tracing-enabled: true
 
 # Additional Container Envs
 env: |
   - name: TOPIC_NAME
     valueFrom:
       configMapKeyRef:
-        name: egov-config
+        name: reference-dashboard
         key: aggregator-topic-name
   - name: KAFKA_URL
     valueFrom:
@@ -25,15 +24,15 @@ env: |
   - name: TIME_STRING
     valueFrom:
       configMapKeyRef:
-        name: egov-config
+        name: reference-dashboard
         key: aggregator-time-string
   - name: DRUID_INSTANCE
     valueFrom:
       configMapKeyRef:
-        name: egov-config
+        name: reference-dashboard
         key: aggregator-druid-instance
   - name: DATASOURCE_NAME
     valueFrom:
       configMapKeyRef:
-        name: egov-config
+        name: reference-dashboard
         key: aggregator-datasource-name
