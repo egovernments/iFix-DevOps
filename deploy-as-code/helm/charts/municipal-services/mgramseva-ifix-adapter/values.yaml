@@ -25,7 +25,7 @@ java-args: "-Dspring.profiles.active=monitoring"
 
 # Additional Container Envs
 env: |
-  - name: EGOV_IFIX_REFRENCE_ADAPTER_HOST
+  - name: EGOV_IFIX_REFERNCE_ADAPTER_HOST
     valueFrom:
       configMapKeyRef:
         name: egov-service-host
