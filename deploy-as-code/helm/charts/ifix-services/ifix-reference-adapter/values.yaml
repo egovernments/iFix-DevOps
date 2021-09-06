@@ -59,7 +59,7 @@ env: |
   - name: KAFKA_TOPICS_IFIX_ADAPTOR_MAPPER
     value: ifix-adaptor-mapper
   - name: KEYCLOAK_CREDENTIALS_CLIENTID
-    value: mgramseva
+    value: {{ index .Values "keycloak-credentials-clientid" | quote }}
   - name: KEYCLOAK_CREDENTIALS_CLIENTSECRET
     valueFrom:
       secretKeyRef:
