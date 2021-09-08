@@ -9,6 +9,9 @@ cron:
 image:
   repository: "fiscal-event-aggregator"
 
+aggregator-topic-name: "aggregatedFiscalEvent"
+aggregator-datasource-name: "fiscal-event"
+
 # Additional Container Envs
 env: |
   - name: TOPIC_NAME
