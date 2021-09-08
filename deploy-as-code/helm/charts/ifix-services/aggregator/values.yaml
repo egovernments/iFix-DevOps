@@ -1,0 +1,30 @@
+# Common Labels
+labels:
+  app: "fiscal-event-aggregator"
+  group: "ifix"
+
+cron:
+  schedule: "0 0 * * *"  
+# Container Configs
+image:
+  repository: "fiscal-event-aggregator"
+
+aggregator-topic-name: "aggregatedFiscalEvent"
+aggregator-datasource-name: "fiscal-event"
+
+# Additional Container Envs
+env: |
+  - name: TOPIC_NAME
+    value: {{ index .Values "aggregator-topic-name" | quote }}
+  - name: KAFKA_URL
+    valueFrom:
+      configMapKeyRef:
+        name: egov-config
+        key: kafka-brokers
+  - name: DRUID_INSTANCE
+    valueFrom:
+      configMapKeyRef:
+        name: egov-config
+        key: druid-host
+  - name: DATASOURCE_NAME
+    value: {{ index .Values "aggregator-datasource-name" | quote }}
