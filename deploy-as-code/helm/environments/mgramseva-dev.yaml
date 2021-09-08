@@ -284,8 +284,8 @@ pdf-service:
     gitSync:
       repo: "git@github.com:egovernments/config-mgramseva"
       branch: "DEV"
-  data-config-urls: "file:///work-dir/config-mgramseva/pdf-service/data-config/ws-bill.json,file:///work-dir/config-mgramseva/pdf-service/data-config/ws-bill-nm.json"
-  format-config-urls: "file:///work-dir/config-mgramseva/pdf-service/format-config/ws-bill.json,file:///work-dir/config-mgramseva/pdf-service/format-config/ws-bill-nm.json"
+  data-config-urls: "file:///work-dir/config-mgramseva/pdf-service/data-config/ws-bill.json,file:///work-dir/config-mgramseva/pdf-service/data-config/ws-bill-nm.json,file:///work-dir/config-mgramseva/pdf-service/data-config/ws-receipt.json,file:///work-dir/config-mgramseva/pdf-service/data-config/ws-receipt-nm.json"
+  format-config-urls: "file:///work-dir/config-mgramseva/pdf-service/format-config/ws-bill.json,file:///work-dir/config-mgramseva/pdf-service/format-config/ws-bill-nm.json,file:///work-dir/config-mgramseva/pdf-service/format-config/ws-receipt.json,file:///work-dir/config-mgramseva/pdf-service/format-config/ws-receipt-nm.json"
 
 egov-searcher:
   search-yaml-path: "file:///work-dir/config-mgramseva/egov-searcher/rainmaker-pgr-v2.yml,file:///work-dir/config-mgramseva/egov-searcher/weekly-impact-emailer-searcher.yml,file:///work-dir/config-mgramseva/egov-searcher/PTDemandBasedSearcher.yml,file:///work-dir/config-mgramseva/egov-searcher/bill-genie.yml,file:///work-dir/config-mgramseva/egov-searcher/rainmaker-tl.yml,file:///work-dir/config-mgramseva/egov-searcher/localitySearcher.yml,file:///work-dir/config-mgramseva/egov-searcher/propertyopensearch.yml"
