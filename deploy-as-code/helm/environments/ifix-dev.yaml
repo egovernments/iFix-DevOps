@@ -83,7 +83,7 @@ ifix-zuul:
   egov-mixed-mode-endpoints-whitelist: ""
 
 fiscal-event-aggregator:
-  aggregator-topic-name: "aggregatedFiscalEvent"
+  aggregator-topic-name: "aggregated-fiscal-event"
   aggregator-datasource-name: "fiscal-event"
 
 druid:
