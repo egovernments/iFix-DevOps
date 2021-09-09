@@ -19,6 +19,7 @@ configVars:
   # DRUID_LOG_LEVEL: "warn"
   # DRUID_LOG4J: <?xml version="1.0" encoding="UTF-8" ?><Configuration status="WARN"><Appenders><Console name="Console" target="SYSTEM_OUT"><PatternLayout pattern="%d{ISO8601} %p [%t] %c - %m%n"/></Console></Appenders><Loggers><Root level="info"><AppenderRef ref="Console"/></Root><Logger name="org.apache.druid.jetty.RequestLog" additivity="false" level="DEBUG"><AppenderRef ref="Console"/></Logger></Loggers></Configuration>
   DRUID_USE_CONTAINER_IP: "true"
+  druid_javascript_enabled: "true"
 
   ## Druid Common Configurations. ref: https://druid.apache.org/docs/latest/configuration/index.html#common-configurations
   druid_extensions_loadList: '["druid-histogram", "druid-datasketches", "druid-lookups-cached-global", "postgresql-metadata-storage", "druid-kafka-indexing-service", "druid-s3-extensions"]'
