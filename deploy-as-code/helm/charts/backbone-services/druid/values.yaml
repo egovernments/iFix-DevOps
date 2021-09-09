@@ -33,7 +33,6 @@ configVars:
   druid_indexer_logs_type: file
   druid_indexer_logs_directory: /opt/data/indexing-logs
 
-  druid_storage_bucket: ifix-druid
   druid_storage_baseKey: druid/segments  
   
 

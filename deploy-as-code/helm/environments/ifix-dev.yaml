@@ -88,6 +88,7 @@ fiscal-event-aggregator:
 
 druid:
   domain: druid.ifix.org.in
+  druids3: ifix-druid
 
 metabase:
   domain: metabase.ifix.org.in

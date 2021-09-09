@@ -84,6 +84,7 @@ ifix-zuul:
 
 druid:
   domain: druid-qa.ifix.org.in
+  druids3: ifix-druid-qa-assets
 
 metabase:
   domain: metabase-qa.ifix.org.in
