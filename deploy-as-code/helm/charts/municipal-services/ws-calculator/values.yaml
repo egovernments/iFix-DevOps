@@ -72,6 +72,11 @@ env: |
       configMapKeyRef:
         name: egov-service-host
         key: ws-services
+  - name: EGOV_URL_SHORTNER_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: egov-url-shortening
   - name: WORKFLOW_WORKDIR_PATH
     valueFrom:
       configMapKeyRef:
