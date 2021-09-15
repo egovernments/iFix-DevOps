@@ -51,3 +51,13 @@ env: |
         key: ifix-master-data-service
   - name: FISCAL_KAFKA_PUSH_TOPIC
     value: "fiscal-event-request-validated"
+  - name: SPRING_DATA_MONGODB_URI
+    valueFrom:
+      secretKeyRef:
+        name: db
+        key: mongo-db-authenticated-uri
+  - name: SPRING_DATA_MONGODB_DATABASE
+    valueFrom:
+      configMapKeyRef:
+        name: egov-config
+        key: mongo-db-name
