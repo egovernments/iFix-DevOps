@@ -255,6 +255,9 @@ cron:
   concurrencyPolicy: Forbid
   restartPolicy: OnFailure
   httpPort: 8080
+
+job:
+  restartPolicy:  OnFailure 
   ## Additional sidecar containers
   extraContainers: |
 
