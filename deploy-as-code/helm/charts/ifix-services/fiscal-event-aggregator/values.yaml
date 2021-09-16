@@ -8,23 +8,24 @@ cron:
 # Container Configs
 image:
   repository: "fiscal-event-aggregator"
+# Init Containers Configs
+initContainers:
+  dbMigration:
+    enabled: true
+    schemaTable: "fiscal_event_aggregator_schema"
+    image:
+      repository: "fiscal-event-aggregator-db"
 
-aggregator-topic-name: "aggregated-fiscal-event"
-aggregator-datasource-name: "fiscal-event"
+appType: "java-spring"
+fiscal-event-datasource: "fiscal-event"
+
 
 # Additional Container Envs
 env: |
-  - name: TOPIC_NAME
-    value: {{ index .Values "aggregator-topic-name" | quote }}
-  - name: KAFKA_URL
-    valueFrom:
-      configMapKeyRef:
-        name: egov-config
-        key: kafka-brokers
-  - name: DRUID_INSTANCE
+  - name: DRUID_HOST
     valueFrom:
       configMapKeyRef:
         name: egov-config
         key: druid-host
-  - name: DATASOURCE_NAME
-    value: {{ index .Values "aggregator-datasource-name" | quote }}
+  - name: FISCAL_EVENT_DATASOURCE
+    value: {{ index .Values "fiscal-event-datasource" | quote }}
