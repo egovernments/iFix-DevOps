@@ -72,6 +72,9 @@ cluster-configs:
 ifix-master-data-service:
   server-context-path: "/ifix-master-data"
 
+fiscal-event-service:
+  fical-kafka-push-topic: "fiscal-event-request-validated"
+
 ifix-zuul:
   replicas: 1
   custom-filter-property: "false"
