@@ -75,6 +75,13 @@ ifix-master-data-service:
 fiscal-event-service:
   fiscal-kafka-push-topic: "fiscal-event-request-validated"
 
+fiscal-event-post-processor:
+  fiscal-event-kafka-push-topic: "fiscal-event-request-validated"
+  fiscal-event-kafka-dereferenced-topic: "fiscal-event-request-dereferenced"
+  fiscal-event-kafka-flattened-topic: "fiscal-event-line-item-flattened"
+  fiscal-event-processor-kafka-mongodb-topic: "fiscal-event-mongodb-sink"
+  fiscal-event-processor-kafka-druid-topic: "fiscal-event-druid-sink"
+
 ifix-zuul:
   replicas: 1
   custom-filter-property: "false"
