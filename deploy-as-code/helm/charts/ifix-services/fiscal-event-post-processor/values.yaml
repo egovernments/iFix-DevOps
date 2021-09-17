@@ -50,12 +50,12 @@ env: |
         name: egov-service-host
         key: ifix-master-data-service
   - name: FISCAL_EVENT_KAFKA_PUSH_TOPIC
-    value: "fiscal-event-request-validated"
+    value: {{ index .Values "fiscal-event-kafka-push-topic" | quote }}
   - name: FISCAL_EVENT_KAFKA_DEREFERENCED_TOPIC
-    value: "fiscal-event-request-dereferenced"
+    value: {{ index .Values "fiscal-event-kafka-dereferenced-topic" | quote }}
   - name: FISCAL_EVENT_KAFKA_FLATTENED_TOPIC
-    value: "fiscal-event-line-item-flattened"
+    value: {{ index .Values "fiscal-event-kafka-flattened-topic" | quote }}
   - name: FISCAL_EVENT_PROCESSOR_KAFKA_MONGODB_TOPIC
-    value: "fiscal-event-mongodb-sink"
+    value: {{ index .Values "fiscal-event-processor-kafka-mongodb-topic" | quote }}
   - name: FISCAL_EVENT_PROCESSOR_KAFKA_DRUID_TOPIC
-    value: "fiscal-event-druid-sink"
+    value: {{ index .Values "fiscal-event-processor-kafka-druid-topic" | quote }}
