@@ -50,7 +50,7 @@ env: |
         name: egov-service-host
         key: ifix-master-data-service
   - name: FISCAL_KAFKA_PUSH_TOPIC
-    value: {{ index .Values "fical-kafka-push-topic" | quote }}
+    value: {{ index .Values "fiscal-kafka-push-topic" | quote }}
   - name: SPRING_DATA_MONGODB_URI
     valueFrom:
       secretKeyRef:
