@@ -86,6 +86,10 @@ fiscal-event-aggregator:
   aggregator-topic-name: "aggregated-fiscal-event"
   aggregator-datasource-name: "fiscal-event"
 
+mongodb-kafka-source-connector:
+  mongodb-collection-name: "fiscal_event"
+  kafka-topic: "fiscal-event-request-dereferenced"
+
 druid:
   domain: druid.ifix.org.in
   druids3: ifix-druid
