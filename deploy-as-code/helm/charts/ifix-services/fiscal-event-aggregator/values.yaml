@@ -29,3 +29,7 @@ env: |
         key: druid-host
   - name: FISCAL_EVENT_DATASOURCE
     value: {{ index .Values "fiscal-event-datasource" | quote }}
+  - name: DRUID_CONNECT_PROTOCOL
+    value: "HTTP"
+  - name: DRUID_CONNECT_PORT
+    value: "8082"
