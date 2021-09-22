@@ -8,13 +8,6 @@ cron:
 # Container Configs
 image:
   repository: "fiscal-event-aggregator"
-# Init Containers Configs
-initContainers:
-  dbMigration:
-    enabled: true
-    schemaTable: "fiscal_event_aggregator_schema"
-    image:
-      repository: "fiscal-event-aggregator-db"
 
 appType: "java-spring"
 fiscal-event-datasource: "fiscal-event"
