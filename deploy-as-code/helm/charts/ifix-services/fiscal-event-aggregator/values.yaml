@@ -12,7 +12,7 @@ image:
 cron_appType: "java-spring"
 dbMigration:
   schemaTable: ""
-fiscal-event-datasource: "fiscal-event"
+fiscal-event-datasource: "fiscal_event_aggregator_schema"
 
 
 # Additional Container Envs
