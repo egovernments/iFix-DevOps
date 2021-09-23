@@ -293,7 +293,17 @@ cron:
         valueFrom:
           configMapKeyRef:
             name: egov-config
-            key: db-url        
+            key: db-url
+      - name: SPRING_DATASOURCE_USERNAME
+        valueFrom:
+          secretKeyRef:
+            name: db
+            key: username
+      - name: SPRING_DATASOURCE_PASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: db
+            key: password              
 
 
 job:
