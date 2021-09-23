@@ -263,19 +263,19 @@ cron:
           configMapKeyRef: 
             name: egov-config
             key: db-url
-      - name: "SCHEMA_TABLE"
+      - name: "SPRING_FLYWAY_TABLE"
         value: {{ .Values.dbMigration.schemaTable | quote }}              
-      - name: "FLYWAY_USER"
+      - name: "SPRING_FLYWAY_USER"
         valueFrom: 
           secretKeyRef: 
               name: db
               key: flyway-username
-      - name: "FLYWAY_PASSWORD"
+      - name: "SPRING_FLYWAY_PASSWORD"
         valueFrom:
           secretKeyRef: 
               name: db
               key: flyway-password
-      - name: "FLYWAY_LOCATIONS"
+      - name: "SPRING_FLYWAY_LOCATIONS"
         valueFrom: 
           configMapKeyRef: 
               name: egov-config
@@ -284,12 +284,10 @@ cron:
         valueFrom:
           configMapKeyRef:
             name: egov-config
-            key: db-url
-      - name: FLYWAY_ENABLED
-        value: "true"      
+            key: db-url     
       - name: SPRING_FLYWAY_ENABLED
         value: "true"               
-      - name: FLYWAY_URL
+      - name: SPRING_FLYWAY_URL
         valueFrom:
           configMapKeyRef:
             name: egov-config
