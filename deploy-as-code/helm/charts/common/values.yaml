@@ -275,11 +275,6 @@ cron:
           secretKeyRef: 
               name: db
               key: flyway-password
-      - name: "SPRING_FLYWAY_LOCATIONS"
-        valueFrom: 
-          configMapKeyRef: 
-              name: egov-config
-              key: flyway-locations
       - name: SPRING_DATASOURCE_URL
         valueFrom:
           configMapKeyRef:
