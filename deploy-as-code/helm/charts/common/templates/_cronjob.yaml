@@ -49,10 +49,15 @@ spec:
               {{- tpl . $ | nindent 14 }}
             {{- end }}          
           {{- end }} 
-          {{- if .Values.env }}                         
-            env:                                  
+          {{- if or (.Values.env) (eq .Values.cron_appType "java-spring") }}                         
+            env:   
+            {{- if .Values.env }}                               
                 {{- tpl  .Values.env . | nindent 14 }}
-          {{- end }}    
+            {{- end }}    
+            {{- if eq .Values.cron_appType "java-spring" }} 
+               {{- tpl  .Values.cron.extraEnv.java . | nindent 14 }}         
+            {{- end -}} 
+          {{- end -}}  
           {{- if .Values.resources }}                                     
             resources:
                 {{- tpl .Values.resources . | nindent 14 }}
