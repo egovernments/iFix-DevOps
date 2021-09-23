@@ -9,7 +9,9 @@ cron:
 image:
   repository: "fiscal-event-aggregator"
 
-appType: "java-spring"
+cron_appType: "java-spring"
+dbMigration:
+  schemaTable: ""
 fiscal-event-datasource: "fiscal-event"
 
 

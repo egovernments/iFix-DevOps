@@ -7,6 +7,7 @@ global:
 replicas: 1
 httpPort: 8080
 appType: ""
+cron_appType: ""
 
 ingress:
   enabled: false
@@ -255,6 +256,45 @@ cron:
   concurrencyPolicy: Forbid
   restartPolicy: OnFailure
   httpPort: 8080
+  extraEnv:
+    java: |
+      - name: "DB_URL"
+        valueFrom: 
+          configMapKeyRef: 
+            name: egov-config
+            key: db-url
+      - name: "SCHEMA_TABLE"
+        value: {{ .Values.dbMigration.schemaTable | quote }}              
+      - name: "FLYWAY_USER"
+        valueFrom: 
+          secretKeyRef: 
+              name: db
+              key: flyway-username
+      - name: "FLYWAY_PASSWORD"
+        valueFrom:
+          secretKeyRef: 
+              name: db
+              key: flyway-password
+      - name: "FLYWAY_LOCATIONS"
+        valueFrom: 
+          configMapKeyRef: 
+              name: egov-config
+              key: flyway-locations
+      - name: SPRING_DATASOURCE_URL
+        valueFrom:
+          configMapKeyRef:
+            name: egov-config
+            key: db-url
+      - name: FLYWAY_ENABLED
+        value: "true"      
+      - name: SPRING_FLYWAY_ENABLED
+        value: "true"               
+      - name: FLYWAY_URL
+        valueFrom:
+          configMapKeyRef:
+            name: egov-config
+            key: db-url        
+
 
 job:
   restartPolicy:  OnFailure 
