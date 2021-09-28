@@ -2,7 +2,6 @@
 labels:
   app: "mdms-read-cronjob"
   group: "mdms-read-cronjob"
-namespace: mgramseva  
 
 cron:
   schedule: "30 11 * * *"
