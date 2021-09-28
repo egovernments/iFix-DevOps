@@ -184,10 +184,10 @@ property-services:
   is.workflow.enabled: "false"
   
 vendor:
-  vendor.role: CITIZEN
-  vendor.driver: CITIZEN
-  vendor.role.name: Vendor role Citizen
-  vendor.driver.role.name: Vendor Driver Role Citizen
+  dso.role: CITIZEN
+  dso.driver: CITIZEN
+  dso.role.name: Vendor role Citizen
+  dso.driver.role.name: Vendor Driver Role Citizen
 
 egov-notification-sms:
   sms-provider-url: "http://api.smscountry.com/SMSCwebservice_bulk.aspx"
