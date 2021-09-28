@@ -7,11 +7,8 @@ apiVersion: batch/v2alpha1
 kind: CronJob
 metadata:
   name: {{ template "common.name" . }}
-{{- if .Values.global.namespace }}
-  namespace: {{ .Values.global.namespace }} 
-{{- else }}   
   namespace: {{ .Values.namespace }}
-{{- end }}   labels:
+  labels:
 {{- include "common.labels" . | nindent 4 }} 
 spec:
   concurrencyPolicy: {{ .Values.cron.concurrencyPolicy }}
@@ -38,9 +35,13 @@ spec:
           - name: {{ template "common.name" . }}
             image: {{ template "common.image" (dict "Values" $.Values "repository" .Values.image.repository "tag" .Values.image.tag) }}
             imagePullPolicy: {{ .Values.image.pullPolicy }}
+          {{- if .Values.command }}  
+            command:
+                {{- toYaml .Values.command  | nindent 12 }} 
+          {{- end }}   
           {{- if .Values.args }}            
             args:
-            {{- toYaml .Values.args | nindent 12 }}
+                {{- toYaml .Values.args | nindent 12 }}
           {{- end }}             
             ports:
               - name: http
