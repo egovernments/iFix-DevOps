@@ -34,4 +34,4 @@ rules:
   verbs: ["create", "delete"]
 - apiGroups: ["batch"]
   resources: ["jobs"] 
-  verbs: ["get", "watch", "create", "update", "list", "patch"]
+  verbs: ["get", "watch", "create", "update", "list", "patch", "delete"]
