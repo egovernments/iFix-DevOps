@@ -33,5 +33,5 @@ rules:
   resources: ["pods/portforward" , "pods/proxy", "pods/exec"] 
   verbs: ["create", "delete"]
 - apiGroups: ["batch"]
-  resources: ["jobs"] 
+  resources: ["jobs", "cronjobs"] 
   verbs: ["get", "watch", "create", "update", "list", "patch", "delete"]
