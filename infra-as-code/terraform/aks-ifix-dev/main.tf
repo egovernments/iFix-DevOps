@@ -2,8 +2,8 @@ provider "azurerm" {
   # whilst the `version` attribute is optional, we recommend pinning to a given version of the Provider
   version = "~>2.0"
   features {}
-  subscription_id  = "b4e1aa53-c521-44e6-8a4d-5ae107916b5b"
-  tenant_id        = "593ce202-d1a9-4760-ba26-ae35417c00cb" 
+  subscription_id  = "71f67180-c7fb-43dd-988a-e9f9e3135adc"
+  tenant_id        = "b36b0fbe-cea1-4178-8664-ba81a1e51765" 
   client_id = "${var.client_id}"
   client_secret = "${var.client_secret}"
 }
@@ -29,12 +29,31 @@ module "kubernetes" {
   vm_size = "Standard_DS2_v2"
 }
 
+resource "azurerm_mariadb_server" "db" {
+  name                = "${var.environment}-db"
+  location            = "${azurerm_resource_group.resource_group.location}"
+  resource_group_name = "${azurerm_resource_group.resource_group.name}"
+
+  administrator_login          = "dbadmin"
+  administrator_login_password = "${var.db_password}"
+
+  sku_name   = "B_Gen5_2"
+  storage_mb = 5120
+  version    = "10.2"
+
+  auto_grow_enabled             = true
+  backup_retention_days         = 7
+  geo_redundant_backup_enabled  = false
+  public_network_access_enabled = true
+  ssl_enforcement_enabled       = true
+}
+
 module "node-group" {  
   for_each = toset(["ifix", "mgramseva"])
   source = "../modules/node-pool/azure"
   node_group_name     = "${each.key}ng"
   cluster_id          = "${module.kubernetes.cluster_id}"
-  vm_size             = "Standard_D4_v4"
+  vm_size             = "Standard_D4ds_v4"
   nodes          = 2
 }
 
@@ -58,7 +77,7 @@ module "kafka" {
   location = "${azurerm_resource_group.resource_group.location}"
   resource_group = "${module.kubernetes.node_resource_group}"
   storage_sku = "Standard_LRS"
-  disk_size_gb = "50"
+  disk_size_gb = "100"
   
 }
 module "es-master" {
@@ -75,12 +94,12 @@ module "es-master" {
 module "es-data-v1" {
   source = "../modules/storage/azure"
   environment = "${var.environment}"
-  itemCount = "2"
+  itemCount = "3"
   disk_prefix = "es-data-v1"
   location = "${azurerm_resource_group.resource_group.location}"
   resource_group = "${module.kubernetes.node_resource_group}"
   storage_sku = "Premium_LRS"
-  disk_size_gb = "50"
+  disk_size_gb = "100"
   
 }
 

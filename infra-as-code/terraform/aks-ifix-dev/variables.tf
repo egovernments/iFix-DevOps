@@ -1,19 +1,17 @@
 variable "environment" {
-    default = "aks-ifix-dev"
+    default = "mgramsewa-dev"
 }
 variable "resource_group" {
-    default = "aks-ifix-dev"
+    default = "mgramsewa-dev"
 }
 
 variable "location" {
-    default = "SouthIndia"
+    default = "southeastAsia"
 }
 
-variable "client_id" {
-}
+variable "client_id" {}
 
-variable "client_secret" {
-}
+variable "client_secret" {}
 
-variable "db_password" {
-}
+variable "db_password" {}
+   
