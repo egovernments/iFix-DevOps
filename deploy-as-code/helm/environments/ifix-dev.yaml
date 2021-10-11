@@ -1,10 +1,10 @@
 global:
-  domain: ifix-dev.ifix.org.in
+  domain: ifix-dev.digit.org
   tracing-enabled: true
   namespace: ifix
   nodepool:
-    selector: ifix-ng
-    toleration: ifix-ng
+    selector: ifixng
+    toleration: ifixng
 
 cluster-configs:
   namespaces:
@@ -239,15 +239,18 @@ redis:
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 kafka-v2:
+  image:
+    tag: 5.4.1
   persistence:
     enabled: true
-    aws:
-      - volumeId: "vol-0bd0abc4c49ee1c67"
-        zone: ap-south-1a
-      - volumeId: "vol-0a841281578d8c759"
-        zone: ap-south-1a
-      - volumeId: "vol-09b63b1124a3b60f7"
-        zone: ap-south-1a
+    dataDirSize: "100Gi"
+    azure:
+      - diskName: "kafka-ifix-0"
+        diskUri: /subscriptions/71f67180-c7fb-43dd-988a-e9f9e3135adc/resourceGroups/MC_mgramsewa-dev_mgramsewa-dev_southeastasia/providers/Microsoft.Compute/disks/kafka-ifix-0
+      - diskName: "kafka-ifix-1"
+        diskUri:  /subscriptions/71f67180-c7fb-43dd-988a-e9f9e3135adc/resourceGroups/MC_mgramsewa-dev_mgramsewa-dev_southeastasia/providers/Microsoft.Compute/disks/kafka-ifix-1
+      - diskName: "kafka-ifix-2" 
+        diskUri:  /subscriptions/71f67180-c7fb-43dd-988a-e9f9e3135adc/resourceGroups/MC_mgramsewa-dev_mgramsewa-dev_southeastasia/providers/Microsoft.Compute/disks/kafka-ifix-2
   zookeeperHosts: "zookeeper-v2.ifix:2181/kafka-v2"
 
   heapOptions: "-Xms704M -Xmx704M"
@@ -266,15 +269,19 @@ kafka-connect:
 
 # zookeeper-v2 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 zookeeper-v2:
+  image:
+    tag: 5.4.1
   persistence:
     enabled: true
-    aws:
-      - volumeId: "vol-0ab1017083e523fc0"
-        zone: ap-south-1a
-      - volumeId: "vol-03d7461c118fdbba0"
-        zone: ap-south-1a
-      - volumeId: "vol-005e3838c3c62e77a"
-        zone: ap-south-1a
+    dataDirSize: "5Gi"
+    azure:
+      - diskName: "zookeeper-ifix-0"
+        diskUri: /subscriptions/71f67180-c7fb-43dd-988a-e9f9e3135adc/resourceGroups/MC_mgramsewa-dev_mgramsewa-dev_southeastasia/providers/Microsoft.Compute/disks/zookeeper-ifix-0
+      - diskName: "zookeeper-ifix-1"
+        diskUri: /subscriptions/71f67180-c7fb-43dd-988a-e9f9e3135adc/resourceGroups/MC_mgramsewa-dev_mgramsewa-dev_southeastasia/providers/Microsoft.Compute/disks/zookeeper-ifix-1
+      - diskName: "zookeeper-ifix-2" 
+        diskUri: /subscriptions/71f67180-c7fb-43dd-988a-e9f9e3135adc/resourceGroups/MC_mgramsewa-dev_mgramsewa-dev_southeastasia/providers/Microsoft.Compute/disks/zookeeper-ifix-2
+
 
   ## Zookeeper JVM Heap Option
   heapOptions: "-Xms256M -Xmx256M"
@@ -290,60 +297,6 @@ zookeeper-v2:
       cpu: 300m
       memory: 384Mi
 
-# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-
-# es-v1-cluster >>>>>>>>>>>>>>>>>>>>>>>>>>>>
-elasticsearch-data-v1:
-  image:
-    tag: 6.6.2
-  persistence:
-    enabled: true
-    aws:
-      - volumeId: "vol-0309b359b70391161"
-        zone: ap-south-1a
-      - volumeId: "vol-0278fcfe5d8ad906e"
-        zone: ap-south-1a
-      - volumeId: "vol-0b9d837f9f5061186"
-        zone: ap-south-1a
-
-  esJavaOpts: "-Xmx1g -Xms1g"
-  resources:
-    requests:
-      # cpu: "1000m"
-      memory: "2Gi"
-    limits:
-      # cpu: "1000m"
-      memory: "2Gi"
-
-elasticsearch-master-v1:
-  replicas: 3
-  image:
-    tag: 6.6.2
-  persistence:
-    enabled: true
-    aws:
-      - volumeId: "vol-0b5a2db44808a29e2"
-        zone: ap-south-1a
-      - volumeId: "vol-0c320fdcbeec94600"
-        zone: ap-south-1a
-      - volumeId: "vol-0103f8600ff653fd8"
-        zone: ap-south-1a
-
-  esJavaOpts: "-Xmx448m -Xms448m"
-  resources:
-    requests:
-      memory: "896Mi"
-    limits:
-      memory: "896Mi"
-
-es-curator-infra:
-  namespace: ifix
-  schedule: "45 18 * * *"
-  images:
-    - bobrik/curator:5.6.0
-  es-host: "elasticsearch-client-v1.es-cluster"
-  logs-cleanup-enabled: "true"
-  jaeger-cleanup-enabled: "true"
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 #logging >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -417,23 +370,7 @@ postgres:
   postgresDatabase: ifix_dev_db
   persistence:
     enabled: true
-    aws:
-      volumeId: "vol-086b6d3ad33c7a57b"
+    azure:
+      diskName: "postgres-ifix-db"
+      diskUri: /subscriptions/71f67180-c7fb-43dd-988a-e9f9e3135adc/resourcegroups/MC_mgramsewa-dev_mgramsewa-dev_southeastasia/providers/Microsoft.Compute/disks/postgres-ifix-db
       
-minio:
-  mode: distributed
-  disableWebUI: false
-  persistence:
-    enabled: true
-    dataDirSize: 10G
-    aws:
-      - volumeId: "vol-0085073c65f7568a3"
-        zone: ap-south-1a
-      - volumeId: "vol-031fa52f18391ddab"
-        zone: ap-south-1a
-      - volumeId: "vol-054c367d60f236577"
-        zone: ap-south-1a
-      - volumeId: "vol-015c0f14cb3927c68"
-        zone: ap-south-1a
-  ingress:
-    hostName: minio-staging.digit.org
