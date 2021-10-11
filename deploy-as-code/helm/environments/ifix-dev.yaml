@@ -101,11 +101,11 @@ mongodb-kafka-source-connector:
   kafka-topic: "fiscal-event-request-dereferenced"
 
 druid:
-  domain: druid.ifix.org.in
+  domain: druid-dev.digit.org
   druids3: ifix-druid
 
 metabase:
-  domain: metabase.ifix.org.in
+  domain: metabase-dev.digit.org
 
 # core >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
