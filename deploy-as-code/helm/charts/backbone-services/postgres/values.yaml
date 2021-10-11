@@ -34,8 +34,8 @@ postgresDatabase: ifix_dev_db
 
 persistence:
   enabled: true
-  aws:
-    volumeId: "vol-0220f0d34ed269ca5"
+#  aws:
+#    volumeId: "vol-0220f0d34ed269ca5"
   storageClassName: default
   accessMode: ReadWriteOnce
   dataDirSize: 20Gi 

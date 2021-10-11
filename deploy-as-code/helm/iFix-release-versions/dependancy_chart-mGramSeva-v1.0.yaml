@@ -9,12 +9,15 @@ modules:
         - elasticsearch-data-v1
         - elasticsearch-master-v1
         - kibana-v1
+        - prometheus-operator
+        - grafana 
+        - prometheus-kafka-exporter
     - name: authn-authz
       services:
         - redis
         - nginx-ingress
         - cert-manager
-        - zuul       
+        - zuul:v1.3.1-f26c4afdca-18      
     - name: core
       dependencies:
         - "backbone"
@@ -40,7 +43,6 @@ modules:
         - egovio/egov-workflow-v2:v1.2.0-f8601b36-49
         - egovio/pdf-service:v1.1.5-aa724f975c-6
         - egovio/egov-user-event:v1.1.3-a8da9ece-3
-        - egovio/zuul:v1.3.1-f26c4afdca-18
         - egovio/playground:1.0
     - name: business
       dependencies:
@@ -76,21 +78,4 @@ modules:
         - egovio/echallan-services:v1.1.0-6f347b3-59
         - egovio/echallan-calculator:v1.0.1-e3052c649-7       
         - egovio/vendor:v1.0.3-f2213b9-2 
-    - name: ifix_domain   #IFIX Core
-      dependencies:
-          - "ifix_core"
-      services:
-        - egovio/ifix-zuul:v1.0.0-365b6cb-18
-    - name: ifix_domain   #IFIX Core - Domain Services
-      dependencies:
-          - "ifix_core"
-      services:
-        - egovio/ifix-department-entity-service:v1.0.0-365b6cb-14
-        - egovio/fiscal-event-service:v1.0.0-365b6cb-18    
-        - egovio/fiscal-event-post-processor:v1.0.0-23a0fe1-16
-        - egovio/ifix-master-data-service:v1.0.0-365b6cb-17
-    - name: ifix_adaptor   #IFIX Adaptor
-      dependencies:
-          - "ifix_domain"
-      services:
-        - egovio/ifix-department-entity-service:v1.0.0-365b6cb-14
+    

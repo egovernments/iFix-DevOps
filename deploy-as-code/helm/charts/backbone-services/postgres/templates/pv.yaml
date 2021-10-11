@@ -28,6 +28,14 @@ spec:
     volumeID: {{ index $.Values "persistence" "aws" "volumeId" }}
     fsType: ext4
   {{- end }} 
+  {{- if .Values.persistence.azure }}
+  azureDisk:
+    cachingMode: ReadWrite
+    diskName: {{ index $.Values "persistence" "azure" "diskName" }}
+    diskURI: {{ index $.Values "persistence" "azure" "diskUri" }}
+    kind: Managed
+    fsType: ext4 
+  {{- end }}  
 ---
 {{- end }}
 {{- end }}
