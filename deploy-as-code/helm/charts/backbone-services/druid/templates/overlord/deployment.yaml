@@ -67,6 +67,22 @@ spec:
         secret:
           secretName: {{ .Values.gCloudStorage.secretName }}
   {{- end }}
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+           nodeSelectorTerms:
+            - matchExpressions:
+              - key: Environment
+                operator: In
+                values:
+                - {{ .Values.global.nodepool.selector }}
+      tolerations:
+      - key: "dedicated"
+        operator: "Equal"
+        value: "{{ .Values.global.nodepool.toleration }}"
+        effect: "NoSchedule"
+      nodeSelector:
+        Environment: {{ .Values.global.nodepool.selector }} 
     {{- with .Values.overlord.nodeSelector }}
       nodeSelector:
 {{ toYaml . | indent 8 }}

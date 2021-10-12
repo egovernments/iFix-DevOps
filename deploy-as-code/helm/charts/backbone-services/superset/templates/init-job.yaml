@@ -76,6 +76,22 @@ spec:
         command: {{  tpl (toJson .Values.init.command) . }}
         resources:
 {{ toYaml .Values.init.resources | indent 10 }}
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+           nodeSelectorTerms:
+            - matchExpressions:
+              - key: Environment
+                operator: In
+                values:
+                - {{ .Values.global.nodepool.selector }}
+      tolerations:
+      - key: "dedicated"
+        operator: "Equal"
+        value: "{{ .Values.global.nodepool.toleration }}"
+        effect: "NoSchedule"
+      nodeSelector:
+        Environment: {{ .Values.global.nodepool.selector }} 
 {{- if .Values.imagePullSecrets }}
       imagePullSecrets:
 {{ toYaml .Values.imagePullSecrets | indent 8 }}
