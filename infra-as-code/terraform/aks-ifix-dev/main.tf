@@ -29,25 +29,6 @@ module "kubernetes" {
   vm_size = "Standard_DS2_v2"
 }
 
-resource "azurerm_mariadb_server" "db" {
-  name                = "${var.environment}-db"
-  location            = "${azurerm_resource_group.resource_group.location}"
-  resource_group_name = "${azurerm_resource_group.resource_group.name}"
-
-  administrator_login          = "dbadmin"
-  administrator_login_password = "${var.db_password}"
-
-  sku_name   = "B_Gen5_2"
-  storage_mb = 5120
-  version    = "10.2"
-
-  auto_grow_enabled             = true
-  backup_retention_days         = 7
-  geo_redundant_backup_enabled  = false
-  public_network_access_enabled = true
-  ssl_enforcement_enabled       = true
-}
-
 module "node-group" {  
   for_each = toset(["ifix", "mgramseva"])
   source = "../modules/node-pool/azure"
@@ -103,4 +84,38 @@ module "es-data-v1" {
   
 }
 
+module "kafka-ifix" {
+  source = "../modules/storage/azure"
+  environment = "${var.environment}"
+  itemCount = "3"
+  disk_prefix = "kafka-ifix"
+  location = "${azurerm_resource_group.resource_group.location}"
+  resource_group = "${module.kubernetes.node_resource_group}"
+  storage_sku = "Standard_LRS"
+  disk_size_gb = "100"
+  
+}
 
+module "zookeeper-ifix" {
+  source = "../modules/storage/azure"
+  environment = "${var.environment}"
+  itemCount = "3"
+  disk_prefix = "zookeeper-ifix"
+  location = "${azurerm_resource_group.resource_group.location}"
+  resource_group = "${module.kubernetes.node_resource_group}"
+  storage_sku = "Premium_LRS"
+  disk_size_gb = "5"
+  
+}
+
+module "postgres-db" {
+  source = "../modules/storage/azure"
+  environment = "${var.environment}"
+  itemCount = "2"
+  disk_prefix = "postgres-db"
+  location = "${azurerm_resource_group.resource_group.location}"
+  resource_group = "${module.kubernetes.node_resource_group}"
+  storage_sku = "Premium_LRS"
+  disk_size_gb = "20"
+  
+}

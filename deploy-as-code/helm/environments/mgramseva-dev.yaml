@@ -767,6 +767,7 @@ whatsapp-webhook:
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 oauth2-proxy:
+  namespace: mgramseva
   config:
     configFile: |-
       email_domains = [ "*" ]
