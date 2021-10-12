@@ -78,6 +78,22 @@ spec:
               readOnly: true
           resources:
 {{ toYaml .Values.resources | indent 12 }}
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+           nodeSelectorTerms:
+            - matchExpressions:
+              - key: Environment
+                operator: In
+                values:
+                - {{ .Values.global.nodepool.selector }}
+      tolerations:
+      - key: "dedicated"
+        operator: "Equal"
+        value: "{{ .Values.global.nodepool.toleration }}"
+        effect: "NoSchedule"
+      nodeSelector:
+        Environment: {{ .Values.global.nodepool.selector }} 
     {{- with .Values.nodeSelector }}
       nodeSelector:
 {{ toYaml . | indent 8 }}
