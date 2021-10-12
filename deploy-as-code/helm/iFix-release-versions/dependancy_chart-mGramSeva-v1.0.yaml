@@ -9,15 +9,13 @@ modules:
         - elasticsearch-data-v1
         - elasticsearch-master-v1
         - kibana-v1
-        - prometheus-operator
-        - grafana 
-        - prometheus-kafka-exporter
     - name: authn-authz
       services:
         - redis
         - nginx-ingress
         - cert-manager
-        - zuul:v1.3.1-f26c4afdca-18      
+        - zuul:v1.3.1-f26c4afdca-18
+        - oauth2-proxy
     - name: core
       dependencies:
         - "backbone"
