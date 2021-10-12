@@ -7,6 +7,8 @@ modules:
         - kafka-connect
         - kafka-connect-restart-tasks
         - egovio/playground:mongo-v1
+        - redis
+        - ifix-zuul:v1.0.0-365b6cb-18
     - name: ifix_domain   #IFIX Core - Domain Services
       dependencies:
           - "backbone"
