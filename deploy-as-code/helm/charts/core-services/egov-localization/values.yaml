@@ -34,16 +34,7 @@ env: |
   - name: SERVER_PORT
     value: "8080"
   - name: JAVA_OPTS
-    value: {{ index .Values "heap" | quote }}
-  - name: SPRING_REDIS_HOST  
-  {{- if index .Values "cluster-configs" "configmaps" "egov-service-host" "data" "redis-host" }}
-    valueFrom:
-      configMapKeyRef:
-        name: egov-service-host
-        key: redis-host   
-  {{- else }}
-    value: "redis.backbone"
-  {{- end }} 
+    value: {{ index .Values "heap" | quote }} 
   - name: SPRING_REDIS_PORT
     value: "6379"
   - name: JAEGER_SAMPLER_PARAM
