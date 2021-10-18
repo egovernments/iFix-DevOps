@@ -1,18 +1,18 @@
 global:
-  domain: mgramseva-qa.egov.org.in
+  domain: mgramseva-qa.digit.org
   tracing-enabled: true
   namespace: mgramseva
   nodepool:
     nodeAffinity: true
-    selector: mgramseva-qa-ng
-    toleration: mgramseva-qa-ng
+    selector: mgramsevang
+    toleration: mgramsevang
 
 cluster-configs:
   namespace: mgramseva
   namespaces:
-    create: false
+    create: true
     values:
-      [ mgramseva , cert-manager ]  
+      [ mgramseva , cert-manager , olap, ifix ]  
   db:
     namespace: mgramseva
   root-ingress:
@@ -96,7 +96,7 @@ cluster-configs:
         bpa-db-url: "jdbc:postgresql://postgres.mgramseva:5432/ifix_bpa_dev_db"
         erp-db-url: "jdbc:postgresql://postgres.mgramseva:5432/ifix_erp_dev_db"
         domain: "mgramseva-qa.egov.org.in"
-        egov-services-fqdn-name: "https://mgramseva-qa.egov.org.in/"
+        egov-services-fqdn-name: "https://mgramseva-qa.digit.org/"
         egov-state-level-tenant-id: "pb"
         es-host: "elasticsearch-data-v1.mgramseva"
         es-indexer-host: "http://elasticsearch-data-v1.mgramseva:9200/"
@@ -214,6 +214,7 @@ cluster-configs:
         keycloak: "https://ifix-qa.ifix.org.in/"
         fiscal-event-service: "https://ifix-qa.ifix.org.in/"
         ifix-reference-adapter: "http://ifix-reference-adapter.mgramseva:8080/"
+        redis-host: "redis.mgramseva"
 
 billing-service:
   memory_limits: 512Mi
@@ -640,19 +641,19 @@ redis:
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 kafka-v2:
-  namespace: mgramseva
   image:
-    tag: "5.4.1"
+    tag: 5.4.1
   persistence:
     enabled: true
-    aws:
-      - volumeId: "vol-0af1889860675322d"
-        zone: ap-south-1a
-      - volumeId: "vol-0d6816e3350399e41"
-        zone: ap-south-1a
-      - volumeId: "vol-0031b5a634823f61b"
-        zone: ap-south-1a
-  zookeeperHosts: "zookeeper-v2.mgramseva:2181/kafka-v2"
+    dataDirSize: "100Gi"
+    azure:
+      - diskName: "kafka-ifix-0"
+        diskUri: /subscriptions/71f67180-c7fb-43dd-988a-e9f9e3135adc/resourceGroups/MC_mgramsewa-qa_mgramsewa-qa_southeastasia/providers/Microsoft.Compute/disks/kafka-0
+      - diskName: "kafka-ifix-1"
+        diskUri:  /subscriptions/71f67180-c7fb-43dd-988a-e9f9e3135adc/resourceGroups/MC_mgramsewa-qa_mgramsewa-qa_southeastasia/Microsoft.Compute/disks/kafka-ifix-1
+      - diskName: "kafka-ifix-2" 
+        diskUri:  /subscriptions/71f67180-c7fb-43dd-988a-e9f9e3135adc/resourceGroups/MC_mgramsewa-qa_mgramsewa-qa_southeastasia/providers/Microsoft.Compute/disks/kafka-ifix-2
+  zookeeperHosts: "zookeeper-v2.ifix:2181/kafka-v2"
 
   heapOptions: "-Xms704M -Xmx704M"
   memory_limits: 1408Mi
@@ -663,21 +664,29 @@ kafka-v2:
   offsetsReplicationFactor: "3"
 
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+kafka-connect:
+ image:
+   repository: kafka-connect-mongo
+   tag: 1.5.1
+
+
+# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 # zookeeper-v2 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 zookeeper-v2:
-  namespace: mgramseva
   image:
-    tag: "5.4.1"
+    tag: 5.4.1
   persistence:
     enabled: true
-    aws:
-      - volumeId: "vol-05eedcf059e403f00"
-        zone: ap-south-1a
-      - volumeId: "vol-0c530edc6b22d4e32"
-        zone: ap-south-1a
-      - volumeId: "vol-098bc2d61c84a3a4f"
-        zone: ap-south-1a
+    dataDirSize: "5Gi"
+    azure:
+      - diskName: "zookeeper-ifix-0"
+        diskUri: /subscriptions/71f67180-c7fb-43dd-988a-e9f9e3135adc/resourceGroups/MC_mgramsewa-qa_mgramsewa-qa_southeastasia/providers/Microsoft.Compute/disks/zookeeper-0
+      - diskName: "zookeeper-ifix-1"
+        diskUri: /subscriptions/71f67180-c7fb-43dd-988a-e9f9e3135adc/resourceGroups/MC_mgramsewa-qa_mgramsewa-qa_southeastasia/providers/Microsoft.Compute/disks/zookeeper-ifix-1
+      - diskName: "zookeeper-ifix-2" 
+        diskUri: /subscriptions/71f67180-c7fb-43dd-988a-e9f9e3135adc/resourceGroups/MC_mgramsewa-qa_mgramsewa-qa_southeastasia/providers/Microsoft.Compute/disks/zookeeper-ifix-2
+
 
   ## Zookeeper JVM Heap Option
   heapOptions: "-Xms256M -Xmx256M"
@@ -706,14 +715,14 @@ elasticsearch-data-v1:
     tag: 6.6.2
   persistence:
     enabled: true
-    aws:
-      - volumeId: "vol-0dda5cfb3b8b9ce40"
-        zone: ap-south-1a
-      - volumeId: "vol-064825cd2fe41addc"
-        zone: ap-south-1a
-      - volumeId: "vol-0973e13d251a4be66"
-        zone: ap-south-1a
-
+    dataDirSize: "100Gi"
+    azure:
+      - diskName: "es-data-v1-0"
+        diskUri: /subscriptions/71f67180-c7fb-43dd-988a-e9f9e3135adc/resourceGroups/MC_mgramsewa-qa_mgramsewa-qa_southeastasia/providers/Microsoft.Compute/disks/es-data-v1-1
+      - diskName: "es-data-v1-1"
+        diskUri: /subscriptions/71f67180-c7fb-43dd-988a-e9f9e3135adc/resourceGroups/MC_mgramsewa-qa_mgramsewa-qa_southeastasia/providers/Microsoft.Compute/disks/es-data-v1-1
+      - diskName: "es-data-v1-2" 
+        diskUri: /subscriptions/71f67180-c7fb-43dd-988a-e9f9e3135adc/resourceGroups/MC_mgramsewa-qa_mgramsewa-qa_southeastasia/providers/Microsoft.Compute/disks/es-data-v1-2
   esJavaOpts: "-Xmx1g -Xms1g"
   resources:
     requests:
@@ -730,13 +739,14 @@ elasticsearch-master-v1:
     tag: 6.6.2
   persistence:
     enabled: true
-    aws:
-      - volumeId: "vol-043d78962dd2cdf87"
-        zone: ap-south-1a
-      - volumeId: "vol-0d04bd35d84df0339"
-        zone: ap-south-1a
-      - volumeId: "vol-001e8fc784f7fa54b"
-        zone: ap-south-1a
+    dataDirSize: "2Gi"
+    azure:
+      - diskName: "es-master-0"
+        diskUri: /subscriptions/71f67180-c7fb-43dd-988a-e9f9e3135adc/resourceGroups/MC_mgramsewa-qa_mgramsewa-qa_southeastasia/providers/Microsoft.Compute/disks/es-master-0
+      - diskName: "es-master-1"
+        diskUri: /subscriptions/71f67180-c7fb-43dd-988a-e9f9e3135adc/resourceGroups/MC_mgramsewa-qa_mgramsewa-qa_southeastasia/providers/Microsoft.Compute/disks/es-master-1
+      - diskName: "es-master-2" 
+        diskUri: /subscriptions/71f67180-c7fb-43dd-988a-e9f9e3135adc/resourceGroups/MC_mgramsewa-qa_mgramsewa-qa_southeastasia/providers/Microsoft.Compute/disks/es-master-2
 
   esJavaOpts: "-Xmx448m -Xms448m"
   resources:
@@ -826,11 +836,12 @@ whatsapp-webhook:
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 oauth2-proxy:
+  namespaces: mgramseva
   config:
     configFile: |-
       email_domains = [ "*" ]
-      github_org = "egovernments"
-      github_team = "micro-service-dev,devops"
+      github_org = "misdwss"
+      github_team = "mgramsewa-dev,devops-team"
       upstreams = [ "file:///dev/null" ]
 
 grafana:
@@ -898,9 +909,9 @@ mysql:
       volumeId: "vol-021faf5aa60819691"  
 
 postgres:
-  postgresDatabase: mgramseva_qa_db
   persistence:
     enabled: true
-    aws:
-      volumeId: "vol-09a175c4a5fde7a8b"
-
+    azure:
+      diskName: "postgres-db-0"  
+      diskUri: /subscriptions/71f67180-c7fb-43dd-988a-e9f9e3135adc/resourceGroups/MC_mgramsewa-qa_mgramsewa-qa_southeastasia/providers/Microsoft.Compute/disks/postgres-db-0
+  postgresDatabase: mgramseva_qa_db

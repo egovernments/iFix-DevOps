@@ -13,7 +13,6 @@ modules:
       services:
         - redis
         - nginx-ingress
-        - cert-manager
         - zuul:v1.3.1-f26c4afdca-18
         - oauth2-proxy
     - name: core
