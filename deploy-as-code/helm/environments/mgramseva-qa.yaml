@@ -647,13 +647,13 @@ kafka-v2:
     enabled: true
     dataDirSize: "100Gi"
     azure:
-      - diskName: "kafka-ifix-0"
+      - diskName: "kafka-0"
         diskUri: /subscriptions/71f67180-c7fb-43dd-988a-e9f9e3135adc/resourceGroups/MC_mgramsewa-qa_mgramsewa-qa_southeastasia/providers/Microsoft.Compute/disks/kafka-0
-      - diskName: "kafka-ifix-1"
-        diskUri:  /subscriptions/71f67180-c7fb-43dd-988a-e9f9e3135adc/resourceGroups/MC_mgramsewa-qa_mgramsewa-qa_southeastasia/Microsoft.Compute/disks/kafka-ifix-1
-      - diskName: "kafka-ifix-2" 
-        diskUri:  /subscriptions/71f67180-c7fb-43dd-988a-e9f9e3135adc/resourceGroups/MC_mgramsewa-qa_mgramsewa-qa_southeastasia/providers/Microsoft.Compute/disks/kafka-ifix-2
-  zookeeperHosts: "zookeeper-v2.ifix:2181/kafka-v2"
+      - diskName: "kafka-1"
+        diskUri:  /subscriptions/71f67180-c7fb-43dd-988a-e9f9e3135adc/resourceGroups/MC_mgramsewa-qa_mgramsewa-qa_southeastasia/providers/Microsoft.Compute/disks/kafka-1
+      - diskName: "kafka-2" 
+        diskUri:  /subscriptions/71f67180-c7fb-43dd-988a-e9f9e3135adc/resourceGroups/MC_mgramsewa-qa_mgramsewa-qa_southeastasia/providers/Microsoft.Compute/disks/kafka-2
+  zookeeperHosts: "zookeeper-v2.mgramseva:2181/kafka-v2"
 
   heapOptions: "-Xms704M -Xmx704M"
   memory_limits: 1408Mi
@@ -674,18 +674,19 @@ kafka-connect:
 
 # zookeeper-v2 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 zookeeper-v2:
+  namespace: mgramseva
   image:
     tag: 5.4.1
   persistence:
     enabled: true
     dataDirSize: "5Gi"
     azure:
-      - diskName: "zookeeper-ifix-0"
+      - diskName: "zookeeper-0"
         diskUri: /subscriptions/71f67180-c7fb-43dd-988a-e9f9e3135adc/resourceGroups/MC_mgramsewa-qa_mgramsewa-qa_southeastasia/providers/Microsoft.Compute/disks/zookeeper-0
-      - diskName: "zookeeper-ifix-1"
-        diskUri: /subscriptions/71f67180-c7fb-43dd-988a-e9f9e3135adc/resourceGroups/MC_mgramsewa-qa_mgramsewa-qa_southeastasia/providers/Microsoft.Compute/disks/zookeeper-ifix-1
-      - diskName: "zookeeper-ifix-2" 
-        diskUri: /subscriptions/71f67180-c7fb-43dd-988a-e9f9e3135adc/resourceGroups/MC_mgramsewa-qa_mgramsewa-qa_southeastasia/providers/Microsoft.Compute/disks/zookeeper-ifix-2
+      - diskName: "zookeeper-1"
+        diskUri: /subscriptions/71f67180-c7fb-43dd-988a-e9f9e3135adc/resourceGroups/MC_mgramsewa-qa_mgramsewa-qa_southeastasia/providers/Microsoft.Compute/disks/zookeeper-1
+      - diskName: "zookeeper-2" 
+        diskUri: /subscriptions/71f67180-c7fb-43dd-988a-e9f9e3135adc/resourceGroups/MC_mgramsewa-qa_mgramsewa-qa_southeastasia/providers/Microsoft.Compute/disks/zookeeper-2
 
 
   ## Zookeeper JVM Heap Option
@@ -718,7 +719,7 @@ elasticsearch-data-v1:
     dataDirSize: "100Gi"
     azure:
       - diskName: "es-data-v1-0"
-        diskUri: /subscriptions/71f67180-c7fb-43dd-988a-e9f9e3135adc/resourceGroups/MC_mgramsewa-qa_mgramsewa-qa_southeastasia/providers/Microsoft.Compute/disks/es-data-v1-1
+        diskUri: /subscriptions/71f67180-c7fb-43dd-988a-e9f9e3135adc/resourceGroups/MC_mgramsewa-qa_mgramsewa-qa_southeastasia/providers/Microsoft.Compute/disks/es-data-v1-0
       - diskName: "es-data-v1-1"
         diskUri: /subscriptions/71f67180-c7fb-43dd-988a-e9f9e3135adc/resourceGroups/MC_mgramsewa-qa_mgramsewa-qa_southeastasia/providers/Microsoft.Compute/disks/es-data-v1-1
       - diskName: "es-data-v1-2" 
