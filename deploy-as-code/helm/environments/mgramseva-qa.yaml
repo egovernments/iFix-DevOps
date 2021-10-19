@@ -1,5 +1,5 @@
 global:
-  domain: mgramseva-qa.digit.org
+  domain: mgramseva-qa.egov.org.in
   tracing-enabled: true
   namespace: mgramseva
   nodepool:
