@@ -4,8 +4,8 @@ global:
   namespace: mgramseva
   nodepool:
     nodeAffinity: true
-    selector: mgramsevang
-    toleration: mgramsevang
+    selector: mgramseva-qa-ng
+    toleration: mgramseva-qa-ng
 
 cluster-configs:
   namespace: mgramseva
