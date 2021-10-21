@@ -301,7 +301,7 @@ egov-mdms-service:
   mdms-path: "/work-dir/mdms-mgramseva/data"
   initContainers:
     gitSync:
-      repo: "git@github.com:egovernments/mdms-mgramseva"
+      repo: "git@github.com:misdwss/mdms-mgramseva"
       branch: "QA"
   mdms-folder: "mdms-mgramseva"
   java-args: -Dspring.profiles.active=monitoring
@@ -312,7 +312,7 @@ egov-indexer:
   memory_limits: "768Mi"
   initContainers:
     gitSync:
-      repo: "git@github.com:egovernments/config-mgramseva"
+      repo: "git@github.com:misdwss/config-mgramseva"
       branch: "QA"
   egov-indexer-yaml-repo-path: "file:///work-dir/config-mgramseva/egov-indexer/billingservices-indexer.yml,file:///work-dir/config-mgramseva/egov-indexer/collection-indexer.yml,file:///work-dir/config-mgramseva/egov-indexer/egov-telemetry-indexer.yml,file:///work-dir/config-mgramseva/egov-indexer/egov-uploader-indexer.yml,file:///work-dir/config-mgramseva/egov-indexer/error-queue.yml,file:///work-dir/config-mgramseva/egov-indexer/finance-rolloutadotpion-indexer.yml,file:///work-dir/config-mgramseva/egov-indexer/payment-indexer.yml,file:///work-dir/config-mgramseva/egov-indexer/rainmaker-pgr-indexer.yml,file:///work-dir/config-mgramseva/egov-indexer/rainmaker-pt-indexer.yml,file:///work-dir/config-mgramseva/egov-indexer/rainmaker-tl-indexer.yml,file:///work-dir/config-mgramseva/egov-indexer/chatbot-telemetry.yaml,file:///work-dir/config-mgramseva/egov-indexer/water-service.yml,file:///work-dir/config-mgramseva/egov-indexer/water-services-meter.yml,file:///work-dir/config-mgramseva/egov-indexer/sewerage-service.yml,file:///work-dir/config-mgramseva/egov-indexer/property-services.yml,file:///work-dir/config-mgramseva/egov-indexer/egov-vendor.yaml"
 
@@ -327,7 +327,7 @@ egov-persister:
   persist-yml-path: "file:///work-dir/config-mgramseva/egov-persister/pt-mutation-calculator-persister.yml,file:///work-dir/config-mgramseva/egov-persister/apportion-persister.yml,file:///work-dir/config-mgramseva/egov-persister/billing-services-persist.yml,file:///work-dir/config-mgramseva/egov-persister/egf-bill.yaml,file:///work-dir/config-mgramseva/egov-persister/egov-user-event-persister.yml,file:///work-dir/config-mgramseva/egov-persister/egov-workflow-v2-persister.yml,file:///work-dir/config-mgramseva/egov-persister/hrms-employee-persister.yml,file:///work-dir/config-mgramseva/egov-persister/pdf-generator.yml,file:///work-dir/config-mgramseva/egov-persister/pg-service-persister.yml,file:///work-dir/config-mgramseva/egov-persister/property-services.yml,file:///work-dir/config-mgramseva/egov-persister/pt-calculator-v2-persister.yml,file:///work-dir/config-mgramseva/egov-persister/pt-drafts.yml,file:///work-dir/config-mgramseva/egov-persister/pt-persist.yml,file:///work-dir/config-mgramseva/egov-persister/uploader-persister.yml,file:///work-dir/config-mgramseva/egov-persister/collection-migration-persister.yml,file:///work-dir/config-mgramseva/egov-persister/property-services-registry.yml,file:///work-dir/config-mgramseva/egov-persister/sewerage-persist.yml,file:///work-dir/config-mgramseva/egov-persister/water-persist.yml,file:///work-dir/config-mgramseva/egov-persister/water-meter.yml,file:///work-dir/config-mgramseva/egov-persister/assessment-persister.yml,file:///work-dir/config-mgramseva/egov-persister/vendor-persister.yaml,file:///work-dir/config-mgramseva/egov-persister/echallan.yml"
   initContainers:
     gitSync:
-      repo: "git@github.com:egovernments/config-mgramseva"
+      repo: "git@github.com:misdwss/config-mgramseva"
       branch: "QA"
 
 
@@ -339,13 +339,13 @@ egov-data-uploader:
   heap: "-Xmx192m -Xms192m"
   initContainers:
     gitSync:
-      repo: "git@github.com:egovernments/config-mgramseva"
+      repo: "git@github.com:misdwss/config-mgramseva"
       branch: "QA"
 
 pdf-service:
   initContainers:
     gitSync:
-      repo: "git@github.com:egovernments/config-mgramseva"
+      repo: "git@github.com:misdwss/config-mgramseva"
       branch: "QA"
   data-config-urls: "file:///work-dir/config-mgramseva/pdf-service/data-config/ws-bill.json,file:///work-dir/config-mgramseva/pdf-service/data-config/ws-bill-nm.json,file:///work-dir/config-mgramseva/pdf-service/data-config/ws-receipt.json,file:///work-dir/config-mgramseva/pdf-service/data-config/ws-receipt-nm.json"
   format-config-urls: "file:///work-dir/config-mgramseva/pdf-service/format-config/ws-bill.json,file:///work-dir/config-mgramseva/pdf-service/format-config/ws-bill-nm.json,file:///work-dir/config-mgramseva/pdf-service/format-config/ws-receipt.json,file:///work-dir/config-mgramseva/pdf-service/format-config/ws-receipt-nm.json"
@@ -354,7 +354,7 @@ egov-searcher:
   search-yaml-path: "file:///work-dir/config-mgramseva/egov-searcher/rainmaker-pgr-v2.yml,file:///work-dir/config-mgramseva/egov-searcher/weekly-impact-emailer-searcher.yml,file:///work-dir/config-mgramseva/egov-searcher/PTDemandBasedSearcher.yml,file:///work-dir/config-mgramseva/egov-searcher/bill-genie.yml,file:///work-dir/config-mgramseva/egov-searcher/rainmaker-tl.yml,file:///work-dir/config-mgramseva/egov-searcher/localitySearcher.yml,file:///work-dir/config-mgramseva/egov-searcher/propertyopensearch.yml"
   initContainers:
     gitSync:
-      repo: "git@github.com:egovernments/config-mgramseva"
+      repo: "git@github.com:misdwss/config-mgramseva"
       branch: "QA"
 
 
@@ -394,7 +394,7 @@ dashboard-analytics:
   config-schema-paths: "file:///work-dir/config-mgramseva/egov-dss-dashboards/dashboard-analytics/*.json"  
   initContainers:
     gitSync:
-      repo: "git@github.com:egovernments/config-mgramseva"
+      repo: "git@github.com:misdwss/config-mgramseva"
       branch: "QA"
 
 dashboard-ingest:
@@ -404,7 +404,7 @@ dashboard-ingest:
   config-schema-paths: "file:///work-dir/config-mgramseva/egov-dss-dashboards/dashboard-ingest/*.json"
   initContainers:
     gitSync:
-      repo: "git@github.com:egovernments/config-mgramseva"
+      repo: "git@github.com:misdwss/config-mgramseva"
       branch: "QA"
 
 nginx-ingress:
@@ -508,7 +508,7 @@ report:
   tracing-enabled: "true"
   initContainers:
     gitSync:
-      repo: "git@github.com:egovernments/config-mgramseva"
+      repo: "git@github.com:misdwss/config-mgramseva"
       branch: "QA"
   report-locationsfile-path: "file:///work-dir/configs/reports/reportFileLocationsv1.txt"
   spring-datasource-tomcat-max-active: 5
@@ -853,7 +853,7 @@ grafana:
   initContainers:
     gitSync:
       enabled: true
-      repo: "git@github.com:egovernments/config-mgramseva"
+      repo: "git@github.com:misdwss/config-mgramseva"
       branch: "QA"
       
 minio:
