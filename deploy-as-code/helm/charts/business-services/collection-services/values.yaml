@@ -121,6 +121,12 @@ env: |
       configMapKeyRef:
         name: egov-service-host
         key: egov-localization
+  - name: EGOV_URL_SHORTNER_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: egov-url-shortening
+  
   - name: COLL_NOTIFICATION_UI_HOST
     valueFrom:
       configMapKeyRef:
