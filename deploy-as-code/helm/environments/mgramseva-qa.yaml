@@ -96,7 +96,7 @@ cluster-configs:
         bpa-db-url: "jdbc:postgresql://postgres.mgramseva:5432/ifix_bpa_dev_db"
         erp-db-url: "jdbc:postgresql://postgres.mgramseva:5432/ifix_erp_dev_db"
         domain: "mgramseva-qa.egov.org.in"
-        egov-services-fqdn-name: "https://mgramseva-qa.digit.org/"
+        egov-services-fqdn-name: "https://mgramseva-qa.egov.org.in/"
         egov-state-level-tenant-id: "pb"
         es-host: "elasticsearch-data-v1.mgramseva"
         es-indexer-host: "http://elasticsearch-data-v1.mgramseva:9200/"
