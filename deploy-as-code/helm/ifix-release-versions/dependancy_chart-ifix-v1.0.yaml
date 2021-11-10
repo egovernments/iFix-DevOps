@@ -8,6 +8,7 @@ modules:
         - kafka-connect-restart-tasks
         - egovio/playground:mongo-v1
         - redis
+        - keycloak:13.0.1
         - ifix-zuul:v1.0.0-365b6cb-18
     - name: ifix_domain   #IFIX Core - Domain Services
       dependencies:
@@ -18,12 +19,9 @@ modules:
         - egovio/fiscal-event-post-processor:v1.0.0-23a0fe1-16
         - egovio/ifix-master-data-service:v1.0.0-365b6cb-17
         - egovio/fiscal-event-aggregator:fiscal-event-aggregate-6ef169b-9
-        - keycloak:13.0.1
     - name: ifix_adaptor   #IFIX Adaptor
       dependencies:
           - "ifix_domain"
-      services:
-        - egovio/ifix-department-entity-service:v1.0.0-365b6cb-14  
     - name: m_ifix            
       dependencies:
         - "ifix_adaptor"                                         
