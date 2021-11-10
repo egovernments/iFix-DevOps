@@ -10,7 +10,11 @@ metadata:
     heritage: {{ .Release.Service }}
 data:
 {{ toYaml .Values.configVars | indent 2 }}
-  druid_storage_bucket: {{ .Values.druid.druids3 }}
+{{- if eq "azure" .Values.druid.storage }}
+{{ toYaml .Values.druid.azure | indent 2 }}
+{{- else if eq "aws" .Values.druid.storage }}
+{{ toYaml .Values.druid.aws | indent 2 }}
+{{- end }}  
 {{- if .Values.zookeeper.enabled }}
   druid_zk_service_host: {{ .Release.Name }}-zookeeper-headless:2181
 {{- else }}

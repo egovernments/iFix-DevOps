@@ -22,14 +22,14 @@ configVars:
   druid_javascript_enabled: "true"
 
   ## Druid Common Configurations. ref: https://druid.apache.org/docs/latest/configuration/index.html#common-configurations
-  druid_extensions_loadList: '["druid-histogram", "druid-datasketches", "druid-lookups-cached-global", "postgresql-metadata-storage", "druid-kafka-indexing-service", "druid-s3-extensions"]'
+  druid_extensions_loadList: '["druid-histogram", "druid-datasketches", "druid-lookups-cached-global", "postgresql-metadata-storage", "druid-kafka-indexing-service", "druid-s3-extensions", "druid-azure-extensions" ]'
   druid_sql_query: "true"
   # druid_metadata_storage_type: postgresql
   # druid_metadata_storage_connector_connectURI: jdbc:postgresql://postgres.ifix:5432/ifix_druid_db #{{ .Values.postgresql.postgresqlURI }} 
   # druid_metadata_storage_connector_user: druid_admin
   # druid_metadata_storage_connector_password: druid_12345
   # druid_storage_type: local
-  druid_storage_type: s3
+  #druid_storage_type: s3
   druid_indexer_logs_type: file
   druid_indexer_logs_directory: /opt/data/indexing-logs
 
