@@ -109,7 +109,7 @@ cluster-configs:
         serializers-timezone-in-ist: "true"
         server-tomcat-max-threads: "10"
         server-tomcat-max-connections: "500"
-        sms-enabled: "false"
+        sms-enabled: "true"
         spring-datasource-tomcat-initialSize: "1"
         spring-datasource-tomcat-max-active: "5"
         spring-jpa-show-sql: "true"
@@ -251,7 +251,7 @@ vendor:
 egov-notification-sms:
   sms-provider-url: "http://api.smscountry.com/SMSCwebservice_bulk.aspx"
   sms.provider.url: "http://api.smscountry.com/SMSCwebservice_bulk.aspx"
-  sms.provider.class: "Generic"
+  sms.provider.class: "Console"
   sms.provider.contentType:  "application/x-www-form-urlencoded"
   sms-config-map: "{'User':'$username', 'passwd': '$password', 'sid':'$senderid', 'mobilenumber':'$mobileno', 'message':'$message', 'mtype':'LNG', 'DR':'N', 'smsservicetype':'singlemsg'}"
   sms-gateway-to-use: "SMS_COUNTRY"
