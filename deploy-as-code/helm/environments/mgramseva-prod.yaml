@@ -843,7 +843,7 @@ oauth2-proxy:
     configFile: |-
       email_domains = [ "*" ]
       github_org = "misdwss"
-      github_team = "mgramsewa-dev,devops-team"
+      github_team = "mgramsewa-prod,devops-team"
       upstreams = [ "file:///dev/null" ]
 
 grafana:
