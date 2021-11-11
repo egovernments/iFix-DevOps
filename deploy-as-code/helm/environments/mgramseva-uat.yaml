@@ -211,8 +211,8 @@ cluster-configs:
         vehicle: "http://vehicle.mgramseva:8080"
         echallan-calculator: http://echallan-calculator.mgramseva:8080/
         echallan-services: http://echallan-services.mgramseva:8080/
-        keycloak: "https://ifix-qa.ifix.org.in/"
-        fiscal-event-service: "https://ifix-qa.ifix.org.in/"
+        keycloak: "https://ifix-uat.digit.org/"
+        fiscal-event-service: "https://ifix-uat.digit.org/"
         ifix-reference-adapter: "http://ifix-reference-adapter.mgramseva:8080/"
         redis-host: "redis.mgramseva"
 
@@ -222,7 +222,7 @@ billing-service:
 ws-services:
   is-external-workflow-enabled: "true"
 ifix-reference-adapter:
-  keycloak-credentials-clientid: "mgramseva-qa"
+  keycloak-credentials-clientid: "mgramseva-uat"
 
 # core >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -298,7 +298,7 @@ egov-mdms-service:
   initContainers:
     gitSync:
       repo: "git@github.com:misdwss/mdms-mgramseva"
-      branch: "QA"
+      branch: "UAT"
   mdms-folder: "mdms-mgramseva"
   java-args: -Dspring.profiles.active=monitoring
   masters-config-url: "file:///work-dir/mdms-mgramseva/master-config.json"
@@ -309,7 +309,7 @@ egov-indexer:
   initContainers:
     gitSync:
       repo: "git@github.com:misdwss/config-mgramseva"
-      branch: "QA"
+      branch: "UAT"
   egov-indexer-yaml-repo-path: "file:///work-dir/config-mgramseva/egov-indexer/billingservices-indexer.yml,file:///work-dir/config-mgramseva/egov-indexer/collection-indexer.yml,file:///work-dir/config-mgramseva/egov-indexer/egov-telemetry-indexer.yml,file:///work-dir/config-mgramseva/egov-indexer/egov-uploader-indexer.yml,file:///work-dir/config-mgramseva/egov-indexer/error-queue.yml,file:///work-dir/config-mgramseva/egov-indexer/finance-rolloutadotpion-indexer.yml,file:///work-dir/config-mgramseva/egov-indexer/payment-indexer.yml,file:///work-dir/config-mgramseva/egov-indexer/rainmaker-pgr-indexer.yml,file:///work-dir/config-mgramseva/egov-indexer/rainmaker-pt-indexer.yml,file:///work-dir/config-mgramseva/egov-indexer/rainmaker-tl-indexer.yml,file:///work-dir/config-mgramseva/egov-indexer/chatbot-telemetry.yaml,file:///work-dir/config-mgramseva/egov-indexer/water-service.yml,file:///work-dir/config-mgramseva/egov-indexer/water-services-meter.yml,file:///work-dir/config-mgramseva/egov-indexer/sewerage-service.yml,file:///work-dir/config-mgramseva/egov-indexer/property-services.yml,file:///work-dir/config-mgramseva/egov-indexer/egov-vendor.yaml"
 
 
@@ -324,7 +324,7 @@ egov-persister:
   initContainers:
     gitSync:
       repo: "git@github.com:misdwss/config-mgramseva"
-      branch: "QA"
+      branch: "UAT"
 
 
 echallan-services:
@@ -336,13 +336,13 @@ egov-data-uploader:
   initContainers:
     gitSync:
       repo: "git@github.com:misdwss/config-mgramseva"
-      branch: "QA"
+      branch: "UAT"
 
 pdf-service:
   initContainers:
     gitSync:
       repo: "git@github.com:misdwss/config-mgramseva"
-      branch: "QA"
+      branch: "UAT"
   data-config-urls: "file:///work-dir/config-mgramseva/pdf-service/data-config/ws-bill.json,file:///work-dir/config-mgramseva/pdf-service/data-config/ws-bill-nm.json,file:///work-dir/config-mgramseva/pdf-service/data-config/ws-receipt.json,file:///work-dir/config-mgramseva/pdf-service/data-config/ws-receipt-nm.json"
   format-config-urls: "file:///work-dir/config-mgramseva/pdf-service/format-config/ws-bill.json,file:///work-dir/config-mgramseva/pdf-service/format-config/ws-bill-nm.json,file:///work-dir/config-mgramseva/pdf-service/format-config/ws-receipt.json,file:///work-dir/config-mgramseva/pdf-service/format-config/ws-receipt-nm.json"
 
@@ -351,7 +351,7 @@ egov-searcher:
   initContainers:
     gitSync:
       repo: "git@github.com:misdwss/config-mgramseva"
-      branch: "QA"
+      branch: "UAT"
 
 
 # web >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -391,7 +391,7 @@ dashboard-analytics:
   initContainers:
     gitSync:
       repo: "git@github.com:misdwss/config-mgramseva"
-      branch: "QA"
+      branch: "UAT"
 
 dashboard-ingest:
   topic-incoming-collection: "dss-collection-update"
@@ -401,7 +401,7 @@ dashboard-ingest:
   initContainers:
     gitSync:
       repo: "git@github.com:misdwss/config-mgramseva"
-      branch: "QA"
+      branch: "UAT"
 
 nginx-ingress:
   replicas: 1
@@ -505,7 +505,7 @@ report:
   initContainers:
     gitSync:
       repo: "git@github.com:misdwss/config-mgramseva"
-      branch: "QA"
+      branch: "UAT"
   report-locationsfile-path: "file:///work-dir/configs/reports/reportFileLocationsv1.txt"
   spring-datasource-tomcat-max-active: 5
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -769,14 +769,14 @@ es-curator-infra:
 fluentd:
   images:
     - egovio/fluentd:v0.1.9
-  target_env: qa
+  target_env: UAT
 
 delete-old-logs-in-es:
   images:
     - egovio/elasticsearch-curator-5-0-2:0.0.2
   days: 1
   schedule: "0 12 * * *"
-  target_env: qa
+  target_env: UAT
 
 logrotate:
   images:
@@ -816,7 +816,7 @@ egov-wordpress-portal:
   db-username: SUXPxnqcJGuM4ou3u3cPnUlFz8Z6nCRrjOKLt7t3D51JRc/Gepwka4zii7e7dw+dSUXPxnqcJGuM4ou3u3cPnUlFz8Z6nCRrjOKLt7t3D51JRc/Gepwka4zii7e7dw+dSUXPxnqcJGuM4ou3u3cPnUlFz8Z6nCRrjOKLt7t3D50kojRv5BatVU6B2oxjr2IlhnQR4foH7GxtU1trgfom5A==
   db-password: SUXPxnqcJGuM4ou3u3cPnUlFz8Z6nCRrjOKLt7t3D51JRc/Gepwka4zii7e7dw+dSUXPxnqcJGuM4ou3u3cPnUlFz8Z6nCRrjOKLt7t3D51JRc/Gepwka4zii7e7dw+dSUXPxnqcJGuM4ou3u3cPnUlFz8Z6nCRrjOKLt7t3D50GzpQL2kP76wJL2mW+XFJrKn7KGgDz7lV6FZN/e8IPEg==
   db-name: egov_wp_portal_db
-  wordpress_siteurl: http://qa.egovernments.org
+  wordpress_siteurl: http://UAT.egovernments.org
 
 # fluent-bit >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 fluent-bit:
@@ -849,7 +849,7 @@ grafana:
     gitSync:
       enabled: true
       repo: "git@github.com:misdwss/config-mgramseva"
-      branch: "QA"
+      branch: "UAT"
       
 minio:
   mode: distributed
