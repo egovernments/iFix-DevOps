@@ -103,7 +103,7 @@ env: |
   - name: EGOV_COLLECTION_SERVICE_SEARCH
     value: "/collection-services/payments/_search"
   - name: EGOV_COLLECTION_SERVICE_UPDATE
-    value: "/collection-services/payments/_workflow"
+    value: "/collection-services/payments/EXPENSE/_workflow"
   - name: EGOV_BILLING_SERICE_SEARCH_PATH
     value: "/billing-service/bill/v2/_search"
   - name: EGOV_VENDOR_HOST
