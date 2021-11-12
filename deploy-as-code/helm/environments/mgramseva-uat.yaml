@@ -222,7 +222,7 @@ billing-service:
 ws-services:
   is-external-workflow-enabled: "true"
 ifix-reference-adapter:
-  keycloak-credentials-clientid: "mgramseva-uat"
+  keycloak-credentials-clientid: "ifix-uat"
 
 # core >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
