@@ -1,5 +1,5 @@
 global:
-  domain: mgramseva-dwss.digit.org
+  domain: mgramseva-dwss.punjab.gov.in
   tracing-enabled: true
   namespace: mgramseva
   nodepool:
