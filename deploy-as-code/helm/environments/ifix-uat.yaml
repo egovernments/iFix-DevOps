@@ -69,6 +69,7 @@ cluster-configs:
         ifix-zuul: "http://ifix-zuul.ifix:8080/"
         ifix-department-entity-service: "http://ifix-department-entity-service.ifix:8080/"
         keycloak: "http://keycloak.ifix:8080/"
+        redis-host: "redis.ifix"
 
 ifix-master-data-service:
   server-context-path: "/ifix-master-data"
