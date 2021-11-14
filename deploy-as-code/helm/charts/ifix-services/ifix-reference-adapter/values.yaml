@@ -39,8 +39,15 @@ env: |
       configMapKeyRef:
         name: egov-service-host
         key: fiscal-event-service
-  - name: SPRING_REDIS_HOST
-    value: redis.backbone
+  - name: SPRING_REDIS_HOST  
+  {{- if index .Values "cluster-configs" "configmaps" "egov-service-host" "data" "redis-host" }}
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: redis-host   
+  {{- else }}
+    value: "redis.backbone"
+  {{- end }}   
   - name: SPRING_REDIS_PORT
     value: "6379"
   - name: SERVER_PORT
