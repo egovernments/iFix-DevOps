@@ -1,5 +1,5 @@
 global:
-  domain: ifix-uat.digit.org
+  domain: ifix-uat.psegs.in
   tracing-enabled: true
   namespace: ifix
   nodepool:
@@ -38,8 +38,8 @@ cluster-configs:
         db-url: "jdbc:postgresql://magramsewa-uat-db.cvisvjyknxm1.ap-south-1.rds.amazonaws.com:5432/ifix_uat_db"
         bpa-db-url: "jdbc:postgresql://magramsewa-uat-db.cvisvjyknxm1.ap-south-1.rds.amazonaws.com:5432/ifix_uat_db"
         erp-db-url: "jdbc:postgresql://magramsewa-uat-db.cvisvjyknxm1.ap-south-1.rds.amazonaws.com:5432/ifix_uat_db"
-        domain: "ifix-uat.digit.org"
-        egov-services-fqdn-name: "https://ifix-uat.digit.org/"
+        domain: "ifix-uat.psegs.in"
+        egov-services-fqdn-name: "https://ifix-uat.psegs.in/"
         egov-state-level-tenant-id: "pg"
         es-host: "elasticsearch-data-v1.ifix"
         es-indexer-host: "http://elasticsearch-data-v1.ifix:9200/"
@@ -103,11 +103,15 @@ mongodb-kafka-source-connector:
   kafka-topic: "fiscal-event-request-dereferenced"
 
 druid:
-  domain: druid-uat.digit.org
-  druids3: ifix-uat-assets
+  domain: druid-uat.psegs.in
+  storage: aws
+  aws:
+    druid_storage_type: s3
+    druid_storage_baseKey: druid/segments
+    druid_storage_bucket: ifix-uat-assets
 
 metabase:
-  domain: metabase-uat.digit.org
+  domain: metabase-uat.psegs.in
 
 # core >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
