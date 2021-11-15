@@ -162,12 +162,7 @@ master:
       valueFrom:
         secretKeyRef:
           name: jenkins-credentials
-          key: gitReadSshPrivateKey
-    - name: SLACK_TOKEN
-      valueFrom:
-        secretKeyRef:
-          name: jenkins-credentials
-          key: slackToken   
+          key: gitReadSshPrivateKey   
   usePodSecurityContext: true
   # Set runAsUser to 1000 to let Jenkins run as non-root user 'jenkins' which exists in 'jenkins/jenkins' docker image.
   # When setting runAsUser to a different value than 0 also set fsGroup to the same value:
@@ -416,12 +411,12 @@ master:
                   scm:
                     git:
                       credentialsId: "git_read"
-                      remote: "git@github.com:egovernments/CIOps.git"
+                      remote: "git@github.com:misdwss/CIOps.git"
                       traits:
                       - "gitBranchDiscovery"
       system-message: | 
         jenkins:                                
-          systemMessage: "Welcome to EGOV CI CD server.  This Jenkins is configured and managed as code."    
+          systemMessage: "Welcome to iFix CI CD server.  This Jenkins is configured and managed as code."    
 
       git-credentials: | 
         credentials:
@@ -481,21 +476,56 @@ master:
                   cps {
                       script("""library 'ci-libs'
               {{- if (eq $job.name "central-instance") }}            
-              deployer(repo:'git@github.com:egovernments/iFix-DevOps.git', branch: 'central-instance', helmDir: 'deploy-as-code/helm', environment: '{{ $job.name }}')""")
+              deployer(repo:'git@github.com:misdwss/iFix-DevOps.git', branch: 'central-instance', helmDir: 'deploy-as-code/helm', environment: '{{ $job.name }}')""")
                       sandbox() 
                     }
                 }
                 disabled(false)
               }
               {{- else if (eq $job.name "ifix-dev") }}            
-              deployer(repo:'git@github.com:egovernments/iFix-DevOps.git', branch: 'ifix', helmDir: 'deploy-as-code/helm', environment: '{{ $job.name }}')""")
+              deployer(repo:'git@github.com:misdwss/iFix-DevOps.git', branch: 'ifix', helmDir: 'deploy-as-code/helm', environment: '{{ $job.name }}')""")
+                      sandbox() 
+                    }
+                }
+                disabled(false)
+              }
+              {{- else if (eq $job.name "mgramseva-dev") }}            
+              deployer(repo:'git@github.com:misdwss/iFix-DevOps.git', branch: 'mgramseva', helmDir: 'deploy-as-code/helm', environment: '{{ $job.name }}')""")
+                      sandbox() 
+                    }
+                }
+                disabled(false)
+              }
+              {{- else if (eq $job.name "mgramseva-uat") }}            
+              deployer(repo:'git@github.com:misdwss/iFix-DevOps.git', branch: 'mgramseva', helmDir: 'deploy-as-code/helm', environment: '{{ $job.name }}')""")
+                      sandbox() 
+                    }
+                }
+                disabled(false)
+              }
+              {{- else if (eq $job.name "ifix-uat") }}            
+              deployer(repo:'git@github.com:misdwss/iFix-DevOps.git', branch: 'ifix', helmDir: 'deploy-as-code/helm', environment: '{{ $job.name }}')""")
+                      sandbox() 
+                    }
+                }
+                disabled(false)
+              }
+              {{- else if (eq $job.name "mgramseva-prod") }}            
+              deployer(repo:'git@github.com:misdwss/iFix-DevOps.git', branch: 'mgramseva', helmDir: 'deploy-as-code/helm', environment: '{{ $job.name }}')""")
+                      sandbox() 
+                    }
+                }
+                disabled(false)
+              }
+              {{- else if (eq $job.name "ifix-prod") }}            
+              deployer(repo:'git@github.com:misdwss/iFix-DevOps.git', branch: 'ifix', helmDir: 'deploy-as-code/helm', environment: '{{ $job.name }}')""")
                       sandbox() 
                     }
                 }
                 disabled(false)
               }
               {{- else }}
-              deployer(repo:'git@github.com:egovernments/iFix-DevOps.git', branch: 'master', helmDir: 'deploy-as-code/helm', environment: '{{ $job.name }}')""")
+              deployer(repo:'git@github.com:misdwss/iFix-DevOps.git', branch: 'master', helmDir: 'deploy-as-code/helm', environment: '{{ $job.name }}')""")
                       sandbox() 
                     }
                 }
