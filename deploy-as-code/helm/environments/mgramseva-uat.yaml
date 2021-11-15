@@ -1,5 +1,5 @@
 global:
-  domain: mgramseva-uat.digit.org
+  domain: mgramseva-uat.psegs.in
   tracing-enabled: true
   namespace: mgramseva
   nodepool:
@@ -96,7 +96,7 @@ cluster-configs:
         bpa-db-url: "jdbc:postgresql://magramsewa-uat-db.cvisvjyknxm1.ap-south-1.rds.amazonaws.com:5432/mgramseva_bpa_uat_db"
         erp-db-url: "jdbc:postgresql://magramsewa-uat-db.cvisvjyknxm1.ap-south-1.rds.amazonaws.com:5432/mgramseva_finance_uat_db"
         domain: "mgramseva-qa.egov.org.in"
-        egov-services-fqdn-name: "https://mgramseva-uat.digit.org/"
+        egov-services-fqdn-name: "https://mgramseva-uat.psegs.in/"
         egov-state-level-tenant-id: "pb"
         es-host: "elasticsearch-data-v1.mgramseva"
         es-indexer-host: "http://elasticsearch-data-v1.mgramseva:9200/"
