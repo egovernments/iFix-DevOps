@@ -15,6 +15,9 @@ metadata:
   annotations:
 {{ toYaml . | indent 4 }}
 {{- end }}
+{{- if .Values.router.ingress.additionalAnnotations }}                                   
+  {{- tpl  .Values.router.ingress.additionalAnnotations . | nindent 4 }}
+{{- end }} 
 spec:
   tls:
   - hosts:

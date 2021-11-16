@@ -109,6 +109,11 @@ druid:
     druid_storage_type: s3
     druid_storage_baseKey: druid/segments
     druid_storage_bucket: ifix-uat-assets
+router:
+  ingress:
+    additionalAnnotations: |
+      nginx.ingress.kubernetes.io/auth-signin:  https://$host/oauth2/start?rd=$escaped_request_uri
+      nginx.ingress.kubernetes.io/auth-url:     https://$host/oauth2/auth  
 
 metabase:
   domain: metabase-uat.psegs.in

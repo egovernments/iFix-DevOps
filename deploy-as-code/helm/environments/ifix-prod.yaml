@@ -108,11 +108,24 @@ druid:
     druid_storage_type: s3
     druid_storage_baseKey: druid/segments
     druid_storage_bucket: ifix-prod-assets
+router:
+  ingress:
+    additionalAnnotations: |
+      nginx.ingress.kubernetes.io/auth-signin:  https://$host/oauth2/start?rd=$escaped_request_uri
+      nginx.ingress.kubernetes.io/auth-url:     https://$host/oauth2/auth     
 
 metabase:
   domain: metabase-dwss.psegs.in
 
-# core >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+# Oauth2=proxy >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+oauth2-proxy:
+  namespaces: ifix
+  config:
+    configFile: |-
+      email_domains = [ "*" ]
+      github_org = "misdwss"
+      github_team = "mgramsewa-prod,devops-team"
+      upstreams = [ "file:///dev/null" ]
 
 # docs >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 redoc:
