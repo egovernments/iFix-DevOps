@@ -397,14 +397,6 @@ fluent-bit:
   egov-services-log-topic: "egov-services-logs"
   egov-infra-log-topic: "egov-infra-logs"
 
-oauth2-proxy:
-  config:
-    configFile: |-
-      email_domains = [ "*" ]
-      github_org = "egovernments"
-      github_team = "micro-service-dev,devops"
-      upstreams = [ "file:///dev/null" ]
-
 grafana:
   initContainers:
     gitSync:
