@@ -113,7 +113,16 @@ druid:
 metabase:
   domain: metabase-uat.psegs.in
 
-# core >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+# Oauth2-proxy >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+oauth2-proxy:
+  namespaces: ifix
+  config:
+    configFile: |-
+      email_domains = [ "*" ]
+      github_org = "misdwss"
+      github_team = "mgramsewa-uat,devops-team"
+      upstreams = [ "file:///dev/null" ]
 
 # docs >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 redoc:
