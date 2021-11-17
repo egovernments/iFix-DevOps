@@ -211,8 +211,8 @@ cluster-configs:
         vehicle: "http://vehicle.mgramseva:8080"
         echallan-calculator: http://echallan-calculator.mgramseva:8080/
         echallan-services: http://echallan-services.mgramseva:8080/
-        keycloak: "https://ifix-uat.digit.org/"
-        fiscal-event-service: "https://ifix-uat.digit.org/"
+        keycloak: "https://ifix-uat.psegs.in/"
+        fiscal-event-service: "https://ifix-uat.psegs.in/"
         ifix-reference-adapter: "http://ifix-reference-adapter.mgramseva:8080/"
         redis-host: "redis.mgramseva"
 
