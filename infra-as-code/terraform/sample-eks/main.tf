@@ -1,6 +1,6 @@
 terraform {
   backend "s3" {
-    bucket = "ifix-dev-terraform-state-1"
+    bucket = "ifix-test-terraform-state"
     key = "terraform"
     region = "ap-south-1"
   }
@@ -11,6 +11,22 @@ module "network" {
   vpc_cidr_block     = "${var.vpc_cidr_block}"
   cluster_name       = "${var.cluster_name}"
   availability_zones = "${var.network_availability_zones}"
+}
+
+module "documentdb" {
+  source                        = "../modules/db/documentdb/aws"
+  subnet_ids                    = "${module.network.private_subnets}"
+  vpc_security_group_ids        = ["${module.network.rds_db_sg_id}"]
+  instance_class                = "db.t3.medium"
+  engine_version                = "4.0.0"
+  backup_retention_days         = "7"
+  administrator_login           = "egovdev"
+  administrator_login_password  = "${var.db_password}"
+  environment                   = "${var.cluster_name}"
+  cluster_name                  = "${var.cluster_name}"  
+  depends_on = [
+    module.network
+  ] 
 }
 
 
@@ -171,5 +187,6 @@ module "node-group" {
   node_group_max_size = 1
   node_group_desired_size = 1
 }  
+
 
 

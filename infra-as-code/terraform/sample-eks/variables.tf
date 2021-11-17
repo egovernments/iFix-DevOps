@@ -19,7 +19,7 @@ variable "availability_zones" {
 }
 
 variable "node_pool_zone" {
- default = "ap-south-1a"  
+ default = ["ap-south-1a"] 
 }
 
 variable "kubernetes_version" {
@@ -45,6 +45,12 @@ variable "ssh_key_name" {
 variable "iam_keybase_user" {
  default = "keybase:egovterraform"
 }
+
+variable "db_password" {}
+
+
+
+
 
 
 

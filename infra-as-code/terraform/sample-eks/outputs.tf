@@ -60,3 +60,7 @@ output "admin_secret_key_cmd" {
 output "user_secret_key_cmd" {
   value = "${map(module.iam_user_user.iam_access_key_id, module.iam_user_user.keybase_secret_key_decrypt_command)}"
 }
+
+output "mongo_uri" {
+  value = "${module.documentdb.mongo_uri}"
+}
