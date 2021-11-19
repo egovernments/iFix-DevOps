@@ -1,5 +1,6 @@
 global:
   domain: ifix-dev.digit.org
+  containerRegistry: dwssio
   tracing-enabled: true
   namespace: ifix
   nodepool:
