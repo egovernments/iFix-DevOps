@@ -1,5 +1,6 @@
 global:
   domain: ifix-qa.ifix.org.in
+  containerRegistry: dwssio
   tracing-enabled: true
   namespace: ifix
   nodepool:
