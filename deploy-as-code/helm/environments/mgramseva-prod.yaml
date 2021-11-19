@@ -1,5 +1,6 @@
 global:
   domain: mgramseva-dwss.punjab.gov.in
+  containerRegistry: dwssio
   tracing-enabled: true
   namespace: mgramseva
   nodepool:
