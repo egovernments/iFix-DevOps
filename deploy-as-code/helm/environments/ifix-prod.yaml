@@ -1,5 +1,6 @@
 global:
   domain: ifix-dwss.psegs.in
+  containerRegistry: dwssio
   tracing-enabled: true
   namespace: ifix
   nodepool:
@@ -8,7 +9,7 @@ global:
 
 cluster-configs:
   namespaces:
-    create: true
+    create: false
     values:
       [ 
         ifix, 
