@@ -1,5 +1,5 @@
 global:
-  domain: ifix-builds.digit.org
+  domain: ifix-builds.psegs.in
 cluster-configs:
   namespaces:
     create: false
