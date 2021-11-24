@@ -144,6 +144,7 @@ cluster-configs:
         location: "http://location.mgramseva:8080/"
         property-services: "http://property-services.mgramseva:8080/"
         pt-calculator-v2: "http://pt-calculator-v2.mgramseva:8080/"
+        pt-services-v2: "http://pt-services-v2.mgramseva:8080/"
         pdf-service: "http://pdf-service.mgramseva:8080/"
         report: "http://report.mgramseva:8080/"
         user-otp: "http://user-otp:8080/"
