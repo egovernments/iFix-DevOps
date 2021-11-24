@@ -143,6 +143,7 @@ cluster-configs:
         es-client: "http://elasticsearch-data-v1.es-cluster.mgramseva:9200"       
         location: "http://location.mgramseva:8080/"
         property-services: "http://property-services.mgramseva:8080/"
+        pt-calculator-v2: "http://pt-calculator-v2.mgramseva:8080/"
         pdf-service: "http://pdf-service.mgramseva:8080/"
         report: "http://report.mgramseva:8080/"
         user-otp: "http://user-otp:8080/"
