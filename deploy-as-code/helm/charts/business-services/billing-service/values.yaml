@@ -129,6 +129,8 @@ env: |
     value: seq_egbs_glcodemaster
   - name: BS_TAXPERIOD_SEQ_NAME
     value: seq_egbs_taxperiod
+  - name: BS_BUSINESSCODE_DEMAND_UPDATEURL
+    value: {{ index .Values "demand.updateurl" | quote }}
   - name: BS_BUSINESSSERVICEDETAIL_SEQ_NAME
     value: seq_egbs_business_srvc_details
   - name: JAVA_ARGS

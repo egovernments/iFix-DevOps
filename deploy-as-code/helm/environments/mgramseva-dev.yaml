@@ -155,6 +155,8 @@ cluster-configs:
 
 billing-service:
   memory_limits: 512Mi
+  demand.updateurl: '{"WS":"http://ws-calculator.mgramseva:8080/ws-calculator/waterCalculator/_updateDemand"}'
+  
 
 ws-services:
   is-external-workflow-enabled: "true"
