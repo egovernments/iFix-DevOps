@@ -126,6 +126,7 @@ cluster-configs:
         dashboard-ingest: http://dashboard-ingest.mgramseva:8080/        
         egf-master: "http://egf-master.mgramseva:8080/"
         egf-instrument: "http://egf-instrument.mgramseva:8080/"
+        egov-common-masters: "http://egov-common-masters.mgramseva:8080/"
         egov-enc-service: "http://egov-enc-service.mgramseva:8080/"
         egov-accesscontrol: "http://egov-accesscontrol.mgramseva:8080/"
         egov-user: "http://egov-user.mgramseva:8080/"
