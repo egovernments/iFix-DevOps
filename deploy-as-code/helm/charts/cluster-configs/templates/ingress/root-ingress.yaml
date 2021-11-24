@@ -5,7 +5,8 @@ metadata:
   annotations:
   {{- if ne .appRoot ""}}
     nginx.ingress.kubernetes.io/app-root: /{{ .appRoot }}
-  {{- end }}    
+  {{- end }} 
+    nginx.ingress.kubernetes.io/limit-rpm: 600
     cert-manager.io/cluster-issuer: {{ index . "cert-issuer" }}
   name: {{ .name }}
   namespace: {{ .namespace }}
