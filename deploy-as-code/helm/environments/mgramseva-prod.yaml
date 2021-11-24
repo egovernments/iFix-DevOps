@@ -122,26 +122,15 @@ cluster-configs:
     egov-service-host:
       namespace: [mgramseva]
       data:
-        asset-services: "http://asset-services.mgramseva:8080/"
-        asset-services-maha: "http://asset-services-maha.mgramseva:8080/"
         billing-service: "http://billing-service.mgramseva:8080/"
         collection-services: "http://collection-services.mgramseva:8080/"
-        collection-masters: "http://collection-masters.mgramseva:8080/"
-        collection-search-indexer: "http://collection-search-indexer.mgramseva:8080/"
-        citizen-indexer: "http://citizen-indexer.mgramseva:8080/"
-        citizen-services: "http://citizen-services.mgramseva:8080/"
         dashboard-analytics: http://dashboard-analytics.mgramseva:8080/
         dashboard-ingest: http://dashboard-ingest.mgramseva:8080/
-        demand-services: "http://demand-services.mgramseva:8080/"
-        data-sync-employee: "http://data-sync-employee.mgramseva:8080/"
-        egov-common-masters: "http://egov-common-masters.mgramseva:8080/"
-        egf-masters: "http://egf-masters.mgramseva:8080/"
         egf-master: "http://egf-master.mgramseva:8080/"
         egf-instrument: "http://egf-instrument.mgramseva:8080/"
+        egov-common-masters: "http://egov-common-masters.mgramseva:8080/"
         egf-voucher: "http://egf-voucher.mgramseva:8080/"
-        egf-bill: "http://egf-bill.mgramseva:8080/"
         egov-enc-service: "http://egov-enc-service.mgramseva:8080/"
-        egf-voucher-workflow: "http://egf-voucher-workflow.mgramseva:8080/"
         egov-accesscontrol: "http://egov-accesscontrol.mgramseva:8080/"
         egov-user: "http://egov-user.mgramseva:8080/"
         egov-user-egov: "http://egov-user.mgramseva:8080/"
@@ -150,70 +139,29 @@ cluster-configs:
         egov-localization: "http://egov-localization.mgramseva:8080/"
         egov-idgen: "http://egov-idgen.mgramseva:8080/"
         egov-otp: "http://egov-otp.mgramseva:8080/"
-        egov-common-workflows: "http://egov-common-workflows.mgramseva:8080/"
         egov-mdms-service: "http://egov-mdms-service.mgramseva:8080/"
-        egov-mdms-service-test: "http://egov-mdms-service-test.mgramseva:8080/"
-        egov-mdms-create: "http://egov-mdms-create.mgramseva:8080/"
-        egov-eis: "http://egov-eis.mgramseva:8080/"
-        egov-workflow: "http://egov-workflow.mgramseva:8080/"
         egov-workflow-v2: "http://egov-workflow-v2.mgramseva:8080/"
         egov-searcher: "http://egov-searcher.mgramseva:8080/"
-        egov-data-uploader: "http://egov-data-uploader.mgramseva:8080/"
         egov-indexer: "http://egov-indexer.mgramseva:8080/"
         egov-hrms: "http://egov-hrms.mgramseva:8080/"
         es-client: "http://elasticsearch-data-v1.es-cluster.mgramseva:9200"
-        hr-masters: "http://hr-masters.mgramseva:8080/"
-        hr-employee: "http://hr-employee.mgramseva:8080/"
-        hr-masters-v2: "http://hr-masters-v2.mgramseva:8080/"
-        hr-employee-v2: "http://hr-employee-v2.mgramseva:8080/"
-        hr-attendance: "http://hr-attendance.mgramseva:8080/"
-        hr-leave: "http://hr-leave.mgramseva:8080/"
-        hr-employee-movement: "http://hr-employee-movement.mgramseva:8080/"
-        inventory-services: "http://inventory-services.mgramseva:8080/"
-        lams-services: "http://lams-services.mgramseva:8080/"
-        lcms-workflow: "http://lcms-workflow.mgramseva:8080/"
-        lcms-services: "http://lcms-services.mgramseva:8080/"
         location: "http://location.mgramseva:8080/"
-        performance-assessment: "http://performance-assessment.mgramseva:8080/"
-        pt-property: "http://pt-property.mgramseva:8080/"
-        pt-workflow: "http://pt-workflow.mgramseva:8080/"
-        pt-tax-enrichment: "http://pt-tax-enrichment.mgramseva:8080/"
-        pt-calculator: "http://pt-calculator.mgramseva:8080/"
         pt-calculator-v2: "http://pt-calculator-v2.mgramseva:8080/"
         pt-services-v2: "http://pt-services-v2.mgramseva:8080/"
         property-services: "http://property-services.mgramseva:8080/"
-        pgr-master: "http://pgr-master.mgramseva:8080/"
-        pgr-rest: "http://pgr-rest.mgramseva:8080/"
         pdf-service: "http://pdf-service.mgramseva:8080/"
         report: "http://report.mgramseva:8080/"
-        swm-services: "http://swm-services.mgramseva:8080/"
-        tenant: "http://tenant.mgramseva:8080/"
-        tl-masters: "http://tl-masters.mgramseva:8080/"
-        tl-services: "http://tl-services.mgramseva:8080/"
-        tl-workflow: "http://tl-workflow.mgramseva:8080/"
-        tl-indexer: "http://tl-indexer.mgramseva.:8080/"
-        tl-calculator: "http://tl-calculator.mgramseva:8080/"
         user-otp: "http://user-otp:8080/"
-        firenoc-services: "http://firenoc-services:8080/"
-        firenoc-calculator: "http://firenoc-calculator:8080/"
         egov-apportion-service: "http://egov-apportion-service:8080/"
-        bpa-services: "http://bpa-services.mgramseva:8080/"
-        bpa-calculator: "http://bpa-calculator.mgramseva:8080/"
-        rainmaker-pgr: "http://rainmaker-pgr:8080/"
         ws-calculator: "http://ws-calculator.mgramseva:8080/"
         ws-services: "http://ws-services.mgramseva:8080/"
-        sw-services: "http://sw-services.mgramseva:8080/"
-        sw-calculator: "http://sw-calculator.mgramseva:8080/"
-        noc-services: "http://noc-services.mgramseva:8080/"
-        land-services: "http://land-services.mgramseva:8080/"
         egov-url-shortening: "http://egov-url-shortening:8080/"
         minio-url: "https://minio-staging.digit.org/"
         vendor: "http://vendor.mgramseva:8080"
-        vehicle: "http://vehicle.mgramseva:8080"
         echallan-calculator: http://echallan-calculator.mgramseva:8080/
         echallan-services: http://echallan-services.mgramseva:8080/
-        keycloak: "https://ifix-qa.ifix.org.in/"
-        fiscal-event-service: "https://ifix-qa.ifix.org.in/"
+        keycloak: "https://ifix-dwss.psegs.in/"
+        fiscal-event-service: "https://ifix-dwss.psegs.in/"
         ifix-reference-adapter: "http://ifix-reference-adapter.mgramseva:8080/"
         redis-host: "redis.mgramseva"
 
@@ -226,9 +174,6 @@ ifix-reference-adapter:
   keycloak-credentials-clientid: "mgramseva-qa"
 
 # core >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-egov-common-workflows:
-  db-url: "jdbc:postgresql://egov-dev-db.ctm6jbmr5mnj.ap-south-1.rds.amazonaws.com:5432/egov_staging_db?currentSchema=egov_common_workflows"
 
 egov-filestore:
   volume: /opt/eGov/filestore
@@ -266,6 +211,12 @@ egov-notification-sms:
   sms-destination-mobile-req-param-name: "mobilenumber"
   sms-message-req-param-name: "message"
   sms-error-codes: "401,403,404,405,406,407,408,409,410,411,412,413,414"
+  sms.verify.certificate: "false"
+  sms.msg.append: ""
+  sms.provider.entityid: "1001842650153206278"
+  sms.default.tmplid: "1"
+  sms.debug.msggateway: "true"
+  sms.enabled: "true"
 
 egov-user:
   replicas: 2
@@ -299,7 +250,7 @@ egov-mdms-service:
   initContainers:
     gitSync:
       repo: "git@github.com:misdwss/mdms-mgramseva"
-      branch: "QA"
+      branch: "master"
   mdms-folder: "mdms-mgramseva"
   java-args: -Dspring.profiles.active=monitoring
   masters-config-url: "file:///work-dir/mdms-mgramseva/master-config.json"
@@ -310,7 +261,7 @@ egov-indexer:
   initContainers:
     gitSync:
       repo: "git@github.com:misdwss/config-mgramseva"
-      branch: "QA"
+      branch: "master"
   egov-indexer-yaml-repo-path: "file:///work-dir/config-mgramseva/egov-indexer/billingservices-indexer.yml,file:///work-dir/config-mgramseva/egov-indexer/collection-indexer.yml,file:///work-dir/config-mgramseva/egov-indexer/egov-telemetry-indexer.yml,file:///work-dir/config-mgramseva/egov-indexer/egov-uploader-indexer.yml,file:///work-dir/config-mgramseva/egov-indexer/error-queue.yml,file:///work-dir/config-mgramseva/egov-indexer/finance-rolloutadotpion-indexer.yml,file:///work-dir/config-mgramseva/egov-indexer/payment-indexer.yml,file:///work-dir/config-mgramseva/egov-indexer/rainmaker-pgr-indexer.yml,file:///work-dir/config-mgramseva/egov-indexer/rainmaker-pt-indexer.yml,file:///work-dir/config-mgramseva/egov-indexer/rainmaker-tl-indexer.yml,file:///work-dir/config-mgramseva/egov-indexer/chatbot-telemetry.yaml,file:///work-dir/config-mgramseva/egov-indexer/water-service.yml,file:///work-dir/config-mgramseva/egov-indexer/water-services-meter.yml,file:///work-dir/config-mgramseva/egov-indexer/sewerage-service.yml,file:///work-dir/config-mgramseva/egov-indexer/property-services.yml,file:///work-dir/config-mgramseva/egov-indexer/egov-vendor.yaml"
 
 
@@ -325,7 +276,7 @@ egov-persister:
   initContainers:
     gitSync:
       repo: "git@github.com:misdwss/config-mgramseva"
-      branch: "QA"
+      branch: "master"
 
 
 echallan-services:
@@ -337,13 +288,13 @@ egov-data-uploader:
   initContainers:
     gitSync:
       repo: "git@github.com:misdwss/config-mgramseva"
-      branch: "QA"
+      branch: "master"
 
 pdf-service:
   initContainers:
     gitSync:
       repo: "git@github.com:misdwss/config-mgramseva"
-      branch: "QA"
+      branch: "master"
   data-config-urls: "file:///work-dir/config-mgramseva/pdf-service/data-config/ws-bill.json,file:///work-dir/config-mgramseva/pdf-service/data-config/ws-bill-nm.json,file:///work-dir/config-mgramseva/pdf-service/data-config/ws-receipt.json,file:///work-dir/config-mgramseva/pdf-service/data-config/ws-receipt-nm.json"
   format-config-urls: "file:///work-dir/config-mgramseva/pdf-service/format-config/ws-bill.json,file:///work-dir/config-mgramseva/pdf-service/format-config/ws-bill-nm.json,file:///work-dir/config-mgramseva/pdf-service/format-config/ws-receipt.json,file:///work-dir/config-mgramseva/pdf-service/format-config/ws-receipt-nm.json"
 
@@ -352,7 +303,7 @@ egov-searcher:
   initContainers:
     gitSync:
       repo: "git@github.com:misdwss/config-mgramseva"
-      branch: "QA"
+      branch: "master"
 
 
 # web >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -392,7 +343,7 @@ dashboard-analytics:
   initContainers:
     gitSync:
       repo: "git@github.com:misdwss/config-mgramseva"
-      branch: "QA"
+      branch: "master"
 
 dashboard-ingest:
   topic-incoming-collection: "dss-collection-update"
@@ -402,7 +353,7 @@ dashboard-ingest:
   initContainers:
     gitSync:
       repo: "git@github.com:misdwss/config-mgramseva"
-      branch: "QA"
+      branch: "master"
 
 nginx-ingress:
   replicas: 1
@@ -469,17 +420,6 @@ zuul:
   egov-mixed-mode-endpoints-whitelist: "/pgr/seva/v1/_create,/pgr/seva/v1/_search,/pgr/seva/v1/_count,/workflow/history/v1/_search,/filestore/v1/files/id,/filestore/v1/files,/filestore/v1/files/tag,/egov-common-masters/departments/_search,/pt-property/property/propertytypes/_search,/pt-property/properties/_search,/pt-property/property/usages/_search,/egov-idgen/id/_generate,/egf-masters/financialyears/_search,/egov-common-workflows/process/_start,/egov-common-workflows/process/_search,/egov-common-workflows/tasks,/egov-common-workflows/tasks/{id}/_update,/user/_search,/billing-service/demand/_dues,/billing-service/bill/_generate,/billing-service/demand/_create,/wcms/masters/waterchargesconfig/_search,/wcms/masters/usagetypes/_search,/wcms/masters/pipesizes/_search,/wcms-connection/connection/_getbillingtypes,/wcms-connection/connection/_getconnectiontypes,/wcms/masters/sourcetypes/_search,/wcms/masters/supplytypes/_search,/wcms/masters/storagereservoirs/_search,/wcms/masters/treatmentplants/_search,/wcms/masters/documenttypes-applicationtypes/_search,/wcms/masters/donations/_search,/wcms/masters/nonmeterwaterrates/_search,/wcms-connection/connection/_create,/egov-common-masters/genders/_search,/egov-common-workflows/designations/_search,/access/v1/actions/mdms/_get,/tl-services/v1/BPAREG/_create,/tl-services/v1/BPAREG/_update,/tl-calculator/v1/BPAREG/_getbill,/property-services/property/_search,/billing-service/bill/v2/_search,/egov-location/location/v11/boundarys/_search,/pg-service/transaction/v1/_create,/collection-services/payments/_search,/pdf-service/v1/_create,/billing-service/bill/v2/_fetchbill,/pg-service/transaction/v1/_update,/ws-services/wc/_bulkonboard,/ws-services/wc/_submitfeedback,/collection-services/payments/WS/_search"
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-# hr-2.0 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-hr-masters-v2:
-  db-url: "jdbc:postgresql://egov-dev-db.ctm6jbmr5mnj.ap-south-1.rds.amazonaws.com:5432/egov_staging_db?currentSchema=hr_masters_v2_schema"
-
-hr-employee-v2:
-  db-url: "jdbc:postgresql://egov-dev-db.ctm6jbmr5mnj.ap-south-1.rds.amazonaws.com:5432/egov_staging_db?currentSchema=hr_employee_v2_schema"
-
-# collections >>>>>>>>>>>>>>>>>>>>>>>>>>>
-collection-masters:
-  db-url: "jdbc:postgresql://egov-dev-db.ctm6jbmr5mnj.ap-south-1.rds.amazonaws.com:5432/egov_staging_db"
 
 collection-services:
   receiptnumber-servicebased: "true"
@@ -487,20 +427,6 @@ collection-services:
   receipt-search-defaultsize: 30
   user-create-enabled: "true"
 
-collection-receipt-voucher-consumer:
-  citya-erp-host: "https://citya-uat.egovernments.org/"
-  cityb-erp-host: "https://cityb-uat.egovernments.org/"
-  cityc-erp-host: "https://cityc-uat.egovernments.org/"
-  cityd-erp-host: "https://cityd-uat.egovernments.org/"
-  citye-erp-host: "https://citye-uat.egovernments.org/"
-
-
-
-finance-collections-voucher-consumer:
-  erp-env-name: ""
-  erp-domain-name: "digit.org"
-
-# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 # reportinfra >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 report:
@@ -508,31 +434,12 @@ report:
   initContainers:
     gitSync:
       repo: "git@github.com:misdwss/config-mgramseva"
-      branch: "QA"
+      branch: "master"
   report-locationsfile-path: "file:///work-dir/configs/reports/reportFileLocationsv1.txt"
   spring-datasource-tomcat-max-active: 5
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 # rainmaker-pgr >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-rainmaker-pgr:
-  notification-sms-enabled: "false"
-  notification-email-enabled: "false"
-  new-complaint-enabled: "true"
-  reassign-complaint-enabled: "true"
-  reopen-complaint-enabled: "true"
-  comment-by-employee-notif-enabled: "false"
-  notification-allowed-status: "open,assigned,rejected,resolved"
-
-pgr-services:
-  notification-sms-enabled: "true"
-  notification-email-enabled: "false"
-  new-complaint-enabled: "true"
-  reassign-complaint-enabled: "true"
-  reopen-complaint-enabled: "true"
-  comment-by-employee-notif-enabled: "false"
-  notification-allowed-status: "open,assigned,rejected,resolved"
-  java-enable-debug: "true"
-  time-before-closing-complaint: "3600000"
 
 pt-calculator-v2:
   logging-level: "DEBUG"
@@ -577,29 +484,9 @@ jaeger:
   collector:
     samplingConfig: |
       {
-        "service_strategies": [
-          {
-            "service": "tl-services",
-            "type": "probabilistic",
-            "param": 0.5
-          },
-          {
-            "service": "tl-calculator",
-            "type": "probabilistic",
-            "param": 0.5
-          },
+        "service_strategies": [          
           {
             "service": "report-service",
-            "type": "probabilistic",
-            "param": 0.5
-          },
-          {
-            "service": "pt-services-v2",
-            "type": "probabilistic",
-            "param": 0.5
-          },
-          {
-            "service": "pt-calculator-v2",
             "type": "probabilistic",
             "param": 0.5
           },
@@ -614,17 +501,7 @@ jaeger:
             "param": 0.2
           },
           {
-            "service": "egov-data-uploader",
-            "type": "probabilistic",
-            "param": 0.2
-          },
-          {
             "service": "egov-hrms",
-            "type": "probabilistic",
-            "param": 0.5
-          },
-          {
-            "service": "rainmaker-pgr",
             "type": "probabilistic",
             "param": 0.5
           }
@@ -633,6 +510,7 @@ jaeger:
           "type": "probabilistic",
           "param": 0.05
         }
+      
       }
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
@@ -804,22 +682,10 @@ pgadmin-config:
   db-admin-username: "egov_qa"
   db-read-username: "egovqa_readonly"
   port: "5432"
-  env: "QA"
+  env: "master"
   maintenance-db-name: "egov_qa_pb_db"
 
 #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-
-# egov-wordpress-portal >>>>>>>>>>>>>>>>>
-
-egov-wordpress-portal:
-  replicas: 1
-  images:
-    - egovio/wordpress
-  db-host: prod-egov.mysql.database.azure.com
-  db-username: SUXPxnqcJGuM4ou3u3cPnUlFz8Z6nCRrjOKLt7t3D51JRc/Gepwka4zii7e7dw+dSUXPxnqcJGuM4ou3u3cPnUlFz8Z6nCRrjOKLt7t3D51JRc/Gepwka4zii7e7dw+dSUXPxnqcJGuM4ou3u3cPnUlFz8Z6nCRrjOKLt7t3D50kojRv5BatVU6B2oxjr2IlhnQR4foH7GxtU1trgfom5A==
-  db-password: SUXPxnqcJGuM4ou3u3cPnUlFz8Z6nCRrjOKLt7t3D51JRc/Gepwka4zii7e7dw+dSUXPxnqcJGuM4ou3u3cPnUlFz8Z6nCRrjOKLt7t3D51JRc/Gepwka4zii7e7dw+dSUXPxnqcJGuM4ou3u3cPnUlFz8Z6nCRrjOKLt7t3D50GzpQL2kP76wJL2mW+XFJrKn7KGgDz7lV6FZN/e8IPEg==
-  db-name: egov_wp_portal_db
-  wordpress_siteurl: http://qa.egovernments.org
 
 # fluent-bit >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 fluent-bit:
@@ -852,7 +718,7 @@ grafana:
     gitSync:
       enabled: true
       repo: "git@github.com:misdwss/config-mgramseva"
-      branch: "QA"
+      branch: "master"
       
 minio:
   mode: distributed
@@ -873,34 +739,6 @@ minio:
     hostName: minio-staging.digit.org
 
 
-# eGov-eDCR Tenants
-edcrTenants: |
-  common.domain.name=staging.digit.org
-  tenant.staging.digit.org=state
-  client.id=staging
-  tenant.citya.staging.digit.org=citya
-  tenant.cityb.staging.digit.org=cityb
-  tenant.cityc.staging.digit.org=cityc
-  tenant.cityd.staging.digit.org=cityd
-  tenant.citye.staging.digit.org=citye
-  collection.debitaccounthead.client.impl.class=org.egov.collection.integration.services.DebitAccountHeadDetailsServiceImpl
-
-# eGov-finance Tenants
-financeTenants: |
-  tenant.citya.digit.org=citya
-  tenant.cityb.digit.org=cityb
-  location.user.role=Collection Operator
-  collection.debitaccounthead.client.impl.class=org.egov.collection.integration.services.DebitAccountHeadDetailsServiceImpl
-
-egov-finance:
-  dev_mode: true
-  filestore_beanname: microDiskFileStoreService
-
-wordpress:
-  persistence:
-    enabled: true
-    aws:
-      volumeId: "vol-0aea8723e6fb12e3d"
 
   ingress:
     hostName: portal.egov.org.in    
