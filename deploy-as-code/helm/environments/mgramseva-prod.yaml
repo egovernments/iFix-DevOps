@@ -158,6 +158,7 @@ cluster-configs:
         egov-url-shortening: "http://egov-url-shortening:8080/"
         minio-url: "https://minio-staging.digit.org/"
         vendor: "http://vendor.mgramseva:8080"
+        vehicle: "http://vehicle.mgramseva:8080"
         echallan-calculator: http://echallan-calculator.mgramseva:8080/
         echallan-services: http://echallan-services.mgramseva:8080/
         keycloak: "https://ifix-dwss.psegs.in/"
