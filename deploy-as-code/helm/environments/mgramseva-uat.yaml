@@ -122,6 +122,7 @@ cluster-configs:
       data:
         billing-service: "http://billing-service.mgramseva:8080/"
         collection-services: "http://collection-services.mgramseva:8080/"
+        demand-services: "http://demand-services.mgramseva:8080/"
         dashboard-analytics: http://dashboard-analytics.mgramseva:8080/
         dashboard-ingest: http://dashboard-ingest.mgramseva:8080/        
         egf-master: "http://egf-master.mgramseva:8080/"
