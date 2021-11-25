@@ -1,6 +1,6 @@
 global:
   domain: mgramseva-dev.digit.org
-  containerRegistry: dwssio
+  containerRegistry: egovio
   tracing-enabled: true
   namespace: mgramseva
   nodepool:
