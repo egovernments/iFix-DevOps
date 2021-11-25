@@ -171,7 +171,7 @@ billing-service:
 ws-services:
   is-external-workflow-enabled: "true"
 ifix-reference-adapter:
-  keycloak-credentials-clientid: "mgramseva-qa"
+  keycloak-credentials-clientid: "mgram-prod"
 
 # core >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
