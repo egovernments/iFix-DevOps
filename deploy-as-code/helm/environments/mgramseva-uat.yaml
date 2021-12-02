@@ -201,7 +201,7 @@ egov-notification-sms:
   sms.provider.requestType: "POST"
   sms.provider.contentType:  "application/json"
   sms-config-map: "{'username':'$username', 'pin': '$password', 'signature':'$senderid', 'mnumber':'$mobileno', 'message':'$message', 'smsservicetype':'unicodemsg', 'myParam': '$extraParam' , 'messageType': '$mtype'}"
-  sms-gateway-to-use: "NIC"
+  sms-gateway-to-use: "Console"
   sms-sender: "PBDWSS"
   sms.senderid: "PBDWSS"
   sms-sender-requesttype: "GET"
