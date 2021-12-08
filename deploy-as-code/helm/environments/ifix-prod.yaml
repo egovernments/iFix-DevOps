@@ -108,6 +108,7 @@ router:
 
 metabase:
   domain: metabase-dwss.psegs.in
+  siteUrl: metabase-dwss.psegs.in
 
 # Oauth2=proxy >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 oauth2-proxy:

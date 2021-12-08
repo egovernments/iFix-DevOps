@@ -111,6 +111,7 @@ router:
 
 metabase:
   domain: metabase-uat.psegs.in
+  siteUrl: metabase-uat.psegs.in
 
 # Oauth2-proxy >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 

@@ -108,6 +108,7 @@ druid:
 
 metabase:
   domain: metabase-dev.digit.org
+  siteUrl: metabase-dev.ifix.org.in
 
 # core >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
