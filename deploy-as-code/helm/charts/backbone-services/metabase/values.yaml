@@ -61,7 +61,7 @@ password:
   complexity: normal
   length: 6
 
-timeZone: IST
+timeZone: UTC
 emojiLogging: true
 # javaOpts:
 # pluginsDirectory: plugins
