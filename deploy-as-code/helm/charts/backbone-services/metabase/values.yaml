@@ -61,11 +61,11 @@ password:
   complexity: normal
   length: 6
 
-timeZone: UTC
+timeZone: IST
 emojiLogging: true
 # javaOpts:
 # pluginsDirectory: plugins
-# siteUrl:
+siteUrl:
 
 session: {}
   # maxSessionAge:
