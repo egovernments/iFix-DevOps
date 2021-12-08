@@ -97,6 +97,7 @@ druid:
 
 metabase:
   domain: metabase-qa.ifix.org.in
+  siteUrl: metabase-qa.ifix.org.in
 
 
 # redis >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
