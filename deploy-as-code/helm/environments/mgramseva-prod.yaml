@@ -169,6 +169,7 @@ billing-service:
   demand.updateurl: '{"WS":"http://ws-calculator.mgramseva:8080/ws-calculator/waterCalculator/_updateDemand"}'
   
 ws-services:
+  replicas: 2
   is-external-workflow-enabled: "true"
 ifix-reference-adapter:
   keycloak-credentials-clientid: "mgram-prod"
@@ -268,6 +269,7 @@ egov-indexer:
 
 
 egov-pg-service:
+  replicas: 2
   axis: true
 
 egov-persister:
@@ -289,9 +291,9 @@ property-services:
  
 ws-calculator:
  replicas: 2
- 
-ws-services:
- replicas: 2
+
+egov-localization:
+  replicas: 2
 
 pdf-service:
   initContainers:
@@ -389,6 +391,7 @@ zuul:
 
 
 collection-services:
+  replicas: 2
   receiptnumber-servicebased: "true"
   receipt-search-paginate: "true"
   receipt-search-defaultsize: 30
