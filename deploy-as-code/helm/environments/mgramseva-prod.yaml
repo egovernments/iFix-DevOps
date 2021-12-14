@@ -170,6 +170,7 @@ billing-service:
   
 ws-services:
   replicas: 2
+  memory_limits: 512Mi
   is-external-workflow-enabled: "true"
 ifix-reference-adapter:
   keycloak-credentials-clientid: "mgram-prod"
@@ -269,7 +270,7 @@ egov-indexer:
 
 
 egov-pg-service:
-  replicas: 2
+  replicas: 1
   axis: true
 
 egov-persister:
@@ -288,12 +289,15 @@ echallan-services:
 
 property-services:
  replicas: 2
+ memory_limits: 512Mi
  
 ws-calculator:
  replicas: 2
+ memory_limits: 512Mi
 
 egov-localization:
   replicas: 2
+  memory_limits: 512Mi
 
 pdf-service:
   initContainers:
@@ -392,6 +396,7 @@ zuul:
 
 collection-services:
   replicas: 2
+  memory_limits: 512Mi
   receiptnumber-servicebased: "true"
   receipt-search-paginate: "true"
   receipt-search-defaultsize: 30
