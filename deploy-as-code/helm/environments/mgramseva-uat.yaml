@@ -281,9 +281,6 @@ egov-persister:
       branch: "UAT"
 
 
-echallan-services:
-  egov-idgen-challanNum-format: "EB-[fy:yyyy-yy]-[SEQ_EG_ECHALLAN_EXPENSE]"
-
 pdf-service:
   initContainers:
     gitSync:
