@@ -20,7 +20,44 @@ env: |
   - name: JOB_NAME
     valueFrom:
       fieldRef:
-        fieldPath: metadata.name                    
+        fieldPath: metadata.name
+  - name: DB_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-config
+        key: db-host
+  - name: DB_SCHEMA
+    valueFrom:
+      configMapKeyRef:
+        name: egov-config
+        key: db-name
+  - name: DB_PWD
+    valueFrom:
+      secretKeyRef:
+        key: password
+        name: db
+  - name: DB_USER
+    valueFrom:
+      secretKeyRef:
+        key: username
+  - name: DB_PORT
+    value: "5432"
+  - name: API_URL
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: egov-mdms-service
+  - name: TOKEN_USERNAME
+    value: "test"
+  - name: TOKEN_PASSWORD
+    value: "test"
+  - name: TOKEN_TENANTID
+    value: "pb"
+  - name: TOKEN_URL
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: egov-user
 resources: |
   requests: {}
   
