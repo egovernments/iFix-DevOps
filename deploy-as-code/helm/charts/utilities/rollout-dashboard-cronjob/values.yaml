@@ -34,11 +34,12 @@ env: |
   - name: DB_PWD
     valueFrom:
       secretKeyRef:
-        key: password
         name: db
+        key: password
   - name: DB_USER
     valueFrom:
-      secretKeyRef:
+      secretKeyRef: 
+        name: db
         key: username
   - name: DB_PORT
     value: "5432"
@@ -60,5 +61,3 @@ env: |
         key: egov-user
 resources: |
   requests: {}
-  
-    
