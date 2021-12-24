@@ -49,11 +49,11 @@ env: |
         name: egov-service-host
         key: egov-mdms-service
   - name: TOKEN_USERNAME
-    value: "test"
+    value: {{ index .Values "token.username" | quote }}
   - name: TOKEN_PASSWORD
-    value: "test"
+    value: {{ index .Values "token.password" | quote }}
   - name: TOKEN_TENANTID
-    value: "pb"
+    value: {{ index .Values "token.tenantid" | quote }}
   - name: TOKEN_URL
     valueFrom:
       configMapKeyRef:
