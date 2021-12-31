@@ -50,7 +50,7 @@ broker:
   ##
   enabled: true
   name: broker
-  replicaCount: 1
+  replicaCount: 2
   port: 8082
   serviceType: ClusterIP
 
@@ -97,7 +97,7 @@ coordinator:
   ##
   enabled: true
   name: coordinator
-  replicaCount: 1
+  replicaCount: 3
   port: 8081
   serviceType: ClusterIP
 
@@ -140,7 +140,7 @@ overlord:
   ##
   enabled: true
   name: overlord
-  replicaCount: 1
+  replicaCount: 3
   port: 8081
   serviceType: ClusterIP
 
@@ -174,7 +174,7 @@ historical:
   ##
   enabled: true
   name: historical
-  replicaCount: 1
+  replicaCount: 2
   port: 8083
   serviceType: ClusterIP
 
@@ -325,7 +325,7 @@ router:
   ##
   enabled: true
   name: router
-  replicaCount: 1
+  replicaCount: 2
   port: 8888
   serviceType: ClusterIP
 
