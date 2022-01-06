@@ -169,6 +169,8 @@ billing-service:
   demand.updateurl: '{"WS":"http://ws-calculator.mgramseva:8080/ws-calculator/waterCalculator/_updateDemand"}'
   
 ws-services:
+  memory_limits: 512Mi
+  replicas: 2
   is-external-workflow-enabled: "true"
 ifix-reference-adapter:
   keycloak-credentials-clientid: "ifix-uat"
@@ -268,10 +270,11 @@ egov-indexer:
 
 
 egov-pg-service:
+  replicas: 1
   axis: true
 
 egov-persister:
-  replicas: 1
+  replicas: 2
   images:
     - egovio/egov-persister
   persist-yml-path: "file:///work-dir/config-mgramseva/egov-persister/pt-mutation-calculator-persister.yml,file:///work-dir/config-mgramseva/egov-persister/apportion-persister.yml,file:///work-dir/config-mgramseva/egov-persister/billing-services-persist.yml,file:///work-dir/config-mgramseva/egov-persister/egf-bill.yaml,file:///work-dir/config-mgramseva/egov-persister/egov-user-event-persister.yml,file:///work-dir/config-mgramseva/egov-persister/egov-workflow-v2-persister.yml,file:///work-dir/config-mgramseva/egov-persister/hrms-employee-persister.yml,file:///work-dir/config-mgramseva/egov-persister/pdf-generator.yml,file:///work-dir/config-mgramseva/egov-persister/pg-service-persister.yml,file:///work-dir/config-mgramseva/egov-persister/property-services.yml,file:///work-dir/config-mgramseva/egov-persister/pt-calculator-v2-persister.yml,file:///work-dir/config-mgramseva/egov-persister/pt-drafts.yml,file:///work-dir/config-mgramseva/egov-persister/pt-persist.yml,file:///work-dir/config-mgramseva/egov-persister/uploader-persister.yml,file:///work-dir/config-mgramseva/egov-persister/collection-migration-persister.yml,file:///work-dir/config-mgramseva/egov-persister/property-services-registry.yml,file:///work-dir/config-mgramseva/egov-persister/sewerage-persist.yml,file:///work-dir/config-mgramseva/egov-persister/water-persist.yml,file:///work-dir/config-mgramseva/egov-persister/water-meter.yml,file:///work-dir/config-mgramseva/egov-persister/assessment-persister.yml,file:///work-dir/config-mgramseva/egov-persister/vendor-persister.yaml,file:///work-dir/config-mgramseva/egov-persister/echallan.yml"
@@ -279,6 +282,18 @@ egov-persister:
     gitSync:
       repo: "git@github.com:misdwss/config-mgramseva"
       branch: "UAT"
+      
+property-services:
+ replicas: 2
+ memory_limits: 512Mi
+ 
+ws-calculator:
+ replicas: 2
+ memory_limits: 512Mi
+
+egov-localization:
+  replicas: 2
+  memory_limits: 512Mi
 
 
 pdf-service:
@@ -376,6 +391,8 @@ zuul:
 # collections >>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 collection-services:
+  replicas: 2
+  memory_limits: 512Mi
   receiptnumber-servicebased: "true"
   receipt-search-paginate: "true"
   receipt-search-defaultsize: 30
