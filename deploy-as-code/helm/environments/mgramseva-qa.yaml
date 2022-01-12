@@ -206,7 +206,7 @@ cluster-configs:
         sw-calculator: "http://sw-calculator.mgramseva:8080/"
         noc-services: "http://noc-services.mgramseva:8080/"
         land-services: "http://land-services.mgramseva:8080/"
-        egov-url-shortening: "http://egov-url-shortening:8080/"
+        egov-url-shortening: "http://egov-url-shortening.mgramseva:8080/"
         minio-url: "https://minio-staging.digit.org/"
         vendor: "http://vendor.mgramseva:8080"
         vehicle: "http://vehicle.mgramseva:8080"
