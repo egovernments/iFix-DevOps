@@ -1,6 +1,6 @@
 global:
   domain: mgramseva-qa.egov.org.in
-  containerRegistry: dwssio
+  #containerRegistry: dwssio
   tracing-enabled: true
   namespace: mgramseva
   nodepool:
