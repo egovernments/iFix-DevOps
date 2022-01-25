@@ -496,7 +496,7 @@ kafka-v2:
     tag: 5.4.1
   persistence:
     enabled: true
-    dataDirSize: "100Gi"
+    dataDirSize: "150Gi"
     aws:
       - volumeId: "vol-08ca57032bb826fff"
         zone: ap-south-1a
