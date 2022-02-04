@@ -165,6 +165,7 @@ cluster-configs:
         redis-host: "redis.mgramseva"
 
 billing-service:
+  replicas: 2
   memory_limits: 512Mi
   demand.updateurl: '{"WS":"http://ws-calculator.mgramseva:8080/ws-calculator/waterCalculator/_updateDemand"}'
   
