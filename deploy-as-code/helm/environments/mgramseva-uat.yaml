@@ -529,7 +529,7 @@ kafka-v2-infra:
         zone: ap-south-1a
       - volumeId: "vol-04ec7b75beeb24b9b"
         zone: ap-south-1a
-  zookeeperHosts: "zookeeper-v2-headless.zookeeper-cluster:2181/kafka-infra"
+  zookeeperHosts: "zookeeper-v2-headless.mgramseva:2181/kafka-infra"
       
 
   heapOptions: "-Xms704M -Xmx704M"
