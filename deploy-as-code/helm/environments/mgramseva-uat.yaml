@@ -660,7 +660,7 @@ elasticsearch-data-infra-v1:
     aws:
       - volumeId: "vol-09043d8559b6ecfc6"
         zone: ap-south-1a
-      - volumeId: "vol-037be91a5a465d084."
+      - volumeId: "vol-037be91a5a465d084"
         zone: ap-south-1a
       - volumeId: "vol-0fcaf2769c91d70c0"
         zone: ap-south-1a
