@@ -9,7 +9,7 @@ metadata:
 spec:
   selector:                                                                                                                                                                                                     │
     matchLabels:                                                                                                                                                                                                │
-    app: fluent-bit   
+      app: fluent-bit   
   template:
     metadata:
       labels:
