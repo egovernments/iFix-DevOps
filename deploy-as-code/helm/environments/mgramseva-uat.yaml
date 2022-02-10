@@ -101,7 +101,7 @@ cluster-configs:
         es-indexer-host: "http://elasticsearch-data-v1.mgramseva:9200/"
         flyway-locations: "filesystem:/flyway/sql,filesystem:/flyway/seed,filesystem:/flyway/qa"
         kafka-brokers: "kafka-v2.mgramseva:9092"
-        kafka-infra-brokers: "kafka-v2.mgramseva:9092"
+        kafka-infra-brokers: "kafka-v2-infra.mgramseva:9092"
         logging-level-jdbc: "debug"
         mobile-validation-workaround: "true"
         s3-assets-bucket: "(mgramseva-dev-assets|pb-mgramseva-assets)"
