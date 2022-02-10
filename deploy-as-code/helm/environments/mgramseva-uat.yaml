@@ -704,7 +704,7 @@ kibana-infra-v1:
   replicas: 1
   images:
     - docker.elastic.co/kibana/kibana:6.4.2
-  es-url: "http://elasticsearch-data-infra-v1.es-cluster-infra:9200"
+  es-url: "http://elasticsearch-data-infra-v1.mgramseva:9200"
   external_port: 5601
   server-basepath: "/kibana-infra"
     
