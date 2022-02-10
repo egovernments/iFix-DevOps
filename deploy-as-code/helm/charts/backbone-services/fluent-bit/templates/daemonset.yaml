@@ -7,8 +7,10 @@ metadata:
     app: {{ template "name" . }}
     kubernetes.io/cluster-service: "true"
 spec:
+  selector:                                                                                                                                                                                                     │
+    matchLabels:                                                                                                                                                                                                │
+    app: fluent-bit   
   template:
-  selector:
     metadata:
       labels:
         app: {{ template "name" . }}
