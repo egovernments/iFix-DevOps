@@ -8,6 +8,7 @@ metadata:
     kubernetes.io/cluster-service: "true"
 spec:
   template:
+  selector:
     metadata:
       labels:
         app: {{ template "name" . }}
