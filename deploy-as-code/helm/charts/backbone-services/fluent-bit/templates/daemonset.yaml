@@ -1,4 +1,4 @@
-apiVersion: apps/v1
+apiVersion: extensions/v1beta1
 kind: DaemonSet
 metadata:
   name: {{ template "name" . }}
@@ -7,9 +7,6 @@ metadata:
     app: {{ template "name" . }}
     kubernetes.io/cluster-service: "true"
 spec:
-  selector:                                                                                                                                                                                                     │
-    matchLabels:                                                                                                                                                                                                │
-      app: fluent-bit   
   template:
     metadata:
       labels:
@@ -48,4 +45,4 @@ spec:
           configMap:
             name: {{ template "name" . }}-config
       serviceAccountName: {{ template "name" . }}
-      serviceAccount: {{ template "name" . }}    
+      serviceAccount: {{ template "name" . }}  
