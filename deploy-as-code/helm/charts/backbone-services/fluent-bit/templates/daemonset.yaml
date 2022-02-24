@@ -7,6 +7,11 @@ metadata:
     app: {{ template "name" . }}
     kubernetes.io/cluster-service: "true"
 spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: {{ template "name" . }}
+      kubernetes.io/cluster-service: "true"
   template:
     metadata:
       labels:
@@ -45,4 +50,4 @@ spec:
           configMap:
             name: {{ template "name" . }}-config
       serviceAccountName: {{ template "name" . }}
-      serviceAccount: {{ template "name" . }}  
+      serviceAccount: {{ template "name" . }} 
