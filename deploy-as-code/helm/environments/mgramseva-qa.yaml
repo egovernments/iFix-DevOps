@@ -118,7 +118,7 @@ cluster-configs:
         tracer-errors-provideexceptionindetails: "true"
         timezone: "Asia/Kolkata"
         es-infra-host: elasticsearch-data-v1.mgramseva
-        mongo-db-name: "adapter_master_db"
+        mongo-db-name: "mgramseva_qa_db"
         mongo-db-host: "ifix-db.cluster-cqqfmghbjssw.ap-south-1.docdb.amazonaws.com"
         mongo-db-url: "mongodb://ifix-db.cluster-cqqfmghbjssw.ap-south-1.docdb.amazonaws.com:27017/?retryWrites=false"
 
