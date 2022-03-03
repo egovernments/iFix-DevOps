@@ -18,6 +18,7 @@ heap: "-Xmx192m -Xms192m"
 java-args: ""
 
 server-context-path: "/ifix-department-entity"
+master-department-context-path: "/adapter-master-data"
 
 # Additional Container Envs
 env: |  
@@ -40,3 +41,5 @@ env: |
       configMapKeyRef:
         name: egov-service-host
         key: adapter-master-data-service
+  - name: IFIX_MASTER_DEPARTMENT_CONTEXT_PATH
+    value: {{ index .Values "master-department-context-path" | quote }}
