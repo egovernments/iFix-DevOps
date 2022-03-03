@@ -11,7 +11,7 @@ global:
 cluster-configs:
   namespace: mgramseva
   namespaces:
-    create: true
+    create: false
     values:
       [ mgramseva , cert-manager , olap, ifix ]  
   db:
