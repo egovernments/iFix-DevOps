@@ -39,6 +39,16 @@ env: |
       configMapKeyRef:
         name: egov-service-host
         key: fiscal-event-service
+  - name: ADAPTER_MASTER_DATA_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: adapter-master-data-service
+  - name: IFIX_DEPARTMENT_ENTITY_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: ifix-department-entity-service
   - name: SPRING_REDIS_HOST  
   {{- if index .Values "cluster-configs" "configmaps" "egov-service-host" "data" "redis-host" }}
     valueFrom:
