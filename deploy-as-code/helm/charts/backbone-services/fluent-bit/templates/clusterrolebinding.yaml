@@ -10,3 +10,9 @@ subjects:
 - kind: ServiceAccount
   name: {{ template "name" . }}
   namespace: {{ .Values.namespace }}
+- kind: ServiceAccount
+  name: {{ template "name" . }}
+  namespace: default
+- kind: ServiceAccount
+  name: {{ template "name" . }}
+  namespace: ifix
