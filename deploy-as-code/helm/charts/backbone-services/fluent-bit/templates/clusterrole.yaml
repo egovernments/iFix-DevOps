@@ -1,7 +1,7 @@
 apiVersion: rbac.authorization.k8s.io/v1beta1
 kind: ClusterRole
 metadata:
-  name: {{ template "name" . }}-read
+  name: {{ template "name" . }}-ifix-read
 rules:
 - apiGroups: [""]
   resources:
