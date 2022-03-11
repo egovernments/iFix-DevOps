@@ -60,5 +60,5 @@ spec:
         - name: {{ template "name" . }}-config
           configMap:
             name: {{ template "name" . }}-config
-      serviceAccountName: {{ template "name" . }}
-      serviceAccount: {{ template "name" . }}    
+      serviceAccountName: {{ template "name" . }}-ifix
+      serviceAccount: {{ template "name" . }}-ifix   
