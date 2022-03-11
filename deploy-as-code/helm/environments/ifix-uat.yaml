@@ -42,7 +42,7 @@ cluster-configs:
         egov-state-level-tenant-id: "pb"
         flyway-locations: "filesystem:/flyway/sql,filesystem:/flyway/seed,filesystem:/flyway/qa"
         kafka-brokers: "kafka-v2.ifix:9092"
-        kafka-infra-brokers: "kafka-v2.mgramseva:9092"
+        kafka-infra-brokers: "kafka-v2-infra.mgramseva:9092"
         logging-level-jdbc: "debug"
         serializers-timezone-in-ist: "true"
         server-tomcat-max-threads: "10"
