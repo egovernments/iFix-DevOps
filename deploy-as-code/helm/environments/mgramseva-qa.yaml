@@ -280,8 +280,8 @@ egov-user:
   otp-validation: "true"
   citizen-otp-enabled: "true"
   employee-otp-enabled: "false"
-  access-token-validity: 30
-  refresh-token-validity: 45
+  access-token-validity: 2
+  refresh-token-validity: 3
   default-password-expiry: 90
   mobile-number-validation: "false"
   roles-state-level: "true"
