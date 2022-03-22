@@ -164,7 +164,7 @@ cluster-configs:
         ifix-reference-adapter: "http://ifix-reference-adapter.mgramseva:8080/"
         redis-host: "redis.mgramseva"
 	adapter-master-data-service: "http://adapter-master-data-service.mgramseva:8080/"
-        ifix-department-entity-service: "http://ifix-department-entity-service.mgramseva:8080/"
+	ifix-department-entity-service: "http://ifix-department-entity-service.mgramseva:8080/"
 	
 	
 billing-service:
