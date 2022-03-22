@@ -163,10 +163,7 @@ cluster-configs:
         fiscal-event-service: "https://ifix-dwss.psegs.in/"
         ifix-reference-adapter: "http://ifix-reference-adapter.mgramseva:8080/"
         redis-host: "redis.mgramseva"
-	
-	
-	
-	
+
 billing-service:
   replicas: 2
   memory_limits: 512Mi
