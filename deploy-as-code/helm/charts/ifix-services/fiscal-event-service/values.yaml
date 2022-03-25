@@ -61,3 +61,7 @@ env: |
       configMapKeyRef:
         name: egov-config
         key: mongo-db-name
+  {{- if index .Values "fiscal-event-push-request-max-size" }}
+  - name: FISCAL_EVENT_PUSH_REQUEST_MAX_SIZE
+    value: {{ index .Values "fiscal-event-push-request-max-size" | quote }}
+  {{- end }}
