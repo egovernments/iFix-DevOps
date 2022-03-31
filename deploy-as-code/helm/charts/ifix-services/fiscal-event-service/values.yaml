@@ -22,6 +22,7 @@ heap: "-Xmx192m -Xms192m"
 java-args: ""
 
 server-context-path: "/fiscal-event-service"
+fiscal-event-kafka-mongodb-topic: "fiscal-event-mongodb-sink"
 
 # Additional Container Envs
 env: |  
@@ -51,6 +52,8 @@ env: |
         key: ifix-master-data-service
   - name: FISCAL_KAFKA_PUSH_TOPIC
     value: {{ index .Values "fiscal-kafka-push-topic" | quote }}
+  - name: FISCAL_EVENT_KAFKA_MONGODB_TOPIC
+    value: {{ index .Values "fiscal-event-kafka-mongodb-topic" | quote }}
   - name: SPRING_DATA_MONGODB_URI
     valueFrom:
       secretKeyRef:
