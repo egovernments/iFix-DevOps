@@ -166,6 +166,10 @@ cluster-configs:
         redis-host: "redis.mgramseva"
         adapter-master-data-service: "http://adapter-master-data-service.mgramseva:8080/"
         ifix-department-entity-service: "http://ifix-department-entity-service.mgramseva:8080/"
+        mongo-db-name: "mgramseva_uat_db"
+        mongo-db-host: "ifix-uat-db.cvisvjyknxm1.ap-south-1.docdb.amazonaws.com"
+        mongo-db-url: "mongodb://ifix-uat-db.cvisvjyknxm1.ap-south-1.docdb.amazonaws.com:27017/?retryWrites=false"
+         
 
 
 billing-service:
