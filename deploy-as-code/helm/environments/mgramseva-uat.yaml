@@ -117,8 +117,8 @@ cluster-configs:
         timezone: "Asia/Kolkata"
         es-infra-host: elasticsearch-data-v1.mgramseva
         mongo-db-name: "mgramseva_uat_db"
-        mongo-db-host: "ifix-uat-db.cvisvjyknxm1.ap-south-1.docdb.amazonaws.com"
-        mongo-db-url: "mongodb://ifix-uat-db.cvisvjyknxm1.ap-south-1.docdb.amazonaws.com:27017/?retryWrites=false"
+        mongo-db-host: "mgramseva-uat-db.cvisvjyknxm1.ap-south-1.docdb.amazonaws.com"
+        mongo-db-url: "mongodb://mgramseva-uat-db.cvisvjyknxm1.ap-south-1.docdb.amazonaws.com:27017/?retryWrites=false"
 
     egov-service-host:
       namespace: [mgramseva]
