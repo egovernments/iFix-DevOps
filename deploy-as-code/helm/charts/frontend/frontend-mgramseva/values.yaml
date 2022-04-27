@@ -22,7 +22,8 @@ healthChecks:
   readinessProbePath: "/mgramseva/"
 dashboard-url: ""
 
-namespace: egov    
+namespace: egov 
+memory_limits: "768Mi"  
 extraVolumes: |
   - name: js-injection
     configMap:
