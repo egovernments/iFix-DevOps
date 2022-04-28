@@ -118,7 +118,7 @@ cluster-configs:
         es-infra-host: elasticsearch-data-v1.mgramseva
         mongo-db-name: "mgramseva_prod_db"
         mongo-db-host: "ifix-prod-db.cluster-cvisvjyknxm1.ap-south-1.docdb.amazonaws.com"
-        mongo-db-url:  "mongodb://ifix-prod-db.cluster-cvisvjyknxm1.ap-south-1.docdb.amazonaws.com:27017/?retryWrites=false"
+        mongo-db-url: "mongodb://ifix-prod-db.cluster-cvisvjyknxm1.ap-south-1.docdb.amazonaws.com:27017/?retryWrites=false"
 
     egov-service-host:
       namespace: [mgramseva]
