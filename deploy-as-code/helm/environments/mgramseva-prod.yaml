@@ -627,6 +627,67 @@ es-curator-infra:
   jaeger-cleanup-enabled: "true"
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
+
+# es-infra-v1-cluster >>>>>>>>>>>>>>>>>>>>>>>>>>>>
+elasticsearch-data-infra-v1:
+  namespace: mgramseva
+  image:
+    tag: 6.6.2
+  persistence:
+    enabled: true
+    dataDirSize: "100Gi"
+    aws:
+      - volumeId: "vol-0cc627309c0f63022"
+        zone: ap-south-1a
+      - volumeId: "vol-04e19627205528bc4"
+        zone: ap-south-1a
+      - volumeId: "vol-04463f65976109882"
+        zone: ap-south-1a
+  esJavaOpts: "-Xmx1g -Xms1g"
+  resources:
+    requests:
+      # cpu: "1000m"
+      memory: "2Gi"
+    limits:
+      # cpu: "1000m"
+      memory: "2Gi"
+      
+elasticsearch-master-infra-v1:
+  namespace: mgramseva
+  replicas: 3
+  image:
+    tag: 6.6.2
+  persistence:
+    enabled: true
+    dataDirSize: "2Gi"
+    aws:
+      - volumeId: "vol-02a41846f55e32ccf"
+        zone: ap-south-1a
+      - volumeId: "vol-00dc5f68356967830"
+        zone: ap-south-1a
+      - volumeId: "vol-0431808af8f644efd"
+        zone: ap-south-1a
+  esJavaOpts: "-Xmx448m -Xms448m"
+  resources:
+    requests:
+      memory: "896Mi"
+    limits:
+      memory: "896Mi"
+     
+elasticsearch-client-infra-v1:
+  replicas: 1
+  images:
+    - egovio/elasticsearch-v1:6.6.2
+
+kibana-infra-v1:
+  replicas: 1
+  images:
+    - docker.elastic.co/kibana/kibana:6.6.2
+  es-url: "http://elasticsearch-data-infra-v1.mgramseva:9200"
+  external_port: 5601
+  server-basepath: "/kibana-infra"
+  
+
 #logging >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 fluentd:
   images:
