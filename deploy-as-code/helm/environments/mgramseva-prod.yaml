@@ -532,7 +532,31 @@ kafka-connect:
  image:
    repository: kafka-connect-mongo
    tag: 1.5.1
+   
+# kafka-v2-infra >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+kafka-v2-infra:
+  image:
+    tag: 5.4.1
+  persistence:
+    enabled: true
+    dataDirSize: "100Gi"
+    aws:
+      - volumeId: "vol-00a374194296b7d14"
+        zone: ap-south-1a
+      - volumeId: "vol-013e443f27e4e6bb9"
+        zone: ap-south-1a
+      - volumeId: "vol-08be29fef1a09dd5e"
+        zone: ap-south-1a
+  zookeeperHosts: "zookeeper-v2-headless.mgramseva:2181/kafka-infra"
+
+
+# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+# kafka-connect-infra >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+kafka-connect-infra:
+ image:
+   repository: cp-kafka-connect
+   tag: 5.2.2
 
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
