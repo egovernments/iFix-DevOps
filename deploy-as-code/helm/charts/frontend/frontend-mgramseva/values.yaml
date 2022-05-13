@@ -14,7 +14,7 @@ initContainers: {}
 # Container Configs
 image:
   repository: "frontend-mgramseva"
-replicas: "1"
+replicas: "2"
 httpPort: 80
 healthChecks:
   enabled: true
