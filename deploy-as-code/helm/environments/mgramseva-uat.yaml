@@ -201,6 +201,7 @@ vendor:
   vendor.driver: CITIZEN
   vendor.role.name: Vendor role Citizen
   vendor.driver.role.name: Vendor Driver Role Citizen
+  replicas: 2
 
 egov-notification-sms:
   sms-provider-url: "https://smsgw.sms.gov.in/failsafe/MLink"
