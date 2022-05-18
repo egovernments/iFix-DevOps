@@ -195,6 +195,7 @@ egov-filestore:
 
 egov-location:
   memory_limits: 512Mi
+  replicas: 2
 
 vendor:
   vendor.role: CITIZEN
