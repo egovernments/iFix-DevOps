@@ -93,7 +93,7 @@ fiscal-event-aggregator:
 
 mongodb-kafka-source-connector:
   mongodb-collection-name: "fiscal_event"
-  kafka-topic: "fiscal-event-request-dereferenced"
+  kafka-topic: "fiscal-event-request-validated"
 
 druid:
   domain: druid-uat.psegs.in
