@@ -101,6 +101,58 @@ druid:
     druid_storage_baseKey: druid/segments
     druid_storage_bucket: ifix-prod-assets
 
+middleManager:
+    config:
+      DRUID_XMX: 3500m
+      DRUID_XMS: 3500m
+      druid_indexer_runner_javaOptsArray: '["-server", "-Xms1g", "-Xmx1g", "-XX:MaxDirectMemorySize=1600m", "-Duser.timezone=UTC", "-Dfile.encoding=UTF-8", "-XX:+ExitOnOutOfMemoryError", "-Djava.util.logging.manager=org.apache.logging.log4j.jul.LogManager"]'
+      druid_indexer_fork_property_druid_processing_buffer_sizeBytes: '400000000'
+    resources: 
+      limits:
+        cpu: 900m
+        memory: 5000Mi
+      requests:
+        cpu:  900m
+        memory: 4500Mi  
+
+historical:
+    config:
+      DRUID_XMX: 3000m
+      DRUID_XMS: 3000m
+      DRUID_MAXDIRECTMEMORYSIZE: 1300m
+      druid_processing_buffer_sizeBytes: '300000000'
+      druid_processing_numMergeBuffers: 2
+      druid_processing_numThreads: 1
+      druid_javascript_enabled: true
+    resources: 
+      limits:
+        cpu: 900m
+        memory: 3500Mi
+      requests:
+        cpu:  700m
+        memory: 3500Mi   
+  
+coordinator:
+    config:
+      DRUID_XMX: 3300m
+      DRUID_XMS: 3300m
+    resources: 
+      limits:
+        cpu: 900m
+        memory: 3500Mi
+      requests:
+        cpu:  600m
+        memory: 3500Mi
+        
+overlord:
+    resources: 
+      limits:
+        cpu: 900m
+        memory: 5000Mi
+      requests:
+        cpu:  900m
+        memory: 4500Mi
+
 router:
   ingress:
     additionalAnnotations: |
