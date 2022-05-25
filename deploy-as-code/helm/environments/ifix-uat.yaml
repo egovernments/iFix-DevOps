@@ -105,17 +105,17 @@ druid:
     
 middleManager:
     config:
-      DRUID_XMX: 64m
-      DRUID_XMS: 64m
-      druid_indexer_runner_javaOptsArray: '["-server", "-Xms256m", "-Xmx256m", "-XX:MaxDirectMemorySize=300m", "-Duser.timezone=UTC", "-Dfile.encoding=UTF-8", "-XX:+ExitOnOutOfMemoryError", "-Djava.util.logging.manager=org.apache.logging.log4j.jul.LogManager"]'
-      druid_indexer_fork_property_druid_processing_buffer_sizeBytes: '25000000'
+      DRUID_XMX: 3500m
+      DRUID_XMS: 3500m
+      druid_indexer_runner_javaOptsArray: '["-server", "-Xms1g", "-Xmx1g", "-XX:MaxDirectMemorySize=1600m", "-Duser.timezone=UTC", "-Dfile.encoding=UTF-8", "-XX:+ExitOnOutOfMemoryError", "-Djava.util.logging.manager=org.apache.logging.log4j.jul.LogManager"]'
+      druid_indexer_fork_property_druid_processing_buffer_sizeBytes: '400000000'
     resources: 
       limits:
-        cpu: 100m
-        memory: 500Mi
+        cpu: 900m
+        memory: 5000Mi
       requests:
-        cpu:  100m
-        memory: 400Mi  
+        cpu:  900m
+        memory: 4500Mi   
 
 
 router:
