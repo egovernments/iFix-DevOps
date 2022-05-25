@@ -102,6 +102,21 @@ druid:
     druid_storage_type: s3
     druid_storage_baseKey: druid/segments
     druid_storage_bucket: ifix-uat-assets
+    
+middleManager:
+    config:
+      DRUID_XMX: 64m
+      DRUID_XMS: 64m
+      druid_indexer_runner_javaOptsArray: '["-server", "-Xms256m", "-Xmx256m", "-XX:MaxDirectMemorySize=300m", "-Duser.timezone=UTC", "-Dfile.encoding=UTF-8", "-XX:+ExitOnOutOfMemoryError", "-Djava.util.logging.manager=org.apache.logging.log4j.jul.LogManager"]'
+      druid_indexer_fork_property_druid_processing_buffer_sizeBytes: '400000000'
+    resources: 
+      limits:
+        cpu: 100m
+        memory: 500Mi
+      requests:
+        cpu:  100m
+        memory: 400Mi  
+
 
 router:
   ingress:
