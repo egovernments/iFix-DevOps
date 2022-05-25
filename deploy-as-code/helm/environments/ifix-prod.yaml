@@ -102,6 +102,7 @@ druid:
     druid_storage_bucket: ifix-prod-assets
 
 middleManager:
+    replicaCount: 1
     config:
       DRUID_XMX: 3500m
       DRUID_XMS: 3500m
@@ -116,6 +117,7 @@ middleManager:
         memory: 4500Mi  
 
 historical:
+    replicaCount: 1
     config:
       DRUID_XMX: 3000m
       DRUID_XMS: 3000m
@@ -133,6 +135,7 @@ historical:
         memory: 3500Mi   
   
 coordinator:
+    replicaCount: 1
     config:
       DRUID_XMX: 3300m
       DRUID_XMS: 3300m
@@ -145,6 +148,7 @@ coordinator:
         memory: 3500Mi
         
 overlord:
+    replicaCount: 1
     resources: 
       limits:
         cpu: 900m
