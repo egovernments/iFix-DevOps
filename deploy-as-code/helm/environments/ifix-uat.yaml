@@ -115,8 +115,17 @@ middleManager:
         memory: 5000Mi
       requests:
         cpu:  900m
-        memory: 4500Mi   
-
+        memory: 4500Mi
+        
+overlord:
+    replicaCount: 3
+    resources: 
+      limits:
+        cpu: 250m
+        memory: 500Mi
+      requests:
+        cpu:  150m
+        memory: 200Mi
 
 router:
   ingress:
