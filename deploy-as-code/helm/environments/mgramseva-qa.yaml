@@ -231,6 +231,15 @@ ws-services:
 ifix-reference-adapter:
   keycloak-credentials-clientid: "mgramseva-qa"
 
+pspcl-ifix-adapter:
+  pspcl-fetch-bill-url: "https://billapp.pspcl.in//fetchbillingdata.asmx"
+  pspcl-fetch-payment-url: "https://billapp.pspcl.in//fetchbillingdata.asmx"
+  keycloak-pspcl-credentials-clientid: "pspcl-ifix-qa"
+  fiscal-event-tenantId: "pb"
+  demand-coaCode: "8247-12-373-56-78-90"
+  receipt-coaCode: "8247-12-373-56-78-90"
+  fiscal-event-receiver: "mGramSeva"
+
 # core >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 egov-common-workflows:
