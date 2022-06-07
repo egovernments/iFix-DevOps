@@ -40,6 +40,8 @@ jenkins:
       acl: [misdwss*mgramsewa-dev]  
     - name: mgramseva-qa
       acl: [misdwss*mgramsewa-qa, misdwss*mgramsewa-dev]  
+    - name: pspcl-qa
+      acl: [misdwss*mgramsewa-qa, misdwss*mgramsewa-dev]   
     - name: ifix-qa
       acl: [misdwss*mgramsewa-qa, misdwss*mgramsewa-dev]
     - name: mgramseva-uat
