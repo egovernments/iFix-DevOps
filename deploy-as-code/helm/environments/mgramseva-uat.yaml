@@ -176,7 +176,7 @@ billing-service:
   
 ws-services:
   memory_limits: 512Mi
-  replicas: 2
+  replicas: 5
   is-external-workflow-enabled: "true"
 ifix-reference-adapter:
   keycloak-credentials-clientid: "ifix-uat"
@@ -292,11 +292,11 @@ egov-persister:
       branch: "UAT"
       
 property-services:
- replicas: 2
+ replicas: 5
  memory_limits: 512Mi
  
 ws-calculator:
- replicas: 2
+ replicas: 5
  memory_limits: 512Mi
 
 egov-localization:
@@ -392,7 +392,7 @@ redoc:
 # gateway >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 zuul:
-  replicas: 2
+  replicas: 3
   custom-filter-property: "false"
   tracing-enabled: "true"
   heap: "-Xmx704m -Xms512m"
