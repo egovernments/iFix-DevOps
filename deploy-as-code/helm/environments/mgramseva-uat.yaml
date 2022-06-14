@@ -76,6 +76,8 @@ cluster-configs:
       namespace: mgramseva
     keycloak:
       namespace: mgramseva
+    jaeger:
+      namespace: mgramseva
   rbac:
     - role: user
       namespaces: [mgramseva]
