@@ -176,7 +176,7 @@ billing-service:
   demand.updateurl: '{"WS":"http://ws-calculator.mgramseva:8080/ws-calculator/waterCalculator/_updateDemand"}'
   
 ws-services:
-  replicas: 5
+  replicas: 4
   memory_limits: 512Mi
   is-external-workflow-enabled: "true"
 ifix-reference-adapter:
@@ -298,11 +298,11 @@ echallan-services:
   egov-idgen-challanNum-format: "EB-[fy:yyyy-yy]-[SEQ_EG_ECHALLAN_EXPENSE]"
 
 property-services:
- replicas: 5
+ replicas: 4
  memory_limits: 512Mi
  
 ws-calculator:
- replicas: 5
+ replicas: 4
  memory_limits: 512Mi
 
 egov-localization:
