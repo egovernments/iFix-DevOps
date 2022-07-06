@@ -298,7 +298,7 @@ property-services:
  memory_limits: 512Mi
  
 ws-calculator:
- replicas: 2
+ replicas: 3
  memory_limits: 512Mi
 
 egov-localization:
