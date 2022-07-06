@@ -346,7 +346,7 @@ dashboard-ingest:
       branch: "UAT"
 
 nginx-ingress:
-  replicas: 1
+  replicas: 2
   default-backend-service: "egov/nginx"
   namespace: egov
   cert-issuer: "letsencrypt-prod"
