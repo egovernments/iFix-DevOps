@@ -926,7 +926,7 @@ mysql:
 postgres:
   persistence:
     enabled: true
-    azure:
-      diskName: "postgres-db-0"  
-      diskUri: /subscriptions/71f67180-c7fb-43dd-988a-e9f9e3135adc/resourceGroups/MC_mgramsewa-qa_mgramsewa-qa_southeastasia/providers/Microsoft.Compute/disks/postgres-db-0
+    dataDirSize: 150Gi
+    aws:
+      volumeId: "vol-07c5b998a56cd1fe8"
   postgresDatabase: mgramseva_qa_db
