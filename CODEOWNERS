@@ -3,5 +3,5 @@ deploy-as-code/helm/.sops.yaml @gajendran-egov
 deploy-as-code/egov-deployer/* @gajendran-egov
 
 ##Internal Env####
-deploy-as-code/helm/environments/* @GhanshyamRawat-eGov @eGovMan @sathishp-eGov @pradeepkumarcm-egov @snehal-eGov
+deploy-as-code/helm/environments/* @GhanshyamRawat-eGov @eGovMan @sathishp-eGov @pradeepkumarcm-egov @snehal-eGov @rushang7-eGov
 
