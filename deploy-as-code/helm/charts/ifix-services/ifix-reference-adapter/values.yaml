@@ -56,7 +56,7 @@ env: |
     valueFrom:
       configMapKeyRef:
         name: egov-config
-        key: domain
+        key: egov-services-fqdn-name
   - name: SPRING_REDIS_HOST  
   {{- if index .Values "cluster-configs" "configmaps" "egov-service-host" "data" "redis-host" }}
     valueFrom:
