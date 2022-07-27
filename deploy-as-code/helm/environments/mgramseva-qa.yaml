@@ -239,6 +239,7 @@ ifix-reference-adapter:
   mgramseva-oauth-token-userType: "EMPLOYEE"
   samplejob-frequency: "0 */10 * ? * *"
   spring-quartz-jdbc-initialize-schema: "always"
+  java-enable-debug: "true"
 
 
 # core >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
