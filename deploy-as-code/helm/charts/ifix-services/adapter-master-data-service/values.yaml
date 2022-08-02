@@ -6,8 +6,9 @@ labels:
 
 # Ingress Configs
 ingress:
-  enabled: false
-
+  enabled: true
+  zuul: true
+  context: "adapter-master-data"
     
 # Container Configs
 image:

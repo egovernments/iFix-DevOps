@@ -5,7 +5,9 @@ labels:
 
 # Ingress Configs
 ingress:
-  enabled: false
+  enabled: true
+  zuul: true
+  context: "ifix-department-entity"
 
 # Container Configs
 image:
