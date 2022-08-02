@@ -346,6 +346,7 @@ egov-persister:
 
 echallan-services:
   egov-idgen-challanNum-format: "EB-[fy:yyyy-yy]-[SEQ_EG_ECHALLAN_EXPENSE]"
+  java-enable-debug: "true"
 
 
 egov-data-uploader:
