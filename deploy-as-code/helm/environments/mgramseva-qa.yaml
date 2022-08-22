@@ -237,7 +237,7 @@ ifix-reference-adapter:
   mgramseva-oauth-token-grantType: "password"
   mgramseva-oauth-token-tenantId: "pb"
   mgramseva-oauth-token-userType: "EMPLOYEE"
-  samplejob-frequency: "0 */10 * ? * *"
+  samplejob-frequency: "0 */5 * ? * *"
   spring-quartz-jdbc-initialize-schema: "always"
   java-enable-debug: "true"
 
