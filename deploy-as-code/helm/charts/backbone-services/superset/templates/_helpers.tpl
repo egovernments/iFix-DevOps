@@ -1,27 +1,4 @@
-{{/*
-
- Licensed to the Apache Software Foundation (ASF) under one or more
- contributor license agreements.  See the NOTICE file distributed with
- this work for additional information regarding copyright ownership.
- The ASF licenses this file to You under the Apache License, Version 2.0
- (the "License"); you may not use this file except in compliance with
- the License.  You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
-
-*/}}
-{{/* vim: set filetype=mustache: */}}
-{{/*
-Expand the name of the chart.
-*/}}
-
-{{- define "name" -}}
+{{- define "superset.name" -}}
 {{- $envOverrides := index .Values (tpl (default .Chart.Name .Values.name) .) -}} 
 {{- $baseValues := .Values | deepCopy -}}
 {{- $values := dict "Values" (mustMergeOverwrite $baseValues $envOverrides) -}}
@@ -30,6 +7,13 @@ Expand the name of the chart.
 {{- end }}
 {{- end }}
 
+{{/*
+Create the name of the service account to use
+*/}}
+
+{{/*
+Create chart name and version as used by the chart label.
+*/}}
 
 
 {{- define "superset-config" }}
@@ -62,14 +46,22 @@ WTF_CSRF_EXEMPT_LIST = []
 # A CSRF token that expires in 1 year
 WTF_CSRF_TIME_LIMIT = 60 * 60 * 24 * 365
 class CeleryConfig(object):
-  BROKER_URL = f"redis://{env('REDIS_HOST')}:{env('REDIS_PORT')}/0"
   CELERY_IMPORTS = ('superset.sql_lab', )
-  CELERY_RESULT_BACKEND = f"redis://{env('REDIS_HOST')}:{env('REDIS_PORT')}/0"
   CELERY_ANNOTATIONS = {'tasks.add': {'rate_limit': '10/s'}}
+{{- if .Values.supersetNode.connections.redis_password }}
+  BROKER_URL = f"redis://:{env('REDIS_PASSWORD')}@{env('REDIS_HOST')}:{env('REDIS_PORT')}/0"
+  CELERY_RESULT_BACKEND = f"redis://:{env('REDIS_PASSWORD')}@{env('REDIS_HOST')}:{env('REDIS_PORT')}/0"
+{{- else }}
+  BROKER_URL = f"redis://{env('REDIS_HOST')}:{env('REDIS_PORT')}/0"
+  CELERY_RESULT_BACKEND = f"redis://{env('REDIS_HOST')}:{env('REDIS_PORT')}/0"
+{{- end }}
 
 CELERY_CONFIG = CeleryConfig
 RESULTS_BACKEND = RedisCache(
       host=env('REDIS_HOST'),
+{{- if .Values.supersetNode.connections.redis_password }}
+      password=env('REDIS_PASSWORD'),
+{{- end }}
       port=env('REDIS_PORT'),
       key_prefix='superset_results'
 )
@@ -79,6 +71,14 @@ RESULTS_BACKEND = RedisCache(
 {{- range $key, $value := .Values.configOverrides }}
 # {{ $key }}
 {{ tpl $value $ }}
+{{- end }}
+{{- end }}
+{{ if .Values.configOverridesFiles }}
+# Overrides from files
+{{- $files := .Files }}
+{{- range $key, $value := .Values.configOverridesFiles }}
+# {{ $key }}
+{{ $files.Get $value }}
 {{- end }}
 {{- end }}
 

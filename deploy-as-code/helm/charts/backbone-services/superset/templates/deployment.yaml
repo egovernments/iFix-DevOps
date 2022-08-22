@@ -17,82 +17,59 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ template "name" . }}
-  namespace: {{ .Values.namespace }}
+  name: {{ template "superset.name" . }}
+  namespace: {{ .Values.global.namespace }}
   labels:
-    app: {{ template "name" . }}
+    app: {{ template "superset.name" . }}
 {{- if .Values.supersetNode.deploymentAnnotations }}
   annotations:
     {{ toYaml .Values.supersetNode.deploymentAnnotations | nindent 4 }}
 {{- end }}
 spec:
-  replicas: {{ .Values.replicas }}
+  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: {{ template "name" . }}
+      app: {{ template "superset.name" . }}
   template:
     metadata:
-        {{- if .Values.supersetNode.forceReload }}
-        # Optionally force the thing to reload
-        force-reload: {{ randAlphaNum 5 | quote }}
-        {{- end }}
-      {{- if .Values.supersetNode.podAnnotations }}
-        {{ toYaml .Values.supersetNode.podAnnotations | nindent 8 }}
-      {{- end }}
       labels:
-        app: {{ template "name" . }}
+        app: {{ template "superset.name" . }}
     spec:
-      {{- if .Values.serviceAccountName }}
-      serviceAccountName: {{ .Values.serviceAccountName }}
-      {{- end }}
       securityContext:
         runAsUser: {{ .Values.runAsUser }}
       {{- if .Values.supersetNode.initContainers }}
       initContainers:
-      - command:
-        - /bin/sh
-        - -c
-        - until nc -zv $DB_HOST $DB_PORT -w1; do echo 'waiting for db'; sleep 1; done 
-        env:  
-          {{- tpl .Values.supersetNode.initContainers.env . | nindent 12 }}
-        image: busybox:latest
-        imagePullPolicy: IfNotPresent
-        name: wait-for-postgres
-      {{- end }}  
+      {{-  tpl (toYaml .Values.supersetNode.initContainers) . | nindent 6 }}
+      {{- end }}
       containers:
-        - name: {{ template "name" . }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          {{- if .Values.supersetNode.containerSecurityContext }}
+          securityContext: {{ toYaml .Values.supersetNode.containerSecurityContext | nindent 12 }}
+          {{- end }}
           command: {{  tpl (toJson .Values.supersetNode.command) . }}
           env:
             - name: "SUPERSET_PORT"
               value: {{ .Values.service.port | quote}}
-          {{- if .Values.extraEnv }}
             {{- range $key, $value := .Values.extraEnv }}
             - name: {{ $key | quote}}
               value: {{ $value | quote }}
             {{- end }}
-          {{- end }}
-            - name: REDIS_HOST
-              value: {{ .Values.connections.redis_host | quote }}
-            - name: REDIS_PORT
-              value: {{ .Values.connections.redis_port | quote }}
-            - name: DB_HOST
-              value: {{ .Values.connections.db_host | quote }}
-            - name: DB_PORT
-              value: {{ .Values.connections.db_port | quote }}
-            - name: DB_USER
-              valueFrom:
-                secretKeyRef: 
-                  name: db
-                  key: supersetdb-username
-            - name: DB_PASS
-              valueFrom:
-                secretKeyRef: 
-                  name: db
-                  key: supersetdb-password
-            - name: DB_NAME
-              value: {{ .Values.connections.db_name | quote }}
+            {{- range $key, $value := .Values.supersetNode.env }}
+            - name: {{ $key | quote}}
+              value: {{ $value | quote }}
+            {{- end }}
+            {{- if .Values.extraEnvRaw }}
+            {{- toYaml .Values.extraEnvRaw | nindent 12 }}
+            {{- end }}
+          envFrom:
+            - secretRef:
+                name: {{ tpl .Values.envFromSecret . | quote }}
+            {{- range .Values.envFromSecrets }}
+            - secretRef:
+                name: {{ tpl . $ | quote }}
+            {{- end }}
           volumeMounts:
             - name: superset-config
               mountPath: {{ .Values.configMountPath | quote }}
@@ -102,44 +79,19 @@ spec:
               mountPath: {{ .Values.extraConfigMountPath | quote }}
               readOnly: true
           {{- end }}
+          {{- with .Values.extraVolumeMounts }}
+          {{- tpl (toYaml .) $ | nindent 12 -}}
+          {{- end }}
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
               protocol: TCP
           resources:
+          {{- if .Values.supersetNode.resources }}
+{{ toYaml .Values.supersetNode.resources | indent 12 }}
+          {{- else }}
 {{ toYaml .Values.resources | indent 12 }}
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-           nodeSelectorTerms:
-            - matchExpressions:
-              - key: Environment
-                operator: In
-                values:
-                - {{ .Values.global.nodepool.selector }}
-      tolerations:
-      - key: "dedicated"
-        operator: "Equal"
-        value: "{{ .Values.global.nodepool.toleration }}"
-        effect: "NoSchedule"
-      nodeSelector:
-        Environment: {{ .Values.global.nodepool.selector }} 
-    {{- with .Values.nodeSelector }}
-      nodeSelector:
-{{ toYaml . | indent 8 }}
-    {{- end }}
-    {{- with .Values.affinity }}
-      affinity:
-{{ toYaml . | indent 8 }}
-    {{- end }}
-    {{- with .Values.tolerations }}
-      tolerations:
-{{ toYaml . | indent 8 }}
-    {{- end }}
-{{- if .Values.imagePullSecrets }}
-      imagePullSecrets:
-{{ toYaml .Values.imagePullSecrets | indent 8 }}
-      {{- end }}
+          {{- end }}
       volumes:
         - name: superset-config
           secret:
@@ -147,5 +99,8 @@ spec:
         {{- if .Values.extraConfigs }}
         - name: superset-extra-config
           configMap:
-            name: {{ template "name" . }}-extra-config
+            name: {{ template "superset.name" . }}-extra-config
+        {{- end }}
+        {{- with .Values.extraVolumes }}
+        {{- tpl (toYaml .) $ | nindent 8 -}}
         {{- end }}
