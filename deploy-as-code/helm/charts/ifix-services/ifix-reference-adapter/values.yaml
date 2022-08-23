@@ -103,6 +103,8 @@ env: |
     value: {{ index .Values "samplejob-frequency" | quote }}
   - name: SPRING_QUARTZ_JDBC_INITIALIZE-SCHEMA
     value: {{ index .Values "spring-quartz-jdbc-initialize-schema" | quote }}
+  - name: MGRAMSEVA_PSPCL_VENDOR_NAME
+    value: {{ index .Values "mgramseva-pspcl-vendor-name" | quote }}
   - name: KEYCLOAK_CREDENTIALS_CLIENTSECRET
     valueFrom:
       secretKeyRef:
