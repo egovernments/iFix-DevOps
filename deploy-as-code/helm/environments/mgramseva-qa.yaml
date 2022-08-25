@@ -239,7 +239,7 @@ ifix-reference-adapter:
   mgramseva-oauth-token-userType: "EMPLOYEE"
   samplejob-frequency: "0 */5 * ? * *"
   spring-quartz-jdbc-initialize-schema: "always"
-  mgramseva-pspcl-vendor-name: "PSPCL_TEST"
+  mgramseva-pspcl-vendor-name: "PSPCL-TEST"
   java-enable-debug: "true"
 
 
