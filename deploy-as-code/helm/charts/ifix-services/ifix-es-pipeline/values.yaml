@@ -1,0 +1,28 @@
+# Common Labels
+labels:
+  app: "ifix-es-pipeline"
+  group: "ifix"
+
+namespace: ifix
+
+# Container Configs
+image:
+  repository: "ifix-es-pipeline"
+replicas: "1"
+
+appType: "java-spring"
+tracing-enabled: true
+heap: "-Xmx192m -Xms192m"
+java-args: ""
+
+# Additional Container Envs
+env: |  
+  - name: SPRING_KAFKA_CONSUMER_GROUP_ID
+    value: "ifix-fiscal-events"
+  - name: KAFKA_CONFIG_BOOTSTRAP_SERVER_CONFIG
+    valueFrom:
+      configMapKeyRef:
+        name: egov-config
+        key: kafka-brokers
+  - name: FISCAL_EVENT_KAFKA_PUSH_TOPIC
+    value: {{ index .Values "fiscal-event-kafka-push-topic" | quote }}
