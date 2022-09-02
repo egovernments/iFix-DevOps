@@ -1,5 +1,5 @@
-* @gajendran-egov
-*.yaml @gajendran-egov
+* @devops-team
+*.yaml @devops-team
 
 ##Internal Env####
 deploy-as-code/helm/environments/ @GhanshyamRawat-eGov @sathishp-eGov @pradeepkumarcm-egov @snehal-eGov @rushang7-eGov
