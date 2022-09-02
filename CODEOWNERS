@@ -1,5 +1,5 @@
-* @micro-service-devops
-*.yaml @micro-service-devops
+* @devops-team
+*.yaml @devops-team
 
 ##Internal Env####
 deploy-as-code/helm//environments @rushang7-eGov @GhanshyamRawat-eGov
