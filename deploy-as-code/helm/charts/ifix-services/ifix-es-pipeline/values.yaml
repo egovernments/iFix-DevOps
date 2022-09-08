@@ -26,3 +26,10 @@ env: |
         key: kafka-brokers
   - name: FISCAL_EVENT_KAFKA_PUSH_TOPIC
     value: {{ index .Values "fiscal-event-kafka-push-topic" | quote }}
+  - name: IFIX_DEPARTMENT_ENTITY_SEARCH_ENDPOINT
+    value: {{ index .Values "ifix-department-entity-search-endpoint" | quote }}
+  - name: IFIX_DEPARTMENT_ENTITY_SERVICE_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: ifix-department-entity-service
