@@ -58,6 +58,7 @@ cluster-configs:
         ifix-master-data-service: "http://ifix-master-data-service.ifix:8080/"
         egov-indexer: "http://egov-indexer.ifix:8080/"
         dashboard-analytics: "http://dashboard-analytics.ifix:8080/"
+        egov-mdms-service: "http://egov-mdms-service.mgramseva:8080/"
         fiscal-event-service: "http://fiscal-event-service.ifix:8080/"
         ifix-zuul: "http://ifix-zuul.ifix:8080/"
         ifix-department-entity-service: "http://ifix-department-entity-service.ifix:8080/"
