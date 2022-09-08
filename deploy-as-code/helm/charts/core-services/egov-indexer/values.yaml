@@ -31,7 +31,7 @@ healthChecks:
   readinessProbePath: "/egov-indexer/health"
 appType: "java-spring"
 tracing-enabled: true
-egov-indexer-yaml-repo-path: "file:///work-dir/config-mgramseva/egov-indexer/billingservices-indexer.yml"
+egov-indexer-yaml-repo-path: "file:///work-dir/config-mgramseva/egov-indexer/ifix-fiscal-event-indexer.yml"
 heap: "-Xmx192m -Xms192m"
 
 # Additional Container Envs
