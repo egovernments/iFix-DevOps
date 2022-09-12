@@ -24,7 +24,6 @@ env: |
       configMapKeyRef:
         name: egov-config
         key: kafka-brokers
-    ifix.fiscal.event.service.host=http://localhost:8280/
   - name: IFIX_DEPARTMENT_ENTITY_SERVICE_HOST
     valueFrom:
       configMapKeyRef:
