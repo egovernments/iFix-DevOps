@@ -84,6 +84,14 @@ ifix-es-pipeline:
   fiscal-event-kafka-push-topic: "fiscal-event-request-validated"
   fiscal-event-es-push-topic: "index-fiscal-events"
   ifix-department-entity-search-endpoint: "ifix-department-entity/departmentEntity/hierarchyLevel/v1/_search"
+  fiscal-events-migration-topic: "ifix-fiscal-events-migrate"
+  fiscal-event-migration-origin-push-topic: "ifix-fiscal-events-migration-origin"
+
+ifix-migration-toolkit:
+  fiscal-event-kafka-push-topic: "fiscal-event-request-validated"
+  fiscal-event-es-push-topic: "index-fiscal-events"
+  ifix-migration-batch-size: "200"
+  ifix-department-entity-search-endpoint: "ifix-department-entity/departmentEntity/hierarchyLevel/v1/_search"
 
 ifix-zuul:
   replicas: 1
