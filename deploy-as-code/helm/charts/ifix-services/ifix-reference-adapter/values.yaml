@@ -87,8 +87,6 @@ env: |
     value: {{ index .Values "keycloak-credentials-clientid" | quote }}
   - name: PSPCL_IFIX_EVENT_RECEIVER_NAME
     value: {{ index .Values "pspcl-ifix-event-receiver-name" | quote }}
-  - name: IFIX.FISCAL.EVENT.SEARCH.TIME.INTERVAL.MINUTES
-    value: {{ index .Values "ifix-fiscal-event-search-time-interval-minutes" | quote }}
   - name: MGRAMSEVA_OAUTH_TOKEN_USERNAME
     value: {{ index .Values "mgramseva-oauth-token-username" | quote }}
   - name: MGRAMSEVA_OAUTH_TOKEN_SCOPE

@@ -237,7 +237,6 @@ ifix-reference-adapter:
   mgramseva-oauth-token-tenantId: "pb"
   mgramseva-oauth-token-userType: "EMPLOYEE"
   samplejob-frequency: "0 0 */12 ? * *"
-  ifix-fiscal-event-search-time-interval-minutes: "780"
   spring-quartz-jdbc-initialize-schema: "always"
   mgramseva-pspcl-vendor-name: "PSPCL001"
   java-enable-debug: "true"
