@@ -107,7 +107,7 @@ egov-mdms-service:
   initContainers:
     gitSync:
       repo: "git@github.com:misdwss/mdms-mgramseva"
-      branch: "master"
+      branch: "QA"
 
 digit-ui:
   custom-js-injection: |
