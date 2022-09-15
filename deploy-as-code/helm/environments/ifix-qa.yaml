@@ -104,6 +104,10 @@ ifix-zuul:
   egov-mixed-mode-endpoints-whitelist: ""
 
 egov-mdms-service:
+  mdms-path: "/work-dir/mdms-mgramseva/data"
+  mdms-folder: "mdms-mgramseva"
+  java-args: -Dspring.profiles.active=monitoring
+  masters-config-url: "file:///work-dir/mdms-mgramseva/master-config.json"
   initContainers:
     gitSync:
       repo: "git@github.com:misdwss/mdms-mgramseva"
