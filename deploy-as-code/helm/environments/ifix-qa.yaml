@@ -128,6 +128,13 @@ dashboard-analytics:
       repo: "git@github.com:misdwss/config-mgramseva"
       branch: "master"
 
+egov-persister:
+  initContainers:
+    gitSync:
+      enabled: true
+      repo: "git@github.com:misdwss/config-mgramseva"
+      branch: "master"
+
 fiscal-event-aggregator:
   aggregator-topic-name: "aggregated-fiscal-event"
   aggregator-datasource-name: "fiscal-event"
