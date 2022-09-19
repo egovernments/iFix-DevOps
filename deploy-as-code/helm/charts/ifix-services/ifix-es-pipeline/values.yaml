@@ -8,9 +8,9 @@ namespace: ifix
 initContainers:
   dbMigration:
     enabled: true
-    schemaTable: "egov_survey_services_schema"
+    schemaTable: "ifix_migration_toolkit_schema"
     image:
-      repository: "egov-survey-services-db"
+      repository: "ifix-migration-toolkit-db"
 
 # Container Configs
 image:
