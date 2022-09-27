@@ -84,6 +84,7 @@ ifix-es-pipeline:
   fiscal-event-kafka-push-topic: "fiscal-event-request-validated"
   fiscal-event-es-push-topic: "index-fiscal-events"
   ifix-department-entity-search-endpoint: "ifix-department-entity/departmentEntity/hierarchyLevel/v1/_search"
+  ifix-master-data-service-search-endpoint: "ifix-master-data/chartOfAccount/v1/_search"
   fiscal-events-migration-topic: "ifix-fiscal-events-migrate"
   fiscal-event-migration-origin-push-topic: "ifix-fiscal-events-migration-origin"
 
