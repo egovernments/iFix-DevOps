@@ -24,7 +24,12 @@ ingress:
       nginx.ingress.kubernetes.io/lua-resty-waf-score-threshold: "10"
       nginx.ingress.kubernetes.io/lua-resty-waf-allow-unknown-content-types: "true"
       nginx.ingress.kubernetes.io/lua-resty-waf-process-multipart-body: "false"              
-
+  cors:
+    enabled: false
+    annotations:
+      nginx.ingress.kubernetes.io/enable-cors: "true"
+      nginx.ingress.kubernetes.io/cors-allow-methods: "PUT, GET, POST, OPTIONS"
+      nginx.ingress.kubernetes.io/cors-allow-credentials: "true"
 image:
   pullPolicy: IfNotPresent   
 

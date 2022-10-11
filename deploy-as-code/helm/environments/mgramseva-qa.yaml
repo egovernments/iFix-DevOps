@@ -941,3 +941,10 @@ postgres:
     aws:
       volumeId: "vol-07c5b998a56cd1fe8"
   postgresDatabase: mgramseva_qa_db
+
+ifix-department-entity-service:
+  ingress:
+    cors:
+      enabled: true
+      annotations:
+        nginx.ingress.kubernetes.io/cors-allow-origin: "https://ifix-qa.ifix.org.in"
