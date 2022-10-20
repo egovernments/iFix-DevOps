@@ -2,6 +2,6 @@
 *.yaml @devops-team
 
 ##Internal Env####
-deploy-as-code/helm//environments @rushang7-eGov @GhanshyamRawat-eGov
-deploy-as-code/helm/charts/ @rushang7-eGov @GhanshyamRawat-eGov
-deploy-as-code/helm/environments/dashboard-dev*.yaml @rushang7-eGov @GhanshyamRawat-eGov
+deploy-as-code/helm//environments @rushang7-eGov @GhanshyamRawat-eGov @egov-arindam
+deploy-as-code/helm/charts/ @rushang7-eGov @GhanshyamRawat-eGov @egov-arindam
+deploy-as-code/helm/environments/dashboard-dev*.yaml @rushang7-eGov @GhanshyamRawat-eGov @egov-arindam
