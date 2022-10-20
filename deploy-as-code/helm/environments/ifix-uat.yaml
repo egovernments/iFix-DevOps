@@ -1,6 +1,6 @@
 global:
   domain: ifix-uat.psegs.in
-  #containerRegistry: dwssio
+  containerRegistry: dwssio
   tracing-enabled: false
   namespace: ifix
   nodepool:
