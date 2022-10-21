@@ -25,6 +25,8 @@ cluster-configs:
 
   root-ingress:
     cert-issuer: letsencrypt-prod
+    serviceName: digit-ui
+    appRoot: digit-ui
   configmaps:
     egov-config:
       data:
@@ -51,6 +53,7 @@ cluster-configs:
         tracer-errors-provideexceptionindetails: "true"
         timezone: "Asia/Kolkata"
         druid-host: "druid-broker.olap"
+        es-indexer-host: "http://elasticsearch-data-v1.mgramseva:9200/"
 
     egov-service-host:
       data:
@@ -60,6 +63,57 @@ cluster-configs:
         ifix-department-entity-service: "http://ifix-department-entity-service.ifix:8080/"
         keycloak: "http://keycloak.ifix:8080/"
         redis-host: "redis.ifix"
+        egov-indexer: "http://egov-indexer.ifix:8080/"
+        dashboard-analytics: "http://dashboard-analytics.ifix:8080/"
+        egov-mdms-service: "http://egov-mdms-service.mgramseva:8080/"
+        ifix-department-entity-service: "http://ifix-department-entity-service.mgramseva:8080/"
+
+ifix-es-pipeline:
+  fiscal-event-kafka-push-topic: "fiscal-event-request-validated"
+  fiscal-event-es-push-topic: "index-fiscal-events"
+  ifix-department-entity-search-endpoint: "ifix-department-entity/departmentEntity/hierarchyLevel/v1/_search"
+  ifix-master-data-service-search-endpoint: "ifix-master-data/chartOfAccount/v1/_search"
+  fiscal-events-migration-topic: "ifix-fiscal-events-migrate"
+  fiscal-event-migration-origin-push-topic: "ifix-fiscal-events-migration-origin"
+
+egov-mdms-service:
+  mdms-path: "/work-dir/mdms-mgramseva/data"
+  mdms-folder: "mdms-mgramseva"
+  java-args: -Dspring.profiles.active=monitoring
+  masters-config-url: "file:///work-dir/mdms-mgramseva/master-config.json"
+  initContainers:
+    gitSync:
+      repo: "git@github.com:misdwss/mdms-mgramseva"
+      branch: "master"
+
+digit-ui:
+  custom-js-injection: |
+    sub_filter.conf: "
+      sub_filter  '<head>' '<head>
+      <script src=https://s3.ap-south-1.amazonaws.com/ifix-dev-assets/globalProdConfigs.js type=text/javascript></script>
+      ';"
+dashboard-analytics:
+  config-schema-paths: "file:///work-dir/config-mgramseva/egov-dss-dashboards/dashboard-analytics/*.json"
+  initContainers:
+    gitSync:
+      enabled: true
+      repo: "git@github.com:misdwss/config-mgramseva"
+      branch: "master"
+
+egov-persister:
+  persist-yml-path: "file:///work-dir/config-mgramseva/egov-persister/ifix-migration-progress.yml"
+  initContainers:
+    gitSync:
+      enabled: true
+      repo: "git@github.com:misdwss/config-mgramseva"
+      branch: "master"
+
+ifix-migration-toolkit:
+  fiscal-event-kafka-push-topic: "fiscal-event-request-validated"
+  fiscal-event-es-push-topic: "index-fiscal-events"
+  ifix-migration-batch-size: "200"
+  ifix-department-entity-search-endpoint: "ifix-department-entity/departmentEntity/hierarchyLevel/v1/_search"
+
         
 ifix-master-data-service:
   server-context-path: "/ifix-master-data"
