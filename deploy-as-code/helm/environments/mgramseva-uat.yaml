@@ -835,3 +835,17 @@ postgres:
       diskName: "postgres-db-0"  
       diskUri: /subscriptions/71f67180-c7fb-43dd-988a-e9f9e3135adc/resourceGroups/MC_mgramsewa-qa_mgramsewa-qa_southeastasia/providers/Microsoft.Compute/disks/postgres-db-0
   postgresDatabase: mgramseva_qa_db
+
+adapter-master-data-service:
+  ingress:
+    cors:
+      enabled: true
+      annotations:
+        nginx.ingress.kubernetes.io/cors-allow-origin: "https://ifix-uat.psegs.in"
+
+ifix-department-entity-service:
+  ingress:
+    cors:
+      enabled: true
+      annotations:
+        nginx.ingress.kubernetes.io/cors-allow-origin: "https://ifix-uat.psegs.in"
