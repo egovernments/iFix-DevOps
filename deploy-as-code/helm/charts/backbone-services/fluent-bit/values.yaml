@@ -1,4 +1,4 @@
-namespace: logging
+namespace: mgramseva
 
 image:
   repository: fluent/fluent-bit

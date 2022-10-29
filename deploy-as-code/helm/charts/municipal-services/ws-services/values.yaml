@@ -67,6 +67,16 @@ env: |
       configMapKeyRef:
         name: egov-service-host
         key: egov-localization
+  - name: EGOV_URL_SHORTNER_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: egov-url-shortening
+  - name: EGOV_UI_PATH
+    valueFrom:
+      configMapKeyRef:
+        name: egov-config
+        key: egov-services-fqdn-name
   - name: EGOV_BILLINGSERVICE_HOST
     valueFrom:
       configMapKeyRef:
@@ -92,6 +102,11 @@ env: |
       configMapKeyRef:
         name: egov-config
         key: egov-services-fqdn-name
+  - name: EGOV_ES_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-config
+        key: es-indexer-host
   - name: EGOV_MGRAMSEVA_UI_PATH
     value: mgramseva/login
   - name: WORKFLOW_CONTEXT_PATH

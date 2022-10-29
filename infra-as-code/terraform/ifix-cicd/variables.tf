@@ -3,7 +3,7 @@
 #
 
 variable "cluster_name" {
-  default = "egov-cicd"
+  default = "ifix-cicd"
 }
 
 variable "vpc_cidr_block" {
@@ -19,7 +19,7 @@ variable "availability_zones" {
 }
 
 variable "kubernetes_version" {
-  default = "1.15"
+  default = "1.18"
 }
 
 variable "instance_type" {
@@ -39,7 +39,7 @@ variable "spot_max_price" {
 }
 
 variable "ssh_key_name" {
-  default = "egov-cicd"
+  default = "ifix-cicd"
 }
 variable "iam_keybase_user" {
   default = "keybase:egovterraform"

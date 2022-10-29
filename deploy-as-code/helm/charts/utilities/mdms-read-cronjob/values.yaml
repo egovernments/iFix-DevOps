@@ -15,7 +15,7 @@ command:
   - "python3"
   - "cronJobAPIConfig.py"
 args: 
-  - "daily"
+  - "dailyevening"
 
 # Additional Container Envs
 env: |

@@ -1,6 +1,6 @@
 terraform {
   backend "s3" {
-    bucket = "egov-cicd-terraform-state-store"
+    bucket = "ifix-cicd-terraform-state-store"
     key = "terraform"
     region = "ap-south-1"
   }
@@ -94,20 +94,20 @@ module "eks" {
     },
   ]
   
-  map_users    = [
+   map_users    = [
     {
-      userarn  = "${module.iam_user_deployer.this_iam_user_arn}"
-      username = "${module.iam_user_deployer.this_iam_user_name}"
+      userarn  = "${module.iam_user_deployer.iam_user_arn}"
+      username = "${module.iam_user_deployer.iam_user_name}"
       groups   = ["system:masters"]
     },
     {
-      userarn  = "${module.iam_user_admin.this_iam_user_arn}"
-      username = "${module.iam_user_admin.this_iam_user_name}"
+      userarn  = "${module.iam_user_admin.iam_user_arn}"
+      username = "${module.iam_user_admin.iam_user_name}"
       groups   = ["global-readonly", "digit-user"]
     },
     {
-      userarn  = "${module.iam_user_user.this_iam_user_arn}"
-      username = "${module.iam_user_user.this_iam_user_name}"
+      userarn  = "${module.iam_user_user.iam_user_arn}"
+      username = "${module.iam_user_user.iam_user_name}"
       groups   = ["global-readonly"]
     },    
   ]
@@ -121,6 +121,6 @@ module "jenkins" {
   disk_prefix = "jenkins-home"
   availability_zones = "${var.availability_zones}"
   storage_sku = "gp2"
-  disk_size_gb = "20"
+  disk_size_gb = "30"
   
 }

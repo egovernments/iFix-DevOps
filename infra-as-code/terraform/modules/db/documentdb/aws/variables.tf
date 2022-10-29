@@ -1,0 +1,9 @@
+variable "subnet_ids" {}
+variable "vpc_security_group_ids" {}
+variable "instance_class" {}    
+variable "engine_version" {}
+variable "backup_retention_days" {}
+variable "administrator_login" {}
+variable "administrator_login_password" {}
+variable "cluster_name" {}
+variable "environment" {}

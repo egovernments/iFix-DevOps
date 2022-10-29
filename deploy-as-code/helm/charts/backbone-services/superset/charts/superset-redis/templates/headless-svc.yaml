@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: superset-{{ template "redis.name" . }}-headless
+  namespace: {{ .Values.global.namespace }}
+  labels:
+    app.kubernetes.io/name: redis
+spec:
+  type: {{ .Values.spec.type }}
+  clusterIP: {{ .Values.spec.clusterIP }}
+  ports:
+    - name: tcp-redis
+      port: {{ .Values.spec.port }}
+      targetPort: redis
+  selector:
+    app.kubernetes.io/name: redis
+    app.kubernetes.io/instance: superset

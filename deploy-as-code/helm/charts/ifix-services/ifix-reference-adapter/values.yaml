@@ -12,7 +12,10 @@ ingress:
 # Init Containers Configs
 initContainers:
   dbMigration:
-    enabled: false
+    enabled: true
+    schemaTable: "ifix_reference_adapter_schema"
+    image:
+      repository: "ifix-reference-adapter-db"
     
 # Container Configs
 image:
@@ -39,8 +42,30 @@ env: |
       configMapKeyRef:
         name: egov-service-host
         key: fiscal-event-service
-  - name: SPRING_REDIS_HOST
-    value: redis.backbone
+  - name: ADAPTER_MASTER_DATA_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: adapter-master-data-service
+  - name: IFIX_DEPARTMENT_ENTITY_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: ifix-department-entity-service
+  - name: MGRAMSEVA_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-config
+        key: egov-services-fqdn-name
+  - name: SPRING_REDIS_HOST  
+  {{- if index .Values "cluster-configs" "configmaps" "egov-service-host" "data" "redis-host" }}
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: redis-host   
+  {{- else }}
+    value: "redis.backbone"
+  {{- end }}   
   - name: SPRING_REDIS_PORT
     value: "6379"
   - name: SERVER_PORT
@@ -60,11 +85,34 @@ env: |
     value: ifix-adaptor-mapper
   - name: KEYCLOAK_CREDENTIALS_CLIENTID
     value: {{ index .Values "keycloak-credentials-clientid" | quote }}
+  - name: PSPCL_IFIX_EVENT_RECEIVER_NAME
+    value: {{ index .Values "pspcl-ifix-event-receiver-name" | quote }}
+  - name: MGRAMSEVA_OAUTH_TOKEN_USERNAME
+    value: {{ index .Values "mgramseva-oauth-token-username" | quote }}
+  - name: MGRAMSEVA_OAUTH_TOKEN_SCOPE
+    value: {{ index .Values "mgramseva-oauth-token-scope" | quote }}
+  - name: MGRAMSEVA_OAUTH_TOKEN_GRANTTYPE
+    value: {{ index .Values "mgramseva-oauth-token-grantType" | quote }}
+  - name: MGRAMSEVA_OAUTH_TOKEN_TENANTID
+    value: {{ index .Values "mgramseva-oauth-token-tenantId" | quote }}
+  - name: MGRAMSEVA_OAUTH_TOKEN_USERTYPE
+    value: {{ index .Values "mgramseva-oauth-token-userType" | quote }}
+  - name: SAMPLEJOB_FREQUENCY
+    value: {{ index .Values "samplejob-frequency" | quote }}
+  - name: SPRING_QUARTZ_JDBC_INITIALIZE-SCHEMA
+    value: {{ index .Values "spring-quartz-jdbc-initialize-schema" | quote }}
+  - name: MGRAMSEVA_PSPCL_VENDOR_NAME
+    value: {{ index .Values "mgramseva-pspcl-vendor-name" | quote }}
   - name: KEYCLOAK_CREDENTIALS_CLIENTSECRET
     valueFrom:
       secretKeyRef:
         name: keycloak
         key: keycloak-clientsecret
+  - name: MGRAMSEVA_OAUTH_TOKEN_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: keycloak
+        key: oauth-mgramseva-password
   - name: KEYCLOAK_CREDENTIALS_GRANTTYPE
     value: client_credentials
   - name: SECURITY_BASIC_ENABLED
@@ -75,5 +123,8 @@ env: |
   - name: TRACER_OPENTRACING_ENABLED
     value: "true"
   {{- end }}
-
+  {{- if index .Values "java-enable-debug" }}
+  - name: JAVA_ENABLE_DEBUG
+    value: "true"
+  {{- end }}
 
