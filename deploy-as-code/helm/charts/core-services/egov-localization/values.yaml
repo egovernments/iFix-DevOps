@@ -6,7 +6,7 @@ labels:
 # Ingress Configs
 ingress:
   enabled: true
-  zuul: true
+  zuul: false
   context: "localization"
 
 # Init Containers Configs
@@ -36,7 +36,7 @@ env: |
   - name: JAVA_OPTS
     value: {{ index .Values "heap" | quote }}
   - name: SPRING_REDIS_HOST
-    value: redis.backbone
+    value: redis.ifix
   - name: SPRING_REDIS_PORT
     value: "6379"
   - name: JAEGER_SAMPLER_PARAM

@@ -14,56 +14,56 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-{{- if .Values.init.enabled }}
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: {{ template "name" . }}-init-db
-  namespace: {{ .Values.namespace }}
+  name: {{ template "superset.name" . }}-init-db
+  namespace: {{ .Values.global.namespace }}
+  annotations:
+    "helm.sh/hook": post-install,post-upgrade
+    "helm.sh/hook-delete-policy": "before-hook-creation"
 spec:
   template:
     metadata:
-      name: {{ template "name" . }}-init-db
+      name: {{ template "superset.name" . }}-init-db
+      {{- if .Values.init.podAnnotations }}
+      annotations:
+        {{ toYaml .Values.init.podAnnotations | nindent 8 }}
+      {{- end }}
     spec:
       securityContext:
         runAsUser: {{ .Values.runAsUser }}
+      {{- if .Values.init.podSecurityContext }}
+        {{ toYaml .Values.init.podSecurityContext | nindent 8 }}
+      {{- end }}
       {{- if .Values.init.initContainers }}
       initContainers:
-      - command:
-        - /bin/sh
-        - -c
-        - until nc -zv $DB_HOST $DB_PORT -w1; do echo 'waiting for db'; sleep 1; done
-        env:   
-          {{-  tpl .Values.init.initContainers.env . | nindent 12 }}
-        image: busybox:latest
-        imagePullPolicy: IfNotPresent
-        name: wait-for-postgres  
+      {{-  tpl (toYaml .Values.init.initContainers) . | nindent 6 }}
       {{- end }}
       containers:
-      - name: {{ template "name" . }}-init-db
-        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+      - name: {{ template "superset.name" . }}-init-db
+        image: "{{ .Values.image.repository }}"
+        {{- if or .Values.extraEnv .Values.extraEnvRaw }}
         env:
-          - name: REDIS_HOST
-            value: {{ .Values.connections.redis_host | quote }}
-          - name: REDIS_PORT
-            value: {{ .Values.connections.redis_port | quote }}
-          - name: DB_HOST
-            value: {{ .Values.connections.db_host | quote }}
-          - name: DB_PORT
-            value: {{ .Values.connections.db_port | quote }}
-          - name: DB_USER
-            valueFrom:
-              secretKeyRef: 
-                name: db
-                key: supersetdb-username
-          - name: DB_PASS
-            valueFrom:
-              secretKeyRef: 
-                name: db
-                key: supersetdb-password
-          - name: DB_NAME
-            value: {{ .Values.connections.db_name | quote }}
+          {{- range $key, $value := .Values.extraEnv }}
+          - name: {{ $key | quote }}
+            value: {{ $value | quote }}
+          {{- end }}
+          {{- if .Values.extraEnvRaw }}
+          {{- toYaml .Values.extraEnvRaw | nindent 10 }}
+          {{- end }}
+        {{- end }}
+        envFrom:
+          - secretRef:
+              name: {{ tpl .Values.envFromSecret . }}
+          {{- range .Values.envFromSecrets }}
+          - secretRef:
+              name: {{ tpl . $ }}
+          {{- end }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
+        {{- if .Values.init.containerSecurityContext }}
+        securityContext: {{ toYaml .Values.init.containerSecurityContext | nindent 12 }}
+        {{- end }}
         volumeMounts:
           - name: superset-config
             mountPath: {{ .Values.configMountPath | quote }}
@@ -72,6 +72,9 @@ spec:
           - name: superset-extra-config
             mountPath: {{ .Values.extraConfigMountPath | quote }}
             readOnly: true
+        {{- end }}
+        {{- with .Values.extraVolumeMounts }}
+        {{- tpl (toYaml .) $ | nindent 10 -}}
         {{- end }}
         command: {{  tpl (toJson .Values.init.command) . }}
         resources:
@@ -87,7 +90,9 @@ spec:
         {{- if .Values.extraConfigs }}
         - name: superset-extra-config
           configMap:
-            name: {{ template "name" . }}-extra-config
+            name: {{ template "superset.name" . }}-extra-config
+        {{- end }}
+        {{- with .Values.extraVolumes }}
+        {{- tpl (toYaml .) $ | nindent 8 -}}
         {{- end }}
       restartPolicy: Never
-{{- end }}

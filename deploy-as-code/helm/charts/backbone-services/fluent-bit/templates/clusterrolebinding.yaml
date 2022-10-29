@@ -1,12 +1,12 @@
 apiVersion: rbac.authorization.k8s.io/v1beta1
 kind: ClusterRoleBinding
 metadata:
-  name: {{ template "name" . }}-read
+  name: {{ template "name" . }}-ifix-read
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: {{ template "name" . }}-read
+  name: {{ template "name" . }}-ifix-read
 subjects:
 - kind: ServiceAccount
-  name: {{ template "name" . }}
+  name: {{ template "name" . }}-ifix
   namespace: {{ .Values.global.namespace }}

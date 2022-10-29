@@ -6,7 +6,7 @@ labels:
 # Ingress Configs
 ingress:
   enabled: true
-  zuul: true
+  zuul: false
   context: "dashboard-analytics"
 
 # Init Containers Configs
@@ -22,6 +22,8 @@ image:
 replicas: "1"
 tracing-enabled: true
 config-schema-paths: "file:///work-dir/configs/egov-dss-dashboards/dashboard-analytics/*.json"
+heap: "-Xmx192m -Xms192m"
+java-args: "-Dspring.profiles.active=monitoring"
 
 # Additional Container Envs
 env: |

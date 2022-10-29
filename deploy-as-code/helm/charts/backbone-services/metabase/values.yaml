@@ -65,7 +65,7 @@ timeZone: UTC
 emojiLogging: true
 # javaOpts:
 # pluginsDirectory: plugins
-# siteUrl:
+siteUrl:
 
 session: {}
   # maxSessionAge:
