@@ -413,15 +413,14 @@ alertmanager:
     ## ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/
     ##
     affinity: {}
-    # nodeAffinity:
-    #   requiredDuringSchedulingIgnoredDuringExecution:
-    #     nodeSelectorTerms:
-    #     - matchExpressions:
-    #       - key: kubernetes.io/e2e-az-name
-    #         operator: In
-    #         values:
-    #         - e2e-az1
-    #         - e2e-az2
+      # nodeAffinity:
+      #  requiredDuringSchedulingIgnoredDuringExecution:
+      #    nodeSelectorTerms:
+      #    - matchExpressions:
+      #      - key: eks:cluster-name
+      #        operator: In
+      #        values:
+      #        - magramsewa-prod		
 
     ## If specified, the pod's tolerations.
     ## ref: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
@@ -1240,11 +1239,10 @@ prometheusOperator:
     #   requiredDuringSchedulingIgnoredDuringExecution:
     #     nodeSelectorTerms:
     #     - matchExpressions:
-    #       - key: kubernetes.io/e2e-az-name
+    #       - key: eks:nodegroup-name
     #         operator: In
     #         values:
-    #         - e2e-az1
-    #         - e2e-az2
+    #         - ifix-prod-ng
 
   securityContext:
     runAsNonRoot: true
@@ -1700,15 +1698,14 @@ prometheus:
     ## ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/
     ##
     affinity: {}
-    # nodeAffinity:
-    #   requiredDuringSchedulingIgnoredDuringExecution:
-    #     nodeSelectorTerms:
-    #     - matchExpressions:
-    #       - key: kubernetes.io/e2e-az-name
-    #         operator: In
-    #         values:
-    #         - e2e-az1
-    #         - e2e-az2
+    #  nodeAffinity:
+    #    requiredDuringSchedulingIgnoredDuringExecution:
+    #      nodeSelectorTerms:
+    #      - matchExpressions:
+    #        - key: eks:nodegroup-name
+    #          operator: In
+    #          values:
+    #          - ifix-prod-ng
 
     ## The remote_read spec configuration for Prometheus.
     ## ref: https://github.com/coreos/prometheus-operator/blob/master/Documentation/api.md#remotereadspec

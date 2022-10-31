@@ -1,0 +1,83 @@
+global:
+  domain: ifix-uat.ifix.org.in
+  containerRegistry: dwssio
+  tracing-enabled: false
+  namespace: pspcl
+  nodepool:
+    selector: ifix-uat-ng
+    toleration: ifix-uat-ng
+
+cluster-configs:
+  namespaces:
+    create: false
+    values:
+      [ 
+        ifix, 
+        cert-manager,
+        olap,
+        pspcl
+      ]
+
+  rbac:
+    - role: user
+      namespaces: [pspcl]
+    - role: admin
+      namespaces: [pspcl]
+
+  root-ingress:
+    cert-issuer: letsencrypt-prod
+  configmaps:
+    egov-config:
+      data:
+        mongo-db-host: "ifix-db.cluster-cqqfmghbjssw.ap-south-1.docdb.amazonaws.com"
+        mongo-db-name: "pspcl_qa_db"
+        mongo-db-url: "mongodb://ifix-db.cluster-cqqfmghbjssw.ap-south-1.docdb.amazonaws.com:27017/?retryWrites=false"
+        db-host: "postgres.pspcl"
+        db-name: "pspcl_qa_db"
+        keycloak-db-name: "keycloak_qa_db"
+        db-url: "jdbc:postgresql://postgres.pspcl:5432/pspcl_qa_db"
+        domain: "ifix-qa.ifix.org.in"
+        egov-services-fqdn-name: "https://ifix-qa.ifix.org.in/"
+        egov-state-level-tenant-id: "pb"
+        flyway-locations: "filesystem:/flyway/sql,filesystem:/flyway/seed,filesystem:/flyway/qa"
+        kafka-brokers: "kafka-v2.pspcl:9092"
+        kafka-infra-brokers: "kafka-v2.pspcl:9092"
+        logging-level-jdbc: "debug"
+        serializers-timezone-in-ist: "true"
+        server-tomcat-max-threads: "10"
+        server-tomcat-max-connections: "500"
+        spring-datasource-tomcat-initialSize: "1"
+        spring-datasource-tomcat-max-active: "5"
+        spring-jpa-show-sql: "true"
+        tracer-errors-provideexceptionindetails: "true"
+        timezone: "Asia/Kolkata"
+        druid-host: "druid-broker.olap"
+
+    egov-service-host:
+      data:
+        ifix-master-data-service: "http://ifix-master-data-service.ifix:8080/"
+        fiscal-event-service: "http://fiscal-event-service.ifix:8080/"
+        ifix-zuul: "http://ifix-zuul.ifix:8080/"
+        ifix-department-entity-service: "http://ifix-department-entity-service.ifix:8080/"
+        egov-mdms-service: "http://egov-mdms-service.mgramseva:8080/"
+      
+
+
+postgres:
+  postgresDatabase: pspcl_qa_db
+  persistence:
+    enabled: true
+    aws:
+      volumeId: "vol-0b71f4fdf4a11a7e2"
+    dataDirSize: 100Gi  
+
+pspcl-ifix-adapter:
+  pspcl-fetch-bill-url: "https://billapp.pspcl.in//fetchbillingdata.asmx"
+  pspcl-fetch-payment-url: "https://billapp.pspcl.in//fetchbillingdata.asmx"
+  keycloak-pspcl-credentials-clientid: "pspcl-ifix-qa"
+  fiscal-event-tenantId: "pb"
+  demand-coaCode: "8247-12-373-56-78-90"
+  receipt-coaCode: "8247-12-373-56-78-90"
+  fiscal-event-receiver: "mgramseva-qa"
+  ifix-host: "https://ifix-qa.ifix.org.in/"
+  keycloak-host: "https://ifix-qa.ifix.org.in/"
