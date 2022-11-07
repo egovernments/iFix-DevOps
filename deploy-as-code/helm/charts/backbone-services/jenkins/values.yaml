@@ -552,6 +552,13 @@ master:
                 }
                 disabled(false)
               }
+              {{- else if (eq $job.name "pspcl-ifix-uat") }}            
+              deployer(repo:'git@github.com:misdwss/iFix-DevOps.git', branch: 'pspcl', helmDir: 'deploy-as-code/helm', environment: '{{ $job.name }}')""")
+                      sandbox() 
+                    }
+                }
+                disabled(false)
+              }
               {{- else }}
               deployer(repo:'git@github.com:misdwss/iFix-DevOps.git', branch: 'master', helmDir: 'deploy-as-code/helm', environment: '{{ $job.name }}')""")
                       sandbox() 
