@@ -13,7 +13,7 @@ cluster-configs:
   namespaces:
     create: false
     values:
-      [ mgramseva , cert-manager , olap, ifix ]  
+      [ mgramseva , cert-manager , olap, ifix, monitoring ]  
   db:
     namespace: mgramseva
   root-ingress:
@@ -145,8 +145,8 @@ cluster-configs:
         egov-searcher: "http://egov-searcher.mgramseva:8080/"
         egov-indexer: "http://egov-indexer.mgramseva:8080/"
         egov-hrms: "http://egov-hrms.mgramseva:8080/"
-        es-client: "http://elasticsearch-data-v1.es-cluster.mgramseva:9200"
-        es-client-infra: "http://elasticsearch-data-infra-v1.es-cluster-infra.mgramseva:9200"
+        es-client: "http://elasticsearch-data-v1.mgramseva:9200/"
+        es-client-infra: "curl http://elasticsearch-data-infra-v1.mgramseva:9200/"
         location: "http://location.mgramseva:8080/"
         pt-calculator-v2: "http://pt-calculator-v2.mgramseva:8080/"
         pt-services-v2: "http://pt-services-v2.mgramseva:8080/"
@@ -787,6 +787,7 @@ oauth2-proxy:
       upstreams = [ "file:///dev/null" ]
 
 grafana:
+  namespace: monitoring
   initContainers:
     gitSync:
       enabled: true
