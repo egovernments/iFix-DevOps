@@ -30,7 +30,7 @@ jenkins:
 
   jobBuilder:
     repos: >-
-      'git@github.com:misdwss/iFix-Dev.git','git@github.com:misdwss/punjab-mgramseva.git'
+      'git@github.com:misdwss/iFix-Dev.git','git@github.com:egovernments/punjab-mgramseva.git'
   deploymentJobs:
     - name: ci
       acl: [misdwss*devops-team]
