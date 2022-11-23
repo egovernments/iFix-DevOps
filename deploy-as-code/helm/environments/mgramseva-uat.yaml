@@ -182,6 +182,15 @@ ws-services:
   is-external-workflow-enabled: "true"
 ifix-reference-adapter:
   keycloak-credentials-clientid: "ifix-uat"
+  pspcl-ifix-event-receiver-name: "mgramseva-uat"
+  mgramseva-oauth-token-username: "9591730579"
+  mgramseva-oauth-token-scope: "read"
+  mgramseva-oauth-token-grantType: "password"
+  mgramseva-oauth-token-tenantId: "pb"
+  mgramseva-oauth-token-userType: "EMPLOYEE"
+  samplejob-frequency: "0 */2 * ? * *"
+  spring-quartz-jdbc-initialize-schema: "always"
+  mgramseva-pspcl-vendor-name: "PSPCL001"
 
 # core >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
