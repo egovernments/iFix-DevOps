@@ -15,7 +15,7 @@ initContainers:
     enabled: true
     schemaTable: "ifix-department-entity_schema"
     image:
-      repository: "ifix-department-entity-db"
+      repository: "ifix-department-entity-service-db"
       
 # Container Configs
 image:
