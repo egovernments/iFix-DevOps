@@ -218,7 +218,7 @@ vendor:
 egov-notification-sms:
   sms-provider-url: "https://smsgw.sms.gov.in/failsafe/MLink"
   sms.provider.url: "https://smsgw.sms.gov.in/failsafe/MLink"
-  sms.provider.class: "NIC"
+  sms.provider.class: "Console"
   sms.provider.requestType: "POST"
   sms.provider.contentType:  "application/json"
   sms-config-map: "{'username':'$username', 'pin': '$password', 'signature':'$senderid', 'mnumber':'$mobileno', 'message':'$message', 'smsservicetype':'unicodemsg', 'myParam': '$extraParam' , 'messageType': '$mtype'}"
