@@ -23,7 +23,7 @@ variable "node_pool_zone" {
 }
 
 variable "kubernetes_version" {
-  default = "1.18"
+  default = "1.20"
 }
 
 variable "instance_type" {
@@ -42,8 +42,10 @@ variable "number_of_worker_nodes" {
 variable "ssh_key_name" {
   default = "ifix-dev"
 }
-variable "iam_keybase_user" {
- default = "keybase:egovterraform"
+
+variable "db_name" {
+  description = "RDS DB name. Make sure there are no hyphens or other special characters in the DB name. Else, DB creation will fail"
+  default = "test_db"
 }
 
 variable "db_password" {}
