@@ -135,5 +135,9 @@ module "node-group" {
   subnet              = "${concat(slice(module.network.private_subnets, 0, length(var.availability_zones)))}"
   node_group_max_size = 4
   node_group_desired_size = 4
+  depends_on = [
+    module.network,
+    module.eks
+  ]
 }  
 
