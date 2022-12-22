@@ -126,6 +126,10 @@ module "node-group" {
   subnet              = "${concat(slice(module.network.private_subnets, 0, length(var.node_pool_zone)))}"
   node_group_max_size = 1
   node_group_desired_size = 1
+  depends_on = [
+    module.network,
+    module.eks
+  ]
 }  
 
 
