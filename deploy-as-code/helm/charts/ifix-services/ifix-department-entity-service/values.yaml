@@ -9,14 +9,6 @@ ingress:
   zuul: true
   context: "ifix-department-entity"
 
-# Init Containers Configs
-initContainers:
-  dbMigration:
-    enabled: true
-    schemaTable: "ifix-department-entity_schema"
-    image:
-      repository: "ifix-department-entity-service-db"
-      
 # Container Configs
 image:
   repository: "ifix-department-entity-service"
@@ -36,6 +28,16 @@ env: |
     value: {{ index .Values "server-context-path" | quote }}
   - name: SERVER_PORT
     value: "8080"
+  - name: SPRING_DATA_MONGODB_URI
+    valueFrom:
+      secretKeyRef:
+        name: db
+        key: mongo-db-authenticated-uri
+  - name: SPRING_DATA_MONGODB_DATABASE
+    valueFrom:
+      configMapKeyRef:
+        name: egov-config
+        key: mongo-db-name
   - name: IFIX_MASTER_DEPARTMENT_HOST
     valueFrom:
       configMapKeyRef:
