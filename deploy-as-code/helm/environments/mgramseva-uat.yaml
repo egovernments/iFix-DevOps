@@ -1,6 +1,6 @@
 global:
   domain: mgramseva-uat.psegs.in
-  containerRegistry: dwssio
+#   containerRegistry: dwssio
   tracing-enabled: true
   namespace: mgramseva
   nodepool:
