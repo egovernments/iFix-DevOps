@@ -1,9 +1,9 @@
 # Common Labels
 labels:
   app: "ifix-migration-toolkit"
-  group: "ifix"
+  group: "rainmaker"
 
-namespace: ifix
+#namespace: ifix
 
 # Init Containers Configs
 initContainers:
