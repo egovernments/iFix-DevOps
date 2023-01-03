@@ -8,6 +8,14 @@ ingress:
   enabled: true
   zuul: true
   context: "ifix-department-entity"
+  
+# Init Containers Configs
+initContainers:
+  dbMigration:
+    enabled: true
+    schemaTable: "ifix-department-entity_schema"
+    image:
+      repository: "ifix-department-entity-service-db"
 
 # Container Configs
 image:
