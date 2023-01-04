@@ -60,7 +60,7 @@ cluster-configs:
         ifix-master-data-service: "http://ifix-master-data-service.ifix:8080/"
         egov-indexer: "http://egov-indexer.ifix:8080/"
         dashboard-analytics: "http://dashboard-analytics.ifix:8080/"
-        egov-mdms-service: "http://egov-mdms-service.mgramseva:8080/"
+        egov-mdms-service: "http://egov-mdms-service.ifix:8080/"
         fiscal-event-service: "http://fiscal-event-service.ifix:8080/"
         ifix-zuul: "http://ifix-zuul.ifix:8080/"
         ifix-department-entity-service: "http://ifix-department-entity-service.mgramseva:8080/"
@@ -111,8 +111,8 @@ egov-mdms-service:
   masters-config-url: "file:///work-dir/mdms-mgramseva/master-config.json"
   initContainers:
     gitSync:
-      repo: "git@github.com:misdwss/mdms-mgramseva"
-      branch: "QA"
+      repo: "git@github.com:egovernments/mdms-mgramseva"
+      branch: "ifix-qa"
 
 digit-ui:
   custom-js-injection: |
@@ -126,8 +126,8 @@ dashboard-analytics:
   initContainers:
     gitSync:
       enabled: true
-      repo: "git@github.com:misdwss/config-mgramseva"
-      branch: "master"
+      repo: "git@github.com:egovernments/config-mgramseva"
+      branch: "ifix-qa"
 
 egov-persister:
   persist-yml-path: "file:///work-dir/config-mgramseva/egov-persister/ifix-migration-progress.yml"
