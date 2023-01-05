@@ -130,12 +130,23 @@ dashboard-analytics:
       branch: "ifix-qa"
 
 egov-persister:
-  persist-yml-path: "file:///work-dir/config-mgramseva/egov-persister/ifix-migration-progress.yml"
+  persist-yml-path: "file:///work-dir/config-mgramseva/egov-persister/ifix-migration-progress.yml,file:///work-dir/config-mgramseva/egov-persister/fiscal-events-persister.yml,file:///work-dir/config-mgramseva/egov-persister/ifix-master-data-persister.yml"
   initContainers:
     gitSync:
       enabled: true
-      repo: "git@github.com:misdwss/config-mgramseva"
-      branch: "master"
+      repo: "git@github.com:egovernments/config-mgramseva"
+      branch: "ifix-qa"
+      
+egov-indexer:
+  replicas: 1
+  images:
+    - egovio/egov-indexer
+  db_migration_image: egovio/egov-indexer-db
+  initContainers:
+    gitSync:
+      repo: "git@github.com:egovernments/config-mgramseva"
+      branch: "ifix-qa"
+  egov-indexer-yaml-repo-path: "file:///work-dir/configs/egov-indexer/ifix-fiscal-event-indexer.yml"
 
 fiscal-event-aggregator:
   aggregator-topic-name: "aggregated-fiscal-event"
