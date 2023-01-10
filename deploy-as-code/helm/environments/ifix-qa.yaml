@@ -1,6 +1,6 @@
 global:
   domain: ifix-qa.ifix.org.in
-  containerRegistry: dwssio
+  containerRegistry: egovio
   tracing-enabled: false
   namespace: ifix
   nodepool:
