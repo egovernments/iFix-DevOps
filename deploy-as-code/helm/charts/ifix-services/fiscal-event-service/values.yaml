@@ -11,6 +11,14 @@ ingress:
   zuul: true
   context: "fiscal-event-service"
 
+# Init container configs
+initContainers:
+  dbMigration:
+    enabled: true
+    schemaTable: "fiscal_event_service_schema"
+    image:
+      repository: "fiscal-event-service-db"
+
 # Container Configs
 image:
   repository: "fiscal-event-service"
@@ -52,18 +60,8 @@ env: |
         key: ifix-master-data-service
   - name: FISCAL_KAFKA_PUSH_TOPIC
     value: {{ index .Values "fiscal-kafka-push-topic" | quote }}
-  - name: FISCAL_EVENT_KAFKA_MONGODB_TOPIC
-    value: {{ index .Values "fiscal-event-kafka-mongodb-topic" | quote }}
-  - name: SPRING_DATA_MONGODB_URI
-    valueFrom:
-      secretKeyRef:
-        name: db
-        key: mongo-db-authenticated-uri
-  - name: SPRING_DATA_MONGODB_DATABASE
-    valueFrom:
-      configMapKeyRef:
-        name: egov-config
-        key: mongo-db-name
+  - name: FISCAL_EVENT_KAFKA_POSTGRES_TOPIC
+    value: {{ index .Values "fiscal-event-kafka-postgres-topic" | quote }}
   {{- if index .Values "fiscal-event-push-request-max-size" }}
   - name: FISCAL_EVENT_PUSH_REQUEST_MAX_SIZE
     value: {{ index .Values "fiscal-event-push-request-max-size" | quote }}
