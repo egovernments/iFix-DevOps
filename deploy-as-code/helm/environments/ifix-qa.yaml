@@ -72,6 +72,7 @@ ifix-master-data-service:
 fiscal-event-service:
   fiscal-kafka-push-topic: "fiscal-event-request-validated"
   fiscal-event-push-request-max-size: "1000"
+  fiscal-event-kafka-postgres-topic: "save-fiscal-event"
 
 fiscal-event-post-processor:
   fiscal-event-kafka-push-topic: "fiscal-event-request-validated"
