@@ -11,6 +11,14 @@ ingress:
   zuul: true
   context: "ifix-master-data"
 
+# Init container configs
+initContainers:
+  dbMigration:
+    enabled: true
+    schemaTable: "ifix_master_data_service_schema"
+    image:
+      repository: "ifix-master-data-service-db"
+
 # Container Configs
 image:
   repository: "ifix-master-data-service"
