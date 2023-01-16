@@ -82,7 +82,7 @@ fiscal-event-post-processor:
   fiscal-event-processor-kafka-druid-topic: "fiscal-event-druid-sink"
 
 ifix-es-pipeline:
-  fiscal-event-kafka-push-topic: "fiscal-event-request-validated"
+  fiscal-event-kafka-push-topic: "fiscal-event-request-es"
   fiscal-event-es-push-topic: "index-fiscal-events"
   ifix-department-entity-search-endpoint: "ifix-department-entity/departmentEntity/hierarchyLevel/v1/_search"
   ifix-master-data-service-search-endpoint: "ifix-master-data/chartOfAccount/v1/_search"
