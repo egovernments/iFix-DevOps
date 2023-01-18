@@ -1,0 +1,46 @@
+# Common Labels
+labels:
+  app: "ifix-migration-toolkit"
+  group: "ifix"
+
+namespace: ifix
+
+# Init Containers Configs
+initContainers:
+  dbMigration:
+    enabled: true
+    schemaTable: "ifix_migration_toolkit_schema"
+    image:
+      repository: "ifix-migration-toolkit-db"
+
+# Container Configs
+image:
+  repository: "ifix-migration-toolkit"
+replicas: "1"
+
+appType: "java-spring"
+tracing-enabled: true
+heap: "-Xmx192m -Xms192m"
+java-args: ""
+
+# Additional Container Envs
+env: |  
+  - name: SERVER_PORT
+    value: "8080"
+  - name: SPRING_KAFKA_CONSUMER_GROUP_ID
+    value: "ifix-migration-toolkit"
+  - name: KAFKA_CONFIG_BOOTSTRAP_SERVER_CONFIG
+    valueFrom:
+      configMapKeyRef:
+        name: egov-config
+        key: kafka-brokers
+  - name: IFIX_DEPARTMENT_ENTITY_SERVICE_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: ifix-department-entity-service
+  - name: ADAPTER_MASTER_DATA_SERVICE_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: adapter-master-data-service
