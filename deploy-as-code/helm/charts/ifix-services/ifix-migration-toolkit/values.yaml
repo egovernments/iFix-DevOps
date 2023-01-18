@@ -3,7 +3,7 @@ labels:
   app: "ifix-migration-toolkit"
   group: "ifix"
 
-namespace: ifix
+namespace: mgramseva
 
 # Init Containers Configs
 initContainers:
