@@ -13,7 +13,7 @@ ingress:
 initContainers:
   dbMigration:
     enabled: true
-    schemaTable: "ifix-department-entity_schema"
+    schemaTable: "ifix_department_entity_schema"
     image:
       repository: "ifix-department-entity-service-db"
 
