@@ -70,6 +70,8 @@ env: |
         key: mongo-db-name
   - name: FISCAL_KAFKA_PUSH_TOPIC
     value: {{ index .Values "fiscal-kafka-push-topic" | quote }}
+  - name: FISCAL_EVENT_KAFKA_ES_PUSH_TOPIC
+    value: {{ index .Values "fiscal-event-kafka-es-topic" | quote }}
   - name: FISCAL_EVENT_KAFKA_POSTGRES_TOPIC
     value: {{ index .Values "fiscal-event-kafka-postgres-topic" | quote }}
   {{- if index .Values "fiscal-event-push-request-max-size" }}
