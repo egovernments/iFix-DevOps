@@ -44,6 +44,11 @@ env: |
       configMapKeyRef:
         name: egov-config
         key: kafka-brokers
+  - name: ROOT_LEVEL_TENANT_ID
+    valueFrom:
+      configMapKeyRef:
+        name: egov-config
+        key: egov-state-level-tenant-id
   - name: IFIX_MASTER_GOVERNMENT_HOST
     valueFrom:
       configMapKeyRef:
