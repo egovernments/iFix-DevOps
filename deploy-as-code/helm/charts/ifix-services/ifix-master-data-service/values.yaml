@@ -52,6 +52,11 @@ env: |
       configMapKeyRef:
         name: egov-service-host
         key: ifix-master-data-service
+  - name: MDMS_SERVICE_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: egov-mdms-service
   - name: IFIX_MASTER_EXPENDITURE_HOST
     valueFrom:
       configMapKeyRef:
