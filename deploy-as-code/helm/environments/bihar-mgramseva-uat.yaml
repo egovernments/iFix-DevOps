@@ -1,6 +1,6 @@
 global:
   domain: uat.peyjalbihar.org
-  containerRegistry: peyjalbihar
+  containerRegistry: egovio
   tracing-enabled: true
   namespace: mgramseva
   nodepool:
