@@ -18,7 +18,7 @@ java-args: ""
 # Additional Container Envs
 env: |  
   - name: SPRING_KAFKA_CONSUMER_GROUP_ID
-    value: "ifix-fiscal-events"
+    value: "ifix-es-pipeline"
   - name: KAFKA_CONFIG_BOOTSTRAP_SERVER_CONFIG
     valueFrom:
       configMapKeyRef:
@@ -26,6 +26,8 @@ env: |
         key: kafka-brokers
   - name: FISCAL_EVENT_KAFKA_PUSH_TOPIC
     value: {{ index .Values "fiscal-event-kafka-push-topic" | quote }}
+  - name: FISCAL_EVENT_INDEX_TOPIC
+    value: {{ index .Values "fiscal-event-index-topic" | quote }}
   - name: IFIX_DEPARTMENT_ENTITY_SEARCH_ENDPOINT
     value: {{ index .Values "ifix-department-entity-search-endpoint" | quote }}
   - name: IFIX_DEPARTMENT_ENTITY_SERVICE_HOST
@@ -33,7 +35,6 @@ env: |
       configMapKeyRef:
         name: egov-service-host
         key: ifix-department-entity-service
-
   - name: IFIX_MASTER_DATA_SERVICE_HOST
     valueFrom:
       configMapKeyRef:
