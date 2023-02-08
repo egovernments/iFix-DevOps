@@ -146,7 +146,7 @@ cluster-configs:
         egov-indexer: "http://egov-indexer.mgramseva:8080/"
         egov-hrms: "http://egov-hrms.mgramseva:8080/"
         es-client: "http://elasticsearch-data-v1.mgramseva:9200/"
-        es-client-infra: "curl http://elasticsearch-data-infra-v1.mgramseva:9200/"
+        es-client-infra: "http://elasticsearch-data-infra-v1.mgramseva:9200/"
         location: "http://location.mgramseva:8080/"
         pt-calculator-v2: "http://pt-calculator-v2.mgramseva:8080/"
         pt-services-v2: "http://pt-services-v2.mgramseva:8080/"
