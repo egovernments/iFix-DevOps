@@ -230,15 +230,15 @@ egov-persister:
       
 property-services:
  replicas: 1
- memory_limits: 128Mi
+ memory_limits: 256Mi
  
 ws-calculator:
  replicas: 1
- memory_limits: 128Mi
+ memory_limits: 256Mi
 
 egov-localization:
   replicas: 1
-  memory_limits: 128Mi
+  memory_limits: 256Mi
 
 
 pdf-service:
