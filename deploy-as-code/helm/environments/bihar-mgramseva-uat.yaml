@@ -215,6 +215,7 @@ egov-indexer:
   egov-indexer-yaml-repo-path: "file:///work-dir/mgramseva-configs/egov-indexer/billingservices-indexer.yml,file:///work-dir/mgramseva-configs/egov-indexer/collection-indexer.yml,file:///work-dir/mgramseva-configs/egov-indexer/egov-echallan.yml,file:///work-dir/mgramseva-configs/egov-indexer/egov-telemetry-indexer.yml,file:///work-dir/mgramseva-configs/egov-indexer/error-queue.yml,file:///work-dir/mgramseva-configs/egov-indexer/egov-vendor.yaml,file:///work-dir/mgramseva-configs/egov-indexer/payment-indexer.yml,file:///work-dir/mgramseva-configs/egov-indexer/finance-rolloutadotpion-indexer.yml,file:///work-dir/mgramseva-configs/egov-indexer/property-services.yml,file:///work-dir/mgramseva-configs/egov-indexer/water-service.yml,file:///work-dir/mgramseva-configs/egov-indexer/water-services-meter.yml"
 
 egov-pg-service:
+  heap: "-Xmx64m -Xms64m"
   replicas: 1
   axis: true
 
@@ -229,8 +230,9 @@ egov-persister:
       branch: "UAT"
       
 property-services:
+ heap: "-Xmx64m -Xms64m"
  replicas: 1
- memory_limits: 256Mi
+ memory_limits: 128Mi
  
 ws-calculator:
  replicas: 1
@@ -239,7 +241,7 @@ ws-calculator:
 egov-localization:
   heap: "-Xmx64m -Xms64m"
   replicas: 1
-  memory_limits: 256Mi
+  memory_limits: 128Mi
 
 pdf-service:
   initContainers:
