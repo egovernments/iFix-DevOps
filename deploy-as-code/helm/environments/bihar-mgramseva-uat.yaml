@@ -190,7 +190,7 @@ egov-workflow:
 egov-idgen:
   idformat-from-mdms: "true"
   java-args: -Dspring.profiles.active=monitoring
-  heap: "-Xmx192m -Xms192m"
+  heap: "-Xmx64m -Xms64m"
   autocreate-new-seq: "true"
   replicas: 1
 
@@ -366,12 +366,12 @@ report:
 egov-workflow-v2:
   logging-level: "DEBUG"
   java-args: -Dspring.profiles.active=monitoring
-  heap: "-Xmx192m -Xms192m"
+  heap: "-Xmx64m -Xms64m"
   workflow-statelevel: "true"
 
 egov-hrms:
   java-args: -Dspring.profiles.active=monitoring
-  heap: "-Xmx192m -Xms192m"
+  heap: "-Xmx64m -Xms64m"
   employee-applink: "https://https://mgramseva-dev.egov.org.in/employee/user/login"
 
 egov-apportion-service:
