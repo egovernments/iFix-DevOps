@@ -232,7 +232,7 @@ egov-persister:
 property-services:
  heap: "-Xmx64m -Xms64m"
  replicas: 1
- memory_limits: 128Mi
+ memory_limits: 256Mi
  
 ws-calculator:
  replicas: 1
@@ -241,7 +241,7 @@ ws-calculator:
 egov-localization:
   heap: "-Xmx64m -Xms64m"
   replicas: 1
-  memory_limits: 128Mi
+  memory_limits: 256Mi
 
 pdf-service:
   initContainers:
