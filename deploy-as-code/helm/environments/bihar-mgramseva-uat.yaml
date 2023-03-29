@@ -107,11 +107,11 @@ cluster-configs:
         redis-host: "redis.mgramseva"
         
 billing-service:
-  memory_limits: 128Mi
+  memory_limits: 256Mi
   demand.updateurl: '{"WS":"http://ws-calculator.mgramseva:8080/ws-calculator/waterCalculator/_updateDemand"}'
   
 ws-services:
-  memory_limits: 128Mi
+  memory_limits: 256Mi
   replicas: 1
   is-external-workflow-enabled: "true"
 ifix-reference-adapter:
@@ -130,7 +130,7 @@ egov-filestore:
   allowed-file-formats: "jpg,jpeg,png,doc,docx,pdf,odt,ods,text,dxf,xls,xlsx"
 
 egov-location:
-  memory_limits: 128Mi
+  memory_limits: 256Mi
   replicas: 1
 
 vendor:
@@ -169,7 +169,7 @@ egov-notification-sms:
 egov-user:
   replicas: 1
   heap: "-Xmx64m -Xms64m"
-  memory_limits: 128Mi
+  memory_limits: 256Mi
   otp-validation: "true"
   citizen-otp-enabled: "true"
   employee-otp-enabled: "false"
@@ -313,7 +313,7 @@ egov-custom-consumer:
 # financials >>>>>>>>>>>>>>>>>>>>>>>>>>>>
 egf-master:
   db-url: "jdbc:postgresql://magramseva-uat-db.cw1hfdqtf5pw.ap-south-1.rds.amazonaws.com:5432/mgramseva_uat"
-  memory_limits: 128Mi
+  memory_limits: 256Mi
   heap: "-Xmx64m -Xms64m"
 
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -344,7 +344,7 @@ zuul:
 
 collection-services:
   replicas: 1
-  memory_limits: 128Mi
+  memory_limits: 256Mi
   receiptnumber-servicebased: "true"
   receipt-search-paginate: "true"
   receipt-search-defaultsize: 30
@@ -375,7 +375,7 @@ egov-hrms:
   employee-applink: "https://https://mgramseva-dev.egov.org.in/employee/user/login"
 
 egov-apportion-service:
-  memory_limits: 128Mi
+  memory_limits: 256Mi
   heap: -Xmx64m -Xms64m
 
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
