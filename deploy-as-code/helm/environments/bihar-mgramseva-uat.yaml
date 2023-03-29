@@ -237,9 +237,9 @@ ws-calculator:
  memory_limits: 256Mi
 
 egov-localization:
+  heap: "-Xmx64m -Xms64m"
   replicas: 1
   memory_limits: 256Mi
-
 
 pdf-service:
   initContainers:
