@@ -332,7 +332,7 @@ zuul:
   replicas: 1
   custom-filter-property: "false"
   tracing-enabled: "true"
-  heap: "-Xmx512m -Xms256m"
+  heap: "-Xmx64m -Xms64m"
   memory_limits: 128Mi
   server-tomcat-max-threads: "350"
   server-tomcat-max-connections: "1500"
