@@ -457,8 +457,8 @@ kafka-v2:
   zookeeperHosts: "zookeeper-v2.mgramseva:2181/kafka-v2"
       
 
-  heapOptions: "-Xms128M -Xmx128M"
-  memory_limits: 256Mi
+  heapOptions: "-Xms256M -Xmx256M"
+  memory_limits: 512Mi
   lingerMs: "250"
   numberPartitions: "3"
   replicationFactor: "2"
