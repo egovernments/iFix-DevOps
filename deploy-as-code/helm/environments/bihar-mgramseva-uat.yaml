@@ -345,7 +345,7 @@ zuul:
 # collections >>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 collection-services:
-  replicas: 1
+  replicas: 2
   memory_limits: 256Mi
   receiptnumber-servicebased: "true"
   receipt-search-paginate: "true"
