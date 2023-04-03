@@ -139,6 +139,8 @@ vendor:
   vendor.role.name: Vendor role Citizen
   vendor.driver.role.name: Vendor Driver Role Citizen
   replicas: 1
+  memory_limits: 256Mi
+  heap: "-Xmx64m -Xms64m" 
 
 egov-notification-sms:
   sms-provider-url: "https://smsgw.sms.gov.in/failsafe/MLink"
