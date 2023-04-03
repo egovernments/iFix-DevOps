@@ -107,12 +107,13 @@ cluster-configs:
         redis-host: "redis.mgramseva"
         
 billing-service:
+  replicas: 2
   memory_limits: 256Mi
   demand.updateurl: '{"WS":"http://ws-calculator.mgramseva:8080/ws-calculator/waterCalculator/_updateDemand"}'
   
 ws-services:
   memory_limits: 256Mi
-  replicas: 1
+  replicas: 2
   is-external-workflow-enabled: "true"
 ifix-reference-adapter:
   keycloak-credentials-clientid: "ifix-uat"
@@ -222,7 +223,7 @@ egov-pg-service:
   axis: true
 
 egov-persister:
-  replicas: 1
+  replicas: 2
   images:
     - egovio/egov-persister
   persist-yml-path: "file:///work-dir/mgramseva-configs/egov-persister/billing-services-persist.yml,file:///work-dir/mgramseva-configs/egov-persister/collection-migration-persister.yml,file:///work-dir/mgramseva-configs/egov-persister/echallan.yml,file:///work-dir/mgramseva-configs/egov-persister/egf-bill.yaml,file:///work-dir/mgramseva-configs/egov-persister/egov-user-event-persister.yml,file:///work-dir/mgramseva-configs/egov-persister/egov-workflow-v2-persister.yml,file:///work-dir/mgramseva-configs/egov-persister/pdf-filestoreid-update.yml,file:///work-dir/mgramseva-configs/egov-persister/pdf-generator.yml,file:///work-dir/mgramseva-configs/egov-persister/pg-service-persister.yml,file:///work-dir/mgramseva-configs/egov-persister/property-services.yml,file:///work-dir/mgramseva-configs/egov-persister/pt-persist.yml,file:///work-dir/mgramseva-configs/egov-persister/water-persist.yml,file:///work-dir/mgramseva-configs/egov-persister/water-meter.yml,file:///work-dir/mgramseva-configs/egov-persister/vendor-persister.yaml,file:///work-dir/mgramseva-configs/egov-persister/apportion-persister.yml,file:///work-dir/mgramseva-configs/egov-persister/property-services-registry.yml"
@@ -237,12 +238,12 @@ property-services:
  memory_limits: 256Mi
  
 ws-calculator:
- replicas: 1
+ replicas: 2
  memory_limits: 256Mi
 
 egov-localization:
   heap: "-Xmx64m -Xms64m"
-  replicas: 1
+  replicas: 2
   memory_limits: 256Mi
 
 pdf-service:
