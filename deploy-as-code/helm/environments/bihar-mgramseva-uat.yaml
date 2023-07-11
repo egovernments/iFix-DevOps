@@ -247,6 +247,7 @@ egov-localization:
   memory_limits: 256Mi
 
 pdf-service:
+  memory_limits: 512Mi
   initContainers:
     gitSync:
       repo: "git@github.com:akrspi/mgramseva-configs"
