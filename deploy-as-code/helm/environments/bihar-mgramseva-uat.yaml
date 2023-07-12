@@ -108,11 +108,11 @@ cluster-configs:
         
 billing-service:
   replicas: 2
-  memory_limits: 256Mi
+  memory_limits: 512Mi
   demand.updateurl: '{"WS":"http://ws-calculator.mgramseva:8080/ws-calculator/waterCalculator/_updateDemand"}'
   
 ws-services:
-  memory_limits: 256Mi
+  memory_limits: 512Mi
   replicas: 2
   is-external-workflow-enabled: "true"
 ifix-reference-adapter:
@@ -131,7 +131,7 @@ egov-filestore:
   allowed-file-formats: "jpg,jpeg,png,doc,docx,pdf,odt,ods,text,dxf,xls,xlsx"
 
 egov-location:
-  memory_limits: 256Mi
+  memory_limits: 512Mi
   replicas: 1
 
 vendor:
@@ -140,8 +140,6 @@ vendor:
   vendor.role.name: Vendor role Citizen
   vendor.driver.role.name: Vendor Driver Role Citizen
   replicas: 1
-  memory_limits: 256Mi
-  heap: "-Xmx64m -Xms64m" 
 
 egov-notification-sms:
   sms-provider-url: "https://smsgw.sms.gov.in/failsafe/MLink"
@@ -170,9 +168,9 @@ egov-notification-sms:
   sms.enabled: "true"
 
 egov-user:
-  replicas: 1
-  heap: "-Xmx64m -Xms64m"
-  memory_limits: 256Mi
+  replicas: 2
+  heap: "-Xmx256m -Xms256m"
+  memory_limits: 512Mi
   otp-validation: "true"
   citizen-otp-enabled: "true"
   employee-otp-enabled: "false"
@@ -187,13 +185,13 @@ egov-user:
   egov-state-level-tenant-id: "br"
 
 egov-workflow:
-  heap: "-Xmx64m -Xms64m"
-  memory_limits: 128Mi
+  heap: "-Xmx256m -Xms256m"
+  memory_limits: 512Mi
 
 egov-idgen:
   idformat-from-mdms: "true"
   java-args: -Dspring.profiles.active=monitoring
-  heap: "-Xmx64m -Xms64m"
+  heap: "-Xmx192m -Xms192m"
   autocreate-new-seq: "true"
   replicas: 1
 
@@ -206,11 +204,11 @@ egov-mdms-service:
   mdms-folder: "mgramseva-mdms"
   java-args: -Dspring.profiles.active=monitoring
   masters-config-url: "file:///work-dir/mgramseva-mdms/master-config.json"
-  replicas: 1
+  replicas: 2
 
 egov-indexer:
-  heap: "-Xmx256m -Xms256m"
-  memory_limits: "256Mi"
+  heap: "-Xmx512m -Xms512m"
+  memory_limits: "768Mi"
   initContainers:
     gitSync:
       repo: "git@github.com:akrspi/mgramseva-configs"
@@ -218,7 +216,6 @@ egov-indexer:
   egov-indexer-yaml-repo-path: "file:///work-dir/mgramseva-configs/egov-indexer/billingservices-indexer.yml,file:///work-dir/mgramseva-configs/egov-indexer/collection-indexer.yml,file:///work-dir/mgramseva-configs/egov-indexer/egov-echallan.yml,file:///work-dir/mgramseva-configs/egov-indexer/egov-telemetry-indexer.yml,file:///work-dir/mgramseva-configs/egov-indexer/error-queue.yml,file:///work-dir/mgramseva-configs/egov-indexer/egov-vendor.yaml,file:///work-dir/mgramseva-configs/egov-indexer/payment-indexer.yml,file:///work-dir/mgramseva-configs/egov-indexer/finance-rolloutadotpion-indexer.yml,file:///work-dir/mgramseva-configs/egov-indexer/property-services.yml,file:///work-dir/mgramseva-configs/egov-indexer/water-service.yml,file:///work-dir/mgramseva-configs/egov-indexer/water-services-meter.yml"
 
 egov-pg-service:
-  heap: "-Xmx64m -Xms64m"
   replicas: 1
   axis: true
 
@@ -233,18 +230,17 @@ egov-persister:
       branch: "UAT"
       
 property-services:
- heap: "-Xmx64m -Xms64m"
  replicas: 2
- memory_limits: 256Mi
+ memory_limits: 512Mi
  
 ws-calculator:
  replicas: 2
- memory_limits: 256Mi
+ memory_limits: 512Mi
 
 egov-localization:
-  heap: "-Xmx64m -Xms64m"
   replicas: 2
-  memory_limits: 256Mi
+  memory_limits: 512Mi
+
 
 pdf-service:
   memory_limits: 512Mi
@@ -319,8 +315,8 @@ egov-custom-consumer:
 # financials >>>>>>>>>>>>>>>>>>>>>>>>>>>>
 egf-master:
   db-url: "jdbc:postgresql://magramseva-uat-db.cw1hfdqtf5pw.ap-south-1.rds.amazonaws.com:5432/mgramseva_uat"
-  memory_limits: 256Mi
-  heap: "-Xmx64m -Xms64m"
+  memory_limits: 512Mi
+  heap: "-Xmx256m -Xms256m"
 
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
@@ -350,8 +346,7 @@ zuul:
 
 collection-services:
   replicas: 2
-  heap: "-Xmx128m -Xms128m"
-  memory_limits: 256Mi
+  memory_limits: 512Mi
   receiptnumber-servicebased: "true"
   receipt-search-paginate: "true"
   receipt-search-defaultsize: 30
@@ -373,17 +368,17 @@ report:
 egov-workflow-v2:
   logging-level: "DEBUG"
   java-args: -Dspring.profiles.active=monitoring
-  heap: "-Xmx64m -Xms64m"
+  heap: "-Xmx192m -Xms192m"
   workflow-statelevel: "true"
 
 egov-hrms:
   java-args: -Dspring.profiles.active=monitoring
-  heap: "-Xmx64m -Xms64m"
+  heap: "-Xmx192m -Xms192m"
   employee-applink: "https://https://mgramseva-dev.egov.org.in/employee/user/login"
 
 egov-apportion-service:
-  memory_limits: 256Mi
-  heap: -Xmx64m -Xms64m
+  memory_limits: 512Mi
+  heap: -Xmx256m -Xms256m
 
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
@@ -462,8 +457,8 @@ kafka-v2:
   zookeeperHosts: "zookeeper-v2.mgramseva:2181/kafka-v2"
       
 
-  heapOptions: "-Xms256M -Xmx256M"
-  memory_limits: 512Mi
+  heapOptions: "-Xms704M -Xmx704M"
+  memory_limits: 1408Mi
   lingerMs: "250"
   numberPartitions: "3"
   replicationFactor: "2"
@@ -490,8 +485,8 @@ kafka-v2-infra:
   zookeeperHosts: "zookeeper-v2-headless.mgramseva:2181/kafka-infra"
       
 
-  heapOptions: "-Xms128M -Xmx128M"
-  memory_limits: 256Mi
+  heapOptions: "-Xms704M -Xmx704M"
+  memory_limits: 1408Mi
   lingerMs: "250"
   numberPartitions: "3"
   replicationFactor: "2"
@@ -558,7 +553,7 @@ elasticsearch-data-v1:
     tag: 6.6.2
   persistence:
     enabled: true
-    dataDirSize: "10Gi"
+    dataDirSize: "20Gi"
     aws:
       - volumeId: "vol-03092f869460b395d"
         zone: ap-south-1b
@@ -570,10 +565,10 @@ elasticsearch-data-v1:
   resources:
     requests:
       # cpu: "1000m"
-      memory: "704Mi"
+      memory: "2Gi"
     limits:
       # cpu: "1000m"
-      memory: "704Mi"
+      memory: "2Gi"
 
 elasticsearch-master-v1:
   namespace: mgramseva
@@ -582,7 +577,7 @@ elasticsearch-master-v1:
     tag: 6.6.2
   persistence:
     enabled: true
-    dataDirSize: "1Gi"
+    dataDirSize: "5Gi"
     aws:
       - volumeId: "vol-04096238dd9730c31"
         zone: ap-south-1b
@@ -614,7 +609,7 @@ elasticsearch-data-infra-v1:
     tag: 6.4.2
   persistence:
     enabled: true
-    dataDirSize: "10Gi"
+    dataDirSize: "20Gi"
     aws:
       - volumeId: "vol-09043d8559b6ecfc6"
         zone: ap-south-1a
@@ -626,10 +621,10 @@ elasticsearch-data-infra-v1:
   resources:
     requests:
       # cpu: "1000m"
-      memory: "704Mi"
+      memory: "2Gi"
     limits:
       # cpu: "1000m"
-      memory: "704Mi"
+      memory: "2Gi"
       
 elasticsearch-master-infra-v1:
   namespace: mgramseva
@@ -750,7 +745,7 @@ minio:
   disableWebUI: false
   persistence:
     enabled: true
-    dataDirSize: 2G
+    dataDirSize: 10G
     aws:
       - volumeId: "vol-0085073c65f7568a3"
         zone: ap-south-1a
