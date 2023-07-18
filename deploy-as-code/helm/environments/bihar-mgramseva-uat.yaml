@@ -148,7 +148,7 @@ egov-notification-sms:
   sms.provider.contentType:  "application/x-www-form-urlencoded"
   sms-config-map: "{'User':'$username', 'passwd': '$password', 'sid':'$senderid', 'mobilenumber':'$mobileno', 'message':'$message', 'mtype':'N', 'DR':'N', 'smsservicetype':'singlemsg'}"
   sms-gateway-to-use: "Console"
-  sms-senderid: "WIMCBR"
+  sms.senderid: "WIMCBR"
   sms-sender: "WIMCBR"
   sms-sender-requesttype: "GET"
   sms-custom-config: "true"
