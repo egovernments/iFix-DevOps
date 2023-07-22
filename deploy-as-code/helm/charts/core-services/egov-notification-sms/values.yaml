@@ -17,7 +17,6 @@ sms-sender: "egov"
 sms-sender-requesttype: "POST"
 sms-extra-req-params: "smsservicetype=unicodemsg"
 sms-gateway-to-use: "MSDG"
-sms.provider.url: "https://msdgweb.mgov.gov.in/esms/sendsmsrequest"
 sms.provider.requestType: "POST"
 sms.provider.contentType: "application/json"
 sms.provider.class: "MSDG"
@@ -42,7 +41,10 @@ env: |
     value: {{ index .Values "sms-config-map" | quote }}
   {{- end }}
   - name: SMS_PROVIDER_URL
-    value: {{ index .Values "sms-provider-url" | quote }}
+    valueFrom:
+      secretKeyRef:
+        name: egov-notification-sms
+        key: sms-provider-url
   - name: SMS_SENDER_USERNAME
     valueFrom:
       secretKeyRef:
