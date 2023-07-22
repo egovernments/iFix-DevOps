@@ -142,15 +142,14 @@ vendor:
   replicas: 1
 
 egov-notification-sms:
-  sms-provider-url: "https://restapi.smscountry.com/v0.1/Accounts/authKey/SMSes/"
   sms-provider-class: "Generic"
   sms.provider.contentType:  "application/json"
-  sms.config.map: "{'SenderId':'$senderid', 'Number':'$mobileno', 'Text':'$message', 'Tool': '$tool'}"
+  sms.config.map: "{'SenderId':'$senderid', 'Number':'$mobileno', 'Text':'$message', 'Tool': 'API'}"
   sms.verify.responseContains: "Success": "True"
   sms.verify.response: true
   sms.additionalheaders.map: "{'Authorization':'Basic'}"
   sms.senderid: "WIMCBR"
-  sms-senderid: "WIMCBR"
+  sms.mobile.prefix: "91"
   sms-sender: "WIMCBR"
   sms-sender-requesttype: "POST"
   sms-error-codes: "401,403,404,405,406,407,408,409,410,411,412,413,414"
