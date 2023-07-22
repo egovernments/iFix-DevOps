@@ -145,7 +145,7 @@ egov-notification-sms:
   sms-provider-class: "Generic"
   sms.provider.contentType:  "application/json"
   sms.config.map: "{'SenderId':'$senderid', 'Number':'$mobileno', 'Text':'$message', 'Tool': 'API'}"
-  sms.verify.responseContains: "Success": "True"
+  sms.verify.responseContains: '"Success": "True"'
   sms.verify.response: true
   sms.additionalheaders.map: "{'Authorization':'Basic'}"
   sms.senderid: "WIMCBR"
