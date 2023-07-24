@@ -145,7 +145,7 @@ egov-notification-sms:
   sms-provider-url: "https://restapi.smscountry.com/v0.1/Accounts/RdHC3mjP7NsWePFsz8k7/SMSes/"
   sms.provider.class: "Generic"
   sms.provider.contentType:  "application/json"
-  sms.config.map: "{'SenderId':'$senderid', 'Number':'$mobileno', 'Text':'$message', 'Tool': 'API'}"
+  sms-config-map: "{'SenderId':'$senderid', 'Number':'$mobileno', 'Text':'$message', 'Tool': 'API'}"
   sms.verify.responseContains: '"Success": "True"'
   sms.verify.response: true
   sms.additionalheaders.map: "{'Authorization':'Basic'}"
