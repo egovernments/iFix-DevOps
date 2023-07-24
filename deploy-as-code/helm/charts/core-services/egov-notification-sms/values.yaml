@@ -155,7 +155,11 @@ env: |
   {{- if index .Values "sms.verify.responseContains" }}
   - name: SMS_VERIFY_RESPONSECONTAINS
     value: {{ index .Values "sms.verify.responseContains" | quote }} 
-  {{- end }}  
+  {{- end }}
+  {{- if index .Values "sms.additionalheaders.map" }}
+  - name: SMS_ADDITIONALHEADERS_MAP
+    value: {{ index .Values "sms.additionalheaders.map" | quote }} 
+  {{- end }}
   {{- if index .Values "sms.success.codes" }}
   - name: SMS_SUCCESS_CODES
     value: {{ index .Values "sms.success.codes" | quote }} 
