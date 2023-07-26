@@ -146,6 +146,16 @@ env: |
     value: "false"
   - name: MANAGEMENT_SECURITY_ENABLED
     value: "false"
+  - name: SMS_PENDING_COLLECTION_ENABLED
+    value: {{ index .Values "sms-pending-collection-enabled" | quote }} 
+  - name: SMS_TODAYS_COLLECTION_ENABLED
+    value: {{ index .Values "sms-todays-collection-enabled" | quote }}
+  - name: SMS_EDIT_WATER_CONNECTION_NOTIFICATION_ENABLED
+    value: {{ index .Values "sms-edit-water-connection-notification-enabled" | quote }}
+  - name: SMS_PAYMENT_NOTIFICATION_ENABLED
+    value: {{ index .Values "sms-payment-notification-enabled" | quote }}
+  - name: SMS_WORKFLOW_ENABLED
+    value: {{ index .Values "sms-workflow-enabled" | quote }}
   {{- if index .Values "tracing-enabled" }}
   - name: TRACER_OPENTRACING_ENABLED
     value: "true"
