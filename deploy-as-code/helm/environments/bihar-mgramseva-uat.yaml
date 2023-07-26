@@ -122,13 +122,14 @@ ws-services:
   memory_limits: 512Mi
   replicas: 1
   is-external-workflow-enabled: "true"
-  ifix-reference-adapter:
-  keycloak-credentials-clientid: "ifix-uat"
   sms-pending-collection-enabled: false
   sms-todays-collection-enabled: false
   sms-edit-water-connection-notification-enabled: false
   sms-payment-notification-enabled: false
   sms-workflow-enabled: false
+  
+ifix-reference-adapter:
+  keycloak-credentials-clientid: "ifix-uat"
 
 # core >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
