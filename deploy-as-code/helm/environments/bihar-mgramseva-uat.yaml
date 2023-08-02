@@ -128,6 +128,7 @@ ws-services:
   sms-edit-water-connection-notification-enabled: false
   sms-payment-notification-enabled: false
   sms-workflow-enabled: false
+  sms-feedback-notification-enabled: false
   
 ifix-reference-adapter:
   keycloak-credentials-clientid: "ifix-uat"
