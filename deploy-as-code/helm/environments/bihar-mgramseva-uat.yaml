@@ -115,18 +115,18 @@ billing-service:
 echallan-services:
   egov-idgen-challanNum-format: "EB-[fy:yyyy-yy]-[SEQ_EG_ECHALLAN_EXPENSE]"
   java-enable-debug: "true"
-  sms-expenditure-enabled: false
+  sms-expenditure-enabled: true
   sms-expenditure-mark-bill-enabled: false
-  sms-monthy-summary-enabled: false
+  sms-monthy-summary-enabled: true
 
 ws-services:
   memory_limits: 512Mi
   replicas: 2
   is-external-workflow-enabled: "true"
-  sms-pending-collection-enabled: false
-  sms-todays-collection-enabled: false
+  sms-pending-collection-enabled: true
+  sms-todays-collection-enabled: true
   sms-edit-water-connection-notification-enabled: false
-  sms-payment-notification-enabled: false
+  sms-payment-notification-enabled: true
   sms-workflow-enabled: false
   sms-feedback-notification-enabled: false
   
@@ -241,9 +241,9 @@ property-services:
 ws-calculator:
  replicas: 2
  memory_limits: 512Mi
- sms-demand-enabled: false
+ sms-demand-enabled: true
  sms-payment-link-enabled: false
- sms-bill-download-enable: false
+ sms-bill-download-enable: true
 
 egov-localization:
   replicas: 2
