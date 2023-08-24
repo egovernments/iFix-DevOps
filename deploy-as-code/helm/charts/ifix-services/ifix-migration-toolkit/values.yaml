@@ -42,3 +42,8 @@ env: |
       configMapKeyRef:
         name: egov-service-host
         key: adapter-master-data-service
+  - name: IFIX_FISCAL_EVENT_SERVICE_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: fiscal-event-service
