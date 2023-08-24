@@ -135,7 +135,7 @@ dashboard-analytics:
       branch: "master"
 
 egov-persister:
-  persist-yml-path: "file:///work-dir/config-mgramseva/egov-persister/ifix-migration-progress.yml"
+  persist-yml-path: "file:///work-dir/config-mgramseva/egov-persister/ifix-migration-progress.yml,file:///work-dir/config-mgramseva/egov-persister/fiscal-events-persister.yml,file:///work-dir/config-mgramseva/egov-persister/ifix-master-data-persister.yml"
   initContainers:
     gitSync:
       enabled: true
