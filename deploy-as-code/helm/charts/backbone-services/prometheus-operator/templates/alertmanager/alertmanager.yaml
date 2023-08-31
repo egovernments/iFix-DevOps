@@ -89,10 +89,11 @@ spec:
               alertmanager: {{ template "prometheus-operator.fullname" . }}-alertmanager
 {{- end }}
 {{- end }}
-{{- if .Values.alertmanager.alertmanagerSpec.tolerations }}
   tolerations:
-{{ toYaml .Values.alertmanager.alertmanagerSpec.tolerations | indent 4 }}
-{{- end }}
+  - key: dedicated
+    operator: Equal
+    value: mgramseva-uat-ng
+    effect: NoSchedule
 {{- if .Values.global.imagePullSecrets }}
   imagePullSecrets:
 {{ toYaml .Values.global.imagePullSecrets | indent 4 }}

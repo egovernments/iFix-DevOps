@@ -4,7 +4,7 @@
 global:
     containerRegistry: egovio
 
-namespace: egov
+namespace: mgramseva
 replicas: 1
 httpPort: 8080
 appType: ""
