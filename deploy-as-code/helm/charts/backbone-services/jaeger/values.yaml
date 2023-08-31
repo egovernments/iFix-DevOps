@@ -222,7 +222,11 @@ ingester:
     create: true
     name:
   nodeSelector: {}
-  tolerations: []
+  tolerations:
+  - key: dedicated
+    operator: Equal
+    value: mgramseva-uat-ng
+    effect: NoSchedule
   affinity: {}
   podAnnotations: {}
   ## Additional pod labels
@@ -264,7 +268,11 @@ query:
     #    cpu: 256m
     #    memory: 128Mi
   nodeSelector: {}
-  tolerations: []
+  tolerations:
+  - key: dedicated
+    operator: Equal
+    value: mgramseva-uat-ng
+    effect: NoSchedule
   affinity: {}
   podAnnotations: {}
   ## Additional pod labels
@@ -324,7 +332,11 @@ agent:
     create: true
     name:
   nodeSelector: {}
-  tolerations: []
+  tolerations:
+  - key: dedicated
+    operator: Equal
+    value: mgramseva-uat-ng
+    effect: NoSchedule
   affinity: {}
   podAnnotations: {}
   ## Additional pod labels
@@ -373,7 +385,11 @@ spark:
     create: true
     name:
   nodeSelector: {}
-  tolerations: []
+  tolerations:
+  - key: dedicated
+    operator: Equal
+    value: mgramseva-uat-ng
+    effect: NoSchedule
   affinity: {}
   extraSecretMounts: []
   extraConfigmapMounts: []

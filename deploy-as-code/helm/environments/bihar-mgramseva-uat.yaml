@@ -11,9 +11,9 @@ global:
 cluster-configs:
   namespace: mgramseva
   namespaces:
-    create: false
+    create: true
     values:
-      [ mgramseva , cert-manager ]  
+      [ mgramseva , cert-manager, monitoring ]  
  
   rbac:
     - role: user
@@ -30,7 +30,7 @@ cluster-configs:
     
   configmaps:
     egov-config:
-      namespace: [mgramseva]
+      namespace: [mgramseva, monitoring]
       data:
         db-host: "magramseva-uat-db.cw1hfdqtf5pw.ap-south-1.rds.amazonaws.com"
         db-name: "mgramseva_uat"
@@ -62,7 +62,7 @@ cluster-configs:
         mongo-db-url: "mongodb://ifix-uat-db.cluster-cvisvjyknxm1.ap-south-1.docdb.amazonaws.com:27017/?retryWrites=false"
 
     egov-service-host:
-      namespace: [mgramseva]
+      namespace: [mgramseva, monitoring]
       data:
         billing-service: "http://billing-service.mgramseva:8080/"
         collection-services: "http://collection-services.mgramseva:8080/"
@@ -86,8 +86,8 @@ cluster-configs:
         egov-searcher: "http://egov-searcher.mgramseva:8080/"
         egov-indexer: "http://egov-indexer.mgramseva:8080/"
         egov-hrms: "http://egov-hrms.mgramseva:8080/"
-        es-client: "http://elasticsearch-data-v1.es-cluster.mgramseva:9200"
-        es-client-infra: "http://elasticsearch-data-infra-v1.es-cluster-infra.mgramseva:9200"
+        es-client: "http://elasticsearch-data-v1.mgramseva:9200"
+        # es-client-infra: "http://elasticsearch-data-infra-v1.es-cluster-infra.mgramseva:9200"
         location: "http://location.mgramseva:8080/"
         property-services: "http://property-services.mgramseva:8080/"
         pt-calculator-v2: "http://pt-calculator-v2.mgramseva:8080/"
@@ -405,17 +405,36 @@ logging-config:
   es-host: "es-client.es-cluster"
   es-port: "9200"
 
-jaeger:
-  host: "jaeger-agent.monitoring"
-  port: "6831"
-  sampler-type: const
-  sampler-param: 1
-  collector:
-    samplingConfig: |
-      {
-        "service_strategies": [          
+jaeger-config:
+  host: ""
+  port: ""
+  sampler-type: ""
+  sampler-param: ""
+  sampling-strategies: |
+    {
+        "service_strategies": [
+          {
+            "service": "tl-services",
+            "type": "probabilistic",
+            "param": 0.5
+          },
+          {
+            "service": "tl-calculator",
+            "type": "probabilistic",
+            "param": 0.5
+          },
           {
             "service": "report-service",
+            "type": "probabilistic",
+            "param": 0.5
+          },
+          {
+            "service": "pt-services-v2",
+            "type": "probabilistic",
+            "param": 0.5
+          },
+          {
+            "service": "pt-calculator-v2",
             "type": "probabilistic",
             "param": 0.5
           },
@@ -430,7 +449,17 @@ jaeger:
             "param": 0.2
           },
           {
+            "service": "egov-data-uploader",
+            "type": "probabilistic",
+            "param": 0.2
+          },
+          {
             "service": "egov-hrms",
+            "type": "probabilistic",
+            "param": 0.5
+          },
+          {
+            "service": "rainmaker-pgr",
             "type": "probabilistic",
             "param": 0.5
           }
@@ -668,6 +697,15 @@ kibana-infra-v1:
   es-url: "http://elasticsearch-data-infra-v1.mgramseva:9200"
   external_port: 5601
   server-basepath: "/kibana-infra"
+
+kibana-v1:
+  replicas: 1
+  images:
+    - docker.elastic.co/kibana/kibana:6.6.2
+  es-url: "http://elasticsearch-client-v1:9200"  
+  external_port: 5601
+  service_type: LoadBalancer
+  server-basepath: "/kibana"
     
 
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -733,7 +771,7 @@ whatsapp-webhook:
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 oauth2-proxy:
-  namespaces: mgramseva
+  namespaces: monitoring
   config:
     configFile: |-
       email_domains = [ "*" ]
@@ -742,6 +780,7 @@ oauth2-proxy:
       upstreams = [ "file:///dev/null" ]
 
 grafana:
+  namespaces: monitoring
   initContainers:
     gitSync:
       enabled: true
