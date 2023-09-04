@@ -129,6 +129,7 @@ ws-services:
   sms-payment-notification-enabled: true
   sms-workflow-enabled: false
   sms-feedback-notification-enabled: false
+  egov-url-shortner-allowlongurl: false
   
 ifix-reference-adapter:
   keycloak-credentials-clientid: "ifix-uat"
