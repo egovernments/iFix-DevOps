@@ -120,6 +120,8 @@ env: |
     value: {{ index .Values "sms-payment-link-enabled" | quote }}
   - name: SMS_BILL_DOWNLOAD_ENABLED
     value: {{ index .Values "sms-bill-download-enable" | quote }}
+  - name: EGOV_URL_SHORTNER_ALLOWLONGURL
+    value: {{ index .Values "egov-url-shortner-allowlongurl" | quote }}
   {{- if index .Values "tracing-enabled" }}
   - name: TRACER_OPENTRACING_ENABLED
     value: "true" 

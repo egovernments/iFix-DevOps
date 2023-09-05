@@ -148,6 +148,8 @@ env: |
     value: {{ index .Values "sms-expenditure-mark-bill-enabled" | quote }}
   - name: SMS_MONTHY_SUMMARY_ENABLED
     value: {{ index .Values "sms-monthy-summary-enabled" | quote }}
+  - name: EGOV_URL_SHORTNER_ALLOWLONGURL
+    value: {{ index .Values "egov-url-shortner-allowlongurl" | quote }}
   {{- if index .Values "tracing-enabled" }}
   - name: TRACER_OPENTRACING_ENABLED
     value: "true" 
