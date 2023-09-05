@@ -2,7 +2,7 @@ global:
   domain: www.peyjalbihar.org
   containerRegistry: egovio
   tracing-enabled: true
-  namespace: mgramseva
+  #namespace: mgramseva
   nodepool:
     nodeAffinity: true
     selector: mgramseva-uat-ng
