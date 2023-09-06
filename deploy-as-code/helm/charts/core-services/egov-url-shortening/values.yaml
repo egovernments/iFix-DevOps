@@ -7,7 +7,7 @@ labels:
 ingress:
   enabled: true
   zuul: false
-  context: "egov-url-shortening"
+  context: "eus"
 
 # Init Containers Configs
 initContainers:
