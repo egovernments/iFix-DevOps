@@ -23,13 +23,13 @@ image:
 replicas: "1"
 healthChecks:
   enabled: true
-  livenessProbePath: "/s/health"
-  readinessProbePath: "/s/health"
+  livenessProbePath: "/eus/health"
+  readinessProbePath: "/eus/health"
 appType: "java-spring"
 tracing-enabled: true
 heap: "-Xmx192m -Xms192m"
 java-args: "-Dspring.profiles.active=monitoring"
-server-context: "/s"
+server-context: "/eus"
 
 # Additional Container Envs
 env: |
