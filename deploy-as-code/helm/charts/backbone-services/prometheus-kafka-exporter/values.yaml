@@ -4,7 +4,7 @@ labels:
   group: "kafka"
 
 # Container Configs
-namespace: kafka-cluster
+namespace: mgramseva
 image:
   repository: "danielqsj/kafka-exporter"
   tag: "latest"

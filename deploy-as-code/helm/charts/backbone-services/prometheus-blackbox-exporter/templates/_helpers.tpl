@@ -16,7 +16,7 @@ If release name contains chart name it will be used as a full name.
 {{- else }}
 {{- $name := default .Chart.Name .Values.nameOverride }}
 {{- if contains $name .Release.Name }}
-{{- .Release.Name | trunc 63 | trimSuffix "-" }}
+release-name
 {{- else }}
 {{- printf "%s-%s" .Release.Name $name | trunc 63 | trimSuffix "-" }}
 {{- end }}
@@ -41,7 +41,7 @@ app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{- if .Values.releaseLabel }}
-release: {{ .Release.Name }}
+release: release-name
 {{- end }}
 {{- if .Values.commonLabels }}
 {{ toYaml .Values.commonLabels }}
@@ -53,7 +53,7 @@ Selector labels
 */}}
 {{- define "prometheus-blackbox-exporter.selectorLabels" -}}
 app.kubernetes.io/name: {{ include "prometheus-blackbox-exporter.name" . }}
-app.kubernetes.io/instance: {{ .Release.Name }}
+app.kubernetes.io/instance: release-name
 {{- end }}
 
 {{/*
