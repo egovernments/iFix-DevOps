@@ -1226,7 +1226,11 @@ prometheusOperator:
   ## Tolerations for use with node taints
   ## ref: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
   ##
-  tolerations: []
+  tolerations: 
+  - effect: NoSchedule
+  key: dedicated
+  operator: Equal
+  value: mgramseva-uat-ng
   # - key: "key"
   #   operator: "Equal"
   #   value: "value"
@@ -1771,7 +1775,7 @@ prometheus:
           - source_labels: [__param_target]
             target_label: instance
           - target_label: __address__
-            replacement: release-name-prometheus-blackbox-exporter:9115
+            replacement: prometheus-blackbox-exporter:9115
     # - job_name: kube-etcd
     #   kubernetes_sd_configs:
     #     - role: node

@@ -124,7 +124,11 @@ readinessProbe:
     port: http
 
 nodeSelector: {}
-tolerations: []
+tolerations: 
+- effect: NoSchedule
+  key: dedicated
+  operator: Equal
+  value: mgramseva-uat-ng
 affinity: {}
 
 ## Topology spread constraints rely on node labels to identify the topology domain(s) that each Node is in.

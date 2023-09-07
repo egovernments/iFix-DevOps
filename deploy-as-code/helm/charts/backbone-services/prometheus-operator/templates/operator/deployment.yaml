@@ -108,6 +108,9 @@ spec:
     {{- end }}
     {{- with .Values.prometheusOperator.tolerations }}
       tolerations:
-{{ toYaml . | indent 8 }}
+      - effect: NoSchedule
+        key: dedicated
+        operator: Equal
+        value: mgramseva-uat-ng
     {{- end }}
 {{- end }}
