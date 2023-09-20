@@ -119,6 +119,8 @@ env: |
       configMapKeyRef:
         name: egov-service-host
         key: egov-url-shortener-endpoint
+  - name: EGOV_SHORTNER_URL
+    value: "eus/shortner"
   - name: SMS_DEMAND_ENABLED
     value: {{ index .Values "sms-demand-enabled" | quote }}
   - name: SMS_PAYMENT_LINK_ENABLED
