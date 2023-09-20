@@ -105,6 +105,7 @@ cluster-configs:
         echallan-calculator: http://echallan-calculator.mgramseva:8080/
         echallan-services: http://echallan-services.mgramseva:8080/
         redis-host: "redis.mgramseva"
+        egov-url-shortener-endpoint: "/eus/shortner"
         
 billing-service:
   replicas: 2

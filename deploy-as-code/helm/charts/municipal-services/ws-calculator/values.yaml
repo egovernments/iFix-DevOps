@@ -114,6 +114,11 @@ env: |
     value: "false"  
   - name: MANAGEMENT_SECURITY_ENABLED
     value: "false"
+  - name: EGOV_URL_SHORTNER_ENDPOINT
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: egov-url-shortener-endpoint
   - name: SMS_DEMAND_ENABLED
     value: {{ index .Values "sms-demand-enabled" | quote }}
   - name: SMS_PAYMENT_LINK_ENABLED

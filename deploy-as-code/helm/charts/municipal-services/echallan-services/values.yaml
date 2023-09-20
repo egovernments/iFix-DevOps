@@ -150,6 +150,11 @@ env: |
     value: {{ index .Values "sms-monthy-summary-enabled" | quote }}
   - name: EGOV_URL_SHORTNER_ALLOWLONGURL
     value: {{ index .Values "egov-url-shortner-allowlongurl" | quote }}
+  - name: EGOV_URL_SHORTNER_ENDPOINT
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: egov-url-shortener-endpoint
   {{- if index .Values "tracing-enabled" }}
   - name: TRACER_OPENTRACING_ENABLED
     value: "true" 

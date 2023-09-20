@@ -134,6 +134,11 @@ env: |
   - name: CITIZEN_ALLOWED_SEARCH_PARAMS
     value: {{ index .Values "citizen-allowed-search-params" | quote }}
   {{- end }}
+  - name: EGOV_URL_SHORTNER_ENDPOINT
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: egov-url-shortener-endpoint
   - name: EGOV_UI_APP_HOST
     valueFrom:
       configMapKeyRef:
