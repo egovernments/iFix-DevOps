@@ -151,6 +151,8 @@ env: |
       configMapKeyRef:
         name: egov-service-host
         key: egov-url-shortener-endpoint
+  - name: EGOV_SHORTNER_URL
+    value: "eus/shortner"
   - name: SMS_PENDING_COLLECTION_ENABLED
     value: {{ index .Values "sms-pending-collection-enabled" | quote }} 
   - name: SMS_TODAYS_COLLECTION_ENABLED
