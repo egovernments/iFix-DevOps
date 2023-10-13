@@ -741,16 +741,20 @@ playground:
     - egovio/playground:1.0
 
 pgadmin:
-  images:
-    - egovio/pgadmin:v0.1
-
-pgadmin-config:
-  host: "egovqadb.ctm6jbmr5mnj.ap-south-1.rds.amazonaws.com"
-  db-admin-username: "egov_qa"
-  db-read-username: "egovqa_readonly"
-  port: "5432"
-  env: "QA"
-  maintenance-db-name: "egov_qa_pb_db"
+  dbUrl: "magramseva-uat-db.cw1hfdqtf5pw.ap-south-1.rds.amazonaws.com"
+  environment: "MGRAMSEVA"
+  maintenance-db-name: "mgramseva_uat"
+  db-admin-username: "mgramsevauat"
+  db-read-username: "mgramsevauat_readonly"
+  max-query-history: "50"
+  max-login-attempts: "5"
+  enable-save-password: "False"
+  persistence:
+    enabled: true
+    dataDirSize: "1Gi"
+    aws:
+      volumeId: "vol-01bb0a3aad7b71f44"
+      zone: ap-south-1b
 
 #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 

@@ -8,10 +8,10 @@ kind: Deployment
 metadata:
   name: {{ template "common.name" . }}
 {{- if .Values.global.namespace }}
-  namespace: {{ .Values.global.namespace }} 
-{{- else }}   
+  namespace: {{ .Values.global.namespace }}
+{{- else }}
   namespace: {{ .Values.namespace }}
-{{- end }} 
+{{- end }}
   labels:
 {{- include "common.labels" . | nindent 4 }}   
 spec:
@@ -42,7 +42,16 @@ spec:
     {{- if .Values.initContainers.gitSync.enabled }}
       securityContext:
         fsGroup: 65533 # to make SSH key readable 
-    {{- end }} 
+    {{- end }}
+    {{- if .Values.securityContext }}
+      securityContext:
+      {{- if .Values.securityContext.fsGroup }}
+        fsGroup: {{ .Values.securityContext.fsGroup }}
+      {{- end }}
+      {{- if .Values.securityContext.runAsUser }}
+        runAsUser: {{ .Values.securityContext.runAsUser }}
+      {{- end }}
+    {{- end }}
     {{- if or .Values.initContainers.gitSync.enabled .Values.extraVolumes }}     
       volumes:  
     {{- if .Values.initContainers.gitSync.enabled }}  
@@ -68,7 +77,7 @@ spec:
                 matchLabels:
                 {{- include "common.labels" . | nindent 18 }}     
     {{- end }}
-       {{- if .Values.global.nodepool.nodeAffinity }}       
+       {{- if .Values.global.nodepool.nodeAffinity }}
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
            nodeSelectorTerms:
@@ -76,14 +85,14 @@ spec:
               - key: Environment
                 operator: In
                 values:
-                - {{ .Values.global.nodepool.selector }}     
+                - {{ .Values.global.nodepool.selector }}
       tolerations:
       - key: "dedicated"
         operator: "Equal"
         value: "{{ .Values.global.nodepool.toleration }}"
         effect: "NoSchedule"
       nodeSelector:
-        Environment: {{ .Values.global.nodepool.selector }}    
+        Environment: {{ .Values.global.nodepool.selector }}
       {{- end }}
     {{- if .Values.serviceAccount }}
       serviceAccountName: {{ .Values.serviceAccount }}    
@@ -145,7 +154,7 @@ spec:
         {{- if .Values.lifecycle }}
           lifecycle:
           {{- toYaml .Values.lifecycle | nindent 12 }}
-        {{- end }}      
+        {{- end }}
         {{- if or .Values.initContainers.gitSync.enabled .Values.extraVolumeMounts }}
           volumeMounts:              
         {{- if .Values.initContainers.gitSync.enabled }}            
