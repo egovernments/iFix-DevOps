@@ -247,6 +247,7 @@ ws-calculator:
  sms-demand-enabled: true
  sms-payment-link-enabled: false
  sms-bill-download-enable: true
+ java-enable-debug: "true"
 
 egov-localization:
   replicas: 2
