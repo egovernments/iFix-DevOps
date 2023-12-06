@@ -244,7 +244,7 @@ property-services:
 ws-calculator:
  replicas: 2
  memory_limits: 512Mi
- sms-demand-enabled: true
+ sms-demand-enabled: false
  sms-payment-link-enabled: false
  sms-bill-download-enable: true
  java-enable-debug: "true"
