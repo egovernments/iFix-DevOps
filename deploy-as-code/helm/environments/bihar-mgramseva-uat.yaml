@@ -739,7 +739,7 @@ playground:
   replicas: 1
   namespace: mgramseva
   images:
-    - egovio/playground:1.0
+    - egovio/playground:ubuntu-18-elasticdump
 
 pgadmin:
   dbUrl: "magramseva-uat-db.cw1hfdqtf5pw.ap-south-1.rds.amazonaws.com"
