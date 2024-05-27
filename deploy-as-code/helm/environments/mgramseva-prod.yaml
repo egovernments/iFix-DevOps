@@ -171,8 +171,9 @@ cluster-configs:
         ifix-department-entity-service: "http://ifix-department-entity-service.mgramseva:8080/"
 
 billing-service:
-  replicas: 2
-  memory_limits: 512Mi
+  replicas: 3
+  memory_limits: 1100Mi
+  heap: "-Xmx800m -Xms800m -Xmn600m -XX:TieredStopAtLevel=1 -server -XX:+UseG1GC -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+PrintGCDateStamps -Xloggc:garbage_collection.log"
   demand.updateurl: '{"WS":"http://ws-calculator.mgramseva:8080/ws-calculator/waterCalculator/_updateDemand"}'
   
 ws-services:
@@ -302,8 +303,10 @@ property-services:
  memory_limits: 512Mi
  
 ws-calculator:
- replicas: 4
- memory_limits: 512Mi
+ replicas: 3
+ memory_limits: 1100Mi
+ heap: "-Xmx800m -Xms800m -Xmn600m -XX:TieredStopAtLevel=1 -server -XX:+UseG1GC -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+PrintGCDateStamps -Xloggc:garbage_collection.log"
+
 
 egov-localization:
   replicas: 2
