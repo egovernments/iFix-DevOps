@@ -1,21 +1,19 @@
-{{- $serviceName := include "nginx-ingress.name" . -}}
-{{- if .Values.rbac.create -}}
-apiVersion: rbac.authorization.k8s.io/v1beta1
+{{- if and .Values.rbac.create (not .Values.rbac.scope) -}}
+apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   labels:
-    app: {{ template "nginx-ingress.name" . }}
-  name: {{ template "nginx-ingress.fullname" . }}
+    {{- include "ingress-nginx.labels" . | nindent 4 }}
+    {{- with .Values.controller.labels }}
+    {{- toYaml . | nindent 4 }}
+    {{- end }}
+  name: {{ include "ingress-nginx.fullname" . }}
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: {{ template "nginx-ingress.fullname" . }}
+  name: {{ include "ingress-nginx.fullname" . }}
 subjects:
   - kind: ServiceAccount
-    name: {{ template "nginx-ingress.serviceAccountName" . }}
-    {{- if .Values.global.namespace }}
-    namespace: {{ .Values.global.namespace }} 
-    {{- else }}   
+    name: {{ template "ingress-nginx.serviceAccountName" . }}
     namespace: {{ .Values.namespace }}
 {{- end }}
-{{- end -}}

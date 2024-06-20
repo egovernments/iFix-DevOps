@@ -1,21 +1,20 @@
-{{- $serviceName := include "nginx-ingress.name" . -}}
-{{- if and .Values.controller.metrics.enabled .Values.controller.metrics.prometheusRule.enabled }}
+{{- if and ( .Values.controller.metrics.enabled ) ( .Values.controller.metrics.prometheusRule.enabled ) ( .Capabilities.APIVersions.Has "monitoring.coreos.com/v1" ) -}}
 apiVersion: monitoring.coreos.com/v1
 kind: PrometheusRule
 metadata:
-  name: {{ $serviceName }}
-  {{- if .Values.controller.metrics.prometheusRule.namespace }}
-  namespace: {{ .Values.controller.metrics.prometheusRule.namespace }}
-  {{- end }}
+  name: {{ include "ingress-nginx.controller.fullname" . }}
+{{- if .Values.controller.metrics.prometheusRule.namespace }}
+  namespace: {{ .Values.controller.metrics.prometheusRule.namespace | quote }}
+{{- end }}
   labels:
-    app: {{ $serviceName }}
-    {{- if .Values.controller.metrics.prometheusRule.additionalLabels }}
-{{ toYaml .Values.controller.metrics.prometheusRule.additionalLabels | indent 4 }}
-    {{- end }}
-spec:
-  {{- with .Values.controller.metrics.prometheusRule.rules }}
-  groups:
-  - name: {{ $serviceName }}
-    rules: {{- toYaml . | nindent 4 }}
+    {{- include "ingress-nginx.labels" . | nindent 4 }}
+  {{- if .Values.controller.metrics.prometheusRule.additionalLabels }}
+    {{- toYaml .Values.controller.metrics.prometheusRule.additionalLabels | nindent 4 }}
   {{- end }}
+spec:
+{{- if .Values.controller.metrics.prometheusRule.rules }}
+  groups:
+  - name: {{ template "ingress-nginx.name" . }}
+    rules: {{- toYaml .Values.controller.metrics.prometheusRule.rules | nindent 4 }}
+{{- end }}
 {{- end }}
