@@ -42,7 +42,7 @@ cluster-configs:
         es-host: "elasticsearch-data-v1.mgramseva"
         es-indexer-host: "http://elasticsearch-data-v1.mgramseva:9200/"
         flyway-locations: "filesystem:/flyway/sql,filesystem:/flyway/seed,filesystem:/flyway/qa"
-        kafka-brokers: "kafka-v2.mgramseva:9092"
+        kafka-brokers: "kafka-kraft-controller-headless.mgramseva:9092"
         kafka-infra-brokers: "kafka-v2-infra.mgramseva:9092"
         logging-level-jdbc: "debug"
         mobile-validation-workaround: "true"
@@ -295,24 +295,28 @@ dashboard-ingest:
       branch: "UAT"
 
 nginx-ingress:
-  replicas: 1
   default-backend-service: "egov/nginx"
-  namespace: egov
+  namespace: mgramseva
   cert-issuer: "letsencrypt-prod"
   ssl-protocols: "TLSv1.2 TLSv1.3"
   ssl-ciphers: "EECDH+CHACHA20:EECDH+AES"
   ssl-ecdh-curve: "X25519:prime256v1:secp521r1:secp384r1"
   controller:
-    image:
-      repository: egovio/nginx-ingress-controller
-      tag: "0.26.1"     
+    replicas: 1
     metrics:
-      enabled: true
-      #serviceMonitor:
-      #  enabled: true
-    service:
+      enabled: false
+      serviceMonitor:
+        enabled: true
       prometheusRule:
-        enabled: true      
+        enabled: true
+    addHeaders:
+      X-Content-Type-Options: "nosniff"
+      X-Frame-Options: "SAMEORIGIN"
+      X-XSS-Protection: "1; mode=block"
+      Access-Control-Allow-Origin: "https://www.peyjalbihar.org"
+      Access-Control-Allow-Methods: "GET, POST, OPTIONS"
+      Access-Control-Allow-Headers: "DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range"
+    setSslTls: "www.peyjalbihar.org-tls-certs"
 
 cert-manager:
   email: "devops-team@egov.org.in"
@@ -534,14 +538,6 @@ kafka-v2-infra:
   minInsyncReplicas: "1"
   offsetsReplicationFactor: "3"
  # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
- 
- 
-# kafka-connect-infra >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-kafka-connect:
- image:
-   repository: cp-kafka-connect
-   tag: 5.4.1
-
 
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 #kafka-connect:
@@ -582,6 +578,25 @@ zookeeper-v2:
       memory: 384Mi
 
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+# kafka-kraft >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+kafka-kraft:
+  namespace: mgramseva
+  controller:
+    persistence:
+      enabled: true
+      size: 25Gi
+    heapOpts: "-Xms1024M -Xmx1024M"
+    resources:
+      limits:
+        memory: 1408Mi
+      requests:
+        cpu: 500m
+        memory: 1408Mi
+
+# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
 kafka-connect:
   namespace: mgramseva
   image:
@@ -756,6 +771,8 @@ pgadmin:
     aws:
       volumeId: "vol-01bb0a3aad7b71f44"
       zone: ap-south-1b
+  ingress:
+    ip-whitelist: "106.51.69.20"
 
 #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
