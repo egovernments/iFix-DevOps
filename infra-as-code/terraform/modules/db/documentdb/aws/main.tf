@@ -3,10 +3,10 @@ resource "aws_db_subnet_group" "db_subnet_group" {
   subnet_ids = "${var.subnet_ids}"
 
     tags = "${
-    map(
-      "Name", "db-subnet-group-${var.environment}",
-      "environment", "${var.environment}"
-    )
+    tomap({
+      "Name" = "db-subnet-group-${var.environment}",
+      "environment" = "${var.environment}"
+    })
   }"
 }
 
