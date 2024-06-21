@@ -19,16 +19,15 @@ variable "availability_zones" {
 }
 
 variable "kubernetes_version" {
-  default = "1.20"
+  default = "1.29"
 }
 
 variable "instance_type" {
-  default = "m4.xlarge"
+  default = "r5ad.large"
 }
 
 variable "override_instance_types" {
-  default = ["r5a.large", "r5ad.large", "r5d.large", "m4.xlarge"]
-  
+  default = ["r5ad.large", "r5d.large", "r5a.large", "m4.xlarge", "t3a.xlarge"]
 }
 
 variable "number_of_worker_nodes" {

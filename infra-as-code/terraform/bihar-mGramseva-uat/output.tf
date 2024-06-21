@@ -41,14 +41,6 @@ output "es_data_volume_ids" {
   value = "${module.es-data-v1.volume_ids}"
 }
 
-output "zookeeper_volume_ids" {
-  value = "${module.zookeeper.volume_ids}"
-}
-
-output "kafka_vol_ids" {
-  value = "${module.kafka.volume_ids}"
-}
-
 output "db_rds_postgres_address" {
   value = "${module.db.rds_postgres_address}"
 }

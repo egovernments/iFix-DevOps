@@ -1,3 +1,6 @@
+variable "name" {
+}
+
 variable "cluster_name" {
 }
 
@@ -8,6 +11,9 @@ variable "eks_cluster" {
 }
 
 variable "instance_type" {
+}
+
+variable "override_instance_types" {
 }
 
 variable "ssh_key_name" {
