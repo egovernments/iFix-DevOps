@@ -1,11 +1,11 @@
-{{- if $.Values.collector.samplingConfig }}
+{{- if .Values.collector.samplingConfig }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ template "name" . }}-sampling-strategies
+  name: {{ include "jaeger.fullname" . }}-sampling-strategies
   namespace: {{ .Values.namespace }}
   labels:
-    app: {{ template "name" . }}
+    {{- include "jaeger.labels" . | nindent 4 }}
     app.kubernetes.io/component: collector
 data:
   strategies.json: |-
