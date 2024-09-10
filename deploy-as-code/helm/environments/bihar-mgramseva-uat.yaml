@@ -304,7 +304,7 @@ nginx-ingress:
   controller:
     replicas: 1
     metrics:
-      enabled: false
+      enabled: true
       serviceMonitor:
         enabled: true
       prometheusRule:
@@ -803,15 +803,6 @@ oauth2-proxy:
       github_org = "egovernments"
       github_team = "mgramsewa-uat,devops-team"
       upstreams = [ "file:///dev/null" ]
-
-grafana:
-  namespaces: monitoring
-  dashboardsFolder: /work-dir/mgramseva-configs/configs/monitoring-dashboards
-  initContainers:
-    gitSync:
-      enabled: true
-      repo: "git@github.com:akrspi/mgramseva-configs"
-      branch: "UAT"
       
 minio:
   mode: distributed
@@ -844,3 +835,88 @@ postgres:
       diskName: "postgres-db-0"  
       diskUri: /subscriptions/71f67180-c7fb-43dd-988a-e9f9e3135adc/resourceGroups/MC_mgramsewa-qa_mgramsewa-qa_southeastasia/providers/Microsoft.Compute/disks/postgres-db-0
   postgresDatabase: mgramseva_qa_db
+
+### Grafana >>>>>>>>>>>>>>>>>>>>
+grafana:
+  github:
+    allowed_organizations: ["egovernments"]
+    role_attribute_path: contains(groups[*], '@egovernments/bihar-devops') && 'Editor' || contains(groups[*], '@egovernments/bihar-mgramseva-uat') && 'Viewer'
+# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+### Prometheus & Alertmanager >>>>>>>>>>>>>>>>>>>>
+prometheus:
+  alertmanager:
+    enabled: true
+  externalLabels:
+    cluster: bihar-mgramseva-prod
+  additionalScrapeConfigs:
+    - job_name: 'nginx-ingress-metrics'
+      static_configs:
+        - targets: [ 'nginx-ingress-controller-metrics.mgramseva:10254' ]
+    - job_name: 'blackbox'
+      metrics_path: /probe
+      params:
+        module: [ http_2xx ]
+      static_configs:
+        - targets:
+            - https://www.peyjalbihar.org/
+            - https://www.peyjalbihar.org/mgramseva/
+            - https://www.peyjalbihar.org/hub/
+            - https://www.peyjalbihar.org/kibana/
+            - https://www.peyjalbihar.org/pgadmin/
+      relabel_configs:
+        - source_labels: [ __address__ ]
+          target_label: __param_target
+        - source_labels: [ __param_target ]
+          target_label: instance
+        - target_label: __address__
+          replacement: prometheus-blackbox-exporter:9115
+    - job_name: 'blackbox_exporter'
+      static_configs:
+        - targets: [ 'prometheus-blackbox-exporter:9115' ]
+# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+### loki-stack >>>>>>>>>>>>>>>>>>>>
+loki:
+  persistence:
+    enabled: true
+    accessModes:
+      - ReadWriteOnce
+    size: 30Gi
+  serviceAccount:
+    annotations: { }
+  additionalConfigs:
+    schema_config:
+      configs:
+        - from: 2020-10-24
+          store: boltdb-shipper
+          object_store: filesystem
+          schema: v11
+          index:
+            prefix: index_
+            period: 24h
+    storage_config:
+      boltdb_shipper:
+        active_index_directory: /data/loki/index
+        cache_location: /data/loki/index_cache
+        shared_store: filesystem
+        cache_ttl: 24h
+      filesystem:
+        directory: /data/loki/chunks
+    compactor:
+      working_directory: /data/loki/boltdb-shipper-compactor
+      shared_store: filesystem
+      retention_enabled: true
+      compaction_interval: 168h
+    table_manager:
+      retention_deletes_enabled: true
+      retention_period: 168h  # 7 days
+# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+kafka-ui:
+  yamlApplicationConfig:
+    kafka:
+      clusters:
+        - name: bihar-prod
+          bootstrapServers: kafka-kraft-controller-headless.mgramseva:9092
+          readonly: true
