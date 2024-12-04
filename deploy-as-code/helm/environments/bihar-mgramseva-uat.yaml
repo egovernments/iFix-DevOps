@@ -132,6 +132,7 @@ ws-services:
   sms-workflow-enabled: false
   sms-feedback-notification-enabled: false
   egov-url-shortner-allowlongurl: false
+  egov-url-shortner-endpoint: "/WIMCBR/shortener"
   
 ifix-reference-adapter:
   keycloak-credentials-clientid: "ifix-uat"
