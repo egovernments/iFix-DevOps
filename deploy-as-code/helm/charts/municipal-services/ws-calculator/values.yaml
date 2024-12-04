@@ -120,7 +120,7 @@ env: |
         name: egov-service-host
         key: egov-url-shortener-endpoint
   - name: EGOV_SHORTENER_URL
-    value: "eus/shortener"
+    value: "WIMCBR/shortener"
   - name: SMS_DEMAND_ENABLED
     value: {{ index .Values "sms-demand-enabled" | quote }}
   - name: SMS_PAYMENT_LINK_ENABLED
