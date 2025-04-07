@@ -6,19 +6,7 @@ creation_rules:
         - path_regex: environments/bihar-mgramseva\-uat\-secrets\.yaml$   #mgramseva-uat
           encrypted_regex: '^(secrets)$'
           kms: 'arn:aws:kms:ap-south-1:197939965038:key/c062b4a9-5aed-4843-b705-3cca5cd777df'
-          #gcp_kms: 'projects/digit-egov/locations/asia-south1/keyRings/egov-sops/cryptoKeys/egov-sops-key'
-          #pgp: 'B9FF61E01273EDF7DE298B52F4D6BD77E5C66196'
 
-        # DEFAULT ------------------------------------------------------------------------------------------------------------- #
-        # Finally, if the rules above have not matched, this one is a
-        # catchall that will encrypt the file using KMS set C
-        # The absence of a path_regex means it will match everything
-#        - kms: 'arn:aws:kms:ap-south-1:218381940040:key/9a3b0835-7713-4925-8b3d-da7e421d28d2'
-#          #gcp_kms: 'projects/digit-egov/locations/asia-south1/keyRings/egov-sops/cryptoKeys/egov-sops-key'
-#          encrypted_regex: '^(secrets)$'
-#          pgp: 'B9FF61E01273EDF7DE298B52F4D6BD77E5C66196'
-#
-#        # - path_regex: environments/dev\.yaml$
-#        #   encrypted_regex: '^(secrets)$'
-#        #   kms: 'arn:aws:kms:ap-south-1:218381940040:key/9a3b0835-7713-4925-8b3d-da7e421d28d2'
-#        #   pgp: 'C7ED80C79625B40667A6FAD6774DE10645AAD1BB'
+        - path_regex: environments/bihar-mgramseva\-prod\-secrets\.yaml$   #mgramseva-uat
+          encrypted_regex: '^(secrets)$'
+          kms: 'arn:aws:kms:ap-south-1:197939965038:key/c062b4a9-5aed-4843-b705-3cca5cd777df'
