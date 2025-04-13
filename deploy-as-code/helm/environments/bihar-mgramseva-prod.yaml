@@ -1,5 +1,5 @@
 global:
-  domain: bihar-prod.digit.org
+  domain: www.peyjalbihar.org
   containerRegistry: egovio
   tracing-enabled: true
   namespace: mgramseva
@@ -743,22 +743,17 @@ playground:
     tag: ubuntu-18-elasticdump
 
 pgadmin:
-  dbUrl: "magramseva-uat-db.cw1hfdqtf5pw.ap-south-1.rds.amazonaws.com"
+  dbUrl: "mgramseva-prod-db.cw1hfdqtf5pw.ap-south-1.rds.amazonaws.com"
   environment: "MGRAMSEVA"
-  maintenance-db-name: "mgramseva_uat"
-  db-admin-username: "mgramsevauat"
-  db-read-username: "mgramsevauat_readonly"
+  maintenance-db-name: "mgramseva_prod"
+  db-admin-username: "mgramsevaprod"
+  db-read-username: "mgramsevaprod_readonly"
   max-query-history: "50"
   max-login-attempts: "5"
   enable-save-password: "False"
   persistence:
     enabled: true
-    dataDirSize: "1Gi"
-    aws:
-      volumeId: "vol-01bb0a3aad7b71f44"
-      zone: ap-south-1b
-  ingress:
-    ip-whitelist: "106.51.69.20"
+    dataDirSize: "10Gi"
 
 #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
@@ -835,11 +830,11 @@ prometheus:
   storageSpec:
     volumeClaimTemplate:
       spec:
-        storageClassName: gp2
+        storageClassName: gp3
         accessModes: ["ReadWriteOnce"]
         resources:
           requests:
-            storage: 20Gi
+            storage: 30Gi
   alertmanager:
     enabled: true
   externalLabels:
@@ -878,6 +873,7 @@ loki:
     accessModes:
       - ReadWriteOnce
     size: 40Gi
+    storageClassName: gp3
   serviceAccount:
     annotations:
       eks.amazonaws.com/role-arn: arn:aws:iam::197939965038:role/loki-stack-role

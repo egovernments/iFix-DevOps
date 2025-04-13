@@ -172,7 +172,7 @@ defaultRules:
 
 ## Deprecated way to provide custom recording or alerting rules to be deployed into the cluster.
 ##
-additionalPrometheusRules: 
+additionalPrometheusRules:
  - name: podalerts
    groups:
      - name: KubernetesPodAlerts
@@ -187,9 +187,10 @@ additionalPrometheusRules:
            summary: Kubernetes container OOM Killed
            description: |
              A Container in pod {{ $labels.pod }} has been OOMKilled {{ $value }} times in the last 10 minutes.
-             - namespace: ({{ $labels.namespace }}
-             - pod: {{ $labels.pod }}
-             - container: {{ $labels.container }}
+             LABELS:
+             {{ range $key, $value := $labels }}
+               - {{ $key }}: {{ $value }}
+             {{ end }}
        - alert: KubernetesPodNotHealthy
          expr: 'sum by (namespace, pod, phase) (kube_pod_status_phase{phase=~"Pending|Unknown|Failed", namespace!~"monitoring|kube-system|default|logging"}) > 0'
          for: 10m
@@ -200,9 +201,10 @@ additionalPrometheusRules:
            summary: Kubernetes Pod not healthy ({{ $labels.namespace }}/{{ $labels.pod }})
            description: |
              Pod {{ $labels.pod }} has been in a non-running state for longer than 10 minutes.
-             - namespace: {{ $labels.namespace }}
-             - pod: {{ $labels.pod }}
-             - status: {{ $labels.phase }}
+             LABELS:
+             {{ range $key, $value := $labels }}
+               - {{ $key }}: {{ $value }}
+             {{ end }}
        - alert: KubernetesPodCrashLooping
          expr: 'max_over_time(kube_pod_container_status_waiting_reason{job="kube-state-metrics", namespace!~"monitoring|kube-system|default|logging", reason="CrashLoopBackOff"}[10m]) >= 1'
          for: 1m
@@ -211,7 +213,13 @@ additionalPrometheusRules:
            repeat_interval: 30m
          annotations:
            summary: Kubernetes Pod {{ $labels.pod }} is in CrashLoopBackOff
-           description: "Pod {{ $labels.pod }} is in CrashLoopBackOff for 10 minutes.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+           description: |
+             Pod {{ $labels.pod }} is in CrashLoopBackOff for 10 minutes.
+             VALUE = {{ $value }}
+             LABELS:
+             {{ range $key, $value := $labels }}
+               - {{ $key }}: {{ $value }}
+             {{ end }}
  - name: nodealerts
    groups:
      - name: KubernetesNodeAlerts
@@ -233,7 +241,7 @@ additionalPrometheusRules:
            repeat_interval: 30m
          annotations:
            summary: Kubernetes memory pressure (node {{ $labels.node }})
-           description: "Node {{ $labels.node }} has MemoryPressure condition"
+           description: "Node {{ $labels.node }} has MemoryPressure condition."
        - alert: KubernetesNodeDiskPressure
          expr: 'kube_node_status_condition{condition="DiskPressure", status="true"} == 1'
          for: 2m
@@ -242,7 +250,7 @@ additionalPrometheusRules:
            repeat_interval: 30m
          annotations:
            summary: Kubernetes NODE disk pressure
-           description: "Node {{ $labels.node }} has DiskPressure condition"
+           description: "Node {{ $labels.node }} has DiskPressure condition."
        - alert: KubernetesNodeNetworkUnavailable
          expr: 'kube_node_status_condition{condition="NetworkUnavailable", status="true"} == 1'
          for: 2m
@@ -251,13 +259,19 @@ additionalPrometheusRules:
            repeat_interval: 30m
          annotations:
            summary: Kubernetes Node network unavailable (instance {{ $labels.instance }})
-           description: "Node {{ $labels.node }} has NetworkUnavailable condition\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+           description: |
+             Node {{ $labels.node }} has NetworkUnavailable condition.
+             VALUE = {{ $value }}
+             LABELS:
+             {{ range $key, $value := $labels }}
+               - {{ $key }}: {{ $value }}
+             {{ end }}
  - name: volumealerts
    groups:
      - name: KubernetesVolumeAlerts
        rules:
        - alert: KubernetesVolumeOutOfDiskSpace
-         expr: '(kubelet_volume_stats_available_bytes / kubelet_volume_stats_capacity_bytes * 100) < 20'
+         expr: '(1 - (kubelet_volume_stats_available_bytes / kubelet_volume_stats_capacity_bytes)) * 100 > 80'
          for: 10m
          labels:
            severity: critical
@@ -265,12 +279,12 @@ additionalPrometheusRules:
          annotations:
            summary: Kubernetes Volume out of disk space (instance {{ $labels.instance }})
            description: |
-             Volume is almost full (< 60% left)
-             Current Usage = {{ $value | printf "%.2f" }}%
+             Volume is almost full (> 80% used).
+             Current Usage = {{ printf "%.0f" $value }}%
              LABELS:
-               - namespace: {{ $labels.namespace }}
-               - persistentvolumeclaim: {{ $labels.persistentvolumeclaim }}
-               - node: {{ $labels.node }}
+             {{ range $key, $value := $labels }}
+               - {{ $key }}: {{ $value }}
+             {{ end }}
        - alert: KubernetesPersistentvolumeError
          expr: 'kube_persistentvolume_status_phase{phase=~"Failed|Pending", job="kube-state-metrics", namespace!~"monitoring|kube-system|default|logging"} > 0'
          for: 5m
@@ -279,7 +293,13 @@ additionalPrometheusRules:
            repeat_interval: 30m
          annotations:
            summary: Kubernetes PersistentVolumeClaim pending ({{ $labels.namespace }}/{{ $labels.persistentvolumeclaim }})
-           description: "Persistent volume {{ $labels.persistentvolume }} is in bad state\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+           description: |
+             Persistent volume {{ $labels.persistentvolume }} is in bad state.
+             VALUE = {{ $value }}
+             LABELS:
+             {{ range $key, $value := $labels }}
+               - {{ $key }}: {{ $value }}
+             {{ end }}
  - name: sslalerts
    groups:
      - name: SSLCertificateAlerts
@@ -301,8 +321,13 @@ additionalPrometheusRules:
             repeat_interval: 30m
           annotations:
             summary: "SSL certificate has expired"
-            description: "SSL Certificate for {{ $labels.instance }} has expired.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
-
+            description: |
+              SSL Certificate for {{ $labels.instance }} has expired.
+              VALUE = {{ $value }}
+              LABELS:
+              {{ range $key, $value := $labels }}
+               - {{ $key }}: {{ $value }}
+              {{ end }}
 
 ## Provide custom recording or alerting rules to be deployed into the cluster.
 ##
@@ -419,7 +444,6 @@ alertmanager:
       resolve_timeout: 5m
     route:
       group_by: ['alertname']
-      receiver: default
       group_wait: 30s
       group_interval: 5m
       repeat_interval: 10m
@@ -3334,7 +3358,7 @@ prometheus:
   ##
   prometheusSpec:
     scrapeInterval: 30s
-    evaluationInterval: 30s  
+    evaluationInterval: 30s
     ## If true, pass --storage.tsdb.max-block-duration=2h to prometheus. This is already done if using Thanos
     ##
     disableCompaction: false
@@ -3609,7 +3633,7 @@ prometheus:
 
     ## How long to retain metrics
     ##
-    retention: 10d
+    retention: 30d
 
     ## Maximum size of metrics
     ##
@@ -3714,17 +3738,16 @@ prometheus:
     ## Prometheus StorageSpec for persistent data
     ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/user-guides/storage.md
     ##
-    storageSpec: {}
+    storageSpec:
     ## Using PersistentVolumeClaim
     ##
-    #  volumeClaimTemplate:
-    #    spec:
-    #      storageClassName: gluster
-    #      accessModes: ["ReadWriteOnce"]
-    #      resources:
-    #        requests:
-    #          storage: 50Gi
-    #    selector: {}
+      volumeClaimTemplate:
+        spec:
+          storageClassName: gp3
+          accessModes: ["ReadWriteOnce"]
+          resources:
+            requests:
+              storage: 30Gi
 
     ## Using tmpfs volume
     ##
@@ -3780,10 +3803,10 @@ prometheus:
     #
     ## If scrape config contains a repetitive section, you may want to use a template.
     ## In the following example, you can see how to define `gce_sd_configs` for multiple zones
-    additionalScrapeConfigs: 
+    additionalScrapeConfigs:
       - job_name: 'nginx-ingress-metrics'
         static_configs:
-          - targets: ['nginx-ingress-metrics.mgramseva:10254']
+          - targets: ['nginx-ingress-metrics.egov:10254']
       - job_name: 'blackbox'
         metrics_path: /probe
         params:
@@ -3797,7 +3820,7 @@ prometheus:
           - source_labels: [__param_target]
             target_label: instance
           - target_label: __address__
-            replacement: blackbox-prometheus-blackbox-exporter:9115 
+            replacement: blackbox-prometheus-blackbox-exporter:9115
       - job_name: 'blackbox_exporter'  # collect blackbox exporter's operational metrics.
         static_configs:
           - targets: ['blackbox-prometheus-blackbox-exporter:9115']

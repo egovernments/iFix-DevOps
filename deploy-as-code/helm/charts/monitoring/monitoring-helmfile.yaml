@@ -2,8 +2,8 @@ environments:
   prod:
     values:
       - namespace: monitoring
-      - ../../environments/bihar-mgramseva-uat-secrets.yaml
-      - ../../environments/bihar-mgramseva-uat.yaml
+      - ../../environments/bihar-mgramseva-prod-secrets.yaml
+      - ../../environments/bihar-mgramseva-prod.yaml
 ---
 
 repositories:
@@ -15,7 +15,7 @@ repositories:
   url: https://jaegertracing.github.io/helm-charts
 
 releases:
-{{/*
+
 - name: loki-stack
   installed: true
   namespace: {{ .Values.namespace | default "default-namespace" }}
@@ -36,7 +36,7 @@ releases:
       serviceAccount:
         annotations: {{ .Values.loki.serviceAccount.annotations | toYaml | nindent 10 }}
       {{- end }}
-*/}}
+
 - name: kube-prometheus-stack
   installed: true
   namespace: {{ .Values.namespace | default "default-namespace" }}
@@ -55,7 +55,9 @@ releases:
       prometheusSpec:
         additionalScrapeConfigs: {{ .Values.prometheus.additionalScrapeConfigs | toYaml | nindent 8 }}
         externalLabels: {{ .Values.prometheus.externalLabels | toYaml | nindent 10 }}
-{{/*
+        storageSpec: {{ .Values.prometheus.storageSpec | toYaml | nindent 10 }}
+        retention: {{ .Values.prometheus.retention | toYaml | nindent 10 }}
+
 - name: jaeger
   installed: false
   namespace: es-cluster
@@ -92,4 +94,3 @@ releases:
   namespace: {{ .Values.namespace | default "default-namespace" }}
   chart: ../backbone-services/prometheus-blackbox-exporter
   version: 8.2.0
-*/}}
