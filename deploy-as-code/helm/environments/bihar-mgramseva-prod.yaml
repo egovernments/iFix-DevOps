@@ -743,6 +743,7 @@ playground:
     tag: ubuntu-18-elasticdump
 
 pgadmin:
+  namespace: mgramseva
   dbUrl: "mgramseva-prod-db.cw1hfdqtf5pw.ap-south-1.rds.amazonaws.com"
   environment: "MGRAMSEVA"
   maintenance-db-name: "mgramseva_prod"
